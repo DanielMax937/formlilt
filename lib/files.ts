@@ -12,3 +12,4 @@ export function fittedSize(width: number, height: number, maxEdge = MAX_PAGE_EDG
   const scale = Math.min(1, maxEdge / Math.max(width, height));
   return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)) };
 }
+export function pngDimensions(bytes:Uint8Array){if(fileKind(bytes)!=='png'||bytes.length<24||new TextDecoder().decode(bytes.slice(12,16))!=='IHDR')throw new Error('Invalid PNG image.');const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);const width=view.getUint32(16),height=view.getUint32(20);if(!width||!height)throw new Error('Invalid image dimensions.');return {width,height};}

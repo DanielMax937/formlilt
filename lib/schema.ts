@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {languageCode} from './language-code';
 
-const id = z.string().min(1).max(100).regex(/^[a-zA-Z0-9_-]+$/);
+const id = z.string().min(1).max(100).regex(/^[a-zA-Z0-9_-]+$/).refine(value=>!['__proto__','prototype','constructor'].includes(value),'Reserved field ID');
 const bounds = z.tuple([z.number().min(0).max(1), z.number().min(0).max(1), z.number().min(0).max(1), z.number().min(0).max(1)]).refine(b => b[2] > b[0] && b[3] > b[1], 'Bounding box must have positive area');
 export const Field = z.object({
   id, label: z.string().min(1).max(200), section: id,

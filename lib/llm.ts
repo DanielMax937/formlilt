@@ -53,7 +53,7 @@ export function normalizeAgentSchema(value: unknown): unknown {
 export async function* streamValidated<T>(schema:z.ZodType<T>,messages:ModelMessage[],signal?:AbortSignal):AsyncGenerator<{partial:unknown}|{result:T}> {
  const timeout=AbortSignal.timeout(getEnv().LLM_TIMEOUT_MS);const abortSignal=signal?AbortSignal.any([signal,timeout]):timeout;
  try {
-  const output=streamObject({model:getModel(),schema,mode:'json',system:MODEL_SYSTEM+'\nReturn JSON matching this schema: '+JSON.stringify(asSchema(schema).jsonSchema),messages,abortSignal,maxRetries:0,maxOutputTokens:1800});
+  const output=streamObject({onError:()=>{},model:getModel(),schema,mode:'json',system:MODEL_SYSTEM+'\nReturn JSON matching this schema: '+JSON.stringify(asSchema(schema).jsonSchema),messages,abortSignal,maxRetries:0,maxOutputTokens:1800});
   for await(const partial of output.partialObjectStream)yield {partial};
   yield {result:schema.parse(await output.object)};
  } catch(error) {

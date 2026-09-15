@@ -6,7 +6,7 @@ import {activeFields,pruneAnswers} from './next-field';
 import {formatDate,invalidFields} from './validate';
 import {pdfFonts,fontFamily} from './fonts';
 import {fieldBox,inDisplayedPage,type Box} from './pdf-placement';
-import {fileKind} from './files';
+import {fileKind,pngDimensions} from './files';
 import {fail} from './errors';
 const ink=rgb(.08,.15,.24);
 function wrap(text:string,font:PDFFont,size:number,width:number):string[]{const lines:string[]=[];for(const paragraph of text.split(/\r?\n/)){let line='';for(const char of paragraph){if(line&&font.widthOfTextAtSize(line+char,size)>width){lines.push(line.trimEnd());line='';}line+=char;}lines.push(line.trimEnd());}return lines;}
@@ -28,7 +28,7 @@ export async function fillPdf(original:Uint8Array,rawSchema:FormSchema,rawAnswer
   const native=field.acroName?nativeFields.get(field.acroName):undefined;const anchor=field.anchor!;const page=doc.getPage(anchor.page);const pageHeight=source.pages[anchor.page].heightPt;
   try{
    if(field.type==='signature'){
-    const image=await doc.embedPng(answer.value);if(image.width>2000||image.height>1000||image.width<10||image.height<5)throw new Error('The signature image dimensions are invalid.');
+    const png=Buffer.from(answer.value.split(',')[1],'base64');const dimensions=pngDimensions(png);if(dimensions.width>2000||dimensions.height>1000)throw new Error('The signature image dimensions are invalid.');const image=await doc.embedPng(png);if(image.width>2000||image.height>1000||image.width<10||image.height<5)throw new Error('The signature image dimensions are invalid.');
     if(native instanceof PDFTextField){native.setText(answer.signedBy);native.setImage(image);continue;}
     const boxes=native?source.acroFields.filter(a=>a.name===native.getName()).map(a=>({page:a.page,box:{x:a.bbox[0]*source.pages[a.page].widthPt,y:a.bbox[1]*source.pages[a.page].heightPt,width:(a.bbox[2]-a.bbox[0])*source.pages[a.page].widthPt,height:(a.bbox[3]-a.bbox[1])*source.pages[a.page].heightPt,size:10}})):[{page:anchor.page,box:await fieldBox(doc,field,source)}];
     if(native){const widgets=native.acroField.getWidgets();for(const p of doc.getPages())for(const ref of [...(p.node.Annots()?.asArray()??[])])if(ref instanceof PDFRef&&(ref===native.ref||widgets.some(widget=>doc.context.lookup(ref)===widget.dict)))p.node.removeAnnot(ref);form.acroForm.removeField(native.acroField);form.markFieldAsClean(native.ref);}

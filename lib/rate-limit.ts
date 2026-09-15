@@ -27,5 +27,5 @@ export async function enforceLimit(request: Request, bucket: 'extract' | 'turn' 
     if (process.env.VERCEL) return fail(503,'rate_limit_unavailable','Uploads are temporarily unavailable. Please try a demo.');
     success = memoryLimit(key,limit,hours*3600000);
   }
-  if (!success) fail(429,'rate_limited',bucket === 'extract' ? 'Your 3 free uploads are used for today. Come back tomorrow, or try an unlimited demo.' : 'Please wait before trying again.');
+  if (!success) fail(429,'rate_limited',bucket === 'extract' ? `Your ${limit} free uploads are used for today. Come back tomorrow, or try an unlimited demo.` : 'Please wait before trying again.');
 }

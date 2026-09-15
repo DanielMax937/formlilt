@@ -1,6 +1,6 @@
 import { PDFDocument } from 'pdf-lib';
 import { getDocumentProxy } from 'unpdf';
-import { fileKind, MAX_FILE_BYTES, MAX_PAGES } from './files';
+import { fileKind, pngDimensions, MAX_FILE_BYTES, MAX_PAGES } from './files';
 import type { PageMeta } from './schema';
 export type TextItem = { str: string; x: number; y: number; w: number; h: number; size: number };
 export type AcroField = { name: string; type: string; page: number; bbox: [number,number,number,number]; options?: string[] };
@@ -11,6 +11,7 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
   const kind = fileKind(bytes);
   if (!kind) throw new Error('Choose a PDF, JPEG or PNG file.');
   if (kind !== 'pdf') {
+    if(kind==='png'){const size=pngDimensions(bytes);if(size.width>12000||size.height>12000||size.width*size.height>40000000)throw new Error('Image dimensions are too large.');}
     const pdf = await PDFDocument.create();
     const image = kind === 'jpg' ? await pdf.embedJpg(bytes) : await pdf.embedPng(bytes);
     if (image.width > 12000 || image.height > 12000 || image.width * image.height > 40000000) throw new Error('Image dimensions are too large.');
