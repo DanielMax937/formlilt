@@ -1,3 +1,4 @@
+import {isKnownDemo} from '@/lib/known-demo';
 import {z} from 'zod';
 import {TurnInput,TurnResult} from '@/lib/schema';
 import {activeFields,applyAnswer,nextField} from '@/lib/next-field';
@@ -11,7 +12,7 @@ import {turnPrompt} from '@/prompts/turn';
 export const runtime='nodejs';export const preferredRegion='hkg1';export const maxDuration=60;
 const Wording=z.object({question:z.string().max(1000),explanation:z.string().max(1500).optional(),normalizedValue:z.string().max(10000).optional()});
 export async function POST(request:Request){try{
- sameOrigin(request);const input=TurnInput.parse(await readJson(request));await enforceLimit(request,'turn');
+ sameOrigin(request);const input=TurnInput.parse(await readJson(request));
  const field=activeFields(input.schema,input.answers).find(f=>f.id===input.currentFieldId);if(!field)return fail(400,'invalid_input','This question is not available.');
  const action=input.action==='answer'&&isSkipIntent(input.input??'')?'skip':input.action;
  const validation=action==='answer'?validate(field,input.input??'',input.answers,input.signedBy):{ok:true};
@@ -23,6 +24,7 @@ export async function POST(request:Request){try{
  const baseline:TurnResult={validation:{ok:true},nextFieldId:next,question:nextItem?`${t(input.uiLanguage,'question')} ${nextItem.label}`:t(input.uiLanguage,'done'),done:next===null,...(action==='explain'?{explanation:field.help||t(input.uiLanguage,'unknownHelp')}:{})};
  const translate=action==='answer'&&!input.confirmed&&needsTranslation(field,input.input??'',input.uiLanguage,input.schema.language);
  const translateHelp=action==='explain'&&!!field.help&&input.uiLanguage.split('-')[0]!==input.schema.language.split('-')[0];
+ if(translate||translateHelp||!(await isKnownDemo(input.schema)))await enforceLimit(request,'turn');
  const encoder=new TextEncoder();
  const stream=new ReadableStream<Uint8Array>({async start(controller){const send=(value:unknown)=>controller.enqueue(encoder.encode(JSON.stringify(value)+'\n'));
   try{

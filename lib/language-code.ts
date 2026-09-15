@@ -1,0 +1,1 @@
+export function languageCode(value:string):string{const text=value.trim();const key=text.toLowerCase();return ({english:'en',chinese:'zh-CN','simplified chinese':'zh-CN','中文':'zh-CN',spanish:'es','español':'es',japanese:'ja','日本語':'ja',arabic:'ar',french:'fr',german:'de',korean:'ko'} as Record<string,string>)[key]??text;}

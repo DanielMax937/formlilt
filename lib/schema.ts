@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import {languageCode} from './language-code';
 
 const id = z.string().min(1).max(100).regex(/^[a-zA-Z0-9_-]+$/);
 const bounds = z.tuple([z.number().min(0).max(1), z.number().min(0).max(1), z.number().min(0).max(1), z.number().min(0).max(1)]).refine(b => b[2] > b[0] && b[3] > b[1], 'Bounding box must have positive area');
@@ -17,7 +18,7 @@ export type Field = z.infer<typeof Field>;
 export const PageMeta = z.object({ index: z.number().int().min(0).max(14), widthPt: z.number().positive().max(20000), heightPt: z.number().positive().max(20000), kind: z.enum(['text','scan']) });
 export type PageMeta = z.infer<typeof PageMeta>;
 export const FormSchemaBase = z.object({
-  title: z.string().min(1).max(200), language: z.string().min(2).max(30),
+  title: z.string().min(1).max(200), language: z.string().min(2).max(30).transform(languageCode),
   source: z.enum(['pdf','image']), precision: z.enum(['exact','approximate']),
   pages: z.array(PageMeta).min(1).max(15),
   sections: z.array(z.object({ id, title: z.string().min(1).max(150), fieldIds: z.array(id).max(150) })).min(1).max(30),

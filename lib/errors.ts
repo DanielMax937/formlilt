@@ -21,4 +21,9 @@ export async function readMultipart(request: Request) {
   try { return await new Response(bytes, { headers: { 'Content-Type': request.headers.get('content-type')! } }).formData(); } catch { return fail(400,'invalid_input','The upload could not be read.'); }
 }
 export async function readJson(request: Request) { const bytes = await limitedBody(request,750000); try { return JSON.parse(new TextDecoder().decode(bytes)) as unknown; } catch { return fail(400,'invalid_input','Invalid JSON.'); } }
-export function sameOrigin(request: Request) { const origin = request.headers.get('origin'); if (origin && origin !== new URL(request.url).origin) fail(403,'invalid_origin','Please use the form on this website.'); }
+export function sameOrigin(request: Request) {
+ const origin=request.headers.get('origin');if(!origin)return;const url=new URL(request.url);const host=request.headers.get('host');
+ // Next's development adapter may use localhost in request.url while the browser uses 127.0.0.1.
+ const permitted=[url.origin,...(host?[`${url.protocol}//${host}`]:[])];
+ if(!permitted.includes(origin))fail(403,'invalid_origin','Please use the form on this website.');
+}

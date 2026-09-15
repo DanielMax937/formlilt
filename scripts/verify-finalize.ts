@@ -1,0 +1,6 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {FormSchema} from '../lib/schema';
+import {fillPdf} from '../lib/fill-pdf';
+import {fixtureAnswers} from '../tests/fixtures/answers';
+async function main(){await mkdir('tmp/filled',{recursive:true});const png='data:image/png;base64,'+(await readFile('tests/fixtures/signature.png')).toString('base64');for(const slug of ['change-of-address','insurance-claim','medical-release']){const schema=FormSchema.parse(JSON.parse(await readFile(`public/demo-forms/${slug}.schema.json`,'utf8')));const answers=fixtureAnswers(schema,png);if(slug==='medical-release'){answers.f0={value:'陈美玲',status:'answered'};answers.f53=answers.f0;answers.f29={value:'true',status:'answered'};answers.f54={value:'SAMPLE',status:'answered'};answers.f55={value:'SAMPLE',status:'answered'};answers.f81={value:'SAMPLE',status:'answered'};}try{const pdf=await fillPdf(await readFile(`public/demo-forms/${slug}.pdf`),schema,answers);await writeFile(`tmp/filled/${slug}.pdf`,pdf);await writeFile(`tmp/filled/${slug}.answers.json`,JSON.stringify(answers));console.log(JSON.stringify({slug,bytes:pdf.length}));}catch(error){console.error(slug,error);process.exitCode=1;}}}
+void main();

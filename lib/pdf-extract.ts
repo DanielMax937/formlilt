@@ -19,7 +19,7 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
   const doc = await PDFDocument.load(bytes);
   if (doc.getPageCount() > MAX_PAGES) throw new Error('Choose a document with 15 pages or fewer.');
   if (doc.getPageCount() < 1) throw new Error('The PDF has no pages.');
-  const proxy = await getDocumentProxy(bytes.slice(), { useSystemFonts: true });
+  const proxy = await getDocumentProxy(new Uint8Array(bytes), { useSystemFonts: true });
   try {
     const pages: ParsedDocument['pages'] = [];
     for (let index = 0; index < proxy.numPages; index++) {
