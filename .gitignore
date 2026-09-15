@@ -8,3 +8,6 @@ test-results/
 tmp/
 .vercel/
 .DS_Store
+public/pdf.worker.min.mjs
+public/cmaps/
+public/standard_fonts/

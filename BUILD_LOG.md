@@ -21,3 +21,9 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Added bounded zod models for fields, schemas, answers, turns, finalize and browser sessions. Validate unique IDs, section membership, anchor bounds, options, cyclic dependencies, signature references and 30 KB schema limit.
 - Acceptance: `pnpm test` 4/4 passed, including invalid models and invalid API inputs.
 - Strict JSON-schema image preflight also passed (HTTP 200), but took 137.896s versus 53.245s for JSON-object mode. Initial agent-im default remains JSON mode with application-level zod validation and one repair retry; full demo extraction timing remains to be measured.
+
+## 2026-09-16 01:15 · T2 complete
+- Server uses unpdf text coordinates in displayed top-left page space, plus pdf-lib widget rectangles and option lists. Photos use the scan path. Added client PDF/JPEG/PNG/HEIC rendering, 1600px bound, worker/font asset copy at install.
+- Three complete two-page demo forms: IRS text items [122,213], 25 widgets; VA [117,40], 48 widgets; Dublin school [103,69], 0 widgets. All pages classified text. JPEG fixture classified scan.
+- Acceptance: `pnpm test` 9/9 passed; `pnpm typecheck` passed. Six sample page images rendered with Poppler at <=1600px. Client rendering will additionally be exercised in browser e2e.
+- Real documents caught library API changes (unpdf cleanup through loadingTask and viewport rectangle conversion); corrected against installed types. Rejected encrypted/oversize source samples; school PDF consists of the complete two-page medical form extracted from a larger packet, with source attribution.
