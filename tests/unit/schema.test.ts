@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { FormSchema, TurnInput } from '@/lib/schema';
-export const sample = { title: 'Registration', language: 'en', source: 'pdf', precision: 'exact', pages: [{ index: 0, widthPt: 612, heightPt: 792, kind: 'text' }], sections: [{ id: 'personal', title: 'Personal', fieldIds: ['name'] }], fields: [{ id: 'name', label: 'Full name', section: 'personal', type: 'text', required: true, anchor: { page: 0, labelText: 'Full name', placement: 'below' } }], estimatedMinutes: 1 };
+import { sample } from '../fixtures/form';
 test('accepts a valid form and rejects duplicate/dangling field references', () => {
   expect(FormSchema.safeParse(sample).success).toBe(true);
   expect(FormSchema.safeParse({ ...sample, fields: [...sample.fields,...sample.fields] }).success).toBe(false);
