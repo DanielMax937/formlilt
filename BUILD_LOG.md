@@ -69,3 +69,7 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 ## 2026-09-16 02:02 · T9 complete
 - Type/constraint validation reports inline, localized errors and keeps the current question. Regex checks use a linear-time engine. Explanations cite supplied form help; missing help says the source does not explain it.
 - Acceptance: 4/4 validation unit tests (calendar/leap dates, email, phone, numeric bounds, enums, length, adversarial regex); validation e2e passes in Chromium and mobile WebKit. Combined T8/T9 browser acceptance: 4/4 passed in 13.0s.
+
+## 2026-09-16 · T10 implemented; physical-device acceptance open
+- Added opt-in question/error speech synthesis and microphone capture, editable transcripts, unsupported-browser feedback, and cancellation when moving to another field. No audio upload endpoint exists in FillFlow; browser speech providers may process recognition remotely, which will be disclosed in About.
+- Acceptance: typecheck passed; Chromium and mobile WebKit integration tests exercise recognition callbacks and persisted speech toggle. Physical Chrome microphone and iPhone Safari listening/voice quality require real-device acceptance; automated mocked recognition is not evidence of that manual gate.
