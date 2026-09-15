@@ -16,3 +16,8 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Initialized Next.js 15.5.25 / React 19 / Tailwind 4, strict TypeScript, Vitest and Playwright. Added validated server-only environment configuration, README and ignored local env.
 - Acceptance: `pnpm test` 1/1 passed; `pnpm build` passed (home and not-found prerendered). No ignored type/build errors.
 - Registry mirror was unavailable; installed from the official npm registry. Local server port is 3050.
+
+## 2026-09-16 01:10 · T1 complete
+- Added bounded zod models for fields, schemas, answers, turns, finalize and browser sessions. Validate unique IDs, section membership, anchor bounds, options, cyclic dependencies, signature references and 30 KB schema limit.
+- Acceptance: `pnpm test` 4/4 passed, including invalid models and invalid API inputs.
+- Strict JSON-schema image preflight also passed (HTTP 200), but took 137.896s versus 53.245s for JSON-object mode. Initial agent-im default remains JSON mode with application-level zod validation and one repair retry; full demo extraction timing remains to be measured.
