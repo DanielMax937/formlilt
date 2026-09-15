@@ -59,3 +59,13 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Working question workspace includes section todo status, revisiting answers and a live progress ring. Routine turns require no model call; model output cannot change which field comes next.
 - Acceptance: turn API tests 3/3 passed; Chromium e2e answered three questions, skipped one, went back, jumped to a prior answer and restored it after refresh: 1/1 passed in 8.3s. Typecheck passed.
 - Strict-mode comparison: all three full-demo attempts failed (two optional-property schema requirements from Codex's strict validator; one upstream WebSocket disconnect). JSON mode passed all three; leave LLM_STRUCTURED_OUTPUT=false. Strict mode is not the production recommendation for this agent-im adapter.
+
+## 2026-09-16 02:02 · T8 complete
+- Added date/number/email/telephone/select/multiselect/boolean controls, responsive question layout, section todo navigation and progress ring. Keyboard focus follows the current input; reduced motion is respected.
+- Visual check caught off-screen status text expanding page height and a Tailwind class-name collision; corrected positioning and progress class naming.
+- Mobile WebKit exposed File-object IndexedDB transaction failures. Store ArrayBuffer plus metadata instead, while preserving compatibility with existing File entries. All demo downloads still use the original bytes.
+- Acceptance: typed controls, yes/no dependency switching, keyboard submit and no horizontal overflow pass on Chromium and iPhone/WebKit. Screenshots saved in launch/. Typecheck passed.
+
+## 2026-09-16 02:02 · T9 complete
+- Type/constraint validation reports inline, localized errors and keeps the current question. Regex checks use a linear-time engine. Explanations cite supplied form help; missing help says the source does not explain it.
+- Acceptance: 4/4 validation unit tests (calendar/leap dates, email, phone, numeric bounds, enums, length, adversarial regex); validation e2e passes in Chromium and mobile WebKit. Combined T8/T9 browser acceptance: 4/4 passed in 13.0s.
