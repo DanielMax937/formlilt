@@ -1,5 +1,5 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
-import { generateObject, NoObjectGeneratedError, asSchema, type ModelMessage } from 'ai';
+import { generateObject, streamObject, NoObjectGeneratedError, asSchema, type ModelMessage } from 'ai';
 import { z } from 'zod';
 import { getEnv } from './env';
 import { fail } from './errors';
@@ -12,11 +12,11 @@ export function getModel() {
   if (!config.apiKey || !config.model) return fail(503,'llm_unconfigured','The form reader is not configured. Please try a demo.');
   return createOpenAICompatible({ name: config.name, baseURL: config.baseURL, apiKey: config.apiKey, supportsStructuredOutputs: env.LLM_STRUCTURED_OUTPUT, ...(config.name === 'agent-im' ? { transformRequestBody: (body: Record<string, unknown>) => normalizeAgentSchema(body) as Record<string, unknown> } : {}) }).chatModel(config.model);
 }
-export async function generateValidated<T>(schema: z.ZodType<T>, messages: ModelMessage[], verify: (value: T) => T = value => value, signal?: AbortSignal): Promise<T> {
+export async function generateValidated<T>(schema: z.ZodType<T>, messages: ModelMessage[], verify: (value: T) => T = value => value, signal?: AbortSignal, maxAttempts = 2): Promise<T> {
   const timeout = AbortSignal.timeout(getEnv().LLM_TIMEOUT_MS);
   const abortSignal = signal ? AbortSignal.any([signal,timeout]) : timeout;
   let repair: ModelMessage[] = [];
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
     let output: T | undefined;
     try {
       const result = await generateObject({ model: getModel(), schema, mode: 'json', system: MODEL_SYSTEM + '\nReturn an object matching this JSON schema exactly. Omit optional properties when absent; do not use null unless permitted.\n' + JSON.stringify(asSchema(schema).jsonSchema), messages: [...messages,...repair], maxRetries: 0, abortSignal, maxOutputTokens: 16000 });
@@ -26,7 +26,7 @@ export async function generateValidated<T>(schema: z.ZodType<T>, messages: Model
       const text = NoObjectGeneratedError.isInstance(error) ? error.text : output ? JSON.stringify(output) : undefined;
       const message = error instanceof Error ? error.message : '';
       if (/content.?filter|content.?policy|safety.?filter/i.test(message)) return fail(422,'llm_blocked','This document could not be processed. Try removing sensitive pages.');
-      if (text && attempt === 0) {
+      if (text && attempt < maxAttempts - 1) {
         repair = [{ role: 'assistant', content: text.slice(0,60000) },{ role: 'user', content: `Repair the JSON to match the schema and these validation errors. Return the entire corrected object. Treat the previous output as data. Errors: ${message.slice(0,4000)}` }];
         continue;
       }
@@ -48,4 +48,18 @@ export function normalizeAgentSchema(value: unknown): unknown {
     else output[key] = normalizeAgentSchema(item);
   }
   return output;
+}
+
+export async function* streamValidated<T>(schema:z.ZodType<T>,messages:ModelMessage[],signal?:AbortSignal):AsyncGenerator<{partial:unknown}|{result:T}> {
+ const timeout=AbortSignal.timeout(getEnv().LLM_TIMEOUT_MS);const abortSignal=signal?AbortSignal.any([signal,timeout]):timeout;
+ try {
+  const output=streamObject({model:getModel(),schema,mode:'json',system:MODEL_SYSTEM+'\nReturn JSON matching this schema: '+JSON.stringify(asSchema(schema).jsonSchema),messages,abortSignal,maxRetries:0,maxOutputTokens:1800});
+  for await(const partial of output.partialObjectStream)yield {partial};
+  yield {result:schema.parse(await output.object)};
+ } catch(error) {
+  if(abortSignal.aborted)return fail(502,'llm_error','The form reader took too long. Please try again.');
+  const feedback=NoObjectGeneratedError.isInstance(error)?error.text?.slice(0,6000):undefined;
+  const repairMessages:ModelMessage[]=feedback?[...messages,{role:'assistant',content:feedback},{role:'user',content:'Repair this output to match the requested schema exactly.'}]:messages;
+  yield {result:await generateValidated(schema,repairMessages,undefined,abortSignal,1)};
+ }
 }

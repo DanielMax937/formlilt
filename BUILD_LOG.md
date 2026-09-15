@@ -53,3 +53,9 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 ## 2026-09-16 01:44 · T6 complete
 - Deterministic section-order routing for answer/skip/back/jump, recursive dependency visibility, inactive-answer pruning and unknown-field rejection. Skipped questions stay available for review instead of causing a loop.
 - Acceptance: next-field tests cover branching, revisiting, completion and clearing stale conditional answers; 3/3 passed.
+
+## 2026-09-16 01:51 · T7 complete
+- Added streamed turn API with deterministic decisions, localized validation, source-bound explanations, optional model translation and explicit translation confirmation. Browser hook persists optimistic local changes and aborts stale requests.
+- Working question workspace includes section todo status, revisiting answers and a live progress ring. Routine turns require no model call; model output cannot change which field comes next.
+- Acceptance: turn API tests 3/3 passed; Chromium e2e answered three questions, skipped one, went back, jumped to a prior answer and restored it after refresh: 1/1 passed in 8.3s. Typecheck passed.
+- Strict-mode comparison: all three full-demo attempts failed (two optional-property schema requirements from Codex's strict validator; one upstream WebSocket disconnect). JSON mode passed all three; leave LLM_STRUCTURED_OUTPUT=false. Strict mode is not the production recommendation for this agent-im adapter.
