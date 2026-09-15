@@ -1,0 +1,25 @@
+{
+  "name": "fillflow",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3050",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3050",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "precompute": "tsx scripts/precompute-demos.ts"
+  },
+  "dependencies": {
+    "next": "^15.5.0", "react": "^19.1.0", "react-dom": "^19.1.0",
+    "ai": "^5.0.0", "@ai-sdk/openai-compatible": "^1.0.0", "@ai-sdk/openai": "^2.0.0",
+    "zod": "^3.25.76", "unpdf": "^1.3.0", "pdfjs-dist": "^5.4.0", "pdf-lib": "^1.17.1", "@pdf-lib/fontkit": "^1.1.1",
+    "heic2any": "^0.0.4", "idb-keyval": "^6.2.2", "@upstash/ratelimit": "^2.0.6", "@upstash/redis": "^1.35.3", "@vercel/analytics": "^1.5.0", "lucide-react": "^0.577.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2", "@types/node": "^22.18.0", "@types/react": "^19.1.0", "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0", "@tailwindcss/postcss": "^4.1.0", "vitest": "^3.2.4", "@playwright/test": "^1.55.0", "tsx": "^4.20.0"
+  }
+}
