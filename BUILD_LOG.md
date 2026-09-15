@@ -77,3 +77,7 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 ## 2026-09-16 · T11 complete
 - Added transparent PNG signature drawing with pointer capture (mouse/touch/pen), clear action, keyboard typed signature, signer full name, and auto-filled linked date. Signing does not overwrite an existing date or another person's fields.
 - Acceptance: 32/32 unit tests passed, including attribution/date rules and all existing route tests. Four signature e2e cases passed on Chromium and mobile WebKit (typed and pointer paths); typecheck passed. Real stylus hardware remains a manual device check.
+
+## 2026-09-16 · T12 complete
+- Added review route with all active sections, inline typed/signature editing, missing required answers, original-page preview, lock option (off by default), JSON export and copyable text summary. PDF download is wired to the T13 endpoint.
+- Acceptance: typecheck and 2/2 Chromium/mobile WebKit e2e passed. Verified inline edits survive reload, missing fields remain highlighted, original pages render, and invalid forms cannot start export.

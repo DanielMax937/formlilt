@@ -7,7 +7,7 @@ import {attachSignature} from '@/lib/signature';
 import {isSkipIntent,needsTranslation,validate} from '@/lib/validate';
 import {errorText,t} from '@/lib/i18n';
 import {event} from '@/lib/analytics';
-export function useFormSession(id:string,language:UILanguage){
+export function useFormSession(id:string,language:UILanguage,reviewMode=false){
  const [session,setSession]=useState<Session|null>();const sessionRef=useRef<Session|null>(null);const [error,setError]=useState('');const [explanation,setExplanation]=useState('');const [question,setQuestion]=useState('');const [busy,setBusy]=useState(false);const [translation,setTranslation]=useState<{original:string;value:string}|null>(null);const requestRef=useRef<AbortController|null>(null);
  useEffect(()=>{const value=loadSession(id);setSession(value);sessionRef.current=value;return()=>requestRef.current?.abort();},[id]);
  const persist=(value:Session)=>{try{saveSession(value);setSession(value);sessionRef.current=value;return true;}catch{setError(t(language,'storage_error'));return false;}};
@@ -21,7 +21,7 @@ export function useFormSession(id:string,language:UILanguage){
   if(normalizedFrom&&answers[field.id])answers={...answers,[field.id]:{...answers[field.id],normalizedFrom}};
   if(kind==='answer')answers=attachSignature(before.schema,answers,field,signedBy);
   let next:string|null;try{next=nextField(before.schema,answers,field.id,kind,target);}catch{return false;}
-  const updated:Session={...before,answers,currentFieldId:next,uiLanguage:language,state:next===null?'reviewing':'asking'};
+  const updated:Session={...before,answers,currentFieldId:next,uiLanguage:language,state:reviewMode||next===null?'reviewing':'asking'};
   if(!needsConfirm&&kind!=='explain'){if(!persist(updated))return false;if(kind==='answer'&&Object.values(before.answers).every(a=>a.status!=='answered'))event('first_answer');}
   if(kind==='explain')setExplanation(field.help||t(language,'unknownHelp'));
   requestRef.current?.abort();const controller=new AbortController();requestRef.current=controller;setBusy(needsConfirm);
