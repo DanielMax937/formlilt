@@ -11,10 +11,10 @@ export function dateParts(value:string,format='MM/DD/YYYY'):[number,number,numbe
 }
 export function formatDate(value:string,format='MM/DD/YYYY'){const parts=dateParts(value,format);if(!parts)return value;const[y,m,d]=parts;return format==='YYYY-MM-DD'?`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`:format==='DD/MM/YYYY'?`${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}/${y}`:`${String(m).padStart(2,'0')}/${String(d).padStart(2,'0')}/${y}`;}
 export function today(){const now=new Date();return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;}
-export function validate(field:Field,input:string,answers:Answers={}):Validation{
+export function validate(field:Field,input:string,answers:Answers={},signedBy?:string):Validation{
  const value=input.trim();const bad=(code:MessageKey):Validation=>({ok:false,code});
  if(!value)return field.required?bad('invalid_required'):{ok:true,value:''};
- if(field.type==='signature')return /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(value)&&value.length>100&&value.length<=300000?{ok:true,value}:bad('invalid_signature');
+ if(field.type==='signature')return /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(value)&&value.length>100&&value.length<=300000&&!!(signedBy??answers[field.id]?.signedBy)?.trim()?{ok:true,value}:bad('invalid_signature');
  if(value.length>(field.constraints?.maxLength??10000))return bad('invalid_length');
  if(field.type==='email'&&!z.string().email().safeParse(value).success)return bad('invalid_email');
  if(field.type==='date'&&!dateParts(value,field.constraints?.dateFormat))return bad('invalid_date');

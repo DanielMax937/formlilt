@@ -8,3 +8,4 @@
 .sr-only{top:0;left:0}.todo-bar{position:relative}.todo-item{font-size:14px}
 
 .question-tools{flex-wrap:wrap}.tool-button:disabled{opacity:.6;cursor:default}.skip-link:not(:focus-visible){transform:translateY(-200%)}
+.signature-modes{display:flex;gap:8px;margin-bottom:20px}.signature-canvas{display:block;width:100%;height:auto;background:#fcfdff;border:1px dashed #798ba6;border-radius:10px;margin-top:16px;touch-action:none}.signature-canvas.typed{cursor:default}.signature-footer{display:flex;gap:16px;align-items:center;justify-content:space-between}.signature-footer p{max-width:70%}.signature-footer button{flex-shrink:0}.signature-control input{width:100%}

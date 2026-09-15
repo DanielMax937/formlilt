@@ -2,6 +2,7 @@ import {z} from 'zod';
 import {TurnInput,TurnResult} from '@/lib/schema';
 import {activeFields,applyAnswer,nextField} from '@/lib/next-field';
 import {isSkipIntent,needsTranslation,validate} from '@/lib/validate';
+import {attachSignature} from '@/lib/signature';
 import {t} from '@/lib/i18n';
 import {errorResponse,fail,privateHeaders,readJson,sameOrigin} from '@/lib/errors';
 import {enforceLimit} from '@/lib/rate-limit';
@@ -13,9 +14,10 @@ export async function POST(request:Request){try{
  sameOrigin(request);const input=TurnInput.parse(await readJson(request));await enforceLimit(request,'turn');
  const field=activeFields(input.schema,input.answers).find(f=>f.id===input.currentFieldId);if(!field)return fail(400,'invalid_input','This question is not available.');
  const action=input.action==='answer'&&isSkipIntent(input.input??'')?'skip':input.action;
- const validation=action==='answer'?validate(field,input.input??'',input.answers):{ok:true};
+ const validation=action==='answer'?validate(field,input.input??'',input.answers,input.signedBy):{ok:true};
  if(!validation.ok)return Response.json(TurnResult.parse({validation:{ok:false,message:t(input.uiLanguage,validation.code!)},nextFieldId:field.id,question:`${t(input.uiLanguage,'question')} ${field.label}`,done:false}),{headers:privateHeaders});
- const answers=action==='answer'||action==='skip'?applyAnswer(input.schema,input.answers,field.id,action==='skip'?'':input.input??'',action==='skip'?'skipped':'answered'):input.answers;
+ let answers=action==='answer'||action==='skip'?applyAnswer(input.schema,input.answers,field.id,action==='skip'?'':input.input??'',action==='skip'?'skipped':'answered'):input.answers;
+ if(action==='answer')answers=attachSignature(input.schema,answers,field,input.signedBy);
  let next:string|null;try{next=nextField(input.schema,answers,field.id,action,input.targetFieldId);}catch{return fail(400,'invalid_input','This question is not available.');}
  const nextItem=input.schema.fields.find(f=>f.id===next);
  const baseline:TurnResult={validation:{ok:true},nextFieldId:next,question:nextItem?`${t(input.uiLanguage,'question')} ${nextItem.label}`:t(input.uiLanguage,'done'),done:next===null,...(action==='explain'?{explanation:field.help||t(input.uiLanguage,'unknownHelp')}:{})};

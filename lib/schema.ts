@@ -50,14 +50,14 @@ export const FormSchema = FormSchemaBase.superRefine((form, ctx) => {
   if (new TextEncoder().encode(JSON.stringify(form)).length > 30720) fail('Form schema exceeds 30 KB');
 });
 export type FormSchema = z.infer<typeof FormSchema>;
-export const Answer = z.object({ value: z.string().max(300000), status: z.enum(['answered','skipped']), normalizedFrom: z.string().max(10000).optional() });
+export const Answer = z.object({ value: z.string().max(300000), status: z.enum(['answered','skipped']), normalizedFrom: z.string().max(10000).optional(), signedBy: z.string().trim().max(150).optional() });
 export const Answers = z.record(id, Answer).refine(a => Object.keys(a).length <= 150, 'Too many answers');
 export type Answers = z.infer<typeof Answers>;
 export const UILanguage = z.enum(['en','zh-CN','es','ja']);
 export type UILanguage = z.infer<typeof UILanguage>;
 export const TurnResult = z.object({ validation: z.object({ ok: z.boolean(), message: z.string().max(600).optional(), normalizedValue: z.string().max(10000).optional() }), nextFieldId: id.nullable(), question: z.string().max(1000), explanation: z.string().max(1500).optional(), done: z.boolean() });
 export type TurnResult = z.infer<typeof TurnResult>;
-export const TurnInput = z.object({ schema: FormSchema, answers: Answers, currentFieldId: id, action: z.enum(['answer','skip','back','explain','jump']), input: z.string().max(300000).optional(), targetFieldId: id.optional(), uiLanguage: UILanguage, confirmed: z.boolean().optional() });
+export const TurnInput = z.object({ schema: FormSchema, answers: Answers, currentFieldId: id, action: z.enum(['answer','skip','back','explain','jump']), input: z.string().max(300000).optional(), targetFieldId: id.optional(), uiLanguage: UILanguage, confirmed: z.boolean().optional(), signedBy: z.string().trim().max(150).optional() });
 export type TurnInput = z.infer<typeof TurnInput>;
 export const FinalizeInput = z.object({ schema: FormSchema, answers: Answers, signaturePng: z.string().max(300000).optional(), uiLanguage: UILanguage, lock: z.boolean().default(false) });
 export const Session = z.object({ id: z.string().uuid(), schema: FormSchema, answers: Answers, currentFieldId: id.nullable(), uiLanguage: UILanguage, state: z.enum(['asking','reviewing']), fileName: z.string().max(255), createdAt: z.number(), demoSlug: z.enum(['change-of-address','insurance-claim','medical-release']).optional() });
