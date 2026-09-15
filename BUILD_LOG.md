@@ -40,3 +40,7 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Source visual inventory: address has 25 native inputs + 3 signature lines + 3 dates = 31; insurance 42 unique inputs including signature; school includes contact fields, 20 health checkboxes, 40 medication table cells and signature details. Extracted field counts meet >=90% inventory coverage. Labels are resolved from numbered text items, so text reference match is 100%.
 - Existing API unit tests / grounding / repair tests passed. Default remains user-selected agent-im with Astra; raised development request timeout to 300s so tested complex forms can complete. No fabricated success on timeout.
 - Release limit: samples take 129–268s, so p95 <20s is NOT met. These local timings are not Vercel-region benchmarks. Runtime for public deployment needs a reachable fast provider; loopback agent-im is not reachable from Vercel. Strict JSON mode full-demo comparison will be recorded separately.
+
+## 2026-09-16 01:41 · T4 complete
+- Added repeatable precompute script (live model or validated fixture results), demo manifest and read-only demo API. All three schemas are validated before publishing any file.
+- Acceptance: three schemas exist and pass FormSchema validation; sizes 12.8 KB / 16.5 KB / 26.6 KB, all <30 KB. Demo API tests 4/4 passed; typecheck passed. Demo route has no LLM or limiter dependency.

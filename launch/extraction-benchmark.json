@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "change-of-address",
+    "model": "codex-login/gpt-5.6-luna",
+    "structured": "false",
+    "seconds": 186.258,
+    "fields": 31,
+    "acroMatched": 25,
+    "widgets": 25,
+    "labelsMatched": 31
+  },
+  {
+    "slug": "insurance-claim",
+    "model": "codex-login/gpt-6-astra",
+    "structured": "false",
+    "seconds": 129.171,
+    "fields": 42,
+    "acroMatched": 42,
+    "widgets": 48,
+    "labelsMatched": 42
+  },
+  {
+    "slug": "medical-release",
+    "model": "codex-login/gpt-6-astra",
+    "structured": "false",
+    "seconds": 268.385,
+    "fields": 103,
+    "acroMatched": 0,
+    "widgets": 0,
+    "labelsMatched": 103
+  }
+]
