@@ -44,3 +44,8 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 ## 2026-09-16 01:41 · T4 complete
 - Added repeatable precompute script (live model or validated fixture results), demo manifest and read-only demo API. All three schemas are validated before publishing any file.
 - Acceptance: three schemas exist and pass FormSchema validation; sizes 12.8 KB / 16.5 KB / 26.6 KB, all <30 KB. Demo API tests 4/4 passed; typecheck passed. Demo route has no LLM or limiter dependency.
+
+## 2026-09-16 01:43 · T5 complete
+- Built responsive homepage with real upload rendering/extraction, three demo cards, saved-session resume and clear-all. Added browser IndexedDB originals, validated localStorage sessions, language switch and four UI dictionaries.
+- Acceptance: Chromium e2e clicked the insurance demo, opened its persisted form, refreshed successfully and made zero extract calls: 1/1 passed in 7.3s. Home HTTP 200; preview handed to Codex (queued by app). Typecheck passed.
+- The first workspace slice displays the extracted form and sections. Guided question controls follow in T6–T8. No private file or answer is sent in analytics events.

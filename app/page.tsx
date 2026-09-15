@@ -1,2 +1,2 @@
-import Link from 'next/link';
-export default function Home() { return <main id="main" className="shell"><Link href="/" className="brand">▧ FillFlow</Link><div className="hero"><p className="eyebrow">A LITTLE HELP WITH THE PAPERWORK</p><h1>Forms.<br/><em>One question at a time.</em></h1><p>Upload a form. Answer in your language.<br/>Leave with a PDF that’s ready to go.</p></div><section className="panel"><h2>Your paperwork, made simpler.</h2><p>PDF, scan or photo · No account needed · Your progress stays on this device.</p></section></main>; }
+import {Home} from '@/components/home';
+export default function Page(){return <Home/>;}
