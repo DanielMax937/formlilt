@@ -49,3 +49,7 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Built responsive homepage with real upload rendering/extraction, three demo cards, saved-session resume and clear-all. Added browser IndexedDB originals, validated localStorage sessions, language switch and four UI dictionaries.
 - Acceptance: Chromium e2e clicked the insurance demo, opened its persisted form, refreshed successfully and made zero extract calls: 1/1 passed in 7.3s. Home HTTP 200; preview handed to Codex (queued by app). Typecheck passed.
 - The first workspace slice displays the extracted form and sections. Guided question controls follow in T6–T8. No private file or answer is sent in analytics events.
+
+## 2026-09-16 01:44 · T6 complete
+- Deterministic section-order routing for answer/skip/back/jump, recursive dependency visibility, inactive-answer pruning and unknown-field rejection. Skipped questions stay available for review instead of causing a loop.
+- Acceptance: next-field tests cover branching, revisiting, completion and clearing stale conditional answers; 3/3 passed.
