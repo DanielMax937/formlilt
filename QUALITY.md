@@ -4,9 +4,10 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 59 passed through T16; every API route covered |
+| Unit/API tests | 63 passed after the demo export follow-up; every API route covered |
 | TypeScript and production build | Passed locally; Vercel build passed |
-| Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed locally |
+| Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
+| Final production regression | 12/12 passed in 5.1 minutes: three complete demo flows, accessibility, cached questions and local-profile behavior in each engine. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
 | Lighthouse mobile | Local production build: Performance 97, Accessibility 100 |

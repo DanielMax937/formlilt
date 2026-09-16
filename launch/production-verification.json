@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-16",
+  "baseUrl": "https://formlilt.vercel.app",
+  "deploymentId": "dpl_95HmpPN5XsohzckLwm2Gu1Ze47wc",
+  "mode": "demo preview",
+  "passed": 12,
+  "failed": 0,
+  "durationReported": "5.1 minutes",
+  "engines": ["Chromium", "mobile WebKit"],
+  "coveragePerEngine": [
+    "change-of-address complete/sign/review/download",
+    "insurance-claim complete/sign/review/download",
+    "medical-release complete/sign/review/download",
+    "automated accessibility",
+    "cached multilingual questions",
+    "opt-in local profile save/suggest/refresh/clear"
+  ],
+  "transport": "Existing local HTTP proxy; Chromium HTTP/2 disabled",
+  "limitations": "Functional verification only. Physical iPhone, live extraction and production latency are not established by these tests. See QUALITY.md."
+}

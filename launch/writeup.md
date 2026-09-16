@@ -1,0 +1,35 @@
+# Building FormLilt with GPT-6 Astra
+
+## What was built
+
+FormLilt turns a PDF form into a guided workflow: deterministic question order, dependent and mutually exclusive fields, validation, multilingual prompts, optional browser speech, attributed signatures, review, and PDF/JSON/text output. Browser storage supports refresh/resume and explicit clearing. An optional local profile suggests values only after the user opts in and clicks to use them.
+
+The implementation uses Next.js 15, React 19, strict TypeScript, Zod, the Vercel AI SDK, unpdf/PDF.js, pdf-lib and embedded Noto fonts. It has no account system or document database. Quota storage contains hashed IP keys, not form contents.
+
+## How Astra contributed
+
+The supplied spec was implemented as individual task commits from T0 onward. `BUILD_LOG.md` records changes, acceptance commands, failures, and unresolved gates. The repository history is the primary evidence; the fifth gallery image renders that actual history and measured results. It is not a simulated chat screenshot or evidence of a different model session.
+
+The model adapter first used the user's local agent-im OpenAI-compatible service. Astra and Luna generated the checked-in demo schemas/questions. Strict structured output was unreliable with this runner, so compact source-index output plus Zod validation and one repair attempt was used. Source text anchors are verified against the document before rendering.
+
+## Engineering lessons
+
+- Deterministic navigation lets an answer advance immediately while language work is optional and asynchronous.
+- Actual source coordinates are more reliable than model-drawn boxes for text PDFs. Scans remain approximate.
+- Logical PDF text is not enough: visual rendering caught a CJK subset-font `loca` alignment defect. A reproducible font preparation script now pads glyph data correctly.
+- WebKit required storing original file bytes/metadata in IndexedDB rather than assuming a File clone always survives.
+- Whole-schema verification prevents a user-supplied demo label from bypassing quota checks.
+- Hosting constraints matter: Vercel cannot reach a laptop's loopback API and accepts much less than a 10 MB original plus rendered pages in one request.
+- Consent and clear wording matter: the public preview is precomputed and has no live uploads or answer translation. Provider retention is disclosed instead of making a blanket “nothing is stored” claim.
+
+## Evidence and current limits
+
+Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The local production Lighthouse run scored 97 performance and 100 accessibility. Three full demo workflows and keyboard/signature/validation/privacy flows are covered by Chromium and mobile WebKit tests.
+
+Uncached extraction does not meet the <20s target. Five additional real forms, a real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
+
+## Links
+
+- Preview: https://formlilt.vercel.app
+- Source: https://github.com/DanielMax937/formlilt
+- Original requirements: `SPEC.md` (FillFlow was a working codename; an existing same-category name led to FormLilt.)

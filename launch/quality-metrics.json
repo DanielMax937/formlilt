@@ -5,9 +5,9 @@
   "lighthouseVersion": "13.4.1",
   "performance": 97.0,
   "accessibility": 100,
-  "unitTests": 56,
-  "e2eCases": 28,
-  "e2eNote": "27 passed in full suite; WebKit keyboard case passed separately after using Safari Option+Tab; no product change",
+  "unitTests": 63,
+  "e2eCases": 30,
+  "e2eNote": "28 original cases verified across both engines; S2 adds two profile cases; final demo export regression 6/6 passed. Production acceptance tracked separately in QUALITY.md.",
   "unverified": [
     "Physical iPhone microphone and VoiceOver",
     "Adobe Reader",
