@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { LockKeyhole, ArrowRight } from 'lucide-react';
+import { LocalProfile } from './local-profile';
 import { Header } from './header';
 import { UploadZone } from './upload-zone';
 import { DemoCards } from './demo-cards';
@@ -57,6 +58,7 @@ export function Home() {
           </section>
         )}
         <DemoCards />
+        <LocalProfile key={sessions.map((s) => s.id).join()} />
         <section className="privacy-strip">
           <LockKeyhole size={23} />
           <div>

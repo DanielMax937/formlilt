@@ -7,10 +7,18 @@ export default defineConfig({
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3050',
     trace: 'retain-on-failure',
     proxy: process.env.PLAYWRIGHT_PROXY ? { server: process.env.PLAYWRIGHT_PROXY } : undefined,
-    launchOptions: process.env.PLAYWRIGHT_DISABLE_HTTP2 ? { args: ['--disable-http2'] } : undefined,
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        launchOptions: process.env.PLAYWRIGHT_DISABLE_HTTP2
+          ? { args: ['--disable-http2'] }
+          : undefined,
+      },
+    },
     { name: 'mobile-webkit', use: { ...devices['iPhone 13'] } },
   ],
   webServer: process.env.PLAYWRIGHT_BASE_URL

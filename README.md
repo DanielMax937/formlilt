@@ -20,6 +20,10 @@ pnpm dev
 
 Open [localhost:3050](http://localhost:3050). Start agent-im separately at `127.0.0.1:3300` with its Codex runner signed in. Built-in demos work without model calls. Original files live in browser IndexedDB; session answers live in localStorage. Use **Clear all saved forms** on About to remove them.
 
+## Local profile suggestions
+
+On the homepage, expand **Save details for your next form** to opt in to saving a name, current address and identity-document number in this browser. Matching questions offer a button to use the saved value; nothing is automatically submitted. Relatives’ names, split first/last names, old addresses and insurance policy numbers are deliberately excluded. **Clear all saved forms** also deletes the profile.
+
 ## Model configuration
 
 Default server configuration uses agent-im's OpenAI-compatible `/v1/chat/completions`:

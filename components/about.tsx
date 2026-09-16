@@ -11,7 +11,7 @@ const copy = {
     intro: 'How FormLilt handles your information.',
     storage: 'On this device',
     storageText:
-      'Original files are saved in IndexedDB; questions, answers and signatures are saved in localStorage so you can resume. They remain until you clear them or your browser removes its data. Anyone with access to this browser profile may be able to read them.',
+      'Optional profile details are saved in localStorage. Original files are saved in IndexedDB; questions, answers and signatures are saved in localStorage so you can resume. They remain until you clear them or your browser removes its data. Anyone with access to this browser profile may be able to read them.',
     server: 'During processing',
     serverText:
       'FormLilt processes uploads and answers in request memory. It has no account system or document database. Pages go to the configured model service for extraction; relevant answers can go there for translation. The provider’s retention policy applies. In local agent-im mode, runner sessions and image attachments may be retained outside FormLilt.',
@@ -35,7 +35,7 @@ const copy = {
     intro: 'FormLilt 如何处理你的资料。',
     storage: '在当前设备上',
     storageText:
-      '原文件保存在 IndexedDB；问题、答案和签名保存在 localStorage，方便继续填写。它们会保留到你主动清除，或浏览器删除数据时。能访问此浏览器用户配置的人，也可能读取这些内容。',
+      '可选的个人快填资料保存在 localStorage。原文件保存在 IndexedDB；问题、答案和签名保存在 localStorage，方便继续填写。它们会保留到你主动清除，或浏览器删除数据时。能访问此浏览器用户配置的人，也可能读取这些内容。',
     server: '处理过程中',
     serverText:
       'FormLilt 在请求内存中处理文件和答案，不设账号系统或文档数据库。提取结构时，页面会发给配置的模型服务；翻译时可能发送相关答案。模型服务自身的保留政策适用。本地 agent-im 模式的运行器可能在 FormLilt 之外保存会话和图片附件。',
@@ -81,7 +81,7 @@ const copy = {
     intro: 'FormLilt における情報の取り扱い。',
     storage: 'この端末での保存',
     storageText:
-      '元のファイルは IndexedDB に、質問・回答・署名は localStorage に保存されます。削除操作を行うか、ブラウザーがデータを削除するまで残ります。このブラウザープロファイルにアクセスできる人は内容を読める可能性があります。',
+      '任意のプロフィールは localStorage に、元のファイルは IndexedDB に、質問・回答・署名は localStorage に保存されます。削除操作を行うか、ブラウザーがデータを削除するまで残ります。このブラウザープロファイルにアクセスできる人は内容を読める可能性があります。',
     server: '処理中の情報',
     serverText:
       'FormLilt はファイルと回答をリクエストのメモリー内で処理し、アカウントや書類用データベースを設けません。項目の抽出ではページを、翻訳では関連する回答を、設定されたモデルサービスに送信します。その事業者の保存方針が適用されます。ローカルの agent-im はアプリ外にセッションや画像を保存する場合があります。',

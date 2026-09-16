@@ -12,6 +12,7 @@ import {
   Volume2,
   VolumeX,
 } from 'lucide-react';
+import { ProfileSuggestion } from './local-profile';
 import { Header } from './header';
 import { useLanguage } from './language-provider';
 import { TodoBar } from './todo-bar';
@@ -145,6 +146,7 @@ export function Workspace({ id }: { id: string }) {
                       <label className="input-label" htmlFor="answer-input">
                         {t(language, 'answer')}
                       </label>
+                      <ProfileSuggestion field={field} value={value} onUse={setValue} />
                       <FieldInput
                         field={field}
                         value={value}

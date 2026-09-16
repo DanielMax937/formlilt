@@ -1155,3 +1155,13 @@ textarea {
   font-size: 14px;
   line-height: 1.6;
 }
+
+.profile-panel {margin-top:24px;padding:20px 24px;}
+.profile-panel summary {cursor:pointer;font-weight:600;color:var(--ink);}
+.profile-consent {display:flex;align-items:center;gap:10px;margin:18px 0;}
+.profile-grid {display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:16px;margin:16px 0;}
+.profile-grid label {display:grid;gap:8px;font-size:14px;}
+.profile-grid input {border:1px solid #b5c0b7;border-radius:8px;padding:10px;width:100%;background:white;}
+.profile-grid input:disabled {background:#f0f2ef;color:#57665b;}
+.profile-suggestion {display:block;text-align:left;margin:0 0 12px;padding:10px 14px;border:1px solid #809e8c;border-radius:8px;background:#edf4ec;color:#234b39;font-size:14px;cursor:pointer;}
+@media(max-width:700px) {.profile-grid{grid-template-columns:1fr;}}
