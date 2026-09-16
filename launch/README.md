@@ -2,6 +2,8 @@
 
 Prepared from the actual local production build, using synthetic answers. The website is currently a **demo preview**. Check [release readiness](../QUALITY.md) before publishing.
 
+[Native acceptance evidence](native-verification.json) records the three PDF exports in macOS Preview, the first five insurance questions with real macOS VoiceOver, and real Chrome microphone input and question speech confirmed by the user. Physical iPhone and Adobe Reader checks remain open.
+
 ## Visual assets
 
 - [8-second GIF](formlilt-demo.gif) — 1000×694, 207 KB, exactly 8.0 seconds. Real homepage → demo → typed answer → next question. It does not simulate voice recognition or live extraction.

@@ -17,8 +17,10 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Uncached extraction p95 <20s | **Failed**: original demo sources took 64–268s; additional W-9 and German residence form timed out at 300s |
 | Five extra real PDFs, including two non-English and one scan | **Not passed**. W-9 and Berlin form timed out; encrypted HK employer form safely rejected; French Cerfa extraction also timed out at 300s |
 | Physical phone photograph | **Not tested**; generated image fixture does not count as a real photograph |
-| Export appearance | Poppler + browser PDF.js verified; school form verified in macOS Preview including Chinese and signature; remaining Preview samples and Adobe Reader pending |
-| Physical iPhone speech + first five VoiceOver questions | **Not tested**; mocked speech API tests and mobile WebKit do not establish this |
+| Export appearance | Poppler + browser PDF.js verified. All three two-page exports visually inspected in macOS Preview 11.0, including Chinese text, signatures and preserved instruction pages. Adobe Reader pending; exact inspected file hashes are in `launch/native-verification.json` |
+| First five questions with macOS VoiceOver | **Passed** in real Chrome on macOS 26.3.1: keyboard submission advanced through five insurance questions with correct focus; user confirmed audible question and control names. VoiceOver restored to off |
+| Desktop microphone and question speech | **Passed** in real Chrome 152: temporary microphone permission, actual synthetic address transcription, editable correction and submission to the next question. With VoiceOver off, user confirmed the app's city-question speech was clear. App speech restored to off |
+| Physical iPhone speech and VoiceOver | **Not tested**; desktop acceptance, mocked speech API tests and mobile WebKit do not establish physical iPhone compatibility |
 | Daily upload quota | Fourth valid upload returns 429 in API integration tests; production live mode requires Redis |
 | Console/hydration | No page errors or API errors in full demo E2E flows |
 | Production live model + Redis | **Not configured**. Preview has zero model calls and no uploads |
@@ -31,7 +33,7 @@ This file separates implemented behavior from acceptance that still needs eviden
 ## Current external constraints
 
 - The local agent-im health endpoint returns 200. Its inspected chat-completions request contract does not forward a reasoning-effort setting, so lowering it in this application's request would not be an established latency fix. No extra benchmark jobs are running.
-- On 2026-09-16, native-app automation reported that the Mac is locked and automatic unlock failed. Remaining Preview/VoiceOver checks and actual desktop speech/capture work require the user to unlock it. Physical iPhone checks and a real phone photograph also need the corresponding device/input.
+- The user unlocked the Mac on 2026-09-16. Native Preview, desktop VoiceOver and Chrome microphone/question speech acceptance are now recorded in `launch/native-verification.json`. Adobe Reader is not installed; physical iPhone checks and a real phone photograph still need the corresponding device/input.
 - Production live extraction still needs a publicly reachable model endpoint plus Redis credentials. The earlier configuration question remains unanswered; the hosted deployment stays an explicit demo preview.
 
 ## Additional public form sources

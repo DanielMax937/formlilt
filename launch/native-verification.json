@@ -1,0 +1,126 @@
+{
+  "recordedAt": "2026-09-16T15:27:19Z",
+  "method": "Real native macOS UI inspection and user auditory confirmation; no speech recognition mocks for these checks.",
+  "scope": "Local production build and synthetic answers; not physical iPhone acceptance.",
+  "environment": {
+    "macOS": "26.3.1",
+    "architecture": "arm64",
+    "preview": "11.0",
+    "chrome": "152.0.7977.84",
+    "origin": "http://127.0.0.1:3050"
+  },
+  "pdfExports": [
+    {
+      "file": "tmp/filled/change-of-address.pdf",
+      "sha256": "56ff9c610f14b2b7fa525ff4b2f714d984356fcac83d42076293eb6579af2c31",
+      "bytes": 95103,
+      "pages": 2,
+      "preview": "passed",
+      "observations": [
+        "Both pages visually inspected in Preview.",
+        "Synthetic name, identifier, address, signature and date fit their intended fields.",
+        "Second-page instructions preserved and readable."
+      ]
+    },
+    {
+      "file": "tmp/filled/insurance-claim.pdf",
+      "sha256": "ed016f751b836ffb02e3d0799e7483563c0ee57f76fa7f2ba31239896625f8ec",
+      "bytes": 854152,
+      "pages": 2,
+      "preview": "passed",
+      "observations": [
+        "Both pages visually inspected in Preview.",
+        "Synthetic name, member number, date and signature fit their intended fields.",
+        "Second-page privacy and burden statement preserved and readable."
+      ]
+    },
+    {
+      "file": "tmp/filled/medical-release.pdf",
+      "sha256": "9945ed509b8c7229abef98fe478784de2d3160d4a39e76c82066b10438063861",
+      "bytes": 194251,
+      "pages": 2,
+      "preview": "passed",
+      "observations": [
+        "Both pages visually inspected across the earlier and current Preview checks; second page revisited in this follow-up.",
+        "Chinese name 陈美玲, sample table answers, signature and date render visibly in their intended areas."
+      ]
+    }
+  ],
+  "voiceOver": {
+    "status": "passed",
+    "platform": "macOS desktop with real Chrome",
+    "enabledUsing": "System Settings > Accessibility > VoiceOver",
+    "steps": [
+      {
+        "question": "Patient last name",
+        "answer": "Rivera",
+        "action": "Type, Return",
+        "next": "Patient first name"
+      },
+      {
+        "question": "Patient first name",
+        "answer": "Alex",
+        "action": "Type, Return",
+        "next": "Patient middle initial"
+      },
+      {
+        "question": "Patient middle initial",
+        "answer": "J",
+        "action": "Type, Return",
+        "next": "Member number"
+      },
+      {
+        "question": "Member number",
+        "answer": "123456789",
+        "action": "Type, Return",
+        "next": "New address"
+      },
+      {
+        "question": "New address",
+        "answer": "No",
+        "action": "Right arrow, Tab to Continue, Return",
+        "next": "Patient street address"
+      }
+    ],
+    "observed": "Each prior question became answered; the next question became current with the expected input or control focus.",
+    "auditoryConfirmation": {
+      "source": "User reply in this task",
+      "text": "能听清问题和控件名称"
+    },
+    "restoredState": "off",
+    "limitation": "Desktop tools did not capture VoiceOver caption output; audible quality is supported by the user confirmation."
+  },
+  "microphone": {
+    "status": "passed",
+    "permission": "User explicitly authorized microphone and synthetic address test; Chrome Allow this time selected.",
+    "observedRecordingState": true,
+    "utteranceRequested": "123 Example Street",
+    "actualTranscript": "one two three example Street",
+    "editableCorrection": "123 Example Street",
+    "observed": "Transcript remained editable without automatic submission. After correction and Return, street address became answered and Patient city became current.",
+    "initialAttempt": "Ended without a transcript; restarted once for the successful real recognition attempt.",
+    "finalState": "not recording",
+    "audioArtifactSaved": false
+  },
+  "questionSpeech": {
+    "status": "passed",
+    "voiceOverDuringCheck": "off",
+    "question": "What should we enter for Patient city?",
+    "observed": "Chrome Audio playing state and application Stop reading aloud control.",
+    "auditoryConfirmation": {
+      "source": "User reply in this task",
+      "text": "能听清，朗读正常"
+    },
+    "restoredState": "off"
+  },
+  "remainingNativeGates": [
+    "Adobe Reader appearance acceptance: app not installed at inspection time.",
+    "Physical iPhone speech and VoiceOver.",
+    "Real phone photograph input."
+  ],
+  "notes": [
+    "No real personal data or forms were submitted to issuing institutions.",
+    "These manual checks do not increase automated unit or E2E counts.",
+    "No claim of a recorded voice GIF or audio/video artifact is made."
+  ]
+}

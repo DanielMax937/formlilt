@@ -13,7 +13,7 @@ The implementation supports visual extraction and approximate overlay placement.
 The interface supports English, Simplified Chinese, Spanish and Japanese. Demo questions are precomputed in those languages. Local model-assisted answer translation requires confirmation. Public-preview answers are used as written.
 
 **Can I use a keyboard or screen reader?**  
-Keyboard completion and automated accessibility audits pass in Chrome and mobile WebKit. Safari's all-controls navigation uses Option+Tab. Physical VoiceOver and iPhone microphone checks remain open, so we are not claiming that they have passed.
+Keyboard completion and automated accessibility audits pass in Chrome and mobile WebKit. Safari's all-controls navigation uses Option+Tab. The first five insurance questions passed with real macOS VoiceOver and keyboard input, with the user confirming clear question and control names. Real desktop Chrome microphone input and app speech also passed. Physical iPhone speech and VoiceOver remain untested.
 
 **Is this a certified digital signature?**  
 No. It places a signature image with the entered signer name. It does not issue a signing certificate or automatically submit anything to an institution.

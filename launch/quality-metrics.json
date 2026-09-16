@@ -8,6 +8,17 @@
   "unitTests": 65,
   "e2eCases": 32,
   "e2eNote": "30 previous cases verified across both engines; error follow-up adds two real-PDF-rendering/mock-error retry cases. Targeted local follow-up 4/4 passed. Production acceptance tracked separately in QUALITY.md.",
+  "nativeAcceptance": {
+    "recordedAt": "2026-09-16T15:27:19Z",
+    "evidence": "launch/native-verification.json",
+    "passed": [
+      "Three two-page exports in macOS Preview",
+      "First five insurance questions with macOS VoiceOver and keyboard input",
+      "Real desktop Chrome microphone transcription, editable correction and submission",
+      "App question speech with user auditory confirmation"
+    ],
+    "note": "Manual acceptance is separate from the automated case counts. Physical iPhone acceptance remains open."
+  },
   "unverified": [
     "Physical iPhone microphone and VoiceOver",
     "Adobe Reader",
