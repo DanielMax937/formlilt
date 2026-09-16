@@ -4,18 +4,18 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 65 passed after the error-observability follow-up; every API route covered |
-| TypeScript and production build | Passed locally; Vercel build passed |
+| Unit/API tests | 73 passed after the date-format and extracted-checkbox follow-up; every API route covered |
+| TypeScript and production build | Latest local checks passed, build `-4xUoHW7Gx7kg9kiOvzmc`. The hosted preview passed its earlier build and does not yet contain this extraction follow-up |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
 | Upload → live extraction → download in one browser run | **5/6 passed; gate remains open.** Address and insurance sources passed real upload, extraction, required questions/signatures and PDF download in Chrome and mobile WebKit. School passed in Chrome; mobile WebKit's school request returned 502 `llm_error` after the 300-second model timeout, before question entry. Per-run evidence is in `launch/live-upload-verification.json`; no extraction mocks or precomputed demo endpoint were used |
 | Error handling and retry | Chrome + mobile WebKit: 4/4 targeted cases pass for localized upload failures, retry, switching to a demo and review edits. Extraction responses are mocked for these error-path tests; no model-accuracy claim |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
-| Lighthouse mobile | Final local production build (2026-09-16 01:02 UTC): Performance 99, Accessibility 100; no run warnings |
+| Lighthouse mobile | Measured local production build (2026-09-16 01:02 UTC): Performance 99, Accessibility 100; no run warnings. Not rerun after the extraction follow-up |
 | Normal turn / demo response speed | 20 local production samples: turn first-byte p95 8 ms, demo endpoint p95 7 ms |
-| Uncached extraction p95 <20s | **Failed**: original source benchmarks took 64–268s. Latest successful real browser uploads took 106.5–295.4s including client rendering/upload; one school request hit the 300s model timeout. Additional W-9 and German residence form requests also timed out at 300s |
-| Five extra real PDFs, including two non-English and one scan | **Not passed**. W-9 and Berlin form timed out; encrypted HK employer form safely rejected; French Cerfa extraction also timed out at 300s |
+| Uncached extraction p95 <20s | **Failed**: original source benchmarks took 64–268s. Successful real browser uploads took 106.5–295.4s including client rendering/upload; one school request hit the 300s model timeout. The latest German source extraction took 169.629s; French Cerfa still timed out at 300s |
+| Five extra real PDFs, including two non-English and one scan | **Not passed**. Berlin now has a manually reviewed synthetic PDF export from an actual Astra extraction: 55 fields, five exclusive groups, seven ISO-format date fields, 33 native text and 10 checkbox values checked. This was library export plus local API verification, not a complete browser upload flow. W-9 and French Cerfa remain extraction failures; encrypted HK employer form safely rejected. See `launch/extra-form-results.json` |
 | Physical phone photograph | **Not tested**; generated image fixture does not count as a real photograph |
 | Export appearance | Poppler + browser PDF.js verified. All three two-page exports visually inspected in macOS Preview 11.0, including Chinese text, signatures and preserved instruction pages. Adobe Reader pending; exact inspected file hashes are in `launch/native-verification.json` |
 | First five questions with macOS VoiceOver | **Passed** in real Chrome on macOS 26.3.1: keyboard submission advanced through five insurance questions with correct focus; user confirmed audible question and control names. VoiceOver restored to off |
@@ -36,14 +36,15 @@ This file separates implemented behavior from acceptance that still needs eviden
 - The user approved the temporary localhost test service after the earlier approval-review capacity failures. All six live-upload cases were attempted, then port 3051 was verified closed; the user's existing port 3050 still returns HTTP 200. The remaining live-upload failure is a model timeout, recorded with its actual response and Playwright trace. No unchanged retry is queued.
 - The user unlocked the Mac on 2026-09-16. Native Preview, desktop VoiceOver and Chrome microphone/question speech acceptance are now recorded in `launch/native-verification.json`. Adobe Reader is not installed; physical iPhone checks and a real phone photograph still need the corresponding device/input.
 - Production live extraction still needs a publicly reachable model endpoint plus Redis credentials. The earlier configuration question remains unanswered; the hosted deployment stays an explicit demo preview.
+- The real-upload evidence commit and subsequent extraction fix remain local. Publishing is awaiting the already-requested authorization; the extraction fix has not been deployed. The earlier six-case live-upload matrix predates this fix and retains its original build provenance.
 
 ## Additional public form sources
 
 Only public blank forms and synthetic answers are used. No documents are submitted to the issuing institutions.
 
 - [IRS W-9](https://www.irs.gov/pub/irs-pdf/fw9.pdf): 6 text pages, 23 native widgets. agent-im extraction timed out at 300s.
-- [Berlin residence registration](https://www.berlin.de/formularverzeichnis/?formular=%2Flabo%2Fzentrale-einwohnerangelegenheiten%2F_assets%2Fanmeldung_bei_der_meldebehoerde.pdf): 1 German page, 53 native widgets. Timed out at 300s.
-- [French vehicle registration](https://www.formulaires.service-public.fr/gf/cerfa_13750.do): 1 French text page, no native widgets. Extraction timed out at 300s.
+- [Berlin residence registration](https://www.berlin.de/formularverzeichnis/?formular=%2Flabo%2Fzentrale-einwohnerangelegenheiten%2F_assets%2Fanmeldung_bei_der_meldebehoerde.pdf): 1 German page, 53 native widgets. Luna timed out at 300s. Latest Astra extraction succeeded in 169.629s. A manually chosen synthetic fixture exported and passed Poppler visual review; original page dimensions and native values match. The initial required-only fixture produced a blank export and is explicitly excluded from acceptance. Generic all-field fixtures also overflowed narrow boxes; the reviewed fixture uses the printed `PA` document code and skips inapplicable optional fields without modifying the extracted schema.
+- [French vehicle registration](https://www.formulaires.service-public.fr/gf/cerfa_13750.do): 1 French text page, no native widgets. Both Luna and Astra timed out; the latest Astra request took 300.081s.
 - [Hong Kong employer subsidy application](https://www.offsettingsubsidy.gov.hk/tc/pdf/ER_application_form_chi.pdf): encrypted PDF rejected. No encryption bypass was attempted.
 
 ## Hosting limits

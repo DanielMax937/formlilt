@@ -48,5 +48,301 @@
       "code": "llm_error",
       "message": "Reading the form timed out. Please try again."
     }
+  },
+  {
+    "name": "berlin",
+    "model": "codex-login/gpt-6-astra",
+    "startedAt": "2026-09-16T16:16:21.095Z",
+    "sourceSha256": "a67b61d47f2451591793e2b8d4a851ead5882200c1e9fc20ebbee56c72370b85",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 53,
+    "schemaSource": "live-model",
+    "seconds": 166.008,
+    "fields": 55,
+    "language": "de",
+    "invalidSampleAnswers": [],
+    "exportSha256": "c4786b1f83bda02c7fbb638781c419b6e45e1ca313c31fb563096221a3d80ce4",
+    "exportBytes": 86256,
+    "exportPages": 1,
+    "result": "exported; visual review pending",
+    "finishedAt": "2026-09-16T16:19:07.874Z",
+    "attempt": "initial-astra",
+    "acceptance": "not passed: original required-only fixture was blank; found during visual review",
+    "answeredFields": 0
+  },
+  {
+    "name": "cerfa",
+    "model": "codex-login/gpt-6-astra",
+    "startedAt": "2026-09-16T16:19:07.874Z",
+    "sourceSha256": "0295c8361c7fa446fe99e42f4f1d15f43c45fda342f6ebe3ba83122f02641495",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 0,
+    "schemaSource": "live-model",
+    "seconds": 300.081,
+    "result": "failed",
+    "error": {
+      "code": "llm_error",
+      "status": 502,
+      "message": "Reading the form timed out. Please try again."
+    },
+    "finishedAt": "2026-09-16T16:24:08.257Z",
+    "attempt": "astra-timeout"
+  },
+  {
+    "name": "berlin",
+    "model": "codex-login/gpt-6-astra",
+    "startedAt": "2026-09-16T16:26:43.734Z",
+    "sourceSha256": "a67b61d47f2451591793e2b8d4a851ead5882200c1e9fc20ebbee56c72370b85",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 53,
+    "schemaSource": "live-model",
+    "seconds": 181.904,
+    "fields": 61,
+    "language": "de",
+    "answeredFields": 59,
+    "invalidSampleAnswers": [],
+    "result": "failed",
+    "error": {
+      "code": "fill_value_error",
+      "status": 400,
+      "message": "Unbeschriftetes Feld unter den Anschriften 2: The answer is too long to fit. Shorten it in the review page."
+    },
+    "finishedAt": "2026-09-16T16:29:46.316Z",
+    "attempt": "date-fix",
+    "acceptance": "extraction succeeded; generic synthetic fixture rejected for overflowing a narrow field"
+  },
+  {
+    "name": "berlin",
+    "model": "codex-login/gpt-6-astra",
+    "startedAt": "2026-09-16T16:33:56.991Z",
+    "sourceSha256": "a67b61d47f2451591793e2b8d4a851ead5882200c1e9fc20ebbee56c72370b85",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 53,
+    "schemaSource": "live-model",
+    "seconds": 169.629,
+    "fields": 55,
+    "language": "de",
+    "answeredFields": 53,
+    "invalidSampleAnswers": [],
+    "result": "failed",
+    "error": {
+      "code": "fill_value_error",
+      "status": 400,
+      "message": "Dokumentenart – Dokument 1: The answer is too long to fit. Shorten it in the review page."
+    },
+    "finishedAt": "2026-09-16T16:36:47.382Z",
+    "attempt": "date-and-exclusive-fix",
+    "acceptance": "extraction succeeded; generic synthetic fixture rejected for overflowing a narrow field"
+  },
+  {
+    "name": "berlin",
+    "model": "codex-login/gpt-6-astra",
+    "startedAt": "2026-09-16T16:40:05.744Z",
+    "sourceSha256": "a67b61d47f2451591793e2b8d4a851ead5882200c1e9fc20ebbee56c72370b85",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 53,
+    "schemaSource": "cache",
+    "seconds": 0.007,
+    "fields": 55,
+    "language": "de",
+    "answeredFields": 46,
+    "invalidSampleAnswers": [],
+    "exportSha256": "56e9451af34faa2b9630b844b3ebd34ce271cd9306e41340eda0748f93c832bb",
+    "exportBytes": 108809,
+    "exportPages": 1,
+    "result": "export, native values, local turn API and Poppler visual review passed",
+    "finishedAt": "2026-09-16T16:40:06.594Z",
+    "attempt": "manual-synthetic-review",
+    "extractionAttempt": "date-and-exclusive-fix",
+    "extractionSeconds": 169.629,
+    "schemaModified": false,
+    "verification": {
+      "checkedAt": "2026-09-16T16:42:00.507Z",
+      "buildId": "-4xUoHW7Gx7kg9kiOvzmc",
+      "schemaSha256": "4e22bddbdcad22a0daf9e38c2eab312605ec8b870f43ac2a1377f8cdb97b4ca8",
+      "groups": [
+        [
+          "f1",
+          "f2",
+          "f3"
+        ],
+        [
+          "f10",
+          "f8",
+          "f9"
+        ],
+        [
+          "f15",
+          "f16"
+        ],
+        [
+          "f17",
+          "f18"
+        ],
+        [
+          "f19",
+          "f20"
+        ]
+      ],
+      "turnChecks": [
+        {
+          "group": [
+            "f1",
+            "f2",
+            "f3"
+          ],
+          "input": "true",
+          "status": 200,
+          "validation": {
+            "ok": false,
+            "message": "These choices cannot be selected together."
+          }
+        },
+        {
+          "group": [
+            "f1",
+            "f2",
+            "f3"
+          ],
+          "input": "false",
+          "status": 200,
+          "validation": {
+            "ok": true
+          }
+        },
+        {
+          "group": [
+            "f10",
+            "f8",
+            "f9"
+          ],
+          "input": "true",
+          "status": 200,
+          "validation": {
+            "ok": false,
+            "message": "These choices cannot be selected together."
+          }
+        },
+        {
+          "group": [
+            "f10",
+            "f8",
+            "f9"
+          ],
+          "input": "false",
+          "status": 200,
+          "validation": {
+            "ok": true
+          }
+        },
+        {
+          "group": [
+            "f15",
+            "f16"
+          ],
+          "input": "true",
+          "status": 200,
+          "validation": {
+            "ok": false,
+            "message": "These choices cannot be selected together."
+          }
+        },
+        {
+          "group": [
+            "f15",
+            "f16"
+          ],
+          "input": "false",
+          "status": 200,
+          "validation": {
+            "ok": true
+          }
+        },
+        {
+          "group": [
+            "f17",
+            "f18"
+          ],
+          "input": "true",
+          "status": 200,
+          "validation": {
+            "ok": false,
+            "message": "These choices cannot be selected together."
+          }
+        },
+        {
+          "group": [
+            "f17",
+            "f18"
+          ],
+          "input": "false",
+          "status": 200,
+          "validation": {
+            "ok": true
+          }
+        },
+        {
+          "group": [
+            "f19",
+            "f20"
+          ],
+          "input": "true",
+          "status": 200,
+          "validation": {
+            "ok": false,
+            "message": "These choices cannot be selected together."
+          }
+        },
+        {
+          "group": [
+            "f19",
+            "f20"
+          ],
+          "input": "false",
+          "status": 200,
+          "validation": {
+            "ok": true
+          }
+        }
+      ],
+      "textFields": 33,
+      "checkboxes": 10,
+      "pageCount": 1,
+      "dimensions": [
+        {
+          "width": 595.32,
+          "height": 841.92
+        }
+      ],
+      "visualReview": {
+        "renderer": "Poppler",
+        "page": 1,
+        "status": "passed",
+        "notes": "Synthetic names, addresses, ISO dates, four selected checkboxes and signature remain inside intended areas; instructions are readable."
+      },
+      "scope": "Live agent-im extraction, manually selected synthetic answers, library export and real local turn API; not a browser upload flow."
+    },
+    "implementation": {
+      "baseCommit": "fc52126",
+      "changedFiles": {
+        "lib/compact-extract.ts": "3da7d6e8d456df0d79db8f8e8c49039b194fd7e6e28cf8fe47507e63a0995dab",
+        "prompts/extract.ts": "1dd12abdfc257bf83490462ab01735555aac149ef79d001a792f9c6608f54285"
+      }
+    }
   }
 ]

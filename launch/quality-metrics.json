@@ -5,7 +5,7 @@
   "lighthouseVersion": "13.4.1",
   "performance": 99,
   "accessibility": 100,
-  "unitTests": 65,
+  "unitTests": 73,
   "e2eCases": 32,
   "e2eNote": "30 previous cases verified across both engines; error follow-up adds two real-PDF-rendering/mock-error retry cases. Targeted local follow-up 4/4 passed. Production acceptance tracked separately in QUALITY.md.",
   "nativeAcceptance": {
@@ -33,5 +33,16 @@
     "failed": 1,
     "expected": 6,
     "note": "Real local upload and agent-im extraction through PDF download. Mobile WebKit school failed at the model 300-second timeout. Separate from the existing 32 ordinary E2E cases."
+  },
+  "unitTestNote": "Latest extraction follow-up: 73 passed; typecheck and local production build passed. Lighthouse, native acceptance and original browser runs retain their earlier measurement dates.",
+  "extractionFollowUp": {
+    "recordedAt": "2026-09-16T16:42:00.507Z",
+    "evidence": "launch/extra-form-results.json",
+    "localBuildId": "-4xUoHW7Gx7kg9kiOvzmc",
+    "exclusiveGroupApiChecks": 10,
+    "nativeTextFields": 33,
+    "nativeCheckboxes": 10,
+    "scope": "Live agent-im extraction, manually selected synthetic answers, library export and real local turn API; not a browser upload flow.",
+    "deployed": false
   }
 }

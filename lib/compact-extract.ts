@@ -25,6 +25,10 @@ export const CompactExtract = z.object({
   signature: z.number().int().min(-1),
   date: z.number().int().min(-1),
   name: z.number().int().min(-1),
+  exclusiveGroups: z
+    .array(z.array(z.number().int().min(0)).min(2).max(21))
+    .max(30)
+    .optional(),
 });
 export type CompactExtract = z.infer<typeof CompactExtract>;
 export const uniqueAcro = (doc: ParsedDocument) =>
@@ -32,7 +36,7 @@ export const uniqueAcro = (doc: ParsedDocument) =>
 export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSchema {
   const acros = uniqueAcro(doc);
   const id = (index: number) => 'f' + index;
-  const fields: Field[] = raw.rows.map((r, i) => {
+  const sourceFields: Field[] = raw.rows.map((r, i) => {
     const [
       label,
       type,
@@ -62,6 +66,10 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
       throw new Error(`Row ${i}: box must contain four numbers`);
     const nativeOptions = acro?.options;
     const fieldType = acro?.type === 'PDFRadioGroup' ? 'select' : type;
+    const fieldConstraints =
+      fieldType === 'date'
+        ? { ...constraints, dateFormat: constraints?.dateFormat ?? ('YYYY-MM-DD' as const) }
+        : constraints;
     return {
       id: id(i),
       label,
@@ -71,7 +79,7 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
       ...(['select', 'multiselect'].includes(fieldType)
         ? { options: nativeOptions?.length ? nativeOptions : options }
         : {}),
-      ...(constraints ? { constraints } : {}),
+      ...(fieldConstraints ? { constraints: fieldConstraints } : {}),
       ...(helpIndices.length
         ? {
             help: helpIndices
@@ -93,6 +101,28 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
       },
       ...(acro ? { acroName: acro.name } : {}),
     };
+  });
+  const exclusivePeers = new Map<number, Set<number>>();
+  for (const group of raw.exclusiveGroups ?? []) {
+    if (
+      new Set(group).size !== group.length ||
+      group.some((index) => sourceFields[index]?.type !== 'checkbox')
+    )
+      throw new Error('An exclusive group must reference distinct checkbox rows.');
+    for (const index of group) {
+      const peers = exclusivePeers.get(index) ?? new Set<number>();
+      for (const other of group) if (other !== index) peers.add(other);
+      exclusivePeers.set(index, peers);
+    }
+  }
+  const fields = sourceFields.map((field, index) => {
+    const peers = exclusivePeers.get(index);
+    return peers
+      ? {
+          ...field,
+          exclusiveWith: [...peers].sort((a, b) => a - b).map(id),
+        }
+      : field;
   });
   for (const field of fields)
     if (field.dependsOn) {
