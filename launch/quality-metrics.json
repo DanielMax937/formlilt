@@ -1,18 +1,19 @@
 {
-  "measuredAt": "2026-09-15T18:54:22.800Z",
+  "measuredAt": "2026-09-16T01:02:53.013Z",
   "url": "http://127.0.0.1:3050/",
   "mode": "local production build, Lighthouse default mobile simulation",
   "lighthouseVersion": "13.4.1",
-  "performance": 97.0,
+  "performance": 99,
   "accessibility": 100,
-  "unitTests": 63,
-  "e2eCases": 30,
-  "e2eNote": "28 original cases verified across both engines; S2 adds two profile cases; final demo export regression 6/6 passed. Production acceptance tracked separately in QUALITY.md.",
+  "unitTests": 65,
+  "e2eCases": 32,
+  "e2eNote": "30 previous cases verified across both engines; error follow-up adds two real-PDF-rendering/mock-error retry cases. Targeted local follow-up 4/4 passed. Production acceptance tracked separately in QUALITY.md.",
   "unverified": [
     "Physical iPhone microphone and VoiceOver",
     "Adobe Reader",
     "Real phone photo",
     "Five extra real forms manual review"
   ],
-  "failedGate": "agent-im uncached extraction 64\u2013268 seconds; target p95 <20 seconds not met"
+  "failedGate": "agent-im uncached extraction 64–268 seconds; target p95 <20 seconds not met",
+  "runWarnings": []
 }

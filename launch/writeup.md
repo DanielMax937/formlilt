@@ -24,7 +24,7 @@ The model adapter first used the user's local agent-im OpenAI-compatible service
 
 ## Evidence and current limits
 
-Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The local production Lighthouse run scored 97 performance and 100 accessibility. Three full demo workflows and keyboard/signature/validation/privacy flows are covered by Chromium and mobile WebKit tests.
+Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The final local production Lighthouse run scored 99 performance and 100 accessibility. Three full demo workflows and keyboard/signature/validation/privacy flows are covered by Chromium and mobile WebKit tests. Gallery build evidence records the earlier measurement at capture time.
 
 Uncached extraction does not meet the <20s target. Five additional real forms, a real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
 

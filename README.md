@@ -67,7 +67,7 @@ pnpm test:e2e
 
 `PLAYWRIGHT_BASE_URL=https://your-host` runs browser tests against a deployed instance. Use `tests/e2e/complete.spec.ts` for the three download flows. Chromium uses installed Chrome; install WebKit with `pnpm exec playwright install webkit`. Safari all-controls keyboard navigation uses Option+Tab.
 
-Mobile Lighthouse on the local production build: **97 performance / 100 accessibility**. See [BUILD_LOG.md](BUILD_LOG.md), [quality metrics](launch/quality-metrics.json), and [extraction benchmark](launch/extraction-benchmark.json). Automated speech tests use browser API mocks; they do not establish physical microphone or VoiceOver compatibility.
+Mobile Lighthouse on the final local production build: **99 performance / 100 accessibility**. See [BUILD_LOG.md](BUILD_LOG.md), [quality metrics](launch/quality-metrics.json), and [extraction benchmark](launch/extraction-benchmark.json). Automated speech tests use browser API mocks; they do not establish physical microphone or VoiceOver compatibility.
 
 **Release gates still open:** uncached extraction speed, five extra real PDFs including a scan, a real phone photo, physical iPhone speech/VoiceOver, Adobe Reader, and product-owner acceptance. These are not represented as passed.
 

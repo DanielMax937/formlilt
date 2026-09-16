@@ -7,12 +7,12 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Unit/API tests | 65 passed after the error-observability follow-up; every API route covered |
 | TypeScript and production build | Passed locally; Vercel build passed |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
-| Final production regression | 12/12 passed in 5.1 minutes: three complete demo flows, accessibility, cached questions and local-profile behavior in each engine. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark |
+| Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
 | Upload → live extraction → download in one browser run | **Not passed**. Real extraction and precomputed-demo browser flows were verified separately; they do not prove the combined live-upload gate |
 | Error handling and retry | Chrome + mobile WebKit: 4/4 targeted cases pass for localized upload failures, retry, switching to a demo and review edits. Extraction responses are mocked for these error-path tests; no model-accuracy claim |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
-| Lighthouse mobile | Local production build: Performance 97, Accessibility 100 |
+| Lighthouse mobile | Final local production build (2026-09-16 01:02 UTC): Performance 99, Accessibility 100; no run warnings |
 | Normal turn / demo response speed | 20 local production samples: turn first-byte p95 8 ms, demo endpoint p95 7 ms |
 | Uncached extraction p95 <20s | **Failed**: original demo sources took 64–268s; additional W-9 and German residence form timed out at 300s |
 | Five extra real PDFs, including two non-English and one scan | **Not passed**. W-9 and Berlin form timed out; encrypted HK employer form safely rejected; French Cerfa extraction also timed out at 300s |

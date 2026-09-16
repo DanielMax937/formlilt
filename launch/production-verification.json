@@ -16,5 +16,15 @@
     "opt-in local profile save/suggest/refresh/clear"
   ],
   "transport": "Existing local HTTP proxy; Chromium HTTP/2 disabled",
-  "limitations": "Functional verification only. Physical iPhone, live extraction and production latency are not established by these tests. See QUALITY.md."
+  "limitations": "Functional verification only. Physical iPhone, live extraction and production latency are not established by these tests. See QUALITY.md.",
+  "followUp": {
+    "deploymentId": "dpl_8Cmj75ok8L4SvjafQzRoJXmzG9hr",
+    "codeCommit": "4ee30e6",
+    "date": "2026-09-16",
+    "passed": 2,
+    "failed": 0,
+    "durationReported": "1.1 minutes",
+    "scope": "Targeted Chrome/mobile-WebKit review regression after localized errors and failure-event classification changes",
+    "note": "The original 12-case suite was not rerun on this follow-up deployment."
+  }
 }
