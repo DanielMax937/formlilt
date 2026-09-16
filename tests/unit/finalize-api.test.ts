@@ -42,3 +42,29 @@ test('finalize rejects malformed/missing multipart input', async () => {
     ).status,
   ).toBe(400);
 });
+
+test('verified demos export without uploading the public original; mismatched slugs fail', async () => {
+  const schema = FormSchema.parse(
+    JSON.parse(await readFile('public/demo-forms/insurance-claim.schema.json', 'utf8')),
+  );
+  const png =
+    'data:image/png;base64,' + (await readFile('tests/fixtures/signature.png')).toString('base64');
+  const payload = {
+    schema,
+    answers: fixtureAnswers(schema, png),
+    uiLanguage: 'en',
+    demoSlug: 'insurance-claim',
+  };
+  const request = (value: unknown) => {
+    const data = new FormData();
+    data.set('payload', JSON.stringify(value));
+    return new Request('http://localhost/api/finalize', { method: 'POST', body: data });
+  };
+  const response = await POST(request(payload));
+  expect(response.status).toBe(200);
+  expect((await PDFDocument.load(await response.arrayBuffer())).getPageCount()).toBe(2);
+  expect((await POST(request({ ...payload, demoSlug: 'change-of-address' }))).status).toBe(400);
+  expect(
+    (await POST(request({ ...payload, schema: { ...schema, title: 'Tampered' } }))).status,
+  ).toBe(400);
+});

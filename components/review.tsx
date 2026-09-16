@@ -97,12 +97,13 @@ export function Review({ id }: { id: string }) {
     setGenerating(true);
     try {
       const data = new FormData();
-      data.set('original', original);
+      if (!session.demoSlug) data.set('original', original);
       data.set(
         'payload',
         JSON.stringify({
           schema: session.schema,
           answers: session.answers,
+          demoSlug: session.demoSlug,
           uiLanguage: language,
           lock,
         }),

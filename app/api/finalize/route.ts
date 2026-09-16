@@ -1,5 +1,5 @@
 import { isDemoOnly } from '@/lib/deployment';
-import { isKnownDemo } from '@/lib/known-demo';
+import { isKnownDemo, demoOriginal } from '@/lib/known-demo';
 import { z } from 'zod';
 import { FinalizeInput } from '@/lib/schema';
 import { fillPdf } from '@/lib/fill-pdf';
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const form = await readMultipart(request);
     const file = form.get('original');
     const payload = form.get('payload');
-    if (!(file instanceof File) || typeof payload !== 'string' || payload.length > 2_000_000)
+    if (typeof payload !== 'string' || payload.length > 2_000_000)
       return fail(400, 'invalid_input', 'The original file and form answers are required.');
     let json: unknown;
     try {
@@ -26,16 +26,23 @@ export async function POST(request: Request) {
       return fail(400, 'invalid_input', 'The form answers could not be read.');
     }
     const input = FinalizeInput.parse(json);
+    let original: Uint8Array;
+    if (input.demoSlug) {
+      try {
+        original = await demoOriginal(input.demoSlug, input.schema);
+      } catch {
+        return fail(400, 'invalid_input', 'The demo does not match its original form.');
+      }
+    } else {
+      if (!(file instanceof File))
+        return fail(400, 'invalid_input', 'The original file is required.');
+      original = new Uint8Array(await file.arrayBuffer());
+    }
     const demo = await isKnownDemo(input.schema);
     if (isDemoOnly() && !demo)
       return fail(503, 'demoMode', 'Only sample forms are enabled in this preview.');
     if (!demo) await enforceLimit(request, 'finalize');
-    const pdf = await fillPdf(
-      new Uint8Array(await file.arrayBuffer()),
-      input.schema,
-      input.answers,
-      input.lock,
-    );
+    const pdf = await fillPdf(original, input.schema, input.answers, input.lock);
     const fallback = plainSummary(input.schema, input.answers, input.uiLanguage);
     // The PDF remains downloadable even when the model service is slow or unavailable.
     const signal = AbortSignal.any([request.signal, AbortSignal.timeout(1800)]);

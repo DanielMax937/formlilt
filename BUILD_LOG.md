@@ -120,3 +120,9 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Added four-language controls/privacy copy and bounded Zod validation. No new backend, account or analytics payload.
 - Acceptance: **62/62 unit tests**, strict typecheck and production build pass. Profile save/suggest/refresh/clear flow passes on Chrome and mobile WebKit. Axe + cached-language checks pass on both engines (six applicable E2E cases verified). Initial dev-mode runs were invalidated by cold compiles; final checks used production mode. Mobile clear-all test uses the visible homepage footer, because the desktop About shortcut is hidden on narrow screens.
 - Production follow-up: address download now passes in both engines. Insurance/school browser tests still time out waiting on transfer, while Vercel logs show successful HTTP 200 exports. A direct insurance request spent ~89s before receiving the first byte over this connection. The next fix will avoid re-uploading public demo originals already present on the server, with matching schema verification.
+
+## Export follow-up — 2026-09-16 08:44 CST
+
+- Eliminated repeated upload of public demo originals during finalization (insurance source alone was 802 KB). Demo payloads now send a typed slug plus schema/answers; the server compares the entire schema against that exact checked-in demo before reading its PDF. Custom uploads still send their original file. Mismatched/tampered demo schemas return 400.
+- Confirmed all three source PDFs appear in the Next serverless tracing manifest. No object storage or extra persistence was added.
+- Acceptance: **63/63 unit/API tests**, typecheck and production build pass. All **six** complete local Chromium/mobile-WebKit demo flows pass after the change (50.1 seconds total). Deployed to https://formlilt.vercel.app (deployment `dpl_95HmpPN5XsohzckLwm2Gu1Ze47wc`). Final production regressions are running separately.

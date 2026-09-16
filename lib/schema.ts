@@ -175,6 +175,7 @@ export type TurnInput = z.infer<typeof TurnInput>;
 export const FinalizeInput = z.object({
   schema: FormSchema,
   answers: Answers,
+  demoSlug: z.enum(['change-of-address', 'insurance-claim', 'medical-release']).optional(),
   signaturePng: z.string().max(300000).optional(),
   uiLanguage: UILanguage,
   lock: z.boolean().default(false),
