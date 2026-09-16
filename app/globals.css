@@ -1146,3 +1146,12 @@ textarea {
     padding: 24px;
   }
 }
+
+.demo-notice {
+  padding: 12px 16px;
+  background: #eaf0f6;
+  color: #344c69;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}

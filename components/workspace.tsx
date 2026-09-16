@@ -23,6 +23,7 @@ import { FieldInput } from './inputs/field-input';
 import { useFormSession } from '@/hooks/use-form-session';
 import { activeFields } from '@/lib/next-field';
 import { clearSession } from '@/lib/storage';
+import { isDemoOnly } from '@/lib/deployment';
 import { t } from '@/lib/i18n';
 export function Workspace({ id }: { id: string }) {
   const { language } = useLanguage();
@@ -82,6 +83,7 @@ export function Workspace({ id }: { id: string }) {
         </button>
       </Header>
       <main id="main">
+        {isDemoOnly() && <p className="demo-notice">{t(language, 'demoMode')}</p>}
         <div className="workspace-title">
           <div>
             <p className="eyebrow">

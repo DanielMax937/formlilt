@@ -1,3 +1,4 @@
+import { isDemoOnly } from '@/lib/deployment';
 import { isKnownDemo } from '@/lib/known-demo';
 import { z } from 'zod';
 import { TurnInput, TurnResult } from '@/lib/schema';
@@ -21,6 +22,9 @@ export async function POST(request: Request) {
   try {
     sameOrigin(request);
     const input = TurnInput.parse(await readJson(request));
+    const knownDemo = await isKnownDemo(input.schema);
+    if (isDemoOnly() && !knownDemo)
+      return fail(503, 'demoMode', 'Only sample forms are enabled in this preview.');
     const field = activeFields(input.schema, input.answers).find(
       (f) => f.id === input.currentFieldId,
     );
@@ -72,19 +76,22 @@ export async function POST(request: Request) {
         : {}),
     };
     const translate =
+      !isDemoOnly() &&
       action === 'answer' &&
       !input.confirmed &&
       needsTranslation(field, input.input ?? '', input.uiLanguage, input.schema.language);
     const translateQuestion =
+      !isDemoOnly() &&
       input.questionOnly === true &&
       action === 'explain' &&
       input.uiLanguage.split('-')[0] !== input.schema.language.split('-')[0];
     const translateHelp =
+      !isDemoOnly() &&
       !input.questionOnly &&
       action === 'explain' &&
       !!field.help &&
       input.uiLanguage.split('-')[0] !== input.schema.language.split('-')[0];
-    if (translate || translateHelp || translateQuestion || !(await isKnownDemo(input.schema)))
+    if (translate || translateHelp || translateQuestion || !knownDemo)
       await enforceLimit(request, 'turn');
     const encoder = new TextEncoder();
     const stream = new ReadableStream<Uint8Array>({

@@ -1,3 +1,4 @@
+import { isDemoOnly } from '@/lib/deployment';
 import { isKnownDemo } from '@/lib/known-demo';
 import { z } from 'zod';
 import { FinalizeInput } from '@/lib/schema';
@@ -26,6 +27,8 @@ export async function POST(request: Request) {
     }
     const input = FinalizeInput.parse(json);
     const demo = await isKnownDemo(input.schema);
+    if (isDemoOnly() && !demo)
+      return fail(503, 'demoMode', 'Only sample forms are enabled in this preview.');
     if (!demo) await enforceLimit(request, 'finalize');
     const pdf = await fillPdf(
       new Uint8Array(await file.arrayBuffer()),
@@ -51,7 +54,7 @@ export async function POST(request: Request) {
       headers: {
         ...privateHeaders,
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="fillflow-filled.pdf"',
+        'Content-Disposition': 'attachment; filename="formlilt-filled.pdf"',
         'X-Summary': encodeURIComponent(summary),
       },
     });

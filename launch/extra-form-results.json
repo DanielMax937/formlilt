@@ -1,0 +1,52 @@
+[
+  {
+    "name": "w9",
+    "model": "codex-login/gpt-5.6-luna",
+    "pages": 6,
+    "kinds": [
+      "text",
+      "text",
+      "text",
+      "text",
+      "text",
+      "text"
+    ],
+    "nativeWidgets": 23,
+    "result": "failed",
+    "error": {
+      "status": 502,
+      "code": "llm_error",
+      "message": "Reading the form timed out. Please try again."
+    }
+  },
+  {
+    "name": "berlin",
+    "model": "codex-login/gpt-5.6-luna",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 53,
+    "result": "failed",
+    "error": {
+      "status": 502,
+      "code": "llm_error",
+      "message": "Reading the form timed out. Please try again."
+    }
+  },
+  {
+    "name": "cerfa",
+    "model": "codex-login/gpt-5.6-luna",
+    "pages": 1,
+    "kinds": [
+      "text"
+    ],
+    "nativeWidgets": 0,
+    "result": "failed",
+    "error": {
+      "status": 502,
+      "code": "llm_error",
+      "message": "Reading the form timed out. Please try again."
+    }
+  }
+]

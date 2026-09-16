@@ -1,5 +1,9 @@
 import type { UILanguage } from './schema';
 export const en = {
+  demoMode:
+    'Preview: try the three sample forms. Uploads and live translation are not enabled; answers are used as written.',
+  serverSizeLimit:
+    'This hosted version has a smaller upload limit. Choose a smaller file or use the local version.',
   eyebrow: 'A LITTLE HELP WITH THE PAPERWORK',
   heroA: 'Forms.',
   heroB: 'One question at a time.',
@@ -111,6 +115,8 @@ export const en = {
 };
 export type MessageKey = keyof typeof en;
 const zh: Record<MessageKey, string> = {
+  demoMode: '演示版：可体验三份内置表格。暂未开放上传和实时翻译，答案将按原文填写。',
+  serverSizeLimit: '此部署的上传限制较小。请选择较小的文件，或使用本地版。',
   eyebrow: '让填表简单一点',
   heroA: '复杂表格，',
   heroB: '一次只答一题。',
@@ -219,6 +225,10 @@ const zh: Record<MessageKey, string> = {
   newForm: '填写另一份表格',
 };
 const es: Partial<Record<MessageKey, string>> = {
+  demoMode:
+    'Vista previa: prueba los tres formularios. Las cargas y la traducción en vivo están desactivadas; las respuestas se usan tal como se escriben.',
+  serverSizeLimit:
+    'Esta versión alojada admite archivos más pequeños. Reduce el archivo o usa la versión local.',
   eyebrow: 'UN POCO DE AYUDA CON EL PAPELEO',
   heroA: 'Formularios.',
   heroB: 'Una pregunta a la vez.',
@@ -328,6 +338,10 @@ const es: Partial<Record<MessageKey, string>> = {
   newForm: 'Empezar otro formulario',
 };
 const ja: Partial<Record<MessageKey, string>> = {
+  demoMode:
+    'プレビュー：3つのサンプルを試せます。アップロードと翻訳は無効で、回答は入力したまま使われます。',
+  serverSizeLimit:
+    'この公開版ではアップロード容量に制限があります。小さいファイルかローカル版をご利用ください。',
   eyebrow: '書類の記入を、もっとやさしく',
   heroA: '書類は、',
   heroB: 'ひとつずつ答えるだけ。',

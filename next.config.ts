@@ -1,6 +1,12 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
   devIndicators: false,
+  env: {
+    NEXT_PUBLIC_DEMO_ONLY:
+      process.env.NEXT_PUBLIC_DEMO_ONLY ?? (process.env.VERCEL ? 'true' : 'false'),
+    NEXT_PUBLIC_MAX_REQUEST_BYTES:
+      process.env.NEXT_PUBLIC_MAX_REQUEST_BYTES ?? (process.env.VERCEL ? '4400000' : '18000000'),
+  },
   poweredByHeader: false,
   serverExternalPackages: ['unpdf', '@pdf-lib/fontkit'],
   async headers() {

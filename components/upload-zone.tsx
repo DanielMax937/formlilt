@@ -7,6 +7,7 @@ import { useLanguage } from './language-provider';
 import { t, errorText } from '@/lib/i18n';
 import { FormSchema } from '@/lib/schema';
 import { createSession } from '@/lib/storage';
+import { isDemoOnly, assertRequestFits } from '@/lib/deployment';
 import { event } from '@/lib/analytics';
 export function UploadZone() {
   const { language } = useLanguage();
@@ -19,7 +20,7 @@ export function UploadZone() {
   const [drag, setDrag] = useState(false);
   const [lastFile, setLastFile] = useState<File>();
   const upload = async (file?: File) => {
-    if (!file || state !== 'idle') return;
+    if (!file || state !== 'idle' || isDemoOnly()) return;
     setError('');
     setLastFile(file);
     setState('rendering');
@@ -30,6 +31,7 @@ export function UploadZone() {
       const data = new FormData();
       data.set('original', original);
       for (const page of pages) data.append('pages[]', page);
+      if (!assertRequestFits(data)) throw new Error(t(language, 'serverSizeLimit'));
       const response = await fetch('/api/extract', { method: 'POST', body: data });
       const result = await response.json();
       if (!response.ok)
@@ -45,6 +47,19 @@ export function UploadZone() {
       setState('idle');
     }
   };
+  if (isDemoOnly())
+    return (
+      <section className="upload-panel">
+        <div className="upload-inner">
+          <FileUp size={34} />
+          <h2>{t(language, 'demosTitle')}</h2>
+          <p>{t(language, 'demoMode')}</p>
+          <a className="button primary" href="#demo-forms">
+            {t(language, 'tryDemo')}
+          </a>
+        </div>
+      </section>
+    );
   return (
     <section
       aria-labelledby="upload-heading"

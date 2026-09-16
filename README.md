@@ -1,8 +1,16 @@
 # FormLilt
 
-Turn a PDF form into a guided conversation. Next.js 15, React 19, strict TypeScript.
+A PDF form assistant: answer one question at a time, sign, review, and download the filled original. Built with GPT-6 Astra. Next.js 15, React 19, strict TypeScript, MIT.
 
-## Local development
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FDanielMax937%2Fformlilt&project-name=formlilt)
+
+[Live preview](https://formlilt.vercel.app) · [Release readiness](QUALITY.md)
+
+Vercel deployments default to **demo mode**. Three checked-in public forms work without model credentials: address change, insurance claim and school medical authorization. Uploads and answer translation are explicitly disabled in that preview; answers are used as written. No account is required.
+
+## Run locally
+
+Requirements: Node.js 22+, pnpm 10, and a running agent-im instance for uploads or translation.
 
 ```sh
 pnpm install
@@ -10,22 +18,60 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-Open http://localhost:3050. Start agent-im separately at port 3300 with its Codex runner signed in. Demo forms will work without model calls.
+Open [localhost:3050](http://localhost:3050). Start agent-im separately at `127.0.0.1:3300` with its Codex runner signed in. Built-in demos work without model calls. Original files live in browser IndexedDB; session answers live in localStorage. Use **Clear all saved forms** on About to remove them.
 
-## LLM configuration
+## Model configuration
 
-Default: `LLM_PROVIDER=agent-im`, OpenAI-compatible `/v1/chat/completions`, model `codex-login/gpt-6-astra`. Change base URL, key and model in server-only `.env.local`. Switch to `openai` or `doubao` via `LLM_PROVIDER` and the corresponding environment variables. Never put credentials in `NEXT_PUBLIC_*` variables.
+Default server configuration uses agent-im's OpenAI-compatible `/v1/chat/completions`:
+
+```dotenv
+LLM_PROVIDER=agent-im
+AGENT_IM_BASE_URL=http://127.0.0.1:3300/v1
+AGENT_IM_API_KEY=agent-im-local
+AGENT_IM_MODEL=codex-login/gpt-6-astra
+LLM_STRUCTURED_OUTPUT=false
+LLM_TIMEOUT_MS=300000
+```
+
+The key above is a local placeholder, not a production secret. Match the authentication required by your agent-im installation. Generic JSON mode plus Zod validation and one repair attempt was more reliable than strict structured output in this installation. Extraction sends page images and source text; the model has no tool access from the application. Provider-side runner restrictions and retention still apply.
+
+Switch `LLM_PROVIDER` to `openai` or `doubao` and set the corresponding `OPENAI_*` or `ARK_*`/`DOUBAO_MODEL` variables from [.env.example](.env.example). The OpenAI option also accepts a custom compatible base URL. Never expose API keys in `NEXT_PUBLIC_*` values. Runtime providers/models are disclosed on About.
+
+## Production configuration
+
+The checked-in Vercel config uses Node functions in **hkg1**, with route `maxDuration=60`. `.env.local` is excluded from Git and deployments.
+
+To enable live uploads after validation:
+
+1. Configure a **publicly reachable** model endpoint and server-only key. Vercel cannot access your computer's `127.0.0.1`. Do not expose an unauthenticated agent-im runner to the Internet.
+2. Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`. Hosted live endpoints fail closed without Redis; local development uses an in-memory limiter. Default extraction allowance is 3 per rolling 24 hours/IP; checked-in demo schemas are verified before exemption.
+3. Set `NEXT_PUBLIC_DEMO_ONLY=false` and redeploy. Set the model timeout below the chosen function duration (for this 60s deployment use at most 55000 ms), then verify extraction p95 against the target. The current local agent-im takes **64–268 seconds for the demo sources**, and a six-page W-9 timed out at 300 seconds; it does **not** meet the <20s target.
+4. Vercel's [4.5 MB function payload limit](https://vercel.com/docs/functions/limitations) includes the original file **plus all rendered pages**. Hosted clients check a conservative 4,400,000-byte budget before sending. Local/self-hosted mode supports originals up to 10 MB / 15 pages and requests up to 18 MB. The original specification's 10 MB upload promise cannot hold on this stateless Vercel architecture; larger uploads require a separately approved transport/storage design.
+5. Optional: enable Web Analytics for this project in Vercel, then set `NEXT_PUBLIC_ENABLE_ANALYTICS=true`. Paths have session IDs/query strings removed; events contain no answers. Hobby supports page views but **custom events require Pro**; custom event collection is off in the current preview. Set `NEXT_PUBLIC_ENABLE_CUSTOM_EVENTS=true` only on a compatible plan. Set `NEXT_PUBLIC_CONTACT_URL` to your support URL.
+6. Inspect your Vercel plan's [spend management](https://vercel.com/docs/spend-management) and your model provider's limit. Vercel Pro's automatic pause affects **every project in the team**. Do not change a shared team cap without accounting for its other projects. Hobby uses included free-tier limits. Demo mode makes zero runtime model calls.
 
 ## Validation
 
-`pnpm test` · `pnpm typecheck` · `pnpm build` · `pnpm test:e2e`
+```sh
+pnpm test
+pnpm typecheck
+pnpm build
+pnpm start
+# In another terminal:
+pnpm test:e2e
+```
 
-See [SPEC.md](SPEC.md) for requirements and [BUILD_LOG.md](BUILD_LOG.md) for verified progress.
+`PLAYWRIGHT_BASE_URL=https://your-host` runs browser tests against a deployed instance. Use `tests/e2e/complete.spec.ts` for the three download flows. Chromium uses installed Chrome; install WebKit with `pnpm exec playwright install webkit`. Safari all-controls keyboard navigation uses Option+Tab.
 
-## Privacy
+Mobile Lighthouse on the local production build: **97 performance / 100 accessibility**. See [BUILD_LOG.md](BUILD_LOG.md), [quality metrics](launch/quality-metrics.json), and [extraction benchmark](launch/extraction-benchmark.json). Automated speech tests use browser API mocks; they do not establish physical microphone or VoiceOver compatibility.
 
-FormLilt has no document database. Files stay in browser IndexedDB and answers in localStorage until cleared. Uploaded documents are sent to the configured model provider for extraction; answers may be sent for translation or explanation. Provider retention rules apply. In agent-im development mode, the local runner may retain conversation files. Do not use the local demo deployment for sensitive real documents until its retention settings have been reviewed.
+**Release gates still open:** uncached extraction speed, five extra real PDFs including a scan, a real phone photo, physical iPhone speech/VoiceOver, Adobe Reader, and product-owner acceptance. These are not represented as passed.
 
-## Deployment
+## PDF output and privacy
 
-Target: Vercel Node runtime, region hkg1. Public deployments require a reachable model API and Upstash Redis. `127.0.0.1` only works on the developer machine; it cannot reach agent-im from Vercel. Deployment validation will be documented when available.
+- Native AcroForm fields are filled directly. Flat forms use text-layer anchors. Scans/photos use approximate boxes and need visual review. Chinese/Japanese/Arabic fonts are embedded; oversized answers are rejected rather than silently clipped.
+- Signatures are attributed PNG images, not cryptographic certificate signatures. Linked signature dates fill only when empty. Flattening is opt-in.
+- The application has no document database. Files and answers are processed in request memory and retained in the user's browser until cleared. Model-provider retention rules apply; local agent-im may retain runner sessions and image attachments outside this application. Browser speech services may use their own remote provider. No audio is uploaded by FormLilt.
+- Demo assets are public third-party forms, documented in [sources](public/demo-forms/README.md). Test answers are synthetic and are never submitted to the issuing institutions. Source forms and bundled fonts retain their own licenses.
+
+[Report an issue](https://github.com/DanielMax937/formlilt/issues) · [MIT license](LICENSE)

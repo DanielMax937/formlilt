@@ -1,0 +1,7 @@
+{
+  "measuredAt": "2026-09-16T00:13:21.449Z",
+  "environment": "local Next production build",
+  "samples": 20,
+  "demoP95Ms": 7,
+  "turnFirstByteP95Ms": 8
+}

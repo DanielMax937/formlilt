@@ -1,4 +1,5 @@
 'use client';
+import { isDemoOnly } from '@/lib/deployment';
 import { useEffect, useRef, useState } from 'react';
 import { Session, TurnResult, type UILanguage } from '@/lib/schema';
 import { loadSession, saveSession } from '@/lib/storage';
@@ -58,6 +59,7 @@ export function useFormSession(id: string, language: UILanguage, reviewMode = fa
       value = result.value ?? value;
     }
     const needsConfirm =
+      !isDemoOnly() &&
       kind === 'answer' &&
       !confirmed &&
       needsTranslation(field, value, language, before.schema.language);

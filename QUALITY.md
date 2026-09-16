@@ -1,0 +1,36 @@
+# Release readiness
+
+This file separates implemented behavior from acceptance that still needs evidence. The current hosted build is a **demo preview**, not the full launch described in SPEC.md.
+
+| Gate | Evidence / status |
+| --- | --- |
+| Unit/API tests | 59 passed through T16; every API route covered |
+| TypeScript and production build | Passed locally; Vercel build passed |
+| Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed locally |
+| Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
+| Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
+| Lighthouse mobile | Local production build: Performance 97, Accessibility 100 |
+| Normal turn / demo response speed | 20 local production samples: turn first-byte p95 8 ms, demo endpoint p95 7 ms |
+| Uncached extraction p95 <20s | **Failed**: original demo sources took 64–268s; additional W-9 and German residence form timed out at 300s |
+| Five extra real PDFs, including two non-English and one scan | **Not passed**. W-9 and Berlin form timed out; encrypted HK employer form safely rejected; French Cerfa extraction also timed out at 300s |
+| Physical phone photograph | **Not tested**; generated image fixture does not count as a real photograph |
+| Export appearance | Poppler + browser PDF.js verified; school form verified in macOS Preview including Chinese and signature; remaining Preview samples and Adobe Reader pending |
+| Physical iPhone speech + first five VoiceOver questions | **Not tested**; mocked speech API tests and mobile WebKit do not establish this |
+| Daily upload quota | Fourth valid upload returns 429 in API integration tests; production live mode requires Redis |
+| Console/hydration | No page errors or API errors in full demo E2E flows |
+| Production live model + Redis | **Not configured**. Preview has zero model calls and no uploads |
+| Analytics | Code and privacy filters tested; Vercel Hobby does not include custom events. Free page views enabled; custom events remain off pending a suitable plan |
+| Product-owner launch acceptance | Pending |
+
+## Additional public form sources
+
+Only public blank forms and synthetic answers are used. No documents are submitted to the issuing institutions.
+
+- [IRS W-9](https://www.irs.gov/pub/irs-pdf/fw9.pdf): 6 text pages, 23 native widgets. agent-im extraction timed out at 300s.
+- [Berlin residence registration](https://www.berlin.de/formularverzeichnis/?formular=%2Flabo%2Fzentrale-einwohnerangelegenheiten%2F_assets%2Fanmeldung_bei_der_meldebehoerde.pdf): 1 German page, 53 native widgets. Timed out at 300s.
+- [French vehicle registration](https://www.formulaires.service-public.fr/gf/cerfa_13750.do): 1 French text page, no native widgets. Extraction timed out at 300s.
+- [Hong Kong employer subsidy application](https://www.offsettingsubsidy.gov.hk/tc/pdf/ER_application_form_chi.pdf): encrypted PDF rejected. No encryption bypass was attempted.
+
+## Hosting limits
+
+Vercel Hobby was verified through its authenticated API. No plan upgrade, paid add-on, account-wide spend rule, model key, or public tunnel was created. Hobby limits cap free resource usage. [Custom Analytics events require Pro](https://vercel.com/docs/analytics/limits-and-pricing). The [4.5 MB function payload limit](https://vercel.com/docs/functions/limitations) conflicts with the spec's 10 MB original-plus-images upload design; hosted clients enforce a 4.4 MB budget and uploads stay disabled in preview.

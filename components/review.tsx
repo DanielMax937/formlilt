@@ -1,4 +1,5 @@
 'use client';
+import { assertRequestFits } from '@/lib/deployment';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -106,6 +107,7 @@ export function Review({ id }: { id: string }) {
           lock,
         }),
       );
+      if (!assertRequestFits(data)) throw new Error(t(language, 'serverSizeLimit'));
       const response = await fetch('/api/finalize', { method: 'POST', body: data });
       if (!response.ok) {
         const result = await response.json();

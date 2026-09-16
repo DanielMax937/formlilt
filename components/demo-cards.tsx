@@ -38,7 +38,7 @@ export function DemoCards() {
   };
   const icons = [Landmark, ShieldCheck, HeartPulse];
   return (
-    <section className="demos" aria-labelledby="demo-heading">
+    <section id="demo-forms" className="demos" aria-labelledby="demo-heading">
       <div className="section-heading">
         <h2 id="demo-heading">{t(language, 'demosTitle')}</h2>
         <p className="muted small">{t(language, 'demosNote')}</p>

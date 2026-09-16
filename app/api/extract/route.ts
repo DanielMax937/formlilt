@@ -1,3 +1,4 @@
+import { isDemoOnly } from '@/lib/deployment';
 import { extractForm } from '@/lib/extract-form';
 import { errorResponse, fail, privateHeaders, readMultipart, sameOrigin } from '@/lib/errors';
 import { enforceLimit } from '@/lib/rate-limit';
@@ -7,6 +8,12 @@ export const maxDuration = 60;
 export async function POST(request: Request) {
   try {
     sameOrigin(request);
+    if (isDemoOnly())
+      return fail(
+        503,
+        'demoMode',
+        'Uploads are not enabled in this preview. Please choose a sample form.',
+      );
     const data = await readMultipart(request);
     const original = data.get('original');
     const pages = data.getAll('pages[]');

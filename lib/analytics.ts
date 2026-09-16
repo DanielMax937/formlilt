@@ -10,6 +10,10 @@ export function event(
     | 'upload_rejected'
     | 'rate_limited',
 ) {
-  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true')
+  if (
+    process.env.NODE_ENV === 'production' &&
+    process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true' &&
+    process.env.NEXT_PUBLIC_ENABLE_CUSTOM_EVENTS === 'true'
+  )
     track(name);
 }
