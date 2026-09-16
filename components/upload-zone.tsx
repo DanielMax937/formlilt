@@ -8,7 +8,7 @@ import { t, errorText } from '@/lib/i18n';
 import { FormSchema } from '@/lib/schema';
 import { createSession } from '@/lib/storage';
 import { isDemoOnly, assertRequestFits } from '@/lib/deployment';
-import { event } from '@/lib/analytics';
+import { event, errorEvent } from '@/lib/analytics';
 export function UploadZone() {
   const { language } = useLanguage();
   const router = useRouter();
@@ -25,6 +25,7 @@ export function UploadZone() {
     setLastFile(file);
     setState('rendering');
     event('upload');
+    let failureCode: unknown = 'upload_rejected';
     try {
       const { original, pages } = await render(file);
       setState('extracting');
@@ -32,16 +33,21 @@ export function UploadZone() {
       data.set('original', original);
       for (const page of pages) data.append('pages[]', page);
       if (!assertRequestFits(data)) throw new Error(t(language, 'serverSizeLimit'));
+      failureCode = 'llm_error';
       const response = await fetch('/api/extract', { method: 'POST', body: data });
       const result = await response.json();
-      if (!response.ok)
+      if (!response.ok) {
+        failureCode = result.error?.code;
         throw new Error(errorText(language, result.error?.code, result.error?.message));
+      }
+      failureCode = 'llm_schema_fail';
       const schema = FormSchema.parse(result.schema);
+      failureCode = undefined;
       const session = await createSession(schema, original, language);
       event('schema_ok');
       router.push('/fill/' + session.id);
     } catch (e) {
-      event('upload_rejected');
+      errorEvent(failureCode);
       setError(e instanceof Error ? e.message : t(language, 'error'));
     } finally {
       setState('idle');

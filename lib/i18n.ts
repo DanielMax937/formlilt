@@ -103,6 +103,10 @@ export const en = {
   error: 'Something went wrong. Please try again.',
   llm_error: 'The form reader took too long. Please try again.',
   llm_schema_fail: 'The form could not be read reliably. Please try again.',
+  llm_blocked: 'This form could not be processed. Try removing sensitive pages.',
+  schema_empty: 'No fillable fields were found in this file.',
+  finalize_error:
+    'The PDF could not be generated. You can still export JSON or copy the text summary.',
   rate_limited: 'Your free allowance is used. Come back later, or try an unlimited demo.',
   rate_limit_unavailable: 'Uploads are temporarily unavailable. Try a demo.',
   storage_error: 'Your browser could not save this form. Free some storage and try again.',
@@ -214,6 +218,9 @@ const zh: Record<MessageKey, string> = {
   error: '出了点问题，请重试。',
   llm_error: '读取表格超时了，请重试。',
   llm_schema_fail: '无法可靠识别这份表格，请重试。',
+  llm_blocked: '这份表格有内容无法处理，请去掉敏感页后再试。',
+  schema_empty: '没有在这个文件里找到可填写的字段。',
+  finalize_error: '生成 PDF 失败，可以先导出 JSON 或复制文字摘要。',
   rate_limited: '免费额度已用完，稍后再来，或继续试用不限次数的 demo。',
   rate_limit_unavailable: '上传暂时不可用，可以先试试 demo。',
   storage_error: '浏览器无法保存这份表格，请释放一些存储空间后重试。',
@@ -327,6 +334,10 @@ const es: Partial<Record<MessageKey, string>> = {
   error: 'Algo salió mal. Reinténtalo.',
   llm_error: 'La lectura tardó demasiado. Reinténtalo.',
   llm_schema_fail: 'No se pudo leer con fiabilidad. Reinténtalo.',
+  llm_blocked:
+    'No se pudo procesar este formulario. Prueba a quitar las páginas con datos sensibles.',
+  schema_empty: 'No se encontraron campos para rellenar en este archivo.',
+  finalize_error: 'No se pudo generar el PDF. Puedes exportar JSON o copiar el resumen de texto.',
   rate_limited: 'Has usado tu cuota. Vuelve más tarde o prueba una demo.',
   rate_limit_unavailable: 'La carga no está disponible. Prueba una demo.',
   storage_error: 'No se pudo guardar. Libera espacio e inténtalo de nuevo.',
@@ -440,6 +451,9 @@ const ja: Partial<Record<MessageKey, string>> = {
   error: '問題が発生しました。再試行してください。',
   llm_error: '読み取りがタイムアウトしました。再試行してください。',
   llm_schema_fail: '書類を正確に読み取れませんでした。再試行してください。',
+  llm_blocked: 'この書類を処理できませんでした。機密情報を含むページを除いて再試行してください。',
+  schema_empty: 'このファイルには記入できる項目が見つかりませんでした。',
+  finalize_error: 'PDF を作成できませんでした。JSON の出力や要約のコピーは利用できます。',
   rate_limited: '利用回数の上限です。時間をおくかデモをお試しください。',
   rate_limit_unavailable: 'アップロードは一時的に利用できません。デモをお試しください。',
   storage_error: '保存できませんでした。空き容量をご確認ください。',
@@ -463,5 +477,7 @@ export function t(language: UILanguage, key: MessageKey): string {
   return { en, 'zh-CN': zh, es, ja }[language][key] ?? en[key];
 }
 export function errorText(language: UILanguage, code?: string, fallback?: string) {
-  return code && code in en ? t(language, code as MessageKey) : (fallback ?? t(language, 'error'));
+  return code && Object.hasOwn(en, code)
+    ? t(language, code as MessageKey)
+    : (fallback ?? t(language, 'error'));
 }

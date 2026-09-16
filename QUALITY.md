@@ -4,10 +4,12 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 63 passed after the demo export follow-up; every API route covered |
+| Unit/API tests | 65 passed after the error-observability follow-up; every API route covered |
 | TypeScript and production build | Passed locally; Vercel build passed |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Final production regression | 12/12 passed in 5.1 minutes: three complete demo flows, accessibility, cached questions and local-profile behavior in each engine. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark |
+| Upload → live extraction → download in one browser run | **Not passed**. Real extraction and precomputed-demo browser flows were verified separately; they do not prove the combined live-upload gate |
+| Error handling and retry | Chrome + mobile WebKit: 4/4 targeted cases pass for localized upload failures, retry, switching to a demo and review edits. Extraction responses are mocked for these error-path tests; no model-accuracy claim |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
 | Lighthouse mobile | Local production build: Performance 97, Accessibility 100 |
@@ -22,6 +24,15 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Production live model + Redis | **Not configured**. Preview has zero model calls and no uploads |
 | Analytics | Code and privacy filters tested; Vercel Hobby does not include custom events. Free page views enabled; custom events remain off pending a suitable plan |
 | Product-owner launch acceptance | Pending |
+| Requested launch visuals | Five gallery images and an 8-second keyboard demo GIF exist. The specified drag/upload → voice-answer GIF and 3–5 actual Astra conversation captures remain pending; repository evidence is not a substitute |
+| Launch video | T18's 60-second script is delivered. The recorded, captioned video requested in §8.2 is not produced |
+| Challenge submission and PH schedule | Not submitted or scheduled; eligibility and owner acceptance remain unverified |
+
+## Current external constraints
+
+- The local agent-im health endpoint returns 200. Its inspected chat-completions request contract does not forward a reasoning-effort setting, so lowering it in this application's request would not be an established latency fix. No extra benchmark jobs are running.
+- On 2026-09-16, native-app automation reported that the Mac is locked and automatic unlock failed. Remaining Preview/VoiceOver checks and actual desktop speech/capture work require the user to unlock it. Physical iPhone checks and a real phone photograph also need the corresponding device/input.
+- Production live extraction still needs a publicly reachable model endpoint plus Redis credentials. The earlier configuration question remains unanswered; the hosted deployment stays an explicit demo preview.
 
 ## Additional public form sources
 

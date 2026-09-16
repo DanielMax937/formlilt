@@ -15,7 +15,7 @@ import { getOriginal, clearSession } from '@/lib/storage';
 import { formatDate, invalidFields } from '@/lib/validate';
 import { plainSummary } from '@/lib/summary';
 import { errorText, t } from '@/lib/i18n';
-import { event } from '@/lib/analytics';
+import { event, errorEvent } from '@/lib/analytics';
 import type { Field, Answers } from '@/lib/schema';
 function downloadBlob(blob: Blob, name: string) {
   const url = URL.createObjectURL(blob);
@@ -95,6 +95,7 @@ export function Review({ id }: { id: string }) {
       return;
     }
     setGenerating(true);
+    let failureCode: unknown = 'finalize_error';
     try {
       const data = new FormData();
       if (!session.demoSlug) data.set('original', original);
@@ -112,6 +113,7 @@ export function Review({ id }: { id: string }) {
       const response = await fetch('/api/finalize', { method: 'POST', body: data });
       if (!response.ok) {
         const result = await response.json();
+        failureCode = result.error?.code;
         throw new Error(errorText(language, result.error?.code, result.error?.message));
       }
       const blob = await response.blob();
@@ -125,6 +127,7 @@ export function Review({ id }: { id: string }) {
       event('completed');
       event('download');
     } catch (e) {
+      errorEvent(failureCode);
       setError(e instanceof Error ? e.message : t(language, 'error'));
     } finally {
       setGenerating(false);

@@ -7,7 +7,7 @@ import { applyAnswer, nextField } from '@/lib/next-field';
 import { attachSignature } from '@/lib/signature';
 import { isSkipIntent, needsTranslation, validate } from '@/lib/validate';
 import { errorText, t } from '@/lib/i18n';
-import { event } from '@/lib/analytics';
+import { event, errorEvent } from '@/lib/analytics';
 export function useFormSession(id: string, language: UILanguage, reviewMode = false) {
   const [session, setSession] = useState<Session | null>();
   const sessionRef = useRef<Session | null>(null);
@@ -135,6 +135,7 @@ export function useFormSession(id: string, language: UILanguage, reviewMode = fa
       });
       if (!response.ok) {
         const result = await response.json();
+        errorEvent(result.error?.code);
         throw new Error(errorText(language, result.error?.code, result.error?.message));
       }
       if (response.headers.get('content-type')?.includes('application/json'))
@@ -153,8 +154,10 @@ export function useFormSession(id: string, language: UILanguage, reviewMode = fa
             if (!line.trim()) continue;
             const item = JSON.parse(line);
             if (item.type === 'result') consume(TurnResult.parse(item.data));
-            if (item.type === 'error')
+            if (item.type === 'error') {
+              errorEvent(item.error?.code);
               throw new Error(errorText(language, item.error?.code, item.error?.message));
+            }
             if (
               item.type === 'wording' &&
               kind === 'explain' &&
