@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:06,000
+Try a ready-to-use form. This recording uses the insurance demo.
+
+2
+00:00:06,000 --> 00:00:13,000
+Choose Chinese questions. Here, the fictional answer is typed.
+
+3
+00:00:13,000 --> 00:00:21,000
+Read an explanation drawn from the form's own instructions.
+
+4
+00:00:21,000 --> 00:00:28,000
+Skip an optional question, then return to fill it in.
+
+5
+00:00:28,000 --> 00:00:39,000
+Draw a test signature and name the signer. The linked date fills automatically.
+
+6
+00:00:39,000 --> 00:00:47,000
+Jump cut: required answers entered; optional items skipped. Review and download.
+
+7
+00:00:47,000 --> 00:00:56,000
+Inspect the actual downloaded PDF, including the signature and date.
+
+8
+00:00:56,000 --> 00:01:00,000
+Try three demos at formlilt.vercel.app. Voice and upload footage still to record.

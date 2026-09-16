@@ -1,5 +1,7 @@
 # 60-second video script
 
+A [60-second captioned review draft](formlilt-demo-draft.mp4) is now available, with [captions](formlilt-demo-draft.srt) and [capture provenance](video-manifest.json). It records actual keyboard/demo interactions and a drawn test signature; it has no audio. The table below is the original production plan. The SRT reflects the actual edit. Upload, live voice and question-speech footage still need recording before the complete SPEC §2.3 scenario can be accepted.
+
 Use synthetic details only. Record the actual interface; keep cuts visible. No music is necessary. This script is a production plan, not a claim that a finished narrated video has been recorded.
 
 | Time | Screen/action | Narration / subtitle |

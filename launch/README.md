@@ -8,6 +8,9 @@ Prepared from the actual local production build, using synthetic answers. The we
 
 ## Visual assets
 
+- [60-second captioned review draft](formlilt-demo-draft.mp4) — actual local demo UI, H.264, 1440×1120, 25 fps, 2.37 MB. No audio. Keyboard answers, source explanation, skip/return, pointer-drawn test signature, linked date and PDF download. Live-upload/voice footage still needs recording; this is not complete §2.3 acceptance.
+- [Video captions](formlilt-demo-draft.srt), [video provenance](video-manifest.json), [actual PDF from the video](video-sample-insurance.pdf).
+
 - [8-second GIF](formlilt-demo.gif) — 1000×694, 207 KB, exactly 8.0 seconds. Real homepage → demo → typed answer → next question. It does not simulate voice recognition or live extraction.
 - [01 · Guided workspace](screenshots/01-guided-workspace.png)
 - [02 · Explanation from the source](screenshots/02-source-explanation.png)
@@ -26,4 +29,15 @@ All gallery images are 1440×1000. Capture metadata is in [capture-manifest.json
 - [FAQ replies](faq.md)
 - [Build writeup](writeup.md)
 
-No Product Hunt submission, scheduled launch, comment, email or social post was sent. The video deliverable is the requested script; no finished narrated 60-second video is claimed. Product-owner acceptance is pending.
+No Product Hunt submission, scheduled launch, comment, email or social post was sent. The captioned video is a review draft with explicit keyboard/demo labels and a marked jump cut. No narrated or live-upload/voice video is claimed. Product-owner acceptance is pending.
+
+## Reproduce the video draft
+
+With the local production app running on port 3050, installed Chrome and FFmpeg available:
+
+```sh
+node --import tsx scripts/record-demo-video.ts
+node --import tsx scripts/render-demo-video.ts tmp/demo-video-<timestamp-printed-by-recorder>
+```
+
+The recorder creates the session through the real demo UI and completes all actions through controls; it does not inject application state or mock requests/speech. Raw video and chapter screenshots stay under ignored `tmp/`. The renderer adds the draft label and captions, omits the other required-answer/optional-skip actions at an explicit jump cut, and checks the encoded 60-second duration. It writes the MP4, SRT, sample PDF and provenance under `launch/`. This is media verification, not another uncached-extraction or physical-device acceptance run.

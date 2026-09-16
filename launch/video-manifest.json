@@ -1,0 +1,262 @@
+{
+  "chapters": [
+    {
+      "title": "start",
+      "start": 0.12823091699999986,
+      "duration": 6,
+      "caption": "Try a ready-to-use form. This recording uses the insurance demo."
+    },
+    {
+      "title": "language",
+      "start": 6.3264334170000005,
+      "duration": 7,
+      "caption": "Choose Chinese questions. Here, the fictional answer is typed."
+    },
+    {
+      "title": "explanation",
+      "start": 13.522928333,
+      "duration": 8,
+      "caption": "Read an explanation drawn from the form's own instructions."
+    },
+    {
+      "title": "skip-and-return",
+      "start": 21.732427292,
+      "duration": 7,
+      "caption": "Skip an optional question, then return to fill it in."
+    },
+    {
+      "title": "signature",
+      "start": 28.944692000000003,
+      "duration": 11,
+      "caption": "Draw a test signature and name the signer. The linked date fills automatically."
+    },
+    {
+      "title": "review-download",
+      "start": 41.886711333,
+      "duration": 8,
+      "caption": "Jump cut: required answers entered; optional items skipped. Review and download."
+    },
+    {
+      "title": "filled-pdf",
+      "start": 50.09666025,
+      "duration": 9,
+      "caption": "Inspect the actual downloaded PDF, including the signature and date."
+    },
+    {
+      "title": "close",
+      "start": 59.387566833,
+      "duration": 4,
+      "caption": "Try three demos at formlilt.vercel.app. Voice and upload footage still to record."
+    }
+  ],
+  "capturedAt": "2026-09-16T18:29:43.894Z",
+  "root": "tmp/demo-video-2026-09-16T18-28-39-633Z",
+  "baseURL": "http://127.0.0.1:3050",
+  "sourceCommit": "5cb89b6ca8cbdebb990dc3ab54887ced2e2df543",
+  "buildId": "dcVIDd1qONvV0YFqIG2R0",
+  "source": "Actual local production UI using the precomputed insurance demo",
+  "input": "Fictional keyboard answers and a pointer-drawn test signature",
+  "mocked": false,
+  "audio": false,
+  "errors": [],
+  "api": [
+    {
+      "path": "/api/demo/insurance-claim",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/turn",
+      "status": 200
+    },
+    {
+      "path": "/api/finalize",
+      "status": 200
+    }
+  ],
+  "exportSha256": "256bb2b7f281e06a0274d376518696a4b47ef3ef6a08f02ace12c75af67c0583",
+  "openRequirements": [
+    "Live-upload and voice-answer footage",
+    "Question speech audio",
+    "Owner acceptance"
+  ],
+  "output": "launch/formlilt-demo-draft.mp4",
+  "renderedAt": "2026-09-16T18:31:14.059Z",
+  "outputSha256": "6d31538ac67961643f4a7868bffc79a5cb362bf59796db6d78686e3b2a60f400",
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1120,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "60.000000",
+      "size": "2373296"
+    }
+  },
+  "editing": "Actual recording, chronological chapters. Remaining answer entry omitted at the labeled jump cut. No application footage or speech results fabricated.",
+  "status": "Review draft; does not satisfy the complete live-upload/voice scenario in SPEC section 2.3.",
+  "verification": {
+    "encodedSeconds": 60,
+    "videoDecode": "FFmpeg complete decode, no errors",
+    "typecheck": "passed",
+    "visualReview": "Contact sheet, full-resolution signature frame, browser PDF.js and Poppler first-page rendering reviewed",
+    "exportPageCount": 2,
+    "exportPageSizePt": [
+      612,
+      792
+    ],
+    "apiErrors": 0,
+    "pageErrors": 0,
+    "speechRecording": "Not present; corrected non-silent WAV and speaker probes returned native no-speech",
+    "ownerAcceptance": "pending"
+  }
+}

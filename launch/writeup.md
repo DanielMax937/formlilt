@@ -32,6 +32,8 @@ The separate real-upload browser matrix reached 5/6 passed through agent-im Astr
 
 Uncached extraction does not meet the <20s target. Five additional real PDF flows now pass, including two Spanish forms, native AcroForm, flat text and a physical scan. A real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
 
+A 60-second captioned review draft now records the local insurance demo with keyboard entry, source explanation, skipping/returning, a drawn test signature/date and PDF download. The visible draft label and captions identify keyboard input and the edited completion step. It has no audio and does not establish the full upload/voice scenario. Automated speech recording probes returned `no-speech`; no results were mocked for the video. Actual Astra conversation captures also remain unavailable because the desktop tool disallowed access to the Codex app.
+
 ## Links
 
 - Preview: https://formlilt.vercel.app

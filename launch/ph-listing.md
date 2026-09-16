@@ -23,7 +23,7 @@ Challenge submission: 2026-09-17. Product Hunt: 2026-09-18 at 00:01 Pacific (15:
 ## Submission checklist for the product owner
 
 - Review `QUALITY.md` and approve the preview positioning or resolve the remaining release gates.
-- Review the GIF, five screenshots, listing text, video script and maker comment.
+- Review the GIF, five screenshots, listing text, captioned video draft, video script and maker comment.
 - Verify current contest terms and Product Hunt availability in the actual submission flow.
 - Upload only approved assets and submit/schedule the listing.
 

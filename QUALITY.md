@@ -27,10 +27,13 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Analytics | Code and privacy filters tested; Vercel Hobby does not include custom events. Free page views enabled; custom events remain off pending a suitable plan |
 | Product-owner launch acceptance | Pending |
 | Requested launch visuals | Five gallery images and an 8-second keyboard demo GIF exist. The specified drag/upload → voice-answer GIF and 3–5 actual Astra conversation captures remain pending; repository evidence is not a substitute |
-| Launch video | T18's 60-second script is delivered. The recorded, captioned video requested in §8.2 is not produced |
+| Launch video | A **60-second captioned review draft** now records the actual local insurance demo, keyboard answers, source help, skip/return, drawn signature/date and PDF download. It is labeled as a draft and has no audio. The full §2.3 upload/voice scenario and owner acceptance remain open; see `launch/video-manifest.json` |
 | Challenge submission and PH schedule | Not submitted or scheduled; eligibility and owner acceptance remain unverified |
 
 ## Current external constraints
+
+- Video capture through real Chrome succeeded for keyboard/signature/export. Automated native speech recording did not: after correcting an initially silent synthesized test WAV, both the fake-audio-device and speaker/microphone probes returned native `no-speech`. No transcript was fabricated. This does not invalidate the earlier user-confirmed physical microphone acceptance, but leaves the voice footage open.
+- Computer Use explicitly disallowed access to the Codex app. Actual Astra conversation screenshots could not be captured through that tool; no alternate capture bypass or reconstructed chat screenshot was used.
 
 - The local agent-im health endpoint returns 200. Its inspected chat-completions request contract does not forward a reasoning-effort setting, so lowering it in this application's request would not be an established latency fix. No extra benchmark jobs are running.
 - The user approved the temporary localhost test service after the earlier approval-review capacity failures. All six live-upload cases were attempted, then port 3051 was verified closed; the user's existing port 3050 still returns HTTP 200. The remaining live-upload failure is a model timeout, recorded with its actual response and Playwright trace. No unchanged retry is queued.
