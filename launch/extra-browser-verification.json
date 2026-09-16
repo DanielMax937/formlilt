@@ -1,0 +1,140 @@
+{
+  "recordedAt": "2026-09-16T17:20:35.197587+00:00",
+  "applicationBaseCommit": "53133e3",
+  "implementationSha256": {
+    "prompts/extract.ts": "72886dd76dcaac46d863a058d2564238de6a980720fa358d9789a20cdc0b4572",
+    "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+  },
+  "scope": "Two additional public blank PDFs, desktop Chrome, real agent-im GPT-6 Astra extraction, manually reviewed synthetic answers entered through the UI. No source/schema edits, extraction interception or demo endpoint. Separate from the original three-source browser matrix.",
+  "passed": 2,
+  "expectedExtraPdfCount": 5,
+  "physicalScanVerified": false,
+  "sources": [
+    {
+      "name": "andalucia-library",
+      "startedAt": "2026-09-16T17:11:07.823Z",
+      "buildId": "I5gwm5Iq-zTxKttqTgiak",
+      "mocked": false,
+      "language": "es",
+      "extractionSeconds": 116.537,
+      "extractionStatus": 200,
+      "fields": 29,
+      "formLanguage": "es",
+      "phase": "complete",
+      "steps": 25,
+      "answeredFields": 18,
+      "pages": 1,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "sourceSha256": "9273b8fc98a8a5b2b8247bb9fe551dc6135be27f858dcce59029a7e3d33e69fc",
+      "exportSha256": "28baf742c960e746d0bf417ff4d614fc68890e624d3b1de28424fa3b2527869e",
+      "finishedAt": "2026-09-16T17:14:22.014Z",
+      "errors": [],
+      "visualReview": {
+        "status": "passed",
+        "renderer": "Poppler and browser PDF.js",
+        "pages": [
+          1
+        ],
+        "notes": [
+          "Day 17, month septiembre and suffix 9 occupy separate blanks; printed 201 prefix is preserved.",
+          "Checkbox marks are centered, names/contact text and signature are readable.",
+          "Original date/body/legal text remains visible."
+        ]
+      },
+      "sourceType": "Vector-outline PDF with one extractable title; vision fallback, not a verified physical scan",
+      "manualInventory": {
+        "expectedFields": 29,
+        "extractedFields": 29,
+        "notes": "Excludes office-assigned reader number; counts separate surname/address continuation lines, research lines and three signed-date components."
+      },
+      "schemaSha256": "adcea5f2bc05f71b6a865d21d26dce9cae0e5d46858e55d6defd3e6c430ce9b1",
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 25,
+        "/api/finalize:200": 1
+      },
+      "sourceUrl": "https://www.centrodedocumentacionmusicaldeandalucia.es/documents/162188325/162336533/solicitud-carnet-biblioteca.pdf/055cd1a2-363b-45c4-83d3-85531269286f?version=1.0",
+      "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
+      "schemaModified": false
+    },
+    {
+      "name": "sterling-library",
+      "startedAt": "2026-09-16T17:14:54.718Z",
+      "buildId": "I5gwm5Iq-zTxKttqTgiak",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 109.75,
+      "extractionStatus": 200,
+      "fields": 25,
+      "formLanguage": "en",
+      "schemaSha256": "6bf02c5e6a63050170cd4764ae84f623703a69eaec282e3cdff1c269400ac04e",
+      "phase": "complete",
+      "steps": 24,
+      "answeredFields": 17,
+      "pages": 1,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "sourceSha256": "415b2cc186d4904f658fa97a3e6f301aa00ed22b2f604f4fd37bade655e66c55",
+      "exportSha256": "931a784ac4e1025466245131706c4298bc3bf960d8df9c47a2368bd4ad9f68ec",
+      "finishedAt": "2026-09-16T17:17:49.170Z",
+      "errors": [],
+      "visualReview": {
+        "status": "passed",
+        "renderer": "Poppler and browser PDF.js",
+        "pages": [
+          1
+        ],
+        "notes": [
+          "Adult applicant details remain inside the printed input areas.",
+          "Selected Male and Email boxes have centered marks; unselected boxes are empty.",
+          "Birthdate follows printed Month Day Year order; local signature date is 2026-09-17.",
+          "Parent, optional account-permission and staff-only sections remain blank."
+        ]
+      },
+      "sourceType": "Text-layer PDF without native form widgets",
+      "manualInventory": {
+        "expectedFields": 25,
+        "extractedFields": 25,
+        "notes": "Excludes the staff-only panel; includes optional parent and account-permission sections."
+      },
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 24,
+        "/api/finalize:200": 1
+      },
+      "sourceUrl": "https://www.sterlingheights.gov/DocumentCenter/View/5381",
+      "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
+      "schemaModified": false
+    }
+  ],
+  "earlierAttempt": {
+    "name": "andalucia-library",
+    "startedAt": "2026-09-16T17:02:00.454Z",
+    "buildId": "-4xUoHW7Gx7kg9kiOvzmc",
+    "mocked": false,
+    "language": "es",
+    "extractionSeconds": 120.292,
+    "extractionStatus": 200,
+    "fields": 27,
+    "formLanguage": "es",
+    "phase": "stopped before answer entry",
+    "errors": [],
+    "reason": "Harness signature selector was incorrect; source review also found split-date overlap in the actual extracted schema",
+    "subsequentCachedExportReview": "Failed: a single full date covered the preprinted de separator; checkbox marks were left-aligned."
+  },
+  "unavailableCandidates": [
+    {
+      "source": "https://nstimumbai.dgt.gov.in/sites/default/files/2021-10/REAPPERAING%20FOR%20CITS%20EXAM%20NOV%20DEC%202021%20AND%20TIME%20TABLE.pdf",
+      "result": "Direct DNS lookup failed; proxy download returned only 409600 of 1448877 bytes and resume timed out. Incomplete file was not used."
+    },
+    {
+      "source": "https://media.buncombenc.gov/common/library/library-card-application.pdf",
+      "result": "Direct and proxy requests timed out; no test performed."
+    },
+    {
+      "source": "https://www.lodi.gov/DocumentCenter/View/2265/Library-Card-Application-no-gender-2019-fillable-pdf",
+      "result": "Download returned 404; no test performed."
+    }
+  ]
+}

@@ -137,3 +137,37 @@ for (const rotation of [0, 90, 180, 270])
     expect(item.x).toBeCloseTo(parsed.pages[0].widthPt * 0.2, 0);
     expect(item.y).toBeCloseTo(parsed.pages[0].heightPt * 0.4, 0);
   });
+
+for (const rotation of [0, 90, 180, 270])
+  test(`checkbox overlay stays centered in its displayed square at ${rotation} degrees`, async () => {
+    const { bytes, schema } = await fixture(rotation);
+    const checkbox = FormSchema.parse({
+      ...schema,
+      fields: [
+        {
+          ...schema.fields[0],
+          type: 'checkbox',
+          acroName: undefined,
+          anchor: { page: 0, placement: 'inbox', bbox: [0.2, 0.4, 0.26, 0.46] },
+        },
+      ],
+    });
+    const selected = await parseDocument(
+      await fillPdf(bytes, checkbox, {
+        person: { status: 'answered', value: 'true' },
+      }),
+    );
+    const page = selected.pages[0];
+    const mark = page.textItems.find((item) => item.str === 'X')!;
+    expect(mark).toBeDefined();
+    expect(mark.x + mark.w / 2).toBeCloseTo(page.widthPt * 0.23, 0);
+    expect(mark.y + mark.h / 2).toBeCloseTo(page.heightPt * 0.43, 0);
+    expect(mark.x).toBeGreaterThan(page.widthPt * 0.2);
+    expect(mark.x + mark.w).toBeLessThan(page.widthPt * 0.26);
+    const empty = await parseDocument(
+      await fillPdf(bytes, checkbox, {
+        person: { status: 'answered', value: 'false' },
+      }),
+    );
+    expect(empty.pages[0].textItems.some((item) => item.str === 'X')).toBe(false);
+  });

@@ -62,6 +62,7 @@ function drawText(
   box: Box,
   pageHeight: number,
   multiline: boolean,
+  centered = false,
 ) {
   const { size, lines } = fit(text, font, box, multiline);
   inDisplayedPage(page, () => {
@@ -71,8 +72,19 @@ function drawText(
         font,
         size,
         color: ink,
-        x: box.x + (rtl ? Math.max(0, box.width - font.widthOfTextAtSize(line, size)) : 0),
-        y: pageHeight - box.y - size - i * size * 1.18,
+        x:
+          box.x +
+          (centered
+            ? Math.max(0, (box.width - font.widthOfTextAtSize(line, size)) / 2)
+            : rtl
+              ? Math.max(0, box.width - font.widthOfTextAtSize(line, size))
+              : 0),
+        y:
+          pageHeight -
+          box.y -
+          size -
+          (centered ? Math.max(0, (box.height - size) / 2) : 0) -
+          i * size * 1.18,
       });
     });
   });
@@ -196,14 +208,12 @@ export async function fillPdf(
           const box = location.box;
           const size = image.scaleToFit(box.width, box.height + 2);
           inDisplayedPage(doc.getPage(location.page), () =>
-            doc
-              .getPage(location.page)
-              .drawImage(image, {
-                x: box.x,
-                y: source.pages[location.page].heightPt - box.y - box.height,
-                width: size.width,
-                height: size.height,
-              }),
+            doc.getPage(location.page).drawImage(image, {
+              x: box.x,
+              y: source.pages[location.page].heightPt - box.y - box.height,
+              width: size.width,
+              height: size.height,
+            }),
           );
         }
         continue;
@@ -281,7 +291,15 @@ export async function fillPdf(
         box.y + box.height > pageHeight + 1
       )
         throw new Error('The answer position is outside the page.');
-      drawText(page, value, font, box, pageHeight, field.type === 'textarea');
+      drawText(
+        page,
+        value,
+        font,
+        box,
+        pageHeight,
+        field.type === 'textarea',
+        field.type === 'checkbox',
+      );
     } catch (error) {
       return fail(
         400,
