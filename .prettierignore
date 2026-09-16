@@ -1,0 +1,11 @@
+node_modules
+.next
+tmp
+public/demo-forms
+public/fonts
+public/pdf.worker.min.mjs
+public/cmaps
+public/standard_fonts
+launch
+pnpm-lock.yaml
+test-results

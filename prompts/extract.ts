@@ -1,8 +1,24 @@
 import type { ParsedDocument } from '@/lib/pdf-extract';
 import { uniqueAcro } from '@/lib/compact-extract';
 export function extractPrompt(doc: ParsedDocument): string {
-  const pages = doc.pages.map(({ textItems,...page }) => ({ ...page, text: textItems.map((t,i) => [i,t.str,+t.x.toFixed(1),+t.y.toFixed(1),+t.w.toFixed(1),+t.h.toFixed(1)]) }));
-  const acro = uniqueAcro(doc).map((f,i)=>({i,page:f.page,type:f.type,box:f.bbox.map(v=>+v.toFixed(4)),...(f.options?{options:f.options}:{})}));
+  const pages = doc.pages.map(({ textItems, ...page }) => ({
+    ...page,
+    text: textItems.map((t, i) => [
+      i,
+      t.str,
+      +t.x.toFixed(1),
+      +t.y.toFixed(1),
+      +t.w.toFixed(1),
+      +t.h.toFixed(1),
+    ]),
+  }));
+  const acro = uniqueAcro(doc).map((f, i) => ({
+    i,
+    page: f.page,
+    type: f.type,
+    box: f.bbox.map((v) => +v.toFixed(4)),
+    ...(f.options ? { options: f.options } : {}),
+  }));
   return `Extract EVERY fillable blank, checkbox, and signature. Use compact rows to reference the numbered source. Return JSON only. Do not use tools. No prose or analysis in output.
 Rows have EXACTLY these 13 positions:
 [label, type, required, sectionIndex, pageIndex, acroIndex, textItemIndex, bbox, options, dependsOnRowIndex, dependencyValue, helpTextIndices, constraints]
@@ -12,5 +28,5 @@ Bbox is [left,top,right,bottom] of the BLANK INPUT AREA, normalized 0..1 with TO
 Types: text,number,date,email,phone,select,multiselect,checkbox,signature,textarea. Signatures use signature. Preserve native choice values. Use dependencies for conditional sections (e.g. other insurance). Use individual checkbox rows for separate boxes without a native radio group. required only where applicable, keep unused repeated table rows optional. Never mark physician/notary signatures required for a parent/patient. Fields requiring another person's signature remain blank unless that person signs. All names/IDs are strings. Dates default MM/DD/YYYY. helpTextIndices quote only short relevant actual instructions on the same page. No invented advice.
 At root signature/date/name are row indices for the primary user's signature, associated signed date and full name if identifiable; otherwise -1.
 source=${doc.source}. Text tuples are [index,string,x,y,width,height] in displayed page points. Acro indices identify actual widgets. Match their rectangles to image/text labels.
-<form_text>${JSON.stringify({pages,acro})}</form_text>`;
+<form_text>${JSON.stringify({ pages, acro })}</form_text>`;
 }

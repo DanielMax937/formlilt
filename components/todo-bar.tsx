@@ -1,7 +1,78 @@
 'use client';
-import {Check,Minus,ArrowRight,AlertCircle} from 'lucide-react';
-import type {Session,UILanguage} from '@/lib/schema';
-import {isActive} from '@/lib/next-field';
-import {validate} from '@/lib/validate';
-import {t} from '@/lib/i18n';
-export function TodoBar({session,language,onJump}:{session:Session;language:UILanguage;onJump:(id:string)=>void}){return <nav className="todo-bar" aria-label={t(language,'progress')}>{session.schema.sections.map((section,sectionIndex)=>{const fields=section.fieldIds.map(id=>session.schema.fields.find(f=>f.id===id)!).filter(f=>isActive(f,session.schema,session.answers));if(!fields.length)return null;return <section key={section.id}><h3><span>{String(sectionIndex+1).padStart(2,'0')}</span>{section.title}</h3><ol>{fields.map(field=>{const answer=session.answers[field.id];const status=session.currentFieldId===field.id?'current':answer?.status==='skipped'?'skipped':answer&&!validate(field,answer.value,session.answers).ok?'invalid':answer?.status==='answered'?'completed':'pending';const Icon=status==='completed'?Check:status==='skipped'?Minus:status==='invalid'?AlertCircle:ArrowRight;return <li key={field.id}><button data-testid={'todo-'+field.id} data-status={status} className={'todo-item '+status} aria-current={status==='current'?'step':undefined} onClick={()=>onJump(field.id)}><span className="todo-mark">{status==='pending'?<span className="pending-circle"/>:<Icon size={13}/>}</span><span>{field.label}</span><span className="sr-only"> — {t(language,status)}</span></button></li>;})}</ol></section>;})}</nav>;}
+import { Check, Minus, ArrowRight, AlertCircle } from 'lucide-react';
+import type { Session, UILanguage } from '@/lib/schema';
+import { isActive } from '@/lib/next-field';
+import { validate } from '@/lib/validate';
+import { t } from '@/lib/i18n';
+export function TodoBar({
+  session,
+  language,
+  onJump,
+}: {
+  session: Session;
+  language: UILanguage;
+  onJump: (id: string) => void;
+}) {
+  return (
+    <nav className="todo-bar" aria-label={t(language, 'progress')}>
+      {session.schema.sections.map((section, sectionIndex) => {
+        const fields = section.fieldIds
+          .map((id) => session.schema.fields.find((f) => f.id === id)!)
+          .filter((f) => isActive(f, session.schema, session.answers));
+        if (!fields.length) return null;
+        return (
+          <section key={section.id}>
+            <h2>
+              <span>{String(sectionIndex + 1).padStart(2, '0')}</span>
+              {section.title}
+            </h2>
+            <ol>
+              {fields.map((field) => {
+                const answer = session.answers[field.id];
+                const status =
+                  session.currentFieldId === field.id
+                    ? 'current'
+                    : answer?.status === 'skipped'
+                      ? 'skipped'
+                      : answer && !validate(field, answer.value, session.answers).ok
+                        ? 'invalid'
+                        : answer?.status === 'answered'
+                          ? 'completed'
+                          : 'pending';
+                const Icon =
+                  status === 'completed'
+                    ? Check
+                    : status === 'skipped'
+                      ? Minus
+                      : status === 'invalid'
+                        ? AlertCircle
+                        : ArrowRight;
+                return (
+                  <li key={field.id}>
+                    <button
+                      data-testid={'todo-' + field.id}
+                      data-status={status}
+                      className={'todo-item ' + status}
+                      aria-current={status === 'current' ? 'step' : undefined}
+                      onClick={() => onJump(field.id)}
+                    >
+                      <span className="todo-mark">
+                        {status === 'pending' ? (
+                          <span className="pending-circle" />
+                        ) : (
+                          <Icon size={13} />
+                        )}
+                      </span>
+                      <span>{field.label}</span>
+                      <span className="sr-only"> — {t(language, status)}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        );
+      })}
+    </nav>
+  );
+}

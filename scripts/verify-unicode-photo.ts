@@ -1,6 +1,53 @@
-import {readFile,writeFile} from 'node:fs/promises';
-import {PDFDocument} from 'pdf-lib';
-import {parseDocument} from '../lib/pdf-extract';
-import {FormSchema} from '../lib/schema';
-import {fillPdf} from '../lib/fill-pdf';
-async function main(){const photo=await readFile('tests/fixtures/photo.jpg');const parsed=await parseDocument(photo);const schema=FormSchema.parse({title:'Photo verification',language:'en',source:'image',precision:'approximate',pages:parsed.pages.map(({textItems,...p})=>p),sections:[{id:'s',title:'Name',fieldIds:['name']}],fields:[{id:'name',label:'Full name',section:'s',type:'text',required:true,anchor:{page:0,placement:'inbox',bbox:[.4,.42,.95,.66]}}],estimatedMinutes:1});for(const [key,value] of Object.entries({photo:'Alex Rivera',chinese:'陈美玲',japanese:'山田花子',arabic:'أحمد علي'})){await writeFile(`tmp/filled/${key}.pdf`,await fillPdf(photo,schema,{name:{status:'answered',value}}));}const doc=await PDFDocument.create();const image=await doc.embedJpg(photo);doc.addPage([image.width,image.height]).drawImage(image,{x:0,y:0,width:image.width,height:image.height});await writeFile('tmp/filled/scan.pdf',await fillPdf(await doc.save(),{...schema,source:'pdf'},{name:{status:'answered',value:'SCAN TEST'}}));}void main();
+import { readFile, writeFile } from 'node:fs/promises';
+import { PDFDocument } from 'pdf-lib';
+import { parseDocument } from '../lib/pdf-extract';
+import { FormSchema } from '../lib/schema';
+import { fillPdf } from '../lib/fill-pdf';
+async function main() {
+  const photo = await readFile('tests/fixtures/photo.jpg');
+  const parsed = await parseDocument(photo);
+  const schema = FormSchema.parse({
+    title: 'Photo verification',
+    language: 'en',
+    source: 'image',
+    precision: 'approximate',
+    pages: parsed.pages.map(({ textItems, ...p }) => p),
+    sections: [{ id: 's', title: 'Name', fieldIds: ['name'] }],
+    fields: [
+      {
+        id: 'name',
+        label: 'Full name',
+        section: 's',
+        type: 'text',
+        required: true,
+        anchor: { page: 0, placement: 'inbox', bbox: [0.4, 0.42, 0.95, 0.66] },
+      },
+    ],
+    estimatedMinutes: 1,
+  });
+  for (const [key, value] of Object.entries({
+    photo: 'Alex Rivera',
+    chinese: '陈美玲',
+    japanese: '山田花子',
+    arabic: 'أحمد علي',
+  })) {
+    await writeFile(
+      `tmp/filled/${key}.pdf`,
+      await fillPdf(photo, schema, { name: { status: 'answered', value } }),
+    );
+  }
+  const doc = await PDFDocument.create();
+  const image = await doc.embedJpg(photo);
+  doc
+    .addPage([image.width, image.height])
+    .drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+  await writeFile(
+    'tmp/filled/scan.pdf',
+    await fillPdf(
+      await doc.save(),
+      { ...schema, source: 'pdf' },
+      { name: { status: 'answered', value: 'SCAN TEST' } },
+    ),
+  );
+}
+void main();

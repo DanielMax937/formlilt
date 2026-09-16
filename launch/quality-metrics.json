@@ -1,0 +1,18 @@
+{
+  "measuredAt": "2026-09-15T18:54:22.800Z",
+  "url": "http://127.0.0.1:3050/",
+  "mode": "local production build, Lighthouse default mobile simulation",
+  "lighthouseVersion": "13.4.1",
+  "performance": 97.0,
+  "accessibility": 100,
+  "unitTests": 56,
+  "e2eCases": 28,
+  "e2eNote": "27 passed in full suite; WebKit keyboard case passed separately after using Safari Option+Tab; no product change",
+  "unverified": [
+    "Physical iPhone microphone and VoiceOver",
+    "Adobe Reader",
+    "Real phone photo",
+    "Five extra real forms manual review"
+  ],
+  "failedGate": "agent-im uncached extraction 64\u2013268 seconds; target p95 <20 seconds not met"
+}

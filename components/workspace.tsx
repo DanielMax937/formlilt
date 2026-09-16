@@ -1,21 +1,264 @@
 'use client';
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import {useRouter} from 'next/navigation';
-import {ArrowRight,ArrowLeft,HelpCircle,CheckCircle2,Mic,MicOff,Volume2,VolumeX} from 'lucide-react';
-import {Header} from './header';import {useLanguage} from './language-provider';import {TodoBar} from './todo-bar';import {ProgressRing} from './progress-ring';
-import {useSpeech} from '@/hooks/use-speech';
-import {SignaturePad} from './inputs/signature-pad';
-import {FieldInput} from './inputs/field-input';
-import {useFormSession} from '@/hooks/use-form-session';import {activeFields} from '@/lib/next-field';import {clearSession} from '@/lib/storage';import {t} from '@/lib/i18n';
-export function Workspace({id}:{id:string}){const {language}=useLanguage();const flow=useFormSession(id,language);const {session}=flow;const [value,setValue]=useState('');const [signedBy,setSignedBy]=useState('');const router=useRouter();const speech=useSpeech(language,setValue);
- useEffect(()=>{if(session?.state==='reviewing')router.replace('/review/'+id);},[session?.state,id,router]);
- const field=session?.schema.fields.find(f=>f.id===session.currentFieldId);
- useEffect(()=>{speech.cancelListening();setSignedBy(field?session?.answers[field.id]?.signedBy??'':'');setValue(field?session?.answers[field.id]?.value??'':'');},[field?.id]);
- const spokenQuestion=field?(flow.question||`${t(language,'question')} ${field.label}`):'';
- useEffect(()=>{speech.speak(spokenQuestion);},[spokenQuestion,speech.speakingEnabled,language]);
- useEffect(()=>{if(flow.error)speech.speak(flow.error);},[flow.error]);
- if(!session)return <div className="shell"><Header/><main id="main" className="panel form-overview"><h1>{session===undefined?t(language,'loading'):t(language,'noSession')}</h1>{session===null&&<Link href="/">{t(language,'home')}</Link>}</main></div>;
- const fields=activeFields(session.schema,session.answers);const done=fields.filter(f=>session.answers[f.id]?.status==='answered').length;
- return <div className="shell workspace-shell"><Header><button className="tool-button speech-toggle" aria-pressed={speech.speakingEnabled} aria-label={t(language,speech.speakingEnabled?'speechOff':'speechOn')} onClick={speech.toggleSpeaking}>{speech.speakingEnabled?<Volume2 size={19}/>:<VolumeX size={19}/>}</button><button className="text-button" onClick={()=>void clearSession(id).then(()=>router.push('/'))}>{t(language,'clear')}</button></Header><main id="main"><div className="workspace-title"><div><p className="eyebrow">{session.schema.pages.length} {t(language,'pages')} · {fields.length} {t(language,'fields')}</p><h1>{session.schema.title}</h1></div><span className="saved-note"><CheckCircle2 size={15}/>{t(language,'saved')}</span></div><div className="workspace-grid"><aside><TodoBar session={session} language={language} onJump={id=>void flow.action('jump','',id)}/></aside><div className="question-column">{field&&<section className="question-card" aria-labelledby="question-heading"><div className="question-topline"><span>{session.schema.sections.find(s=>s.id===field.section)?.title}</span><span className={'field-requirement '+(field.required?'required':'')}>{t(language,field.required?'required':'optional')}</span></div><p className="question-index">{String(fields.findIndex(f=>f.id===field.id)+1).padStart(2,'0')} / {String(fields.length).padStart(2,'0')}</p><h2 id="question-heading" aria-live="polite">{flow.question||`${t(language,'question')} ${field.label}${language==='en'?'?':''}`}</h2><form noValidate onSubmit={e=>{e.preventDefault();void flow.action('answer',value,undefined,false,undefined,signedBy);}}>{field.type==='signature'?<SignaturePad key={field.id} value={value} name={signedBy} onChange={setValue} onNameChange={setSignedBy} language={language} disabled={flow.busy}/>:<><label className="input-label" htmlFor="answer-input">{t(language,'answer')}</label><FieldInput field={field} value={value} onChange={setValue} language={language} disabled={flow.busy} invalid={!!flow.error}/></>}{flow.error&&<p className="error-message" id="answer-error" role="alert">{flow.error}</p>}{flow.translation&&<div className="translation-box" role="dialog" aria-label={t(language,'confirmTranslation')}><h3>{t(language,'confirmTranslation')}</h3><p>{t(language,'originalValue')}: {flow.translation.original}</p><p>{t(language,'translatedValue')}: <strong>{flow.translation.value}</strong></p><div className="button-row"><button type="button" className="button primary" onClick={()=>{const tr=flow.translation!;flow.clearTranslation();void flow.action('answer',tr.value,undefined,true,tr.original);}}>{t(language,'confirm')}</button><button type="button" className="button secondary" onClick={()=>{const tr=flow.translation!;flow.clearTranslation();void flow.action('answer',tr.original,undefined,true);}}>{t(language,'keepOriginal')}</button></div></div>}<div className="answer-buttons"><button className="button primary" disabled={flow.busy}>{flow.busy?t(language,'loading'):t(language,'submit')}<ArrowRight size={17}/></button><button type="button" className="text-button" disabled={flow.busy} onClick={()=>void flow.action('skip')}>{t(language,'skip')}</button></div></form><div className="question-tools">{['text','textarea','email','phone','number'].includes(field.type)&&<button className="tool-button" type="button" disabled={!speech.supported||flow.busy} aria-pressed={speech.listening} onClick={speech.toggleListening}>{speech.listening?<MicOff size={17}/>:<Mic size={17}/>} {t(language,speech.listening?'stopMic':'microphone')}</button>}<button className="tool-button" onClick={()=>void flow.action('back')}><ArrowLeft size={16}/>{t(language,'back')}</button><button className="tool-button" onClick={()=>void flow.action('explain')}><HelpCircle size={17}/>{t(language,'explain')}</button></div><p className="small muted" role="status">{speech.error||(speech.listening?t(language,'listening'):!speech.supported?t(language,'speechUnavailable'):'')}</p>{flow.explanation&&<blockquote className="explanation" aria-live="polite"><span className="small muted">{t(language,'help')}</span><p>{flow.explanation}</p></blockquote>}</section>}<div className="workspace-bottom"><ProgressRing done={done} total={fields.length} language={language}/><Link className="text-button" href={'/review/'+id}>{t(language,'review')} →</Link></div></div></div></main></div>;
+import { useRouter } from 'next/navigation';
+import {
+  ArrowRight,
+  ArrowLeft,
+  HelpCircle,
+  CheckCircle2,
+  Mic,
+  MicOff,
+  Volume2,
+  VolumeX,
+} from 'lucide-react';
+import { Header } from './header';
+import { useLanguage } from './language-provider';
+import { TodoBar } from './todo-bar';
+import { ProgressRing } from './progress-ring';
+import { useQuestionWording } from '@/hooks/use-question-wording';
+import { useSpeech } from '@/hooks/use-speech';
+import { SignaturePad } from './inputs/signature-pad';
+import { FieldInput } from './inputs/field-input';
+import { useFormSession } from '@/hooks/use-form-session';
+import { activeFields } from '@/lib/next-field';
+import { clearSession } from '@/lib/storage';
+import { t } from '@/lib/i18n';
+export function Workspace({ id }: { id: string }) {
+  const { language } = useLanguage();
+  const flow = useFormSession(id, language);
+  const { session } = flow;
+  const translatedQuestion = useQuestionWording(session, language);
+  const [value, setValue] = useState('');
+  const [signedBy, setSignedBy] = useState('');
+  const router = useRouter();
+  const speech = useSpeech(language, setValue);
+  useEffect(() => {
+    if (session?.state === 'reviewing') router.replace('/review/' + id);
+  }, [session?.state, id, router]);
+  const field = session?.schema.fields.find((f) => f.id === session.currentFieldId);
+  useEffect(() => {
+    speech.cancelListening();
+    setSignedBy(field ? (session?.answers[field.id]?.signedBy ?? '') : '');
+    setValue(field ? (session?.answers[field.id]?.value ?? '') : '');
+  }, [field?.id]);
+  const spokenQuestion = field
+    ? translatedQuestion || flow.question || `${t(language, 'question')} ${field.label}`
+    : '';
+  useEffect(() => {
+    speech.speak(spokenQuestion);
+  }, [spokenQuestion, speech.speakingEnabled, language]);
+  useEffect(() => {
+    if (flow.error) speech.speak(flow.error);
+  }, [flow.error]);
+  if (!session)
+    return (
+      <div className="shell">
+        <Header />
+        <main id="main" className="panel form-overview">
+          <h1>{session === undefined ? t(language, 'loading') : t(language, 'noSession')}</h1>
+          {session === null && <Link href="/">{t(language, 'home')}</Link>}
+        </main>
+      </div>
+    );
+  const fields = activeFields(session.schema, session.answers);
+  const done = fields.filter((f) => session.answers[f.id]?.status === 'answered').length;
+  return (
+    <div className="shell workspace-shell">
+      <Header>
+        <button
+          className="tool-button speech-toggle"
+          aria-pressed={speech.speakingEnabled}
+          aria-label={t(language, speech.speakingEnabled ? 'speechOff' : 'speechOn')}
+          onClick={speech.toggleSpeaking}
+        >
+          {speech.speakingEnabled ? <Volume2 size={19} /> : <VolumeX size={19} />}
+        </button>
+        <button
+          className="text-button"
+          onClick={() => void clearSession(id).then(() => router.push('/'))}
+        >
+          {t(language, 'clear')}
+        </button>
+      </Header>
+      <main id="main">
+        <div className="workspace-title">
+          <div>
+            <p className="eyebrow">
+              {session.schema.pages.length} {t(language, 'pages')} · {fields.length}{' '}
+              {t(language, 'fields')}
+            </p>
+            <h1>{session.schema.title}</h1>
+          </div>
+          <span className="saved-note">
+            <CheckCircle2 size={15} />
+            {t(language, 'saved')}
+          </span>
+        </div>
+        <div className="workspace-grid">
+          <aside>
+            <TodoBar
+              session={session}
+              language={language}
+              onJump={(id) => void flow.action('jump', '', id)}
+            />
+          </aside>
+          <div className="question-column">
+            {field && (
+              <section className="question-card" aria-labelledby="question-heading">
+                <div className="question-topline">
+                  <span>{session.schema.sections.find((s) => s.id === field.section)?.title}</span>
+                  <span className={'field-requirement ' + (field.required ? 'required' : '')}>
+                    {t(language, field.required ? 'required' : 'optional')}
+                  </span>
+                </div>
+                <p className="question-index">
+                  {String(fields.findIndex((f) => f.id === field.id) + 1).padStart(2, '0')} /{' '}
+                  {String(fields.length).padStart(2, '0')}
+                </p>
+                <h2 id="question-heading" aria-live="polite">
+                  {translatedQuestion ||
+                    flow.question ||
+                    `${t(language, 'question')} ${field.label}${language === 'en' ? '?' : ''}`}
+                </h2>
+                <form
+                  noValidate
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    void flow.action('answer', value, undefined, false, undefined, signedBy);
+                  }}
+                >
+                  {field.type === 'signature' ? (
+                    <SignaturePad
+                      key={field.id}
+                      value={value}
+                      name={signedBy}
+                      onChange={setValue}
+                      onNameChange={setSignedBy}
+                      language={language}
+                      disabled={flow.busy}
+                    />
+                  ) : (
+                    <>
+                      <label className="input-label" htmlFor="answer-input">
+                        {t(language, 'answer')}
+                      </label>
+                      <FieldInput
+                        field={field}
+                        value={value}
+                        onChange={setValue}
+                        language={language}
+                        disabled={flow.busy}
+                        invalid={!!flow.error}
+                      />
+                    </>
+                  )}
+                  {flow.error && (
+                    <p className="error-message" id="answer-error" role="alert">
+                      {flow.error}
+                    </p>
+                  )}
+                  {flow.translation && (
+                    <div
+                      className="translation-box"
+                      role="dialog"
+                      aria-label={t(language, 'confirmTranslation')}
+                    >
+                      <h3>{t(language, 'confirmTranslation')}</h3>
+                      <p>
+                        {t(language, 'originalValue')}: {flow.translation.original}
+                      </p>
+                      <p>
+                        {t(language, 'translatedValue')}: <strong>{flow.translation.value}</strong>
+                      </p>
+                      <div className="button-row">
+                        <button
+                          type="button"
+                          className="button primary"
+                          onClick={() => {
+                            const tr = flow.translation!;
+                            flow.clearTranslation();
+                            void flow.action('answer', tr.value, undefined, true, tr.original);
+                          }}
+                        >
+                          {t(language, 'confirm')}
+                        </button>
+                        <button
+                          type="button"
+                          className="button secondary"
+                          onClick={() => {
+                            const tr = flow.translation!;
+                            flow.clearTranslation();
+                            void flow.action('answer', tr.original, undefined, true);
+                          }}
+                        >
+                          {t(language, 'keepOriginal')}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  <div className="answer-buttons">
+                    <button className="button primary" disabled={flow.busy}>
+                      {flow.busy ? t(language, 'loading') : t(language, 'submit')}
+                      <ArrowRight size={17} />
+                    </button>
+                    <button
+                      type="button"
+                      className="text-button"
+                      disabled={flow.busy}
+                      onClick={() => void flow.action('skip')}
+                    >
+                      {t(language, 'skip')}
+                    </button>
+                  </div>
+                </form>
+                <div className="question-tools">
+                  {['text', 'textarea', 'email', 'phone', 'number'].includes(field.type) && (
+                    <button
+                      className="tool-button"
+                      type="button"
+                      disabled={!speech.supported || flow.busy}
+                      aria-pressed={speech.listening}
+                      onClick={speech.toggleListening}
+                    >
+                      {speech.listening ? <MicOff size={17} /> : <Mic size={17} />}{' '}
+                      {t(language, speech.listening ? 'stopMic' : 'microphone')}
+                    </button>
+                  )}
+                  <button className="tool-button" onClick={() => void flow.action('back')}>
+                    <ArrowLeft size={16} />
+                    {t(language, 'back')}
+                  </button>
+                  <button className="tool-button" onClick={() => void flow.action('explain')}>
+                    <HelpCircle size={17} />
+                    {t(language, 'explain')}
+                  </button>
+                </div>
+                <p className="small muted" role="status">
+                  {speech.error ||
+                    (speech.listening
+                      ? t(language, 'listening')
+                      : !speech.supported
+                        ? t(language, 'speechUnavailable')
+                        : '')}
+                </p>
+                {flow.explanation && (
+                  <blockquote className="explanation" aria-live="polite">
+                    <span className="small muted">{t(language, 'help')}</span>
+                    <p>{flow.explanation}</p>
+                  </blockquote>
+                )}
+              </section>
+            )}
+            <div className="workspace-bottom">
+              <ProgressRing done={done} total={fields.length} language={language} />
+              <Link className="text-button" href={'/review/' + id}>
+                {t(language, 'review')} →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 }

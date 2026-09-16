@@ -1,4 +1,4 @@
-# FillFlow
+# FormLilt
 
 Turn a PDF form into a guided conversation. Next.js 15, React 19, strict TypeScript.
 
@@ -24,7 +24,7 @@ See [SPEC.md](SPEC.md) for requirements and [BUILD_LOG.md](BUILD_LOG.md) for ver
 
 ## Privacy
 
-FillFlow has no document database. Files stay in browser IndexedDB and answers in localStorage until cleared. Uploaded documents are sent to the configured model provider for extraction; answers may be sent for translation or explanation. Provider retention rules apply. In agent-im development mode, the local runner may retain conversation files. Do not use the local demo deployment for sensitive real documents until its retention settings have been reviewed.
+FormLilt has no document database. Files stay in browser IndexedDB and answers in localStorage until cleared. Uploaded documents are sent to the configured model provider for extraction; answers may be sent for translation or explanation. Provider retention rules apply. In agent-im development mode, the local runner may retain conversation files. Do not use the local demo deployment for sensitive real documents until its retention settings have been reviewed.
 
 ## Deployment
 
