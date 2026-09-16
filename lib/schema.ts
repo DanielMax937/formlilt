@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { languageCode } from './language-code';
+import { validate } from './validate';
 
 const id = z
   .string()
@@ -114,6 +115,13 @@ export const FormSchema = FormSchemaBase.superRefine((form, ctx) => {
       fail(`Invalid numeric range for ${f.id}`);
     for (const ref of f.exclusiveWith ?? [])
       if (!fields.has(ref) || ref === f.id) fail(`Invalid exclusive reference for ${f.id}`);
+    if (f.dependsOn) {
+      const parent = fields.get(f.dependsOn.fieldId);
+      if (parent && !validate(parent, f.dependsOn.equals).ok)
+        fail(
+          `Dependency for ${f.id} must equal a valid literal answer for ${parent.id}. Computed conditions such as age comparisons are unsupported; keep those fields optional with their source instructions instead.`,
+        );
+    }
     const seen = new Set([f.id]);
     let dep = f.dependsOn?.fieldId;
     while (dep) {

@@ -1,14 +1,9 @@
 {
-  "recordedAt": "2026-09-16T17:20:35.197587+00:00",
-  "applicationBaseCommit": "53133e3",
-  "implementationSha256": {
-    "prompts/extract.ts": "72886dd76dcaac46d863a058d2564238de6a980720fa358d9789a20cdc0b4572",
-    "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
-  },
-  "scope": "Two additional public blank PDFs, desktop Chrome, real agent-im GPT-6 Astra extraction, manually reviewed synthetic answers entered through the UI. No source/schema edits, extraction interception or demo endpoint. Separate from the original three-source browser matrix.",
-  "passed": 2,
+  "recordedAt": "2026-09-16T18:06:41.320784+00:00",
+  "scope": "Additional public blank PDFs in desktop Chrome with real agent-im GPT-6 Astra extraction and source-reviewed synthetic answers entered through the UI. No source/schema edits, extraction interception or demo endpoint. Build provenance is recorded per run; failures remain explicit.",
+  "passed": 5,
   "expectedExtraPdfCount": 5,
-  "physicalScanVerified": false,
+  "physicalScanVerified": true,
   "sources": [
     {
       "name": "andalucia-library",
@@ -56,7 +51,12 @@
       },
       "sourceUrl": "https://www.centrodedocumentacionmusicaldeandalucia.es/documents/162188325/162336533/solicitud-carnet-biblioteca.pdf/055cd1a2-363b-45c4-83d3-85531269286f?version=1.0",
       "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
-      "schemaModified": false
+      "schemaModified": false,
+      "applicationBaseCommit": "53133e3",
+      "implementationSha256": {
+        "prompts/extract.ts": "72886dd76dcaac46d863a058d2564238de6a980720fa358d9789a20cdc0b4572",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
     },
     {
       "name": "sterling-library",
@@ -105,7 +105,181 @@
       },
       "sourceUrl": "https://www.sterlingheights.gov/DocumentCenter/View/5381",
       "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
-      "schemaModified": false
+      "schemaModified": false,
+      "applicationBaseCommit": "53133e3",
+      "implementationSha256": {
+        "prompts/extract.ts": "72886dd76dcaac46d863a058d2564238de6a980720fa358d9789a20cdc0b4572",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
+    },
+    {
+      "name": "tinley-dog",
+      "startedAt": "2026-09-16T17:39:13.508Z",
+      "buildId": "iuBTbIWL3EJ6Eq0pveKZ9",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 60.79,
+      "extractionStatus": 200,
+      "fields": 10,
+      "formLanguage": "en",
+      "schemaSha256": "f976caf603bffcc7ecaf1249d6ca469960f42e56b44b88326ea1b4981ba72d8e",
+      "phase": "complete",
+      "steps": 10,
+      "answeredFields": 10,
+      "pages": 1,
+      "nativeTextFields": 8,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 1,
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "exportSha256": "ea3f34516b985f9dd6196b66d5d683f254cf22d2cafe56a11279284637f5b2e4",
+      "finishedAt": "2026-09-16T17:41:40.194Z",
+      "errors": [],
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 10,
+        "/api/finalize:200": 1
+      },
+      "applicationBaseCommit": "f367287",
+      "sourceUrl": "https://cms6.revize.com/revize/tinleypark/Dog%20application.pdf",
+      "sourceType": "Native AcroForm; 14 original fields including a zero-area read-only helper; not a physical scan",
+      "schemaModified": false,
+      "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
+      "manualInventory": {
+        "expectedFields": 10,
+        "extractedFields": 10,
+        "notes": "Excludes three office-only inputs and the invisible appearance helper; native radio group is one logical field."
+      },
+      "visualReview": {
+        "status": "passed",
+        "renderer": "Poppler and browser PDF.js",
+        "pages": [
+          1
+        ],
+        "notes": [
+          "All eight native text values are readable inside their input boxes.",
+          "Male radio option is selected; Female is empty.",
+          "Signature is visible in its native target area; all three staff-only boxes remain blank."
+        ]
+      },
+      "implementationSha256": {
+        "prompts/extract.ts": "7957bc5f42211e4ca986e6edeb5a5331dd496ae18f47f5838afbdc9dcd8864a6",
+        "lib/pdf-extract.ts": "02d0f12a394781504a1649be18718fb5c3f676299a151f1f65fb768878cc19f9",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
+    },
+    {
+      "name": "castilla-library",
+      "startedAt": "2026-09-16T17:52:48.742Z",
+      "buildId": "dcVIDd1qONvV0YFqIG2R0",
+      "mocked": false,
+      "language": "es",
+      "extractionSeconds": 244.574,
+      "extractionStatus": 200,
+      "fields": 51,
+      "formLanguage": "es",
+      "schemaSha256": "4a61e9ce14f7826cc912ded76c38d4fcdf2acea7dd5147456052e45c70e8ea7a",
+      "phase": "complete",
+      "steps": 51,
+      "answeredFields": 27,
+      "pages": 2,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 0,
+      "sourceSha256": "f23769478e7fdd7b3ed3850a3cbd3038e1b8f6bd2fb0ddc055780c6833563dde",
+      "exportSha256": "677b06997d107d38403b6a4314d16172be6e720f07e46dba51228f1701ccff18",
+      "finishedAt": "2026-09-16T17:58:02.235Z",
+      "errors": [],
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 51,
+        "/api/finalize:200": 1
+      },
+      "applicationBaseCommit": "f367287",
+      "sourceUrl": "https://www.bibliotecaspublicas.es/dam/jcr%3A819b3042-1995-4b24-9aef-bd8f97f707f6/carnetLector.pdf",
+      "sourceType": "Two-page Spanish text-layer PDF, no native widgets; instructions on second page",
+      "schemaModified": false,
+      "result": "real Chrome upload, guided entry including guardian fields, signature, review, download and visual review passed",
+      "manualInventory": {
+        "expectedFields": 51,
+        "extractedFields": 51,
+        "notes": "11 applicant fields, 10 primary-address fields, 10 alternate-address fields, 14 guardian fields, 5 authorization/signing fields and 1 email checkbox. Office-assigned member number and issue date excluded."
+      },
+      "visualReview": {
+        "status": "passed",
+        "renderer": "Poppler and browser PDF.js",
+        "pages": [
+          1,
+          2
+        ],
+        "notes": [
+          "Synthetic child and guardian details occupy the intended cells.",
+          "Guardian signature is present; signed-date day/month/year suffix preserve the preprinted words and 20 prefix.",
+          "Second address and office-only area remain blank; original instructions remain on page 2."
+        ]
+      },
+      "implementationSha256": {
+        "prompts/extract.ts": "a161f1b3bbcdc59d35495787dc60bac36e2d5defc15172bc7020a27bffc5be95",
+        "lib/pdf-extract.ts": "02d0f12a394781504a1649be18718fb5c3f676299a151f1f65fb768878cc19f9",
+        "lib/schema.ts": "9595ff8341623fb7dec490ad713a981bae5356d3cb521f2bf09f15ebab5a5c5d",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
+    },
+    {
+      "name": "indigo-consent",
+      "startedAt": "2026-09-16T17:59:02.336Z",
+      "buildId": "dcVIDd1qONvV0YFqIG2R0",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 99.178,
+      "extractionStatus": 200,
+      "fields": 16,
+      "formLanguage": "en",
+      "schemaSha256": "84a4867f95827bd37b709a44f32173568f17864ead631f2c793350cc5b4e37cd",
+      "phase": "complete",
+      "steps": 15,
+      "answeredFields": 16,
+      "pages": 1,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 0,
+      "sourceSha256": "d6dbdc4d49841aa30b7fcb2926d7434453e5989679d52ae354cf26210e2231fe",
+      "exportSha256": "3f43eed2613f2e359ef4015347964fff0c7b702c3bf02aea26f91842042abc65",
+      "finishedAt": "2026-09-16T18:04:26.006Z",
+      "errors": [],
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 15,
+        "/api/finalize:200": 1
+      },
+      "applicationBaseCommit": "f367287",
+      "sourceUrl": "https://www.indigodermatology.com/wp-content/uploads/2025/07/medical-photography-consent-form.pdf",
+      "sourceType": "Single-page physical paper scan; NAPS2 metadata, 2550\u00d73300 image at 300 DPI, no text layer or native widgets; visible paper/skew artifacts",
+      "schemaModified": false,
+      "result": "real Chrome upload, guided entry, signature, review, download and visual review passed",
+      "manualInventory": {
+        "expectedFields": 16,
+        "extractedFields": 16,
+        "notes": "Name and DOB, four parenthesized blanks, eight Yes/No marks, patient signature and date; two provider/staff fields excluded."
+      },
+      "visualReview": {
+        "status": "passed",
+        "renderer": "Poppler and browser PDF.js",
+        "pages": [
+          1
+        ],
+        "notes": [
+          "All entries occupy original blank areas without covering labels or instructions.",
+          "Four No marks appear on the corresponding lines; Yes positions remain empty.",
+          "Initials fit the parenthesized blanks; patient signature/date are readable.",
+          "Provider/staff signature and date remain blank; original scan background is preserved."
+        ]
+      },
+      "implementationSha256": {
+        "prompts/extract.ts": "a161f1b3bbcdc59d35495787dc60bac36e2d5defc15172bc7020a27bffc5be95",
+        "lib/pdf-extract.ts": "02d0f12a394781504a1649be18718fb5c3f676299a151f1f65fb768878cc19f9",
+        "lib/schema.ts": "9595ff8341623fb7dec490ad713a981bae5356d3cb521f2bf09f15ebab5a5c5d",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
     }
   ],
   "earlierAttempt": {
@@ -135,6 +309,87 @@
     {
       "source": "https://www.lodi.gov/DocumentCenter/View/2265/Library-Card-Application-no-gender-2019-fillable-pdf",
       "result": "Download returned 404; no test performed."
+    },
+    {
+      "source": "https://www.broadwaydentalinc.com/wp-content/uploads/2025/07/Consent-From-to-Treat.pdf",
+      "result": "Download returned 403; no application test performed."
     }
-  ]
+  ],
+  "failedAttempts": [
+    {
+      "name": "gf-employment",
+      "startedAt": "2026-09-16T17:28:22.160Z",
+      "buildId": "I5gwm5Iq-zTxKttqTgiak",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 300.868,
+      "extractionStatus": 502,
+      "phase": "failed",
+      "error": "{\"error\":{\"code\":\"llm_error\",\"message\":\"Reading the form timed out. Please try again.\"}}\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 502",
+      "finishedAt": "2026-09-16T17:33:23.388Z",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 502 (Bad Gateway)"
+      ],
+      "applicationBaseCommit": "f367287",
+      "sourceUrl": "https://www.gfconcretecutting.com/wp-content/uploads/Employee-Data-Packet.pdf",
+      "sourceSha256": "3924ac0f3029e872b6a7e411a56d8065845ac095b90b3e3556e5da3684974bac",
+      "sourceType": "Five-page physical paper scan; Lexmark X264dn metadata and one 150-DPI grayscale JPEG per page; no text layer or native fields",
+      "pages": 5,
+      "result": "Failed before questionnaire: actual model timeout, no extraction schema or export",
+      "schemaModified": false,
+      "apiResponseCounts": {
+        "/api/extract:502": 1
+      }
+    },
+    {
+      "name": "castilla-library",
+      "startedAt": "2026-09-16T17:43:20.095Z",
+      "buildId": "iuBTbIWL3EJ6Eq0pveKZ9",
+      "mocked": false,
+      "language": "es",
+      "extractionSeconds": 208.826,
+      "extractionStatus": 200,
+      "fields": 51,
+      "formLanguage": "es",
+      "schemaSha256": "4d91ec99492f3e4b6e0ad4e4105644c4ccac05296b33b62f79702528c479c47e",
+      "phase": "failed semantic acceptance",
+      "steps": 32,
+      "answeredFields": 15,
+      "pages": 2,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 0,
+      "sourceSha256": "f23769478e7fdd7b3ed3850a3cbd3038e1b8f6bd2fb0ddc055780c6833563dde",
+      "exportSha256": "f5af850d40bf9ecfe4c0dcccdf45deea6432e6a8c948c1095e4dae55d8f25fde",
+      "finishedAt": "2026-09-16T17:48:26.213Z",
+      "errors": [],
+      "applicationBaseCommit": "f367287",
+      "sourceUrl": "https://www.bibliotecaspublicas.es/dam/jcr%3A819b3042-1995-4b24-9aef-bd8f97f707f6/carnetLector.pdf",
+      "result": "A synthetic child DOB did not reveal guardian fields or signature: extracted equality compared a date with the prose Menor de 18 a\u00f1os. Generic export checks passed but source-guided acceptance failed.",
+      "schemaModified": false,
+      "visualReview": {
+        "status": "failed",
+        "pages": [
+          1
+        ],
+        "notes": [
+          "Child DOB 2015-01-02 is present but the required guardian section and signature are blank."
+        ]
+      },
+      "apiResponseCounts": {
+        "/api/extract:200": 1,
+        "/api/turn:200": 32,
+        "/api/finalize:200": 1
+      }
+    }
+  ],
+  "nonEnglishFormsPassed": 2,
+  "nonEnglishLanguages": [
+    "es"
+  ],
+  "nativeAcroFormVerified": true,
+  "flatTextPdfVerified": true,
+  "realPhonePhotoVerified": false,
+  "temporaryServiceClosed": true,
+  "userServiceHttpStatus": 200
 }

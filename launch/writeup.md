@@ -24,13 +24,13 @@ The model adapter first used the user's local agent-im OpenAI-compatible service
 
 ## Evidence and current limits
 
-Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The final local production Lighthouse run scored 99 performance and 100 accessibility. Three full demo workflows and keyboard/signature/validation/privacy flows are covered by Chromium and mobile WebKit tests. Gallery build evidence records the earlier measurement at capture time.
+Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The latest local production Lighthouse run scored 97 performance and 100 accessibility. Three full demo workflows and keyboard/signature/validation/privacy flows are covered by Chromium and mobile WebKit tests. Gallery build evidence records the earlier measurement at capture time.
 
 Separate native acceptance passed all three two-page exports in macOS Preview, the first five insurance questions using macOS VoiceOver and keyboard input, and real Chrome microphone transcription with editable correction. The user confirmed clear VoiceOver output and app question speech. File hashes, versions and observations are recorded in `launch/native-verification.json`; this does not establish physical iPhone compatibility.
 
 The separate real-upload browser matrix reached 5/6 passed through agent-im Astra: address and insurance forms in both engines, plus the school form in Chrome. Mobile WebKit's school request hit the 300-second model timeout before entering the questionnaire. Successful upload/extraction times ranged from 106.5 to 295.4 seconds, including client rendering/upload. `launch/live-upload-verification.json` records the successful PDFs and failed response; the full live-upload gate remains open.
 
-Uncached extraction does not meet the <20s target. Five additional real forms, a real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
+Uncached extraction does not meet the <20s target. Five additional real PDF flows now pass, including two Spanish forms, native AcroForm, flat text and a physical scan. A real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
 
 ## Links
 

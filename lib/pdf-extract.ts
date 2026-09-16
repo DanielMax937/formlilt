@@ -1,4 +1,4 @@
-import { PDFDocument } from 'pdf-lib';
+import { AnnotationFlags, PDFDocument } from 'pdf-lib';
 import { getDocumentProxy } from 'unpdf';
 import { fileKind, pngDimensions, MAX_FILE_BYTES, MAX_PAGES } from './files';
 import type { PageMeta } from './schema';
@@ -77,7 +77,15 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
     const acroFields: AcroField[] = [];
     const form = doc.getForm();
     for (const field of form.getFields()) {
+      if (field.isReadOnly()) continue;
       for (const widget of field.acroField.getWidgets()) {
+        if (widget.hasFlag(AnnotationFlags.Hidden) || widget.hasFlag(AnnotationFlags.NoView))
+          continue;
+        const rect = widget.getRectangle();
+        // Forms may contain invisible helper widgets (for example FormsCentral's
+        // appearance generator). They have no input area and cannot form a bbox.
+        if (!Object.values(rect).every(Number.isFinite) || rect.width === 0 || rect.height === 0)
+          continue;
         const pageRef = widget.P();
         let pageIndex = doc
           .getPages()
@@ -90,7 +98,6 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
               .some((ref) => doc.context.lookup(ref) === widget.dict),
           );
         if (pageIndex < 0) continue;
-        const rect = widget.getRectangle();
         const page = await proxy.getPage(pageIndex + 1);
         const view = page.getViewport({ scale: 1 });
         const corners = [

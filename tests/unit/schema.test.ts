@@ -35,3 +35,23 @@ test('validates turn actions and language at API boundaries', () => {
     }).success,
   ).toBe(false);
 });
+
+test.each([
+  ['date', undefined, 'Menor de 18 años', false],
+  ['date', undefined, '2015-01-02', true],
+  ['checkbox', undefined, 'yes', false],
+  ['checkbox', undefined, 'true', true],
+  ['select', ['Yes', 'No'], 'Maybe', false],
+  ['select', ['Yes', 'No'], 'Yes', true],
+])('dependency on %s must name a possible answer (%s, %s)', (type, options, equals, valid) => {
+  const result = FormSchema.safeParse({
+    ...sample,
+    sections: [{ id: 'personal', title: 'Personal', fieldIds: ['parent', 'child'] }],
+    fields: [
+      { ...sample.fields[0], id: 'parent', type, options },
+      { ...sample.fields[0], id: 'child', dependsOn: { fieldId: 'parent', equals } },
+    ],
+  });
+  expect(result.success).toBe(valid);
+  if (!result.success) expect(result.error.message).toContain('valid literal answer');
+});

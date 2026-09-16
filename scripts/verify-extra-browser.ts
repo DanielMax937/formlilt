@@ -1,7 +1,14 @@
 import { chromium, expect } from '@playwright/test';
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { PDFDocument, PDFTextField, PDFCheckBox } from 'pdf-lib';
+import {
+  PDFDocument,
+  PDFTextField,
+  PDFCheckBox,
+  PDFRadioGroup,
+  PDFDropdown,
+  PDFOptionList,
+} from 'pdf-lib';
 import { FormSchema, type Session, type UILanguage } from '../lib/schema';
 import { t } from '../lib/i18n';
 import { formatDate } from '../lib/validate';
@@ -131,6 +138,12 @@ async function main() {
       Object.values(final.answers).filter((a) => a.status === 'answered').length,
     ).toBeGreaterThan(0);
     await writeFile(root + '/session.json', JSON.stringify(final, null, 2));
+    for (const [id, intended] of Object.entries(answers)) {
+      if (intended !== null)
+        expect(final.answers[id]?.status, `Manually intended answer ${id} must be reachable`).toBe(
+          'answered',
+        );
+    }
     const download = page.waitForEvent('download', { timeout: 45000 });
     await page.getByRole('button', { name: t(language, 'download'), exact: true }).click();
     await (await download).saveAs(root + '/filled.pdf');
@@ -143,7 +156,8 @@ async function main() {
       source.getPages().map((p) => p.getSize()),
     );
     let textFields = 0,
-      checkboxes = 0;
+      checkboxes = 0,
+      choiceFields = 0;
     for (const field of schema.fields) {
       const answer = final.answers[field.id];
       if (!field.acroName || answer?.status !== 'answered' || field.type === 'signature') continue;
@@ -158,6 +172,14 @@ async function main() {
       } else if (native instanceof PDFCheckBox) {
         expect(native.isChecked()).toBe(answer.value === 'true');
         checkboxes++;
+      } else if (native instanceof PDFRadioGroup) {
+        expect(native.getSelected()).toBe(answer.value);
+        choiceFields++;
+      } else if (native instanceof PDFDropdown || native instanceof PDFOptionList) {
+        expect(native.getSelected().sort()).toEqual(
+          (field.type === 'multiselect' ? JSON.parse(answer.value) : [answer.value]).sort(),
+        );
+        choiceFields++;
       }
     }
     await expect(page.locator('.document-preview img')).toHaveCount(source.getPageCount());
@@ -172,6 +194,7 @@ async function main() {
       pages: output.getPageCount(),
       nativeTextFields: textFields,
       nativeCheckboxes: checkboxes,
+      nativeChoiceFields: choiceFields,
       sourceSha256: createHash('sha256').update(sourceBytes).digest('hex'),
       exportSha256: createHash('sha256').update(outputBytes).digest('hex'),
     });

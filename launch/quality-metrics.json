@@ -1,11 +1,11 @@
 {
-  "measuredAt": "2026-09-16T01:02:53.013Z",
+  "measuredAt": "2026-09-16T17:55:55.277Z",
   "url": "http://127.0.0.1:3050/",
   "mode": "local production build, Lighthouse default mobile simulation",
   "lighthouseVersion": "13.4.1",
-  "performance": 99,
+  "performance": 97,
   "accessibility": 100,
-  "unitTests": 77,
+  "unitTests": 84,
   "e2eCases": 32,
   "e2eNote": "30 previous cases verified across both engines; error follow-up adds two real-PDF-rendering/mock-error retry cases. Targeted local follow-up 4/4 passed. Production acceptance tracked separately in QUALITY.md.",
   "nativeAcceptance": {
@@ -22,8 +22,7 @@
   "unverified": [
     "Physical iPhone microphone and VoiceOver",
     "Adobe Reader",
-    "Real phone photo",
-    "Five extra real forms manual review"
+    "Real phone photo"
   ],
   "failedGate": "Uncached agent-im extraction misses p95 <20 seconds; latest live matrix has 5 passes and one 300-second model timeout.",
   "runWarnings": [],
@@ -34,7 +33,7 @@
     "expected": 6,
     "note": "Real local upload and agent-im extraction through PDF download. Mobile WebKit school failed at the model 300-second timeout. Separate from the existing 32 ordinary E2E cases."
   },
-  "unitTestNote": "Latest split-date/checkbox-layout follow-up: 77 passed; typecheck and local production build passed. Lighthouse, native acceptance and original browser runs retain earlier dates.",
+  "unitTestNote": "Native-widget and literal-dependency follow-up: 84 passed; typecheck and local production build passed. Native acceptance and original browser runs retain earlier provenance.",
   "extractionFollowUp": {
     "recordedAt": "2026-09-16T16:42:00.507Z",
     "evidence": "launch/extra-form-results.json",
@@ -47,9 +46,24 @@
   },
   "extraBrowserAcceptance": {
     "evidence": "launch/extra-browser-verification.json",
-    "passed": 2,
+    "passed": 5,
+    "expected": 5,
     "browser": "desktop Chrome",
-    "buildId": "I5gwm5Iq-zTxKttqTgiak",
-    "note": "Two additional real uploads with manually reviewed synthetic answers and visual export review; not counted toward the original 6-case matrix. Five-extra-PDF and physical scan gates remain open."
+    "physicalScanVerified": true,
+    "nonEnglishFormsPassed": 2,
+    "note": "Five public blank PDFs passed real upload-to-download flows with manually reviewed synthetic answers and visual export review. Includes two Spanish forms, native AcroForm, flat text PDF and a verified physical scan. Per-run build provenance is in the evidence; original six-case matrix remains 5/6. Real phone photograph still unverified."
+  },
+  "previousLighthouse": {
+    "measuredAt": "2026-09-16T01:02:53.013Z",
+    "performance": 99,
+    "accessibility": 100,
+    "runWarnings": []
+  },
+  "lighthouseBuildId": "dcVIDd1qONvV0YFqIG2R0",
+  "latestTargetedRegression": {
+    "buildId": "dcVIDd1qONvV0YFqIG2R0",
+    "cases": 2,
+    "passed": 2,
+    "scope": "Existing complete address-form flow in Chrome and mobile WebKit; precomputed demo, no live extraction; these reruns do not add new case IDs."
   }
 }
