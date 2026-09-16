@@ -8,13 +8,13 @@ This file separates implemented behavior from acceptance that still needs eviden
 | TypeScript and production build | Passed locally; Vercel build passed |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
-| Upload → live extraction → download in one browser run | **Not passed**. Real extraction and precomputed-demo browser flows were verified separately; they do not prove the combined live-upload gate |
+| Upload → live extraction → download in one browser run | **5/6 passed; gate remains open.** Address and insurance sources passed real upload, extraction, required questions/signatures and PDF download in Chrome and mobile WebKit. School passed in Chrome; mobile WebKit's school request returned 502 `llm_error` after the 300-second model timeout, before question entry. Per-run evidence is in `launch/live-upload-verification.json`; no extraction mocks or precomputed demo endpoint were used |
 | Error handling and retry | Chrome + mobile WebKit: 4/4 targeted cases pass for localized upload failures, retry, switching to a demo and review edits. Extraction responses are mocked for these error-path tests; no model-accuracy claim |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
 | Lighthouse mobile | Final local production build (2026-09-16 01:02 UTC): Performance 99, Accessibility 100; no run warnings |
 | Normal turn / demo response speed | 20 local production samples: turn first-byte p95 8 ms, demo endpoint p95 7 ms |
-| Uncached extraction p95 <20s | **Failed**: original demo sources took 64–268s; additional W-9 and German residence form timed out at 300s |
+| Uncached extraction p95 <20s | **Failed**: original source benchmarks took 64–268s. Latest successful real browser uploads took 106.5–295.4s including client rendering/upload; one school request hit the 300s model timeout. Additional W-9 and German residence form requests also timed out at 300s |
 | Five extra real PDFs, including two non-English and one scan | **Not passed**. W-9 and Berlin form timed out; encrypted HK employer form safely rejected; French Cerfa extraction also timed out at 300s |
 | Physical phone photograph | **Not tested**; generated image fixture does not count as a real photograph |
 | Export appearance | Poppler + browser PDF.js verified. All three two-page exports visually inspected in macOS Preview 11.0, including Chinese text, signatures and preserved instruction pages. Adobe Reader pending; exact inspected file hashes are in `launch/native-verification.json` |
@@ -33,6 +33,7 @@ This file separates implemented behavior from acceptance that still needs eviden
 ## Current external constraints
 
 - The local agent-im health endpoint returns 200. Its inspected chat-completions request contract does not forward a reasoning-effort setting, so lowering it in this application's request would not be an established latency fix. No extra benchmark jobs are running.
+- The user approved the temporary localhost test service after the earlier approval-review capacity failures. All six live-upload cases were attempted, then port 3051 was verified closed; the user's existing port 3050 still returns HTTP 200. The remaining live-upload failure is a model timeout, recorded with its actual response and Playwright trace. No unchanged retry is queued.
 - The user unlocked the Mac on 2026-09-16. Native Preview, desktop VoiceOver and Chrome microphone/question speech acceptance are now recorded in `launch/native-verification.json`. Adobe Reader is not installed; physical iPhone checks and a real phone photograph still need the corresponding device/input.
 - Production live extraction still needs a publicly reachable model endpoint plus Redis credentials. The earlier configuration question remains unanswered; the hosted deployment stays an explicit demo preview.
 

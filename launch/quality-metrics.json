@@ -25,6 +25,13 @@
     "Real phone photo",
     "Five extra real forms manual review"
   ],
-  "failedGate": "agent-im uncached extraction 64–268 seconds; target p95 <20 seconds not met",
-  "runWarnings": []
+  "failedGate": "Uncached agent-im extraction misses p95 <20 seconds; latest live matrix has 5 passes and one 300-second model timeout.",
+  "runWarnings": [],
+  "liveUploadAcceptance": {
+    "evidence": "launch/live-upload-verification.json",
+    "passed": 5,
+    "failed": 1,
+    "expected": 6,
+    "note": "Real local upload and agent-im extraction through PDF download. Mobile WebKit school failed at the model 300-second timeout. Separate from the existing 32 ordinary E2E cases."
+  }
 }

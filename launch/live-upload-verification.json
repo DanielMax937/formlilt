@@ -1,0 +1,239 @@
+{
+  "recordedAt": "2026-09-16T16:10:57.328149+00:00",
+  "sourceCommit": "eec02c857d8fee38b23bf1bd8b6fe9788b87d8fc",
+  "buildId": "fhPXUvRzNPA2cecO2efab",
+  "target": "http://127.0.0.1:3051",
+  "provider": "agent-im",
+  "model": "codex-login/gpt-6-astra",
+  "mocked": false,
+  "expectedCases": 6,
+  "passedCases": 5,
+  "failedCases": 1,
+  "scope": "Real local browser upload, extraction, required questions/signatures and PDF download; not production or physical iPhone acceptance.",
+  "note": "Synthetic answers only. Local raw test artifacts are ignored by Git. Timings include browser rendering and upload; not a p95 benchmark. Remaining cases are not implied passed.",
+  "runs": [
+    {
+      "slug": "change-of-address",
+      "project": "chromium",
+      "startedAt": "2026-09-16T15:42:19.739Z",
+      "extractionSeconds": 155.941,
+      "totalSeconds": 198.867,
+      "fields": 31,
+      "signatures": 3,
+      "checkedNativeTextFields": 4,
+      "pages": 2,
+      "mocked": false,
+      "errors": [],
+      "status": "passed",
+      "evidenceDirectory": "tmp/live-upload/chromium-address/live-upload-change-of-addr-c6266--signature-and-PDF-download-chromium",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "pdfSha256": "2dc37a15ca37eb82b000999287c4018fed81ea0abe5e225dee302eb38bfaeb9a",
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "path": "/api/turn",
+          "status": 200,
+          "count": 27
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "slug": "insurance-claim",
+      "project": "chromium",
+      "startedAt": "2026-09-16T15:47:48.344Z",
+      "extractionSeconds": 143.764,
+      "totalSeconds": 159.633,
+      "fields": 42,
+      "signatures": 1,
+      "checkedNativeTextFields": 4,
+      "pages": 2,
+      "mocked": false,
+      "errors": [],
+      "status": "passed",
+      "evidenceDirectory": "tmp/live-upload/chromium-insurance/live-upload-insurance-clai-e0bd5--signature-and-PDF-download-chromium",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "pdfSha256": "56b202c11b844b8fcdfd2e53cd83d4926993b49b8e3acd7fe1f18ae2b939d47e",
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "path": "/api/turn",
+          "status": 200,
+          "count": 29
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "slug": "medical-release",
+      "project": "chromium",
+      "startedAt": "2026-09-16T15:57:48.659Z",
+      "extractionSeconds": 295.351,
+      "totalSeconds": 321.736,
+      "fields": 103,
+      "signatures": 2,
+      "checkedNativeTextFields": 0,
+      "pages": 2,
+      "mocked": false,
+      "errors": [],
+      "status": "passed",
+      "evidenceDirectory": "tmp/live-upload/chromium-school/live-upload-medical-releas-95637--signature-and-PDF-download-chromium",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "pdfSha256": "0d07d8231bab02ceb254a23585da0c58ea788b77f962daa4d9f877ce74017d3a",
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "path": "/api/turn",
+          "status": 200,
+          "count": 101
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "slug": "change-of-address",
+      "project": "mobile-webkit",
+      "startedAt": "2026-09-16T15:52:37.064Z",
+      "extractionSeconds": 106.541,
+      "totalSeconds": 113.855,
+      "fields": 31,
+      "signatures": 3,
+      "checkedNativeTextFields": 4,
+      "pages": 2,
+      "mocked": false,
+      "errors": [],
+      "status": "passed",
+      "evidenceDirectory": "tmp/live-upload/webkit-address/live-upload-change-of-addr-c6266--signature-and-PDF-download-mobile-webkit",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "pdfSha256": "6e21794a7680ab228b37f4f66e8450227090324c0626b066bf0a91d724139e7f",
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "path": "/api/turn",
+          "status": 200,
+          "count": 27
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "slug": "insurance-claim",
+      "project": "mobile-webkit",
+      "startedAt": "2026-09-16T15:54:39.131Z",
+      "extractionSeconds": 141.925,
+      "totalSeconds": 155.076,
+      "fields": 42,
+      "signatures": 1,
+      "checkedNativeTextFields": 4,
+      "pages": 2,
+      "mocked": false,
+      "errors": [],
+      "status": "passed",
+      "evidenceDirectory": "tmp/live-upload/webkit-insurance/live-upload-insurance-clai-e0bd5--signature-and-PDF-download-mobile-webkit",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "pdfSha256": "9ca40838a63023c1c4bb667c33033c434336b5466c12731692a5c1c133913210",
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 200,
+          "count": 1
+        },
+        {
+          "path": "/api/turn",
+          "status": 200,
+          "count": 29
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200,
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "slug": "medical-release",
+      "project": "mobile-webkit",
+      "startedAt": "2026-09-16T16:03:22.378Z",
+      "extractionSeconds": 302.183,
+      "status": "failed",
+      "mocked": false,
+      "apiResponses": [
+        {
+          "path": "/api/extract",
+          "status": 502
+        }
+      ],
+      "httpStatus": 502,
+      "failureStage": "extraction",
+      "error": {
+        "code": "llm_error",
+        "message": "Reading the form timed out. Please try again."
+      },
+      "evidenceDirectory": "tmp/live-upload/webkit-school/live-upload-medical-releas-95637--signature-and-PDF-download-mobile-webkit",
+      "traceSha256": "408c38daee718fef14f80580cc4fbf7a613649b5fb325b0c46d351accc8fe4fe"
+    }
+  ],
+  "visualReview": {
+    "method": "Rendered actual live-upload outputs with Poppler and inspected their images.",
+    "passed": [
+      {
+        "project": "chromium",
+        "slug": "change-of-address",
+        "pages": [
+          1
+        ]
+      },
+      {
+        "project": "chromium",
+        "slug": "insurance-claim",
+        "pages": [
+          1
+        ]
+      },
+      {
+        "project": "chromium",
+        "slug": "medical-release",
+        "pages": [
+          1,
+          2
+        ]
+      }
+    ],
+    "observations": "Filled text and signatures occupy their intended fields; school signature date is visible. Skipped optional fields remain empty.",
+    "scope": "This image review does not substitute for the separate Adobe Reader gate."
+  }
+}

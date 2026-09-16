@@ -67,6 +67,16 @@ pnpm test:e2e
 
 `PLAYWRIGHT_BASE_URL=https://your-host` runs browser tests against a deployed instance. Use `tests/e2e/complete.spec.ts` for the three download flows. Chromium uses installed Chrome; install WebKit with `pnpm exec playwright install webkit`. Safari all-controls keyboard navigation uses Option+Tab.
 
+`tests/e2e/live-upload.spec.ts` separately exercises actual file upload and model extraction before filling and downloading each demo source. It is skipped unless `RUN_LIVE_UPLOAD=1` is set. Run one source/browser case at a time against a fresh local production server using the local in-memory limits; restarting does not reset Redis-backed limits. Do not run it against the public demo-only deployment. For example, start `pnpm exec next start --hostname 127.0.0.1 --port 3051`, then run:
+
+```sh
+RUN_LIVE_UPLOAD=1 PLAYWRIGHT_BASE_URL=http://127.0.0.1:3051 \
+  pnpm exec playwright test tests/e2e/live-upload.spec.ts \
+  --project=chromium --grep 'change-of-address:' --workers=1
+```
+
+This sends a public blank PDF to the configured model and consumes its resources. Each run saves its real extraction response, timing, final PDF and synthetic-answer verification under `test-results/` (or the supplied `--output` directory). The recorded live matrix is **5/6 passed**: the mobile WebKit school request hit the model's 300-second timeout. See [live-upload evidence](launch/live-upload-verification.json) and [release readiness](QUALITY.md).
+
 Mobile Lighthouse on the final local production build: **99 performance / 100 accessibility**. See [BUILD_LOG.md](BUILD_LOG.md), [quality metrics](launch/quality-metrics.json), and [extraction benchmark](launch/extraction-benchmark.json). Separate [native acceptance](launch/native-verification.json) passed all three exports in macOS Preview, the first five insurance questions with macOS VoiceOver, and real Chrome microphone input plus question speech. The user confirmed audible output. Automated speech tests use browser API mocks; physical iPhone acceptance remains open.
 
 **Release gates still open:** uncached extraction speed, five extra real PDFs including a scan, a real phone photo, physical iPhone speech/VoiceOver, Adobe Reader, and product-owner acceptance. These are not represented as passed.

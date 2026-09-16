@@ -28,6 +28,8 @@ Read `QUALITY.md` and `launch/quality-metrics.json` for current acceptance. The 
 
 Separate native acceptance passed all three two-page exports in macOS Preview, the first five insurance questions using macOS VoiceOver and keyboard input, and real Chrome microphone transcription with editable correction. The user confirmed clear VoiceOver output and app question speech. File hashes, versions and observations are recorded in `launch/native-verification.json`; this does not establish physical iPhone compatibility.
 
+The separate real-upload browser matrix reached 5/6 passed through agent-im Astra: address and insurance forms in both engines, plus the school form in Chrome. Mobile WebKit's school request hit the 300-second model timeout before entering the questionnaire. Successful upload/extraction times ranged from 106.5 to 295.4 seconds, including client rendering/upload. `launch/live-upload-verification.json` records the successful PDFs and failed response; the full live-upload gate remains open.
+
 Uncached extraction does not meet the <20s target. Five additional real forms, a real phone photograph, physical iPhone speech/VoiceOver, and Adobe Reader acceptance are still open. The hosted site is a working demo preview, not a fully accepted live-upload launch.
 
 ## Links
