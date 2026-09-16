@@ -4,6 +4,7 @@ import { FormSchema } from '@/lib/schema';
 import { sample } from '../fixtures/form';
 import { CompactExtract, hydrateExtract } from '@/lib/compact-extract';
 import { formatDate, validate } from '@/lib/validate';
+import type { ParsedDocument } from '@/lib/pdf-extract';
 const doc = {
   source: 'pdf' as const,
   pages: [
@@ -99,6 +100,72 @@ test('unsupported instructions are removed from help', () => {
     doc,
   );
   expect(result.fields[0].help).toBeUndefined();
+});
+
+const scanDoc: ParsedDocument = {
+  source: 'pdf',
+  pages: [{ ...doc.pages[0], kind: 'scan', textItems: [] }],
+  acroFields: [],
+};
+const scannedInstructions = 'Please initial each statement to indicate your understanding.';
+const scanRaw = {
+  ...choices,
+  rows: [
+    ['Patient initials', 'text', true, 0, 0, -1, -1, [0.1, 0.1, 0.2, 0.14], [], -1, '', [], null],
+  ],
+  scanHelp: [[0, scannedInstructions]],
+};
+test.each(['pdf', 'image'] as const)(
+  'scanned %s instructions survive extraction and grounding',
+  (source) => {
+    const document = { ...scanDoc, source };
+    const schema = groundSchema(hydrateExtract(CompactExtract.parse(scanRaw), document), document);
+    expect(schema.fields[0].help).toBe(scannedInstructions);
+    expect(schema.precision).toBe('approximate');
+  },
+);
+test('scan instructions remain available in a mixed text/scan document', () => {
+  const document: ParsedDocument = {
+    ...scanDoc,
+    pages: [...doc.pages, { ...scanDoc.pages[0], index: 1 }],
+  };
+  const row = [...scanRaw.rows[0]];
+  row[4] = 1;
+  const schema = groundSchema(
+    hydrateExtract(CompactExtract.parse({ ...scanRaw, rows: [row] }), document),
+    document,
+  );
+  expect(schema.fields[0].help).toBe(scannedInstructions);
+  expect(schema.fields[0].anchor?.page).toBe(1);
+});
+test.each([
+  { scanHelp: [[99, scannedInstructions]] },
+  {
+    scanHelp: [
+      [0, scannedInstructions],
+      [0, 'A conflicting quote.'],
+    ],
+  },
+])('unknown or duplicate scan excerpt references are rejected (%j)', ({ scanHelp }) => {
+  expect(() => hydrateExtract(CompactExtract.parse({ ...scanRaw, scanHelp }), scanDoc)).toThrow(
+    'scan help',
+  );
+});
+test('one scan field cannot carry conflicting indexed and visual help', () => {
+  const row = [...scanRaw.rows[0]];
+  row[11] = [0];
+  expect(() => hydrateExtract(CompactExtract.parse({ ...scanRaw, rows: [row] }), scanDoc)).toThrow(
+    'scan help',
+  );
+});
+test('scan excerpts cannot bypass text-page source checking', () => {
+  expect(() =>
+    hydrateExtract(CompactExtract.parse({ ...choices, scanHelp: [[0, 'Invented.']] }), doc),
+  ).toThrow('scan help');
+});
+test('unreadable scan instructions stay absent rather than becoming invented advice', () => {
+  const schema = hydrateExtract(CompactExtract.parse({ ...scanRaw, scanHelp: [] }), scanDoc);
+  expect(schema.fields[0].help).toBeUndefined();
 });
 
 test.each([

@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-09-16T18:38:51.452Z",
+  "probes": [
+    {
+      "startedAt": "2026-09-16T18:37:51.985Z",
+      "model": "codex-login/gpt-5.6-sol",
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "source": "Public blank Tinley Park dog license, unchanged from prior acceptance",
+      "changes": "Model-only comparison; current extraction prompt, parser and schema unchanged",
+      "scope": "Extraction timing probe, not browser acceptance or a p95 estimate",
+      "result": "schema returned; all 10 applicant field identities and native references match the reviewed source",
+      "fields": 10,
+      "seconds": 59.467,
+      "calls": [
+        {
+          "status": 200,
+          "seconds": 59.289,
+          "usage": {
+            "prompt_tokens": 22566,
+            "completion_tokens": 758,
+            "total_tokens": 23324
+          }
+        }
+      ],
+      "finishedAt": "2026-09-16T18:38:51.452Z",
+      "schemaSha256": "5668e3a24f1f3bc3ade4777f6c7230ff0b88d8b84a882bd590facb2681f4ac29",
+      "expectedApplicantFields": 10,
+      "nativeReferencesMatch": true,
+      "implementationCommit": "a2e60c6f351b690b8adf989da3a38a9426aefb08",
+      "implementationHashes": {
+        "lib/llm.ts": "bb13ad33cb6a166dbced5cc41cf15072b41c39dd4ecdccacd1341c0c354c3b75",
+        "lib/pdf-extract.ts": "02d0f12a394781504a1649be18718fb5c3f676299a151f1f65fb768878cc19f9",
+        "lib/schema.ts": "9595ff8341623fb7dec490ad713a981bae5356d3cb521f2bf09f15ebab5a5c5d"
+      },
+      "promptProvenance": "Probe ran before this turn\u2019s scan-help edits, using prompts/extract.ts and lib/compact-extract.ts from the implementation commit.",
+      "decision": "Retain Astra default. This Sol sample does not establish a route to the <20-second target. It is one direct extraction sample, not a p95 or full-browser measurement."
+    }
+  ],
+  "defaultModelChanged": false
+}

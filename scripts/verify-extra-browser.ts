@@ -101,6 +101,21 @@ async function main() {
         if (!key) throw new Error('No actual uploaded session');
         return JSON.parse(localStorage.getItem(key)!);
       });
+    if (process.env.VERIFY_SOURCE_HELP === '1') {
+      if (language !== 'en' || schema.language.split('-')[0] !== 'en')
+        throw new Error(
+          'Source-quote verification requires English UI and source; it does not test translation.',
+        );
+      const firstId = (await session()).currentFieldId;
+      const field = schema.fields.find((f) => f.help);
+      if (!field) throw new Error('The extraction contains no source help to verify.');
+      await page.getByTestId('todo-' + field.id).click();
+      await page.getByRole('button', { name: t(language, 'explain'), exact: true }).click();
+      await expect(page.locator('.explanation p')).toHaveText(field.help!);
+      evidence.sourceHelp = { fieldId: field.id, quote: field.help, displayed: true };
+      await page.screenshot({ path: root + '/source-help.png', fullPage: true });
+      await page.getByTestId('todo-' + firstId).click();
+    }
     let steps = 0;
     for (; steps < 160; steps++) {
       const current = await session();

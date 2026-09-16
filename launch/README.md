@@ -6,6 +6,8 @@ Prepared from the actual local production build, using synthetic answers. The we
 
 [Real upload acceptance](live-upload-verification.json): 5/6 local browser cases passed through agent-im without extraction mocks. The mobile WebKit school request timed out during model extraction; that release gate remains open.
 
+[Scanned-source explanation follow-up](scan-help-verification.json) records a real upload, visible source quote and 16 synthetic applicant answers through signature/date and PDF download. Its first semantic failure remains recorded; this repeats one of the five reviewed sources rather than adding a sixth.
+
 ## Visual assets
 
 - [60-second captioned review draft](formlilt-demo-draft.mp4) — actual local demo UI, H.264, 1440×1120, 25 fps, 2.37 MB. No audio. Keyboard answers, source explanation, skip/return, pointer-drawn test signature, linked date and PDF download. Live-upload/voice footage still needs recording; this is not complete §2.3 acceptance.

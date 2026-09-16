@@ -1,0 +1,291 @@
+{
+  "recordedAt": "2026-09-16T18:56:41.332847+00:00",
+  "sourceUrl": "https://www.indigodermatology.com/wp-content/uploads/2025/07/medical-photography-consent-form.pdf",
+  "sourceType": "Previously verified one-page physical paper scan; no text layer or native widgets",
+  "model": "codex-login/gpt-6-astra",
+  "baseCommit": "a2e60c6f351b690b8adf989da3a38a9426aefb08",
+  "unitTestsPassed": 93,
+  "regression": {
+    "buildId": "g2kaaSrBF18XRn48XM41u",
+    "cases": 2,
+    "passed": 2,
+    "scope": "Existing invalid-email/source-help test in Chrome and mobile WebKit. Final subsequent prompt-only correction validated with the real scan run below."
+  },
+  "attempts": [
+    {
+      "name": "indigo-help",
+      "startedAt": "2026-09-16T18:44:35.341Z",
+      "buildId": "g2kaaSrBF18XRn48XM41u",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 103.641,
+      "extractionStatus": 200,
+      "fields": 18,
+      "formLanguage": "en",
+      "schemaSha256": "9c5835f1c0294dd06e894a4e13bccebaaf24cf6585d2191b6d6df7126ce36bc4",
+      "phase": "exported; visual review pending",
+      "sourceHelp": {
+        "fieldId": "f3",
+        "quote": "(Please check yes or no to show type of consent)",
+        "displayed": true
+      },
+      "steps": 17,
+      "answeredFields": 12,
+      "pages": 1,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 0,
+      "sourceSha256": "d6dbdc4d49841aa30b7fcb2926d7434453e5989679d52ae354cf26210e2231fe",
+      "exportSha256": "6a71bcbf9231f7aaf2f525e5d456ea29cba168cbfd5899b89624f92f24605b28",
+      "finishedAt": "2026-09-16T18:48:11.389Z",
+      "requests": [
+        {
+          "path": "/api/extract",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "acceptance": "Failed semantic coverage: four underlined parenthesis blanks were inferred as checkboxes. Source-quote display succeeded; partial diagnostic export is not counted as a full form pass.",
+      "implementationNote": "Build g2kaaSrBF18XRn48XM41u includes scanHelp but predates the parenthesized-writing-blank prompt correction."
+    },
+    {
+      "name": "indigo-help-corrected",
+      "startedAt": "2026-09-16T18:50:42.455Z",
+      "buildId": "vSj_nJzB_54-euLHae2aN",
+      "mocked": false,
+      "language": "en",
+      "extractionSeconds": 104.226,
+      "extractionStatus": 200,
+      "fields": 18,
+      "formLanguage": "en",
+      "schemaSha256": "459f19b58f035cc5364f5d9741a9731525e9560ea8687def119deeb6af6f45b2",
+      "phase": "exported; visual review pending",
+      "sourceHelp": {
+        "fieldId": "f3",
+        "quote": "(Please check yes or no to show type of consent)",
+        "displayed": true
+      },
+      "steps": 17,
+      "answeredFields": 16,
+      "pages": 1,
+      "nativeTextFields": 0,
+      "nativeCheckboxes": 0,
+      "nativeChoiceFields": 0,
+      "sourceSha256": "d6dbdc4d49841aa30b7fcb2926d7434453e5989679d52ae354cf26210e2231fe",
+      "exportSha256": "86b2e627e407a8fc314aa523b6a8915281e104700dfb774648e083d51ee8324f",
+      "finishedAt": "2026-09-16T18:54:46.822Z",
+      "requests": [
+        {
+          "path": "/api/extract",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/turn",
+          "status": 200
+        },
+        {
+          "path": "/api/finalize",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "acceptance": "Passed real Chrome upload, source-quote display, manually reviewed applicant inputs, signature/date, review/download and visual export review.",
+      "inventory": {
+        "applicantFields": 16,
+        "optionalStaffFields": 2,
+        "representedApplicantFields": 16,
+        "answeredApplicantFields": 16,
+        "staffFieldsSkipped": 2,
+        "notes": "Name and date of birth; four initials blanks; four exclusive Yes/No pairs; patient signature and date. Staff signature/date are accessible optional fields and remain blank."
+      },
+      "visualReview": {
+        "passed": true,
+        "renderers": [
+          "browser PDF.js",
+          "Poppler"
+        ],
+        "checks": [
+          "All distinct source-help quotations match the original scan.",
+          "Four AR initials fit in their parenthesis blanks.",
+          "Only the four No lines carry marks; Yes lines are blank.",
+          "Patient name, birthdate, signature and linked date are readable.",
+          "Staff areas remain blank; original page count and dimensions are preserved."
+        ]
+      },
+      "implementationHashes": {
+        "lib/compact-extract.ts": "1290b8dca5686d807942f23ce48bf28035c98b5ef5df60908ad4b1b1be43fdd8",
+        "lib/extract-form.ts": "f3de87ab26e1a63073dd7b8c1b2a84a285d61fff9b4358db7e373cf2de2784af",
+        "prompts/extract.ts": "ed6ac118571bdb462a99638073427ee843a5090a449a2af39860ee12157ef601",
+        "lib/schema.ts": "9595ff8341623fb7dec490ad713a981bae5356d3cb521f2bf09f15ebab5a5c5d",
+        "lib/fill-pdf.ts": "44ec7a9bab33f173143193f2458056c748f330cce471f67a8fddc85b646c2a1c"
+      }
+    }
+  ],
+  "limitations": [
+    "Visual transcription remains approximate; this reviewed source does not establish universal OCR accuracy.",
+    "This repeats an existing source and does not increase the five-extra-PDF count.",
+    "No actual phone photograph, physical iPhone or Adobe Reader acceptance is established.",
+    "Extraction latency still fails the target."
+  ],
+  "deployed": false
+}

@@ -4,18 +4,19 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 84 passed after the native-widget and literal-dependency follow-up; every API route covered |
-| TypeScript and production build | Latest local checks passed, build `dcVIDd1qONvV0YFqIG2R0`. The hosted preview passed its earlier build and does not yet contain these extraction/export follow-ups |
+| Unit/API tests | 93 passed after the scan-help follow-up; every API route covered |
+| TypeScript and production build | Latest local checks passed, build `vSj_nJzB_54-euLHae2aN`. The hosted preview passed its earlier build and does not yet contain these extraction/export follow-ups |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
 | Upload → live extraction → download in one browser run | **5/6 passed; gate remains open.** Address and insurance sources passed real upload, extraction, required questions/signatures and PDF download in Chrome and mobile WebKit. School passed in Chrome; mobile WebKit's school request returned 502 `llm_error` after the 300-second model timeout, before question entry. Per-run evidence is in `launch/live-upload-verification.json`; no extraction mocks or precomputed demo endpoint were used |
 | Error handling and retry | Chrome + mobile WebKit: 4/4 targeted cases pass for localized upload failures, retry, switching to a demo and review edits. Extraction responses are mocked for these error-path tests; no model-accuracy claim |
 | Keyboard-only | Address form completed and downloaded in Chrome and WebKit; Safari uses Option+Tab |
 | Automated accessibility | Axe WCAG A/AA: zero violations on home, workspace, signature, review, About in both engines |
-| Lighthouse mobile | Latest local production build (2026-09-16 17:55 UTC / September 17 CST): Performance 97, Accessibility 100; no run warnings. Earlier measurement was 99/100. |
+| Lighthouse mobile | Recorded local build `dcVIDd1qONvV0YFqIG2R0` (2026-09-16 17:55 UTC / September 17 CST): Performance 97, Accessibility 100; no run warnings. The later changes affect server extraction, not the UI. Earlier measurement was 99/100. |
 | Normal turn / demo response speed | 20 local production samples: turn first-byte p95 8 ms, demo endpoint p95 7 ms |
 | Uncached extraction p95 <20s | **Failed**: original source benchmarks took 64–268s. Successful real browser uploads took 60.8–295.4s including client rendering/upload; one school request hit the 300s model timeout. The latest German source extraction took 169.629s; French Cerfa still timed out at 300s |
 | Five extra real PDFs, including two non-English and one scan | **Passed for five reviewed sources.** Andalucía (Spanish, 29 fields), Sterling Heights (English, 25), Tinley (native AcroForm, 10), Castilla–La Mancha (Spanish, 51) and Indigo (verified physical scan, 16) completed real Chrome upload → questions → signature → review → download with synthetic answers and visual PDF review. The two non-English forms are both Spanish. Exact source/build/schema/export hashes and earlier failures are in `launch/extra-browser-verification.json`. This does not erase W-9, French Cerfa or GF timeouts, or establish phone-photo acceptance |
+| Scanned source instructions | **Passed for the reviewed scan.** Added bounded visual quotations for scan pages, including mixed text/scan PDFs. A real Chrome Indigo upload showed the exact reviewed source quote and completed 16 applicant fields plus signature/date export; staff fields stayed blank. An initial field-type failure is preserved alongside the correction in `launch/scan-help-verification.json`. Visual transcription remains approximate |
 | Physical phone photograph | **Not tested**; generated image fixture does not count as a real photograph |
 | Export appearance | Poppler + browser PDF.js verified. All three two-page exports visually inspected in macOS Preview 11.0, including Chinese text, signatures and preserved instruction pages. Adobe Reader pending; exact inspected file hashes are in `launch/native-verification.json` |
 | First five questions with macOS VoiceOver | **Passed** in real Chrome on macOS 26.3.1: keyboard submission advanced through five insurance questions with correct focus; user confirmed audible question and control names. VoiceOver restored to off |
@@ -31,6 +32,9 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Challenge submission and PH schedule | Not submitted or scheduled; eligibility and owner acceptance remain unverified |
 
 ## Current external constraints
+
+- A model-only Sol probe of the same public Tinley source returned all 10 applicant fields in 59.467s (one call, no repair). This single direct-extraction sample does not establish the <20s target or a browser p95; Astra remains the default. See `launch/extraction-latency-probes.json`.
+- The scan-help follow-up completed real extraction in 104.226s on local build `vSj_nJzB_54-euLHae2aN`. Its first attempt exposed four initials blanks misclassified as checkboxes; the corrected prompt preserves them as text. Both attempts and visual evidence are retained. Test port 3051 is stopped; user app 3050 remains running.
 
 - Video capture through real Chrome succeeded for keyboard/signature/export. Automated native speech recording did not: after correcting an initially silent synthesized test WAV, both the fake-audio-device and speaker/microphone probes returned native `no-speech`. No transcript was fabricated. This does not invalidate the earlier user-confirmed physical microphone acceptance, but leaves the voice footage open.
 - Computer Use explicitly disallowed access to the Codex app. Actual Astra conversation screenshots could not be captured through that tool; no alternate capture bypass or reconstructed chat screenshot was used.

@@ -44,10 +44,7 @@ export function groundSchema(schema: FormSchema, doc: ParsedDocument): FormSchem
       .join(' ')
       .replace(/\s+/g, ' ');
     const help =
-      field.help &&
-      (doc.source === 'image' ||
-        doc.pages.every((p) => p.kind === 'scan') ||
-        allText.includes(field.help.replace(/\s+/g, ' ')))
+      field.help && (page.kind === 'scan' || allText.includes(field.help.replace(/\s+/g, ' ')))
         ? field.help
         : undefined;
     return {

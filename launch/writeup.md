@@ -18,6 +18,7 @@ The model adapter first used the user's local agent-im OpenAI-compatible service
 - Actual source coordinates are more reliable than model-drawn boxes for text PDFs. Scans remain approximate.
 - Logical PDF text is not enough: visual rendering caught a CJK subset-font `loca` alignment defect. A reproducible font preparation script now pads glyph data correctly.
 - WebKit required storing original file bytes/metadata in IndexedDB rather than assuming a File clone always survives.
+- Pure scans need a path for source instructions as well as field coordinates: bounded image quotations now survive mixed text/scan documents, while text pages retain source-string verification. Real scan testing also caught initials blanks incorrectly classified as checkboxes; the corrected prompt preserves those writing areas.
 - Whole-schema verification prevents a user-supplied demo label from bypassing quota checks.
 - Hosting constraints matter: Vercel cannot reach a laptop's loopback API and accepts much less than a 10 MB original plus rendered pages in one request.
 - Consent and clear wording matter: the public preview is precomputed and has no live uploads or answer translation. Provider retention is disclosed instead of making a blanket “nothing is stored” claim.

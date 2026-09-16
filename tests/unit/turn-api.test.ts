@@ -38,6 +38,26 @@ test('explanations quote help and unknown field requests fail', async () => {
   expect(JSON.parse((await res.text()).trim()).data.explanation).toContain('does not explain');
   expect((await turn({ ...base, currentFieldId: 'unknown' })).status).toBe(400);
 });
+test('scan explanations return the extracted source quote without generating new advice', async () => {
+  vi.mocked(streamValidated).mockClear();
+  const help = 'Please initial each statement to indicate your understanding.';
+  const schema = {
+    ...sample,
+    precision: 'approximate',
+    pages: sample.pages.map((p) => ({ ...p, kind: 'scan' })),
+    fields: [
+      {
+        ...sample.fields[0],
+        help,
+        anchor: { page: 0, bbox: [0.1, 0.1, 0.4, 0.2], placement: 'inbox' },
+      },
+    ],
+  };
+  const response = await turn({ ...base, schema, action: 'explain' });
+  expect(response.status).toBe(200);
+  expect(JSON.parse((await response.text()).trim()).data.explanation).toBe(help);
+  expect(streamValidated).not.toHaveBeenCalled();
+});
 
 test('translated questions are marked as complete and remain on the same field', async () => {
   vi.mocked(streamValidated).mockImplementationOnce(async function* () {

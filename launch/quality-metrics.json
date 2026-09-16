@@ -5,7 +5,7 @@
   "lighthouseVersion": "13.4.1",
   "performance": 97,
   "accessibility": 100,
-  "unitTests": 84,
+  "unitTests": 93,
   "e2eCases": 32,
   "e2eNote": "30 previous cases verified across both engines; error follow-up adds two real-PDF-rendering/mock-error retry cases. Targeted local follow-up 4/4 passed. Production acceptance tracked separately in QUALITY.md.",
   "nativeAcceptance": {
@@ -33,7 +33,7 @@
     "expected": 6,
     "note": "Real local upload and agent-im extraction through PDF download. Mobile WebKit school failed at the model 300-second timeout. Separate from the existing 32 ordinary E2E cases."
   },
-  "unitTestNote": "Native-widget and literal-dependency follow-up: 84 passed; typecheck and local production build passed. Native acceptance and original browser runs retain earlier provenance.",
+  "unitTestNote": "Scan-help follow-up: 93 passed; typecheck and local production build passed. Older measurements retain their build provenance.",
   "extractionFollowUp": {
     "recordedAt": "2026-09-16T16:42:00.507Z",
     "evidence": "launch/extra-form-results.json",
@@ -61,9 +61,23 @@
   },
   "lighthouseBuildId": "dcVIDd1qONvV0YFqIG2R0",
   "latestTargetedRegression": {
-    "buildId": "dcVIDd1qONvV0YFqIG2R0",
+    "buildId": "g2kaaSrBF18XRn48XM41u",
     "cases": 2,
     "passed": 2,
-    "scope": "Existing complete address-form flow in Chrome and mobile WebKit; precomputed demo, no live extraction; these reruns do not add new case IDs."
+    "scope": "Existing invalid-email/source-help test in Chrome and mobile WebKit. Final subsequent prompt-only correction validated with the real scan run below."
+  },
+  "latestLocalBuildId": "vSj_nJzB_54-euLHae2aN",
+  "scanHelpFollowUp": {
+    "evidence": "launch/scan-help-verification.json",
+    "passed": true,
+    "extractionSeconds": 104.226,
+    "fields": 18,
+    "applicantFields": 16
+  },
+  "modelLatencyProbe": {
+    "evidence": "launch/extraction-latency-probes.json",
+    "model": "codex-login/gpt-5.6-sol",
+    "seconds": 59.467,
+    "defaultModelChanged": false
   }
 }

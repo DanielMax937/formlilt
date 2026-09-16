@@ -391,5 +391,6 @@
   "flatTextPdfVerified": true,
   "realPhonePhotoVerified": false,
   "temporaryServiceClosed": true,
-  "userServiceHttpStatus": 200
+  "userServiceHttpStatus": 200,
+  "scanHelpFollowUpEvidence": "launch/scan-help-verification.json"
 }

@@ -25,6 +25,12 @@ export const CompactExtract = z.object({
   signature: z.number().int().min(-1),
   date: z.number().int().min(-1),
   name: z.number().int().min(-1),
+  // Scans have no text-item indices. Keep short visible source quotations separate
+  // from the positional field rows; older cached responses may omit them.
+  scanHelp: z
+    .array(z.tuple([z.number().int().min(0), z.string().trim().min(1).max(300)]))
+    .max(150)
+    .optional(),
   exclusiveGroups: z
     .array(z.array(z.number().int().min(0)).min(2).max(21))
     .max(30)
@@ -36,6 +42,13 @@ export const uniqueAcro = (doc: ParsedDocument) =>
 export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSchema {
   const acros = uniqueAcro(doc);
   const id = (index: number) => 'f' + index;
+  const scanHelp = new Map<number, string>();
+  for (const [rowIndex, quote] of raw.scanHelp ?? []) {
+    const row = raw.rows[rowIndex];
+    if (!row || doc.pages[row[4]]?.kind !== 'scan' || scanHelp.has(rowIndex) || row[11].length)
+      throw new Error('Invalid scan help: use one excerpt per scan row without text help indices.');
+    scanHelp.set(rowIndex, quote);
+  }
   const sourceFields: Field[] = raw.rows.map((r, i) => {
     const [
       label,
@@ -87,7 +100,9 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
               .join(' ')
               .slice(0, 300),
           }
-        : {}),
+        : scanHelp.has(i)
+          ? { help: scanHelp.get(i) }
+          : {}),
       ...(dependency >= 0 ? { dependsOn: { fieldId: id(dependency), equals } } : {}),
       anchor: {
         page: pageIndex,
