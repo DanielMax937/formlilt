@@ -11,7 +11,7 @@ import { enforceLimit } from '@/lib/rate-limit';
 import { streamValidated } from '@/lib/llm';
 import { turnPrompt } from '@/prompts/turn';
 export const runtime = 'nodejs';
-export const preferredRegion = 'hkg1';
+export const preferredRegion = 'sin1';
 export const maxDuration = 60;
 const Wording = z.object({
   question: z.string().max(1000),

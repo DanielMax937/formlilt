@@ -43,7 +43,7 @@ Switch `LLM_PROVIDER` to `openai` or `doubao` and set the corresponding `OPENAI_
 
 ## Production configuration
 
-The checked-in Vercel config uses Node functions in **hkg1**, with Fluid Compute enabled and extraction `maxDuration=300` (other routes use 60 seconds). `.env.local` is excluded from Git and deployments.
+The checked-in Vercel config uses Node functions in **sin1**, with Fluid Compute enabled and extraction `maxDuration=300` (other routes use 60 seconds). `.env.local` is excluded from Git and deployments.
 
 To enable live uploads after validation:
 

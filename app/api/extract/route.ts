@@ -3,7 +3,7 @@ import { extractForm } from '@/lib/extract-form';
 import { errorResponse, fail, privateHeaders, readMultipart, sameOrigin } from '@/lib/errors';
 import { enforceLimit } from '@/lib/rate-limit';
 export const runtime = 'nodejs';
-export const preferredRegion = 'hkg1';
+export const preferredRegion = 'sin1';
 export const maxDuration = 300;
 export async function POST(request: Request) {
   try {

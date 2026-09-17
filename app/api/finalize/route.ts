@@ -9,7 +9,7 @@ import { summaryPrompt } from '@/prompts/summary';
 import { enforceLimit } from '@/lib/rate-limit';
 import { errorResponse, fail, privateHeaders, readMultipart, sameOrigin } from '@/lib/errors';
 export const runtime = 'nodejs';
-export const preferredRegion = 'hkg1';
+export const preferredRegion = 'sin1';
 export const maxDuration = 60;
 export async function POST(request: Request) {
   try {

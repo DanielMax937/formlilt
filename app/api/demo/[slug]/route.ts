@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { FormSchema } from '@/lib/schema';
 import { errorResponse, fail, privateHeaders } from '@/lib/errors';
 export const runtime = 'nodejs';
-export const preferredRegion = 'hkg1';
+export const preferredRegion = 'sin1';
 export async function GET(_request: Request, context: { params: Promise<{ slug: string }> }) {
   try {
     const parsed = z
