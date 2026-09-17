@@ -1,0 +1,117 @@
+{
+  "verifiedAt": "2026-09-17T02:23:00Z",
+  "url": "https://formlilt.vercel.app",
+  "deploymentId": "dpl_7vHkwxt75F7YJ5oaHtTrT8t52nCH",
+  "deployedCodeCommit": "4ce694f8bef962ba5cac2bfeda4405856ac25cdc",
+  "region": "sin1",
+  "model": "doubao-seed-2-0-pro-260215",
+  "baseURL": "https://ark.cn-beijing.volces.com/api/v3",
+  "apiKey": "Server-only Vercel Sensitive environment variable; value intentionally omitted",
+  "rateLimit": "Owner-approved per-instance memory counters; no Redis and no global daily guarantee",
+  "scope": "Production HTTP integration and rendered-export visual review; native system Chrome complete flow still pending Mac unlock",
+  "source": {
+    "url": "https://cms6.revize.com/revize/tinleypark/Dog%20application.pdf",
+    "sha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+    "data": "Public blank form; all answers and signature are synthetic; nothing submitted to issuer"
+  },
+  "api": {
+    "startedAt": "2026-09-17T02:20:02.309Z",
+    "scope": "Production HTTP integration; separate from native system Chrome acceptance",
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-pro-260215",
+    "extract": {
+      "status": 200,
+      "seconds": 12.82
+    },
+    "nativeFieldIdentity": "All 10 applicant fields matched; any optional office fields left blank",
+    "translation": {
+      "status": 200,
+      "seconds": 4.623,
+      "result": {
+        "type": "result",
+        "data": {
+          "validation": {
+            "ok": true,
+            "normalizedValue": "golden"
+          },
+          "nextFieldId": "f10",
+          "question": "请问您提供的输入内容“金色”翻译为英文是否为“golden”，请您确认？",
+          "done": false
+        }
+      }
+    },
+    "result": "passed",
+    "finishedAt": "2026-09-17T02:20:26.529Z",
+    "initialVerificationIssue": "Export mismatch Date 09/17/2026",
+    "export": {
+      "status": 200,
+      "bytes": 43060,
+      "sha256": "6b645032087ed5e2e5526d1d62b51fc81067e52045e84278578297bc1a7e8ba9",
+      "pages": 1,
+      "nativeValuesVerified": 10,
+      "actualValues": {
+        "Signature": "Alex Rivera",
+        "Unusual Markings": "None",
+        "Color": "Brown",
+        "Sex": "Female",
+        "Breed": "Beagle",
+        "Animal name": "Coco",
+        "Street Address": "123 Example St",
+        "Name of owner": "Alex Rivera",
+        "Phone": "2025550123",
+        "Date": "09/17/2026"
+      },
+      "officeFields": "unchanged",
+      "visualReview": "Passed: Poppler-rendered page manually inspected; all applicant entries and signature readable, Female selected, office fields blank"
+    },
+    "checkerCorrection": "Date export is formatted using the extracted field format, not the ISO input string; no application or schema changed for this check"
+  },
+  "security": {
+    "gitHistoryBlobsScanned": 452,
+    "keyFoundInGitHistoryOrCurrentSource": [],
+    "publicScriptsScanned": 12,
+    "keyFoundInPublicAssets": [],
+    "aboutHasConfiguredModel": true,
+    "homeShowsHostedLimit": true,
+    "sourceCommit": "4ce694f8bef962ba5cac2bfeda4405856ac25cdc"
+  },
+  "priorFailures": [
+    {
+      "region": "hkg1",
+      "deploymentId": "dpl_9aihu6XKxjkGram5E6maGeb76TLv",
+      "extractSeconds": 19.188,
+      "issues": [
+        "Two translation attempts failed before receiving model HTTP responses",
+        "Production bundling minified native PDF class names; radio group was incorrectly described as checkbox fields"
+      ]
+    },
+    {
+      "region": "hkg1",
+      "deploymentId": "dpl_DX2sWWRnjPmVPeMsvYEjgjKgJH7v",
+      "extractStatus": 502,
+      "extractSeconds": 12.946,
+      "issue": "AI_APICallError without HTTP status"
+    },
+    {
+      "region": "hkg1",
+      "deploymentId": "dpl_DWsdNu3F2JCv4D8bbr6JPQHgkLXp",
+      "translationSeconds": 47.65,
+      "issue": "Bounded retry still failed (AI_RetryError); switched to spec-permitted sin1"
+    }
+  ],
+  "chrome": {
+    "status": "pending",
+    "completed": [
+      "Opened actual system Chrome through native desktop UI",
+      "Observed production home with live upload controls"
+    ],
+    "blocker": "Mac locked at file selection; user asked to unlock",
+    "browserSecurity": "Apple Events JavaScript remains disabled; native UI connection works without enabling it"
+  },
+  "limitations": [
+    "Single successful source is not extraction p95 or broad provider accuracy evidence",
+    "Optional office-only fields may remain in model output; they were skipped and verified blank",
+    "Prepared upload request limit 4.4 MB on Vercel",
+    "Generated summary hit its 1.8s budget; deterministic fallback kept the PDF downloadable"
+  ]
+}
