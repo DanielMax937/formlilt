@@ -8,6 +8,7 @@ import { fail } from './errors';
 import { getEnv } from './env';
 import { ObjectExtract, hydrateObjectExtract } from './object-extract';
 import { objectExtractPrompt } from '@/prompts/extract-object';
+import { canExtractPagePair, extractPagePair } from './page-extract';
 export function matchingLabel(items: TextItem[], label: string, hintY = 0, hintX?: number) {
   const exact = items.filter((t) => t.str === label);
   const matches = exact.length ? exact : items.filter((t) => t.str.includes(label));
@@ -192,7 +193,10 @@ export async function extractForm(
       fail(400, 'upload_rejected', 'Page images must be no larger than 1600 pixels.');
   }
   // Long flat forms need explicit property names; retain the verified native-widget path.
-  const useObjectRows = getEnv().LLM_PROVIDER === 'doubao' && document.acroFields.length === 0;
+  const env = getEnv();
+  const useObjectRows = env.LLM_PROVIDER === 'doubao' && document.acroFields.length === 0;
+  const deadline = AbortSignal.timeout(env.LLM_TIMEOUT_MS);
+  const extractionSignal = signal ? AbortSignal.any([signal, deadline]) : deadline;
   const messages: ModelMessage[] = [
     {
       role: 'user',
@@ -210,16 +214,40 @@ export async function extractForm(
     },
   ];
   if (useObjectRows) {
+    const validate = (value: Parameters<typeof hydrateObjectExtract>[0]) => {
+      if (!value.rows.length)
+        return fail(422, 'schema_empty', 'No fillable fields were found in this file.');
+      return groundSchema(hydrateObjectExtract(value, document), document);
+    };
+    let attempts = 2;
+    if (canExtractPagePair(document)) {
+      try {
+        const result = await extractPagePair(document, images, validate, extractionSignal);
+        console.info('form_extraction_path', 'page_pair');
+        return result;
+      } catch (error) {
+        if (extractionSignal.aborted) throw error;
+        if (
+          error &&
+          typeof error === 'object' &&
+          'code' in error &&
+          ['llm_blocked', 'llm_unconfigured', 'schema_empty'].includes(String(error.code))
+        )
+          throw error;
+        // One whole-document attempt, using the remaining shared time budget.
+        console.info('form_extraction_path', 'whole_document_fallback');
+        attempts = 1;
+      }
+    }
     const raw = await generateValidated(
       ObjectExtract,
       messages,
       (value) => {
-        if (!value.rows.length)
-          return fail(422, 'schema_empty', 'No fillable fields were found in this file.');
-        groundSchema(hydrateObjectExtract(value, document), document);
+        validate(value);
         return value;
       },
-      signal,
+      extractionSignal,
+      attempts,
     );
     return groundSchema(hydrateObjectExtract(raw, document), document);
   }
@@ -232,7 +260,7 @@ export async function extractForm(
       groundSchema(hydrateExtract(value, document), document);
       return value;
     },
-    signal,
+    extractionSignal,
   );
   return groundSchema(hydrateExtract(raw, document), document);
 }
