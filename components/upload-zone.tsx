@@ -111,7 +111,14 @@ export function UploadZone() {
             {t(language, 'camera')}
           </button>
         </div>
-        <p className="small muted">{t(language, 'formats')}</p>
+        <p className="small muted">
+          {t(
+            language,
+            Number(process.env.NEXT_PUBLIC_MAX_REQUEST_BYTES || 18_000_000) <= 4_400_000
+              ? 'hostedFormats'
+              : 'formats',
+          )}
+        </p>
         <input
           ref={input}
           className="sr-only"
