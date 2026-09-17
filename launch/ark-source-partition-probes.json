@@ -1,0 +1,975 @@
+{
+  "verifiedAt": "2026-09-17T14:59:48.079264+00:00",
+  "scope": "Bounded local experiments only. Same user-selected Ark model and public blank school source. No runtime code or production environment changed.",
+  "deployedCodeUnchanged": "a112a3c",
+  "model": "doubao-seed-2-0-pro-260215",
+  "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+  "sdk": {
+    "package": "@ai-sdk/openai-compatible",
+    "version": "1.0.54",
+    "observedBehavior": "supportsStructuredOutputs=true selects response_format.type=json_schema but does not emit json_schema.strict. The explicit probes add strict:true in their isolated request-body transform.",
+    "evidence": "Installed SDK implementation, plus direct requests; no claim about unverified general provider support."
+  },
+  "ordinaryJson": {
+    "startedAt": "2026-09-17T14:47:02.830Z",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local source-index ownership experiment; no production changes or browser claim",
+    "strategy": "Four disjoint source-index ranges per page, eight concurrent calls. Every call retains both images and full original text. Rows are owned by their page/text label indices, never their predicted blank center.",
+    "deadlineMs": 90000,
+    "requests": [
+      {
+        "status": "failed",
+        "index": 0,
+        "page": 0,
+        "from": 0,
+        "to": 25,
+        "seconds": 13.251,
+        "code": "llm_schema_fail",
+        "ownershipViolations": [
+          {
+            "page": 0,
+            "x": 25
+          }
+        ]
+      },
+      {
+        "status": "failed",
+        "index": 1,
+        "page": 0,
+        "from": 25,
+        "to": 51,
+        "seconds": 22.553,
+        "code": "llm_schema_fail",
+        "ownershipViolations": [
+          {
+            "page": 0,
+            "x": 56
+          },
+          {
+            "page": 0,
+            "x": 64
+          },
+          {
+            "page": 0,
+            "x": 72
+          },
+          {
+            "page": 0,
+            "x": 80
+          },
+          {
+            "page": 0,
+            "x": 88
+          },
+          {
+            "page": 0,
+            "x": 58
+          },
+          {
+            "page": 0,
+            "x": 66
+          },
+          {
+            "page": 0,
+            "x": 74
+          },
+          {
+            "page": 0,
+            "x": 82
+          },
+          {
+            "page": 0,
+            "x": 90
+          },
+          {
+            "page": 0,
+            "x": 60
+          },
+          {
+            "page": 0,
+            "x": 68
+          },
+          {
+            "page": 0,
+            "x": 76
+          },
+          {
+            "page": 0,
+            "x": 84
+          },
+          {
+            "page": 0,
+            "x": 92
+          },
+          {
+            "page": 0,
+            "x": 62
+          },
+          {
+            "page": 0,
+            "x": 70
+          },
+          {
+            "page": 0,
+            "x": 78
+          },
+          {
+            "page": 0,
+            "x": 86
+          },
+          {
+            "page": 0,
+            "x": 94
+          },
+          {
+            "page": 0,
+            "x": 94
+          },
+          {
+            "page": 0,
+            "x": 95
+          },
+          {
+            "page": 0,
+            "x": 96
+          },
+          {
+            "page": 0,
+            "x": 97
+          }
+        ]
+      },
+      {
+        "status": "failed",
+        "index": 2,
+        "page": 0,
+        "from": 51,
+        "to": 77,
+        "seconds": 8.98,
+        "code": "llm_schema_fail",
+        "ownershipViolations": [
+          {
+            "page": 0,
+            "x": 78
+          },
+          {
+            "page": 0,
+            "x": 86
+          },
+          {
+            "page": 0,
+            "x": 94
+          },
+          {
+            "page": 0,
+            "x": 94
+          }
+        ]
+      },
+      {
+        "status": "failed",
+        "index": 3,
+        "page": 0,
+        "from": 77,
+        "to": 103,
+        "seconds": 20.091,
+        "code": "llm_schema_fail"
+      },
+      {
+        "status": "failed",
+        "index": 4,
+        "page": 1,
+        "from": 0,
+        "to": 17,
+        "seconds": 89.996,
+        "code": "llm_error"
+      },
+      {
+        "index": 5,
+        "page": 1,
+        "from": 17,
+        "to": 34,
+        "seconds": 25.807,
+        "fields": 20
+      },
+      {
+        "status": "failed",
+        "index": 6,
+        "page": 1,
+        "from": 34,
+        "to": 51,
+        "seconds": 47.858,
+        "code": "llm_schema_fail",
+        "ownershipViolations": [
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 30
+          },
+          {
+            "page": 1,
+            "x": 32
+          },
+          {
+            "page": 1,
+            "x": 32
+          }
+        ]
+      },
+      {
+        "status": "failed",
+        "index": 7,
+        "page": 1,
+        "from": 51,
+        "to": 69,
+        "seconds": 39.397,
+        "code": "llm_schema_fail",
+        "ownershipViolations": [
+          {
+            "page": 1,
+            "x": 4
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 26
+          },
+          {
+            "page": 1,
+            "x": 27
+          },
+          {
+            "page": 1,
+            "x": 28
+          },
+          {
+            "page": 1,
+            "x": 29
+          },
+          {
+            "page": 1,
+            "x": 30
+          },
+          {
+            "page": 1,
+            "x": 32
+          },
+          {
+            "page": 1,
+            "x": 32
+          },
+          {
+            "page": 1,
+            "x": 35
+          },
+          {
+            "page": 1,
+            "x": 36
+          },
+          {
+            "page": 1,
+            "x": 37
+          },
+          {
+            "page": 1,
+            "x": 38
+          },
+          {
+            "page": 1,
+            "x": 41
+          },
+          {
+            "page": 1,
+            "x": 42
+          },
+          {
+            "page": 1,
+            "x": 43
+          },
+          {
+            "page": 1,
+            "x": 44
+          },
+          {
+            "page": 1,
+            "x": 41
+          },
+          {
+            "page": 1,
+            "x": 42
+          },
+          {
+            "page": 1,
+            "x": 43
+          },
+          {
+            "page": 1,
+            "x": 44
+          },
+          {
+            "page": 1,
+            "x": 41
+          },
+          {
+            "page": 1,
+            "x": 42
+          },
+          {
+            "page": 1,
+            "x": 43
+          },
+          {
+            "page": 1,
+            "x": 44
+          },
+          {
+            "page": 1,
+            "x": 41
+          },
+          {
+            "page": 1,
+            "x": 42
+          },
+          {
+            "page": 1,
+            "x": 43
+          },
+          {
+            "page": 1,
+            "x": 44
+          },
+          {
+            "page": 1,
+            "x": 41
+          },
+          {
+            "page": 1,
+            "x": 42
+          },
+          {
+            "page": 1,
+            "x": 43
+          },
+          {
+            "page": 1,
+            "x": 44
+          }
+        ]
+      }
+    ],
+    "result": "failed",
+    "error": "One or more source partitions failed",
+    "seconds": 90.011,
+    "finishedAt": "2026-09-17T14:48:32.843Z"
+  },
+  "schemaGuidedSmall": {
+    "startedAt": "2026-09-17T14:50:27.638Z",
+    "scope": "One isolated JSON Schema-guided source range, with strict omitted. No deployment/configuration changes.",
+    "model": "doubao-seed-2-0-pro-260215",
+    "structuredOutputs": true,
+    "range": {
+      "page": 0,
+      "fromInclusive": 0,
+      "toExclusive": 25
+    },
+    "deadlineMs": 90000,
+    "result": "schema_valid",
+    "fields": 8,
+    "rows": [
+      {
+        "l": "Student’s name",
+        "t": "text",
+        "p": 0,
+        "x": 17
+      },
+      {
+        "l": "Sex",
+        "t": "text",
+        "p": 0,
+        "x": 18
+      },
+      {
+        "l": "Birthdate",
+        "t": "date",
+        "p": 0,
+        "x": 19
+      },
+      {
+        "l": "Home address",
+        "t": "text",
+        "p": 0,
+        "x": 20
+      },
+      {
+        "l": "City",
+        "t": "text",
+        "p": 0,
+        "x": 21
+      },
+      {
+        "l": "Zip",
+        "t": "text",
+        "p": 0,
+        "x": 22
+      },
+      {
+        "l": "Mother/guardian’s name",
+        "t": "text",
+        "p": 0,
+        "x": 23
+      },
+      {
+        "l": "Mother/guardian phone (H)",
+        "t": "phone",
+        "p": 0,
+        "x": 24
+      }
+    ],
+    "rootSignature": -1,
+    "seconds": 10.309,
+    "finishedAt": "2026-09-17T14:50:37.947Z",
+    "explicitStrict": false
+  },
+  "schemaGuidedFull": {
+    "startedAt": "2026-09-17T14:51:40.557Z",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local source-index ownership experiment with per-task server JSON Schema ranges; no production changes or browser claim",
+    "structuredOutputs": true,
+    "strategy": "Four disjoint source-index ranges per page, eight concurrent calls. Every call retains both images and full original text. Rows are owned by their page/text label indices, never their predicted blank center.",
+    "deadlineMs": 90000,
+    "requests": [
+      {
+        "status": "failed",
+        "index": 0,
+        "page": 0,
+        "from": 0,
+        "to": 25,
+        "seconds": 12.162,
+        "code": "llm_schema_fail"
+      },
+      {
+        "status": "failed",
+        "index": 1,
+        "page": 0,
+        "from": 25,
+        "to": 51,
+        "seconds": 89.996,
+        "code": "llm_error"
+      },
+      {
+        "index": 2,
+        "page": 0,
+        "from": 51,
+        "to": 77,
+        "seconds": 7.012,
+        "fields": 1
+      },
+      {
+        "index": 3,
+        "page": 0,
+        "from": 77,
+        "to": 103,
+        "seconds": 8.077,
+        "fields": 4
+      },
+      {
+        "status": "failed",
+        "index": 4,
+        "page": 1,
+        "from": 0,
+        "to": 17,
+        "seconds": 11.669,
+        "code": "llm_schema_fail"
+      },
+      {
+        "status": "failed",
+        "index": 5,
+        "page": 1,
+        "from": 17,
+        "to": 34,
+        "seconds": 25.937,
+        "code": "llm_schema_fail"
+      },
+      {
+        "status": "failed",
+        "index": 6,
+        "page": 1,
+        "from": 34,
+        "to": 51,
+        "seconds": 43.978,
+        "code": "llm_schema_fail"
+      },
+      {
+        "status": "failed",
+        "index": 7,
+        "page": 1,
+        "from": 51,
+        "to": 69,
+        "seconds": 10.633,
+        "code": "llm_schema_fail"
+      }
+    ],
+    "result": "failed",
+    "error": "One or more source partitions failed",
+    "seconds": 90.007,
+    "finishedAt": "2026-09-17T14:53:10.565Z",
+    "explicitStrict": false,
+    "configurationNote": "supportsStructuredOutputs=true sends json_schema; the installed compatible SDK omits json_schema.strict. This run did not request explicit strict:true."
+  },
+  "explicitStrictSmall": {
+    "scope": "Isolated explicit strict:true transport probes; no production/configuration changes",
+    "results": [
+      {
+        "name": "literal_constraint",
+        "startedAt": "2026-09-17T14:55:50.491Z",
+        "model": "doubao-seed-2-0-pro-260215",
+        "responseFormat": "json_schema",
+        "explicitStrict": true,
+        "result": "schema_valid",
+        "usage": {
+          "inputTokens": 348,
+          "outputTokens": 5,
+          "totalTokens": 353,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "seconds": 2.004
+      },
+      {
+        "name": "school_first_range",
+        "startedAt": "2026-09-17T14:55:50.496Z",
+        "model": "doubao-seed-2-0-pro-260215",
+        "responseFormat": "json_schema",
+        "explicitStrict": true,
+        "result": "schema_valid",
+        "usage": {
+          "inputTokens": 10784,
+          "outputTokens": 403,
+          "totalTokens": 11187,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "fields": 8,
+        "rows": [
+          {
+            "l": "Student's name",
+            "t": "text",
+            "p": 0,
+            "x": 17
+          },
+          {
+            "l": "Sex",
+            "t": "text",
+            "p": 0,
+            "x": 18
+          },
+          {
+            "l": "Birthdate",
+            "t": "date",
+            "p": 0,
+            "x": 19
+          },
+          {
+            "l": "Home address",
+            "t": "text",
+            "p": 0,
+            "x": 20
+          },
+          {
+            "l": "City",
+            "t": "text",
+            "p": 0,
+            "x": 21
+          },
+          {
+            "l": "Zip",
+            "t": "text",
+            "p": 0,
+            "x": 22
+          },
+          {
+            "l": "Mother/guardian's name",
+            "t": "text",
+            "p": 0,
+            "x": 23
+          },
+          {
+            "l": "Mother/guardian home phone",
+            "t": "phone",
+            "p": 0,
+            "x": 24
+          }
+        ],
+        "seconds": 10.239
+      }
+    ]
+  },
+  "explicitStrictFull": {
+    "startedAt": "2026-09-17T14:57:03.473Z",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local source-index ownership experiment with per-task server JSON Schema ranges and explicit strict:true; no production changes or browser claim",
+    "structuredOutputs": true,
+    "explicitStrict": true,
+    "strategy": "Four disjoint source-index ranges per page, eight concurrent calls. Every call retains both images and full original text. Rows are owned by their page/text label indices, never their predicted blank center.",
+    "deadlineMs": 90000,
+    "requests": [
+      {
+        "status": "failed",
+        "index": 0,
+        "page": 0,
+        "from": 0,
+        "to": 25,
+        "seconds": 13.159,
+        "name": "AI_NoObjectGeneratedError"
+      },
+      {
+        "status": "failed",
+        "index": 1,
+        "page": 0,
+        "from": 25,
+        "to": 51,
+        "seconds": 27.434,
+        "name": "AI_NoObjectGeneratedError"
+      },
+      {
+        "status": "failed",
+        "index": 2,
+        "page": 0,
+        "from": 51,
+        "to": 77,
+        "seconds": 12.039,
+        "name": "AI_NoObjectGeneratedError"
+      },
+      {
+        "index": 3,
+        "page": 0,
+        "from": 77,
+        "to": 103,
+        "seconds": 9.36,
+        "fields": 5
+      },
+      {
+        "index": 4,
+        "page": 1,
+        "from": 0,
+        "to": 17,
+        "seconds": 12.784,
+        "fields": 8
+      },
+      {
+        "index": 5,
+        "page": 1,
+        "from": 17,
+        "to": 34,
+        "seconds": 22.887,
+        "fields": 23
+      },
+      {
+        "status": "failed",
+        "index": 6,
+        "page": 1,
+        "from": 34,
+        "to": 51,
+        "seconds": 7.525,
+        "name": "AI_NoObjectGeneratedError"
+      },
+      {
+        "status": "failed",
+        "index": 7,
+        "page": 1,
+        "from": 51,
+        "to": 69,
+        "seconds": 10.095,
+        "name": "AI_NoObjectGeneratedError"
+      }
+    ],
+    "result": "failed",
+    "error": "One or more source partitions failed",
+    "usage": [
+      null,
+      null,
+      null,
+      {
+        "usage": {
+          "inputTokens": 10973,
+          "outputTokens": 315,
+          "totalTokens": 11288,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "finishReason": "stop"
+      },
+      {
+        "usage": {
+          "inputTokens": 10967,
+          "outputTokens": 465,
+          "totalTokens": 11432,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "finishReason": "stop"
+      },
+      {
+        "usage": {
+          "inputTokens": 10970,
+          "outputTokens": 1181,
+          "totalTokens": 12151,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "finishReason": "stop"
+      },
+      null,
+      null
+    ],
+    "seconds": 27.444,
+    "finishedAt": "2026-09-17T14:57:30.918Z"
+  },
+  "semanticCounterexamples": [
+    {
+      "experiment": "constrained-source-partition-probe",
+      "part": 2,
+      "rows": [
+        {
+          "label": "Other medical condition",
+          "page": 0,
+          "textIndex": 76,
+          "actualSourceText": "Asthma"
+        }
+      ]
+    },
+    {
+      "experiment": "explicit-strict-partition-probe",
+      "part": 3,
+      "rows": [
+        {
+          "label": "Program",
+          "page": 0,
+          "textIndex": 98,
+          "actualSourceText": "Program"
+        },
+        {
+          "label": "2340C F1",
+          "page": 0,
+          "textIndex": 99,
+          "actualSourceText": "2340C F1"
+        },
+        {
+          "label": "Page 1 of 2",
+          "page": 0,
+          "textIndex": 100,
+          "actualSourceText": "Page 1 of 2"
+        },
+        {
+          "label": "Revised 1",
+          "page": 0,
+          "textIndex": 101,
+          "actualSourceText": "Revised 1"
+        },
+        {
+          "label": "/8/21",
+          "page": 0,
+          "textIndex": 102,
+          "actualSourceText": "/8/21"
+        }
+      ]
+    },
+    {
+      "experiment": "explicit-strict-partition-probe",
+      "part": 4,
+      "rows": [
+        {
+          "label": "Medication bullet point note",
+          "page": 1,
+          "textIndex": 5,
+          "actualSourceText": "MEDICATION"
+        },
+        {
+          "label": "Parent/guardian medication supply note",
+          "page": 1,
+          "textIndex": 6,
+          "actualSourceText": "•"
+        },
+        {
+          "label": "Chaperone medication prescriber approval note",
+          "page": 1,
+          "textIndex": 7,
+          "actualSourceText": "Students in middle and high school may self-carry their nonprescription and/or emergency medication."
+        },
+        {
+          "label": "Medication administration policy note",
+          "page": 1,
+          "textIndex": 8,
+          "actualSourceText": "•"
+        },
+        {
+          "label": "Medication drop off procedure note",
+          "page": 1,
+          "textIndex": 9,
+          "actualSourceText": "Parent/guardian is responsible for supplying all medication in its original container, labeled with student’s name, and should only"
+        },
+        {
+          "label": "Section A prescriber completion note",
+          "page": 1,
+          "textIndex": 10,
+          "actualSourceText": "include the total number of doses needed for the duration of the trip."
+        },
+        {
+          "label": "Section B parent completion note",
+          "page": 1,
+          "textIndex": 11,
+          "actualSourceText": "•"
+        },
+        {
+          "label": "Section C purpose note",
+          "page": 1,
+          "textIndex": 12,
+          "actualSourceText": "All medication to be administered by a chaperone will require signed approval by a healthcare prescriber."
+        }
+      ]
+    }
+  ],
+  "decision": {
+    "adopted": false,
+    "reason": "No full experiment produced a valid complete merged schema. Even structurally valid partitions omitted real fields, mapped labels to unrelated text, or invented inputs from headers/instructions. Schema compliance alone cannot establish source fidelity.",
+    "p95Under20Seconds": "not established",
+    "partialResultsMerged": false,
+    "newPdfExported": false,
+    "productionChanged": false
+  },
+  "chrome": {
+    "status": "still_locked",
+    "newAcceptance": false,
+    "manualUnlockRequest": "Already pending; not repeated in this turn."
+  },
+  "processes": "All owned model/test processes completed; no pending or duplicate experiment remains."
+}

@@ -53,3 +53,5 @@ The recorder creates the session through the real demo UI and completes all acti
 The separate system-Chrome school upload on that deployment timed out with HTTP 502 (`TimeoutError`). The localized retry screen recovered correctly, but no schema or PDF came from that browser attempt. This failure is preserved in `ark-page-pair-verification.json`; the successful HTTP/PDF check is not a substitute for it.
 
 [Fallback time reservation](ark-fallback-budget-verification.json) records the subsequent 120-second page-pair cap within the unchanged 280-second total budget, 145 passing tests/builds and a direct production extraction in 79.674s. That request did not exercise fallback. New system-Chrome verification is pending Mac unlock.
+
+[Rejected source-partition experiments](ark-source-partition-probes.json) compare ordinary JSON, Schema-guided and explicit-strict requests using the same public blank source/model. Small probes passed, but full-form runs failed structural or source-fidelity checks; none changed production or established the latency gate.

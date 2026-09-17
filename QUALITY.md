@@ -34,6 +34,8 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 ## Current external constraints
 
+- Later source-index partition experiments also failed acceptance: ordinary JSON and Schema-guided runs reached the 90-second cap, while an explicit `strict:true` run ended in 27.444s with five failed tasks and invented fields in some structurally valid results. Small eight-field probes passed but did not generalize. No variant was adopted; see `launch/ark-source-partition-probes.json`.
+
 - Follow-up Ark performance experiments (2026-09-17): the same blank two-page school source returned 103 fields in **49.693s** using two parallel page requests, compared with the prior local single-request **112.791s**. A local synthetic export passed both-page visual review. This is one sample, not p95 or production evidence. Eight-region splitting failed seven ownership validations and one JSON parse. The eight-region strategy remains rejected. The two-page strategy was subsequently integrated with merge/cancellation/fallback checks and verified in production (77.397s); see `launch/ark-parallel-probes.json` and `launch/ark-page-pair-verification.json`.
 
 - Historical agent-im evidence (before the owner selected Ark): a model-only Sol probe of the same public Tinley source returned all 10 applicant fields in 59.467s (one call, no repair). This single direct-extraction sample does not establish the <20s target or a browser p95; Astra was the local default at that time. See `launch/extraction-latency-probes.json`.
