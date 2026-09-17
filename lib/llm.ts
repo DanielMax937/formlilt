@@ -17,6 +17,7 @@ function logModelFailure(phase: 'generate' | 'stream', error: unknown) {
     name?: unknown;
     statusCode?: unknown;
     data?: { error?: { code?: unknown } };
+    cause?: { name?: unknown; code?: unknown; cause?: { name?: unknown; code?: unknown } };
   };
   const safeCode = (value: unknown) =>
     typeof value === 'string' && /^[A-Za-z0-9_.-]{1,100}$/.test(value) ? value : undefined;
@@ -26,6 +27,8 @@ function logModelFailure(phase: 'generate' | 'stream', error: unknown) {
     name: safeCode(e?.name),
     status: typeof e?.statusCode === 'number' ? e.statusCode : undefined,
     code: safeCode(e?.data?.error?.code),
+    cause: safeCode(e?.cause?.name),
+    networkCode: safeCode(e?.cause?.code ?? e?.cause?.cause?.code),
   });
 }
 export function getModel() {
@@ -95,7 +98,7 @@ export async function generateValidated<T>(
           '\nReturn an object matching this JSON schema exactly. Omit optional properties when absent; do not use null unless permitted.\n' +
           JSON.stringify(asSchema(schema).jsonSchema),
         messages: [...messages, ...repair],
-        maxRetries: 0,
+        maxRetries: getEnv().LLM_PROVIDER === 'doubao' ? 1 : 0,
         abortSignal,
         maxOutputTokens: 16000,
       });
@@ -174,7 +177,7 @@ export async function* streamValidated<T>(
         JSON.stringify(asSchema(schema).jsonSchema),
       messages,
       abortSignal,
-      maxRetries: 0,
+      maxRetries: getEnv().LLM_PROVIDER === 'doubao' ? 1 : 0,
       maxOutputTokens: 1800,
     });
     for await (const partial of output.partialObjectStream) yield { partial };
