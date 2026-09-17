@@ -32,7 +32,7 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Product-owner launch acceptance | Pending |
 | Requested launch visuals | Five gallery images and an 8-second keyboard demo GIF exist. The specified drag/upload → voice-answer GIF and 3–5 actual Astra conversation captures remain pending; repository evidence is not a substitute |
 | Launch video | A **60-second captioned review draft** now records the actual local insurance demo, keyboard answers, source help, skip/return, drawn signature/date and PDF download. It is labeled as a draft and has no audio. The full §2.3 upload/voice scenario and owner acceptance remain open; see `launch/video-manifest.json` |
-| Challenge submission and PH schedule | Not submitted or scheduled; eligibility and owner acceptance remain unverified |
+| Challenge submission and PH schedule | Official announcement confirms September 18 launch date. Owner-authorized Product Hunt draft saved and reopened in system Chrome; text, five images and draft status verified. No launch date selected. General draft creation does not establish challenge enrollment. Full eligibility and slot availability remain unverified; public guide link returned 404. See `launch/contest-check.md` and `launch/ph-draft-verification.json` |
 
 ## Current external constraints
 

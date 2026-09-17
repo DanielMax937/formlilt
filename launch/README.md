@@ -35,7 +35,7 @@ All gallery images are 1440×1000. Capture metadata is in [capture-manifest.json
 - [FAQ replies](faq.md)
 - [Build writeup](writeup.md)
 
-No Product Hunt submission, scheduled launch, comment, email or social post was sent. The captioned video is a review draft with explicit keyboard/demo labels and a marked jump cut. No narrated or live-upload/voice video is claimed. Product-owner acceptance is pending.
+The owner-authorized Product Hunt review draft is saved and unscheduled, with the prepared first-comment text stored in its preview. No separate Comment or Schedule action, email or social post was sent. The captioned video is a review draft with explicit keyboard/demo labels and a marked jump cut. No narrated or live-upload/voice video is claimed. Product-owner acceptance is pending.
 
 ## Reproduce the video draft
 
@@ -59,3 +59,7 @@ The separate system-Chrome school upload on that deployment timed out with HTTP 
 [Date-default conformance](ark-date-default-verification.json) records deployment `346f652`, the restored SPEC `MM/DD/YYYY` default, 146 verified cases and a fresh real Chrome Tinley flow. All 10 answers and native PDF values passed, with a preserved initial JSON failure followed by successful repair. [Synthetic PDF](ark-date-default-filled.pdf) · [Actual UI answer export](ark-date-default-answers.json).
 
 [Source-grid compression probe](ark-grid-compression-probe.json) records an unadopted 59.917-second local result. Eight templates preserve 40 table cells, but second-page section/signature metadata failed review. Production and its Chrome acceptance remain unchanged; this sample does not establish p95.
+
+[Official contest check](contest-check.md) verifies the announced launch date and records the initially rejected write, subsequent explicit owner authorization and saved unscheduled draft. Listing, FAQ and writeup now reflect the successful current-Chrome school and date-default checks while retaining failed attempts and open latency/media gates.
+
+[Saved Product Hunt draft verification](ph-draft-verification.json) records the actual system-Chrome create-and-reopen check. [Edit the draft](https://www.producthunt.com/posts/formlilt/edit). Video remains blank; five existing gallery images are saved.

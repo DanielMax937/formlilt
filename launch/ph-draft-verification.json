@@ -1,0 +1,119 @@
+{
+  "verifiedAt": "2026-09-17T17:02:15Z",
+  "scope": "Actual system Chrome, authorized Product Hunt draft preparation and persisted readback. No application-runtime change or scheduled public launch.",
+  "authorization": {
+    "ownerReply": "授权保存待审核草稿",
+    "allows": "Save prepared product text, categories, first-comment draft and existing images.",
+    "excludes": [
+      "Public launch",
+      "Separate comment posting",
+      "Launch scheduling"
+    ],
+    "initialAutoReviewRejection": "Saving draft fields changes external account state without explicit permission. The owner subsequently supplied permission; no workaround was used."
+  },
+  "draft": {
+    "name": "FormLilt",
+    "url": "https://www.producthunt.com/products/formlilt?launch=formlilt",
+    "editUrl": "https://www.producthunt.com/posts/formlilt/edit",
+    "dashboardUrl": "https://www.producthunt.com/products/formlilt/formlilt/prelaunch",
+    "status": "Draft; not scheduled for a launch yet",
+    "tagline": "Fill PDF forms one question at a time",
+    "taglineCharacters": 37,
+    "descriptionCharacters": 328,
+    "links": [
+      "https://formlilt.vercel.app",
+      "https://github.com/DanielMax937/formlilt"
+    ],
+    "openSource": true,
+    "pricing": "Free",
+    "requestedCategories": [
+      "Productivity",
+      "Artificial Intelligence",
+      "Accessibility"
+    ],
+    "savedCategories": [
+      "Productivity",
+      "Artificial Intelligence",
+      "GitHub",
+      "Inclusivity"
+    ],
+    "categoryNote": "Accessibility search returned Inclusivity. The open-source checkbox also attached GitHub, which appears in the saved editor.",
+    "maker": "Existing signed-in product-owner account; no other maker/hunter invited.",
+    "firstComment": "Prepared maker-comment text saved with draft and visible in draft preview; no separate Comment button clicked.",
+    "thumbnail": "Existing FormLilt icon imported by Product Hunt from the app",
+    "gallery": [
+      {
+        "file": "launch/screenshots/01-guided-workspace.png",
+        "bytes": 112029,
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "06ddccb91440b4b07481abdfe6b8a352e09f81cbd277a47d6591042303bef97e"
+      },
+      {
+        "file": "launch/screenshots/02-source-explanation.png",
+        "bytes": 123647,
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "a70f62517e7d874939c4badb31070723d9eb5a1321ce38f60bbef893f87a44c6"
+      },
+      {
+        "file": "launch/screenshots/03-signature.png",
+        "bytes": 123873,
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "2542ac270eea8b79e62c71011f03f8b3c4f3de1ef7a7e96ea20ee46d6c50fa5d"
+      },
+      {
+        "file": "launch/screenshots/04-review-and-download.png",
+        "bytes": 98051,
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "742552e2ae1dbaa2d3832870219ad93226fe01a6c7849918c0b74d30ca698753"
+      },
+      {
+        "file": "launch/screenshots/05-build-evidence.png",
+        "bytes": 169779,
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "fa17e0cf37f5cbea1e7df84f5476ae0a6ddd3040568b696502068ab854533e73"
+      }
+    ],
+    "videoUrl": null,
+    "interactiveDemoUrl": null
+  },
+  "persistenceEvidence": [
+    "Clicked the explicit Create draft control, not Schedule launch for later.",
+    "Result page showed the draft and unscheduled banner, correct title/tagline/description, five gallery items, Free and draft comment preview.",
+    "Opened Edit Launch in a new actual Chrome tab.",
+    "Editor showed saved product/GitHub links, all four tags, five gallery items and the owner as maker.",
+    "Editor showed Draft and No changes to save, with Save changes disabled."
+  ],
+  "notPerformed": [
+    "Scheduling or public-launch action",
+    "Separate Comment action",
+    "Shoutout/review creation",
+    "Investor outreach",
+    "Adding other makers",
+    "Funding representation",
+    "Promo offer",
+    "YouTube/Loom upload"
+  ],
+  "limits": [
+    "This record does not establish private visibility of the product draft.",
+    "Challenge enrollment, full eligibility and available slot unverified.",
+    "Live-upload/voice GIF/video and actual Astra captures remain missing.",
+    "Uncached extraction p95 <20s remains unmet.",
+    "Product-owner release acceptance remains pending."
+  ],
+  "runtimeUnchanged": "346f652df04f2c488a8ac1449953d2e932c50bd8"
+}
