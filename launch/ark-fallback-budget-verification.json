@@ -1,0 +1,157 @@
+{
+  "verifiedAt": "2026-09-17T14:43:19.617064+00:00",
+  "deployment": {
+    "id": "dpl_8jzuSjDREBZ4UwXd2ra9JQHeFgCb",
+    "code": "a112a3c",
+    "url": "https://formlilt.vercel.app",
+    "region": "sin1",
+    "status": "READY",
+    "aliasVerified": true
+  },
+  "change": {
+    "totalModelDeadlineMs": 280000,
+    "pagePairDeadlineMs": 120000,
+    "fallbackReservedMs": 160000,
+    "fallbackAttempts": 1,
+    "shorterCustomBudget": "Page-pair limit is min(120000, floor(totalBudget / 2)).",
+    "limitations": "Reserved time is approximate and excludes parsing/request overhead. It does not guarantee fallback success."
+  },
+  "checks": {
+    "unitApiTests": 145,
+    "localBuild": "passed including strict TypeScript",
+    "vercelBuild": "passed",
+    "controlledDeadlineTests": [
+      "Stalled pair cancels and settles both requests before one fallback, with a 280000ms total budget",
+      "Short 10000ms total budget reserves 5000ms for fallback",
+      "Original total deadline cancels an already-running fallback"
+    ],
+    "testScope": "Controlled AbortSignals with mocked model responses; no real-model recovery latency is inferred."
+  },
+  "extraction": {
+    "startedAt": "2026-09-17T14:39:50.471Z",
+    "url": "https://formlilt.vercel.app/api/extract",
+    "slug": "medical-release",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "preparedBytes": 799510,
+    "scope": "Production HTTP extraction only; not system Chrome or visual export acceptance",
+    "codeCommit": "a112a3c",
+    "httpStatus": 200,
+    "result": "schema_valid",
+    "fields": 103,
+    "signature": {
+      "field": "Parent/guardian signature",
+      "date": "Parent/guardian signature date"
+    },
+    "exclusiveFields": [
+      {
+        "label": "Section A student may self-carry inhaler/EpiPen/diabetic supplies Yes",
+        "peers": [
+          "Section A student may self-carry inhaler/EpiPen/diabetic supplies No"
+        ]
+      },
+      {
+        "label": "Section A student may self-carry inhaler/EpiPen/diabetic supplies No",
+        "peers": [
+          "Section A student may self-carry inhaler/EpiPen/diabetic supplies Yes"
+        ]
+      }
+    ],
+    "schemaSha256": "778a13f87e22589c75c23a4fb3e57c079be478343924da96842ee2fb29071554",
+    "notaryFields": [],
+    "seconds": 79.674,
+    "finishedAt": "2026-09-17T14:41:10.150Z"
+  },
+  "productionPath": {
+    "requestId": "92pzj-1789655991217-f14fd4d3d07f",
+    "httpStatus": 200,
+    "strategyLog": "form_extraction_path page_pair",
+    "fallbackExercised": false
+  },
+  "schemaReview": {
+    "fields": 103,
+    "jsonBytes": 23913,
+    "review": "All field identities/order/pages/source labels reviewed against the prior production inventory. Human labels vary; Food Restrictions/Allergies changed from textarea to text. No general schema equivalence claimed.",
+    "exportPerformedThisRun": false
+  },
+  "chrome": {
+    "status": "pending_unlock",
+    "observation": "Native Computer Use reported the Mac locked and automatic unlock unavailable. Requested manual unlock; no response yet.",
+    "previousFailure": "ark-page-pair-verification.json",
+    "newBrowserAcceptanceClaimed": false
+  },
+  "publicSecretScan": {
+    "verifiedAt": "2026-09-17T14:40:35.466Z",
+    "url": "https://formlilt.vercel.app",
+    "scriptsScanned": 15,
+    "publicSecretMatches": [],
+    "homeShowsHostedLimit": true,
+    "aboutHasConfiguredModel": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+        "bytes": 173018
+      },
+      {
+        "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+        "bytes": 173686
+      },
+      {
+        "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+        "bytes": 558
+      },
+      {
+        "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+        "bytes": 20898
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+        "bytes": 2785
+      },
+      {
+        "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+        "bytes": 143812
+      },
+      {
+        "path": "/_next/static/chunks/416-864b900c2ffd1196.js",
+        "bytes": 68317
+      },
+      {
+        "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+        "bytes": 13332
+      },
+      {
+        "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+        "bytes": 17865
+      },
+      {
+        "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "bytes": 112594
+      },
+      {
+        "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+        "bytes": 3998
+      },
+      {
+        "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+        "bytes": 10082
+      },
+      {
+        "path": "/_next/static/chunks/716-dd4bd5bf49df76a0.js",
+        "bytes": 12598
+      },
+      {
+        "path": "/_next/static/chunks/app/fill/%5BsessionId%5D/page-0baeb86751f81d1a.js",
+        "bytes": 18134
+      },
+      {
+        "path": "/_next/static/chunks/app/review/%5BsessionId%5D/page-822a72ef2f453dea.js",
+        "bytes": 12901
+      }
+    ]
+  },
+  "remaining": [
+    "Uncached extraction p95 <20 seconds is not met.",
+    "Actual stalled-request recovery and the complex school browser flow remain unverified.",
+    "Owner latency-scope question remains pending; no alternate model was selected."
+  ]
+}
