@@ -70,3 +70,20 @@ test('ignores unfillable native widgets and retains visible text and radio optio
   ]);
   expect(parsed.acroFields.every(({ bbox }) => bbox[2] > bbox[0] && bbox[3] > bbox[1])).toBe(true);
 });
+
+test('native widget types survive production class-name minification', async () => {
+  const { nativeFieldType } = await import('@/lib/pdf-extract');
+  const doc = await PDFDocument.create();
+  const form = doc.getForm();
+  const field = form.createRadioGroup('choice');
+  const constructor = field.constructor;
+  const original = Object.getOwnPropertyDescriptor(constructor, 'name')!;
+  try {
+    Object.defineProperty(constructor, 'name', { ...original, value: 'e' });
+    expect(nativeFieldType(field)).toBe('PDFRadioGroup');
+    expect(nativeFieldType(form.createTextField('name'))).toBe('PDFTextField');
+    expect(nativeFieldType(form.createCheckBox('yes'))).toBe('PDFCheckBox');
+  } finally {
+    Object.defineProperty(constructor, 'name', original);
+  }
+});

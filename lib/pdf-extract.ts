@@ -1,4 +1,15 @@
-import { AnnotationFlags, PDFDocument } from 'pdf-lib';
+import {
+  AnnotationFlags,
+  PDFDocument,
+  PDFField,
+  PDFTextField,
+  PDFRadioGroup,
+  PDFCheckBox,
+  PDFDropdown,
+  PDFOptionList,
+  PDFSignature,
+  PDFButton,
+} from 'pdf-lib';
 import { getDocumentProxy } from 'unpdf';
 import { fileKind, pngDimensions, MAX_FILE_BYTES, MAX_PAGES } from './files';
 import type { PageMeta } from './schema';
@@ -15,6 +26,18 @@ export type ParsedDocument = {
   pages: (PageMeta & { textItems: TextItem[] })[];
   acroFields: AcroField[];
 };
+
+// Class names are minified in Next's production bundle; class identity is stable.
+export function nativeFieldType(field: PDFField): string {
+  if (field instanceof PDFTextField) return 'PDFTextField';
+  if (field instanceof PDFRadioGroup) return 'PDFRadioGroup';
+  if (field instanceof PDFCheckBox) return 'PDFCheckBox';
+  if (field instanceof PDFDropdown) return 'PDFDropdown';
+  if (field instanceof PDFOptionList) return 'PDFOptionList';
+  if (field instanceof PDFSignature) return 'PDFSignature';
+  if (field instanceof PDFButton) return 'PDFButton';
+  return 'unknown';
+}
 
 export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> {
   if (bytes.length === 0 || bytes.length > MAX_FILE_BYTES)
@@ -116,7 +139,7 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
             : undefined;
         acroFields.push({
           name: field.getName(),
-          type: field.constructor.name,
+          type: nativeFieldType(field),
           page: pageIndex,
           bbox,
           ...(options ? { options } : {}),
