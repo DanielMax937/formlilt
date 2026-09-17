@@ -10,7 +10,8 @@ import {
   PDFSignature,
   PDFButton,
 } from 'pdf-lib';
-import { getDocumentProxy } from 'unpdf';
+import { getDocumentProxy, getResolvedPDFJS } from 'unpdf';
+import { tableCells, type Cell } from './pdf-tables';
 import { fileKind, pngDimensions, MAX_FILE_BYTES, MAX_PAGES } from './files';
 import type { PageMeta } from './schema';
 export type TextItem = { str: string; x: number; y: number; w: number; h: number; size: number };
@@ -23,7 +24,7 @@ export type AcroField = {
 };
 export type ParsedDocument = {
   source: 'pdf' | 'image';
-  pages: (PageMeta & { textItems: TextItem[] })[];
+  pages: (PageMeta & { textItems: TextItem[]; cells?: Cell[] })[];
   acroFields: AcroField[];
 };
 
@@ -67,6 +68,7 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
   if (doc.getPageCount() < 1) throw new Error('The PDF has no pages.');
   const proxy = await getDocumentProxy(new Uint8Array(bytes), { useSystemFonts: true });
   try {
+    const { OPS } = await getResolvedPDFJS();
     const pages: ParsedDocument['pages'] = [];
     for (let index = 0; index < proxy.numPages; index++) {
       const page = await proxy.getPage(index + 1);
@@ -94,6 +96,13 @@ export async function parseDocument(bytes: Uint8Array): Promise<ParsedDocument> 
         heightPt: view.height,
         kind: textItems.length >= 20 ? 'text' : 'scan',
         textItems,
+        ...(textItems.length >= 20
+          ? {
+              cells: tableCells(await page.getOperatorList(), OPS, (x, y) =>
+                view.convertToViewportPoint(x, y),
+              ),
+            }
+          : {}),
       });
       page.cleanup();
     }

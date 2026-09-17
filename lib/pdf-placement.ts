@@ -31,7 +31,7 @@ export async function fieldBox(
     if (!box) throw new Error('Missing scan position.');
     return { ...box, size: Math.min(24, box.height * 0.7) };
   }
-  const label = matchingLabel(page.textItems, anchor.labelText ?? '', box?.y ?? 0);
+  const label = matchingLabel(page.textItems, anchor.labelText ?? '', box?.y ?? 0, box?.x);
   if (!label) throw new Error('The field label cannot be located.');
   // A row/continuation or checkbox uses its bounded hint; matching source labels anchor the column/context.
   if (

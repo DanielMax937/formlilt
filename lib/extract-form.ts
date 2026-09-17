@@ -8,9 +8,15 @@ import { fail } from './errors';
 import { getEnv } from './env';
 import { ObjectExtract, hydrateObjectExtract } from './object-extract';
 import { objectExtractPrompt } from '@/prompts/extract-object';
-export function matchingLabel(items: TextItem[], label: string, hintY = 0) {
-  const matches = items.filter((t) => t.str === label || t.str.includes(label));
-  return matches.sort((a, b) => Math.abs(a.y - hintY) - Math.abs(b.y - hintY))[0];
+export function matchingLabel(items: TextItem[], label: string, hintY = 0, hintX?: number) {
+  const exact = items.filter((t) => t.str === label);
+  const matches = exact.length ? exact : items.filter((t) => t.str.includes(label));
+  return matches.sort((a, b) => {
+    const vertical = Math.abs(a.y - hintY) - Math.abs(b.y - hintY);
+    return Math.abs(vertical) > 1 || hintX === undefined
+      ? vertical
+      : Math.abs(a.x - hintX) - Math.abs(b.x - hintX);
+  })[0];
 }
 export function groundSchema(schema: FormSchema, doc: ParsedDocument): FormSchema {
   const pages = doc.pages.map(({ textItems: _items, ...meta }) => meta);
@@ -25,7 +31,13 @@ export function groundSchema(schema: FormSchema, doc: ParsedDocument): FormSchem
     let label = anchor.labelText;
     if (page.kind === 'text') {
       const matched =
-        label && matchingLabel(page.textItems, label, (anchor.bbox?.[1] ?? 0) * page.heightPt);
+        label &&
+        matchingLabel(
+          page.textItems,
+          label,
+          (anchor.bbox?.[1] ?? 0) * page.heightPt,
+          anchor.bbox?.[0] === undefined ? undefined : anchor.bbox[0] * page.widthPt,
+        );
       if (!matched) {
         if (!acro)
           throw new Error(
@@ -61,8 +73,96 @@ export function groundSchema(schema: FormSchema, doc: ParsedDocument): FormSchem
     source: doc.source,
     precision: doc.pages.some((p) => p.kind === 'scan') ? 'approximate' : 'exact',
     pages,
-    fields,
+    fields: alignTableFields(fields, doc),
   });
+}
+
+// Repeated fields using a column heading can be aligned only when the PDF itself
+// supplies a complete, matching number of empty cells. No inferred grid or OCR.
+function alignTableFields(fields: Field[], doc: ParsedDocument): Field[] {
+  const aligned = new Map<string, Field['anchor']>();
+  const groups = new Map<TextItem, Field[]>();
+  for (const field of fields) {
+    const a = field.anchor,
+      page = a && doc.pages[a.page];
+    if (
+      !a?.bbox ||
+      !page?.cells?.length ||
+      field.acroName ||
+      !a.labelText ||
+      /_{3,}/.test(a.labelText) ||
+      ['checkbox', 'signature'].includes(field.type)
+    )
+      continue;
+    const label = matchingLabel(
+      page.textItems,
+      a.labelText,
+      a.bbox[1] * page.heightPt,
+      a.bbox[0] * page.widthPt,
+    );
+    if (label) groups.set(label, [...(groups.get(label) ?? []), field]);
+  }
+  for (const [label, group] of groups) {
+    if (group.length < 2) continue;
+    const page = doc.pages[group[0].anchor!.page];
+    const header = page.cells!.find(
+      (c) =>
+        c[0] <= label.x + 1 &&
+        c[2] >= label.x + label.w - 1 &&
+        c[1] <= label.y + 1 &&
+        c[3] >= label.y + label.h - 1,
+    );
+    if (!header) continue;
+    const column = page
+      .cells!.filter(
+        (c) =>
+          Math.abs(c[0] - header[0]) < 1 && Math.abs(c[2] - header[2]) < 1 && c[1] >= header[3] - 1,
+      )
+      .sort((a, b) => a[1] - b[1]);
+    const empty: typeof column = [];
+    let end = header[3];
+    for (const cell of column) {
+      if (
+        Math.abs(cell[1] - end) > 1.5 ||
+        page.textItems.some(
+          (t) =>
+            t.x + t.w > cell[0] + 1 &&
+            t.x < cell[2] - 1 &&
+            t.y + t.h > cell[1] + 1 &&
+            t.y < cell[3] - 1,
+        )
+      )
+        break;
+      empty.push(cell);
+      end = cell[3];
+    }
+    if (empty.length !== group.length) continue;
+    const ordered = [...group].sort((a, b) => a.anchor!.bbox![1] - b.anchor!.bbox![1]);
+    if (
+      ordered.some(
+        (f, i) =>
+          Math.abs(
+            ((f.anchor!.bbox![1] + f.anchor!.bbox![3]) * page.heightPt) / 2 -
+              (empty[i][1] + empty[i][3]) / 2,
+          ) > Math.max(30, (empty[i][3] - empty[i][1]) * 2),
+      )
+    )
+      continue;
+    ordered.forEach((f, i) => {
+      const c = empty[i];
+      aligned.set(f.id, {
+        ...f.anchor!,
+        placement: 'inbox',
+        bbox: [
+          +((c[0] + 2) / page.widthPt).toFixed(6),
+          +((c[1] + 1) / page.heightPt).toFixed(6),
+          +((c[2] - 2) / page.widthPt).toFixed(6),
+          +((c[3] - 1) / page.heightPt).toFixed(6),
+        ],
+      });
+    });
+  }
+  return fields.map((f) => (aligned.has(f.id) ? { ...f, anchor: aligned.get(f.id) } : f));
 }
 export async function extractForm(
   original: Uint8Array,

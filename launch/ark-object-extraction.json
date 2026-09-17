@@ -90,5 +90,71 @@
       "tupleBytes": 10569,
       "objectBytes": 10511
     }
-  ]
+  ],
+  "productionExtraction": {
+    "startedAt": "2026-09-17T04:07:49.654Z",
+    "url": "https://formlilt.vercel.app/api/extract",
+    "slug": "medical-release",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "preparedBytes": 799510,
+    "scope": "Production HTTP extraction only; not system Chrome or visual export acceptance",
+    "codeCommit": "1a51973",
+    "httpStatus": 200,
+    "result": "schema_valid",
+    "fields": 103,
+    "signature": {
+      "field": "Parent/guardian signature",
+      "date": "Parent/guardian signature date"
+    },
+    "exclusiveFields": [
+      {
+        "label": "Section A student may self-carry eligible medication Yes",
+        "peers": [
+          "Section A student may self-carry eligible medication No"
+        ]
+      },
+      {
+        "label": "Section A student may self-carry eligible medication No",
+        "peers": [
+          "Section A student may self-carry eligible medication Yes"
+        ]
+      }
+    ],
+    "schemaSha256": "24d25d372c2290e640c221039cd47823256d667d0348de67da22e2fe6a7c5834",
+    "notaryFields": [],
+    "seconds": 101.807,
+    "finishedAt": "2026-09-17T04:09:31.462Z",
+    "deploymentId": "dpl_EGJYJSCBbwrnpCDMX2wemHWBCiQv"
+  },
+  "initialProductionExport": {
+    "scope": "Real production HTTP finalize with synthetic answers; not Chrome acceptance",
+    "status": 200,
+    "seconds": 16.024,
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      },
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "bytes": 195345,
+    "sha256": "18d432fdc851f90399ae520f4984e15c23d449bfcbe96aa9189e747da6e736bb",
+    "answered": 99,
+    "prescriberFieldsLeftBlank": [
+      "Prescriber printed name and title",
+      "Prescriber signature",
+      "Prescriber phone",
+      "Prescriber date"
+    ],
+    "visualReview": "failed: second contact work phone overlaid relationship field; first table rows overlapped headings and later rows drifted outside grid"
+  },
+  "placementCorrection": {
+    "method": "Prefer exact text matches and hinted columns; align repeated table columns only to complete source-drawn empty cells when counts match. No manually edited model coordinates.",
+    "localVisualReview": "Both 612x792pt pages passed after correction. All 40 table cells aligned; contact work phone in its own blank; four prescriber identity/signature blanks and notary fields remain blank.",
+    "tests": 127,
+    "productionExport": "pending redeployment"
+  }
 }

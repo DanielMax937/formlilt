@@ -1,7 +1,7 @@
 import type { ParsedDocument } from '@/lib/pdf-extract';
 import { uniqueAcro } from '@/lib/compact-extract';
 export function extractSource(doc: ParsedDocument): string {
-  const pages = doc.pages.map(({ textItems, ...page }) => ({
+  const pages = doc.pages.map(({ textItems, cells: _cells, ...page }) => ({
     ...page,
     text: textItems.map((t, i) => [
       i,
