@@ -155,6 +155,105 @@
     "method": "Prefer exact text matches and hinted columns; align repeated table columns only to complete source-drawn empty cells when counts match. No manually edited model coordinates.",
     "localVisualReview": "Both 612x792pt pages passed after correction. All 40 table cells aligned; contact work phone in its own blank; four prescriber identity/signature blanks and notary fields remain blank.",
     "tests": 127,
-    "productionExport": "pending redeployment"
+    "productionExport": "passed; see finalProductionExport"
+  },
+  "finalProductionExport": {
+    "scope": "Real production HTTP finalize with synthetic answers; reuses the schema from the prior live production extraction; not a new extraction or Chrome acceptance",
+    "codeCommit": "9f7f388",
+    "schemaFromCodeCommit": "1a51973",
+    "status": 200,
+    "seconds": 14.946,
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      },
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "bytes": 195450,
+    "sha256": "3d3bc3e0966594013303186d83465bd50baa807cedbc7e4566e29927d48df572",
+    "answered": 99,
+    "prescriberFieldsLeftBlank": [
+      "Prescriber printed name and title",
+      "Prescriber signature",
+      "Prescriber phone",
+      "Prescriber date"
+    ],
+    "visualReview": "passed: both source-size pages rendered with Poppler; all 40 repeated cells are inside the grid, the second contact work phone is in its own blank, names/signature/date readable, four prescriber identity/signature fields and notary blanks empty",
+    "artifact": "launch/ark-school-filled.pdf",
+    "deploymentId": "dpl_EWRCrRQy2PPQXh3sgFSbyANcC89X"
+  },
+  "publicSecretCheck": {
+    "verifiedAt": "2026-09-17T04:26:22.210Z",
+    "url": "https://formlilt.vercel.app",
+    "scriptsScanned": 12,
+    "publicSecretMatches": [],
+    "homeShowsHostedLimit": true,
+    "aboutHasConfiguredModel": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+        "bytes": 173018
+      },
+      {
+        "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+        "bytes": 173686
+      },
+      {
+        "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+        "bytes": 558
+      },
+      {
+        "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+        "bytes": 20898
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+        "bytes": 2785
+      },
+      {
+        "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+        "bytes": 143812
+      },
+      {
+        "path": "/_next/static/chunks/416-b4eddd846b2b8d4b.js",
+        "bytes": 68287
+      },
+      {
+        "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+        "bytes": 13332
+      },
+      {
+        "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+        "bytes": 17865
+      },
+      {
+        "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "bytes": 112594
+      },
+      {
+        "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+        "bytes": 3998
+      },
+      {
+        "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+        "bytes": 10082
+      }
+    ]
+  },
+  "remaining": [
+    "Complete current system Chrome workflow requires Mac unlock; native CUA still reports locked.",
+    "School extraction took 101.807 seconds; p95 below 20 seconds is not established.",
+    "This sample does not guarantee correctness for every form or replace review of the downloaded PDF."
+  ],
+  "sourceSecretCheck": {
+    "scannedWorkingFiles": 189,
+    "scannedHistoryBlobs": 505,
+    "secretMatches": [],
+    "envIgnored": true,
+    "envMode": "600"
   }
 }

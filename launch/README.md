@@ -10,7 +10,7 @@ Prepared from the actual local production build, using synthetic answers. The we
 
 [Ark three-form integration attempts](ark-demo-verification.json) record the current provider’s schema/source checks, failures and latency limits. These are API/library checks, not native Chrome or PDF visual acceptance.
 
-[Live Ark deployment evidence](ark-production-verification.json) records the Singapore HTTP extraction, translation and PDF export checks. [Synthetic exported PDF](ark-production-filled.pdf) passed native-value and visual review. Complete system Chrome acceptance still awaits Mac unlock. [Deployment follow-up](ark-deployment-followup.json) records the latest translation success, school-form failure and unadopted output-mode experiments.
+[Live Ark deployment evidence](ark-production-verification.json) records the Singapore HTTP extraction, translation and PDF export checks. [Synthetic exported PDF](ark-production-filled.pdf) passed native-value and visual review. Complete system Chrome acceptance still awaits Mac unlock. [Deployment follow-up](ark-deployment-followup.json) records earlier translation success, school-form failure and unadopted output-mode experiments. [Object-row and placement follow-up](ark-object-extraction.json) records the subsequent 103-field production extraction and visually reviewed [synthetic school export](ark-school-filled.pdf), including its initial placement failure.
 
 ## Visual assets
 

@@ -4,7 +4,7 @@
 Your browser retains files, answers, signatures, and any optional profile until you clear them. The application has no document database. Uploaded pages and relevant translation inputs go to your configured model provider, whose retention policy applies. Local agent-im may retain runner sessions and attachments outside the app.
 
 **Can I upload my own PDF?**  
-Yes. The live site supports PDF/JPG/PNG/HEIC input and up to 15 pages, with a 4.4 MB prepared-upload request limit. Large forms may need splitting. Three ready-to-use forms are also available. Local/self-hosted mode supports original files up to 10 MB. Complex live forms remain experimental: the latest school-form production check failed on model output; the three precomputed demos remain available.
+Yes. The live site supports PDF/JPG/PNG/HEIC input and up to 15 pages, with a 4.4 MB prepared-upload request limit. Large forms may need splitting. Three ready-to-use forms are also available. Local/self-hosted mode supports original files up to 10 MB. Complex live forms remain experimental: the reviewed school sample now passes production extraction and PDF visual checks, but took about 102 seconds. The three precomputed demos remain available.
 
 **Does it work with scanned forms or photos?**  
 The implementation supports visual extraction and approximate overlay placement. Review the downloaded PDF. A real phone-photo acceptance test is still outstanding.
