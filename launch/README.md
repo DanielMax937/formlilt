@@ -47,3 +47,5 @@ node --import tsx scripts/render-demo-video.ts tmp/demo-video-<timestamp-printed
 ```
 
 The recorder creates the session through the real demo UI and completes all actions through controls; it does not inject application state or mock requests/speech. Raw video and chapter screenshots stay under ignored `tmp/`. The renderer adds the draft label and captions, omits the other required-answer/optional-skip actions at an explicit jump cut, and checks the encoded 60-second duration. It writes the MP4, SRT, sample PDF and provenance under `launch/`. This is media verification, not another uncached-extraction or physical-device acceptance run.
+
+[Isolated Ark parallel-extraction probes](ark-parallel-probes.json) record a 49.693-second two-page result and a rejected eight-region experiment. The [synthetic local PDF](ark-parallel-school-filled.pdf) passed two-page visual review. Neither experiment changes production or establishes the latency gate.

@@ -1,0 +1,899 @@
+{
+  "recordedAt": "2026-09-17T13:59:13.105981+00:00",
+  "implementationCommit": "dbf236a653f6b54d5b818777f5b7806091a31596",
+  "providerChanged": false,
+  "productionChanged": false,
+  "model": "doubao-seed-2-0-pro-260215",
+  "priorLocalSingleRequest": {
+    "seconds": 112.791,
+    "fields": 103,
+    "promptTokens": 9917,
+    "completionTokens": 5881,
+    "reasoningTokens": 0,
+    "cachedTokens": 0,
+    "sourceEvidence": "ark-object-extraction.json"
+  },
+  "pageParallel": {
+    "startedAt": "2026-09-17T13:50:49.556Z",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local two-page parallel extraction prototype; no production mutation, cached schema substitution or Chrome acceptance",
+    "strategy": "Two requests each receive both original page images and all original source text. Each outputs fields only from its assigned page. Combine sections, indices and primary-signature references, then run unchanged hydration and grounding.",
+    "requests": [
+      {
+        "page": 0,
+        "seconds": 47.667,
+        "fields": 53
+      },
+      {
+        "page": 1,
+        "seconds": 49.641,
+        "fields": 50
+      }
+    ],
+    "result": "schema_valid",
+    "fields": 103,
+    "signature": "Parent/guardian signature",
+    "date": "Parent/guardian signature date",
+    "notaryFields": [],
+    "labels": [
+      {
+        "label": "Student's name",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Student’s name: ___________________________________________"
+      },
+      {
+        "label": "Sex",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Sex: ______"
+      },
+      {
+        "label": "Birthdate",
+        "page": 0,
+        "type": "date",
+        "required": true,
+        "source": "Birthdate: ____________________"
+      },
+      {
+        "label": "Home address",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Home address: ___________________________________________"
+      },
+      {
+        "label": "City",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "City: _____________________"
+      },
+      {
+        "label": "Zip",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Zip: ___________"
+      },
+      {
+        "label": "Mother/guardian's name",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Mother/guardian’s name: _______________________________________________________________________________"
+      },
+      {
+        "label": "Mother/guardian home phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "Phone (H): _______________________"
+      },
+      {
+        "label": "Mother/guardian work phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "(W): _______________________"
+      },
+      {
+        "label": "Mother/guardian cell/pager phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "(Cell or Pager): _______________________"
+      },
+      {
+        "label": "Father/guardian's name",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Father/guardian’s name: ________________________________________________________________________________"
+      },
+      {
+        "label": "Father/guardian home phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "Phone (H): _______________________"
+      },
+      {
+        "label": "Father/guardian work phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "(W): _______________________"
+      },
+      {
+        "label": "Father/guardian cell/pager phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "(Cell or Pager): _______________________"
+      },
+      {
+        "label": "Emergency contact 1 name",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "1. Name: ________________________________________________________"
+      },
+      {
+        "label": "Emergency contact 1 home phone",
+        "page": 0,
+        "type": "phone",
+        "required": true,
+        "source": "Phone (H): _______________________"
+      },
+      {
+        "label": "Emergency contact 1 relationship to student",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Relationship to student: _____________________________________________"
+      },
+      {
+        "label": "Emergency contact 1 work phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "Phone (W): ______________________"
+      },
+      {
+        "label": "Emergency contact 2 name",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "2. Name: ________________________________________________________"
+      },
+      {
+        "label": "Emergency contact 2 home phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "Phone (H): _______________________"
+      },
+      {
+        "label": "Emergency contact 2 relationship to student",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Relationship to student: _____________________________________________"
+      },
+      {
+        "label": "Emergency contact 2 work phone",
+        "page": 0,
+        "type": "phone",
+        "required": false,
+        "source": "______________________"
+      },
+      {
+        "label": "Student's health care provider",
+        "page": 0,
+        "type": "text",
+        "required": true,
+        "source": "Student’s health care provider: _______________________________________"
+      },
+      {
+        "label": "Student's health care provider phone",
+        "page": 0,
+        "type": "phone",
+        "required": true,
+        "source": "Phone: __________________________"
+      },
+      {
+        "label": "Medical insurance company",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Medical insurance company: _________________________________________"
+      },
+      {
+        "label": "Group No.",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Group No.: ______________________"
+      },
+      {
+        "label": "Insurance company address",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "____________________________________________________________________________"
+      },
+      {
+        "label": "Name of policy holder",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Name of policy holder: ____________________________________"
+      },
+      {
+        "label": "Identification/Policy No.",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Identification/Policy No.: ____________________"
+      },
+      {
+        "label": "Animal Allergies",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Poison Ivy allergy",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Activity restrictions",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Heart problem",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Bee/Insect Allergies",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Bleeding problem",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Dietary restrictions",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Migraines",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Drug Allergies",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Mobility concerns",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Asthma",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Glasses/contacts",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Environmental Allergies",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Sleep walking",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Seizures",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Ear infections/aids",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Food Allergies",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Bed wetting",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Diabetes",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Other",
+        "page": 0,
+        "type": "checkbox",
+        "required": false,
+        "source": "c"
+      },
+      {
+        "label": "Other health condition specification",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Other __________________"
+      },
+      {
+        "label": "Medical condition description line 1",
+        "page": 0,
+        "type": "textarea",
+        "required": false,
+        "source": "Please describe any medical condition including severity and treatment. ______________________________________"
+      },
+      {
+        "label": "Medical condition description line 2",
+        "page": 0,
+        "type": "textarea",
+        "required": false,
+        "source": "________________________________________________________________________________________________"
+      },
+      {
+        "label": "Food Restrictions/Allergies",
+        "page": 0,
+        "type": "text",
+        "required": false,
+        "source": "Food Restrictions/Allergies: _________________________________________________________________________"
+      },
+      {
+        "label": "Student’s name",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Student’s name: _____________________________________________"
+      },
+      {
+        "label": "Section A Medication 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section A Dose/Route 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section A Time(s) to be given 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section A Side Effects 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section A Medication 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section A Dose/Route 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section A Time(s) to be given 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section A Side Effects 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section A Medication 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section A Dose/Route 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section A Time(s) to be given 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section A Side Effects 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section A Medication 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section A Dose/Route 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section A Time(s) to be given 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section A Side Effects 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section A Medication 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section A Dose/Route 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section A Time(s) to be given 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section A Side Effects 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Special storage or considerations",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Please list any special storage or considerations: _______________________________________________________________________"
+      },
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies: Yes",
+        "page": 1,
+        "type": "checkbox",
+        "required": false,
+        "source": "Yes ____ No ____"
+      },
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies: No",
+        "page": 1,
+        "type": "checkbox",
+        "required": false,
+        "source": "Yes ____ No ____"
+      },
+      {
+        "label": "Prescriber's printed name and title",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Prescriber’s printed name and title: _________________________________________________________________________________"
+      },
+      {
+        "label": "Prescriber's signature",
+        "page": 1,
+        "type": "signature",
+        "required": false,
+        "source": "Prescriber’s signature: _________________________________________"
+      },
+      {
+        "label": "Prescriber's phone",
+        "page": 1,
+        "type": "phone",
+        "required": false,
+        "source": "Phone: _____________________"
+      },
+      {
+        "label": "Prescriber's date",
+        "page": 1,
+        "type": "date",
+        "required": false,
+        "source": "Date: _____________"
+      },
+      {
+        "label": "Section B Medication 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section B Dose/Route 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section B Time(s) to be given 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section B Side Effects 1",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section B Medication 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section B Dose/Route 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section B Time(s) to be given 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section B Side Effects 2",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section B Medication 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section B Dose/Route 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section B Time(s) to be given 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section B Side Effects 3",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section B Medication 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section B Dose/Route 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section B Time(s) to be given 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section B Side Effects 4",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Section B Medication 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Medication"
+      },
+      {
+        "label": "Section B Dose/Route 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Dose/Route"
+      },
+      {
+        "label": "Section B Time(s) to be given 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Time(s) to be given"
+      },
+      {
+        "label": "Section B Side Effects 5",
+        "page": 1,
+        "type": "text",
+        "required": false,
+        "source": "Side Effects"
+      },
+      {
+        "label": "Parent/guardian signature",
+        "page": 1,
+        "type": "signature",
+        "required": true,
+        "source": "Parent/guardian signature _________________________________________________________"
+      },
+      {
+        "label": "Parent/guardian signature date",
+        "page": 1,
+        "type": "date",
+        "required": true,
+        "source": "Date _______________________"
+      }
+    ],
+    "exclusive": [
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies: Yes",
+        "peers": [
+          "May student self-carry inhaler/EpiPen/diabetic supplies: No"
+        ]
+      },
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies: No",
+        "peers": [
+          "May student self-carry inhaler/EpiPen/diabetic supplies: Yes"
+        ]
+      }
+    ],
+    "seconds": 49.693,
+    "finishedAt": "2026-09-17T13:51:39.249Z",
+    "schemaSha256": "ae538dc7e5630ed9a512745d10e5699c757bf26e9eca476da4b01e3ecc3f52e8",
+    "prototypeSha256": "4643d4888272a28febf72b7564525bb44779392efccc9d2f4aa9e17e34697027",
+    "sourceInventoryComparison": {
+      "reviewedCount": 103,
+      "pageCounts": [
+        53,
+        50
+      ],
+      "allFieldIdentitiesReviewedInOrder": true,
+      "typeDifferences": "Food Restrictions/Allergies and storage/considerations changed from textarea to text; both retain text entry and source location. Required flags differ; no broad equivalence claim."
+    },
+    "localExport": {
+      "sha256": "13039a237908ba04df3c1a994decd8fed786a8a42f9d4cbfad06cb7038c54134",
+      "bytes": 195459,
+      "path": "launch/ark-parallel-school-filled.pdf",
+      "syntheticAnswers": 99,
+      "pages": 2,
+      "visualReview": "Both pages passed Poppler inspection; all 40 table cells align, phone/name/address values remain in their blanks, guardian signature/date are correctly placed, four prescriber identity/signature fields and notary blanks stay empty. This is local export evidence, not Chrome or production acceptance."
+    }
+  },
+  "quadrantParallel": {
+    "startedAt": "2026-09-17T13:53:44.606Z",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local eight-region parallel extraction prototype; no production mutation, cached schema substitution or Chrome acceptance",
+    "strategy": "Eight requests each receive both original page images and all original source text. Each outputs fields only from its assigned page quadrant, owned by blank-box center. Combine sections, indices and primary-signature references, then run unchanged hydration and grounding.",
+    "requests": [
+      {
+        "tile": 0,
+        "page": 0,
+        "x": 0,
+        "y": 0,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 1,
+        "page": 0,
+        "x": 1,
+        "y": 0,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 2,
+        "page": 0,
+        "x": 0,
+        "y": 1,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 3,
+        "page": 0,
+        "x": 1,
+        "y": 1,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 4,
+        "page": 1,
+        "x": 0,
+        "y": 0,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 5,
+        "page": 1,
+        "x": 1,
+        "y": 0,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 6,
+        "page": 1,
+        "x": 0,
+        "y": 1,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      {
+        "tile": 7,
+        "page": 1,
+        "x": 1,
+        "y": 1,
+        "status": "failed",
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      }
+    ],
+    "result": "failed",
+    "error": "One or more page requests failed",
+    "seconds": 29.942,
+    "finishedAt": "2026-09-17T13:54:14.550Z",
+    "prototypeSha256": "a81d3001ac4867d4d1aad6f584f13c21140c6ef6b6df56dcbb437c1d8c5b0cfe",
+    "diagnosis": "Seven page-region ownership checks failed after receiving an object; one response failed JSON parsing. Each task had one semantic attempt, retaining the SDK network retry policy. No merged schema/export was accepted."
+  },
+  "decision": "Neither prototype is deployed. Page-level parallelism is promising but still exceeds 20 seconds and needs a production integration, general merge/cancellation/empty-page regression coverage and new deployed extraction verification. Quadrant splitting failed validity checks. Keep the goal incomplete; retain current proven production deployment while the owner decides whether to accept the first-release latency limit.",
+  "limitations": [
+    "These are single local uncached model experiments, not a p95 benchmark.",
+    "Both page images and the complete source context were repeated in each request, increasing input-token cost.",
+    "The native-widget extraction path was not tested or changed by these experiments."
+  ],
+  "sourceSecretScan": {
+    "workingFiles": 195,
+    "historyBlobs": 531,
+    "matches": [],
+    "envIgnored": true,
+    "envMode": "600"
+  },
+  "localTypecheck": "passed"
+}
