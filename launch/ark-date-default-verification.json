@@ -1,0 +1,308 @@
+{
+  "verifiedAt": "2026-09-17T16:06:25.054886+00:00",
+  "requirement": "SPEC §5.5: preserve printed date formats; default to MM/DD/YYYY when absent.",
+  "change": "Restore the specified default in both extraction prompts and the shared wire-schema adapter. Existing saved schemas are not migrated.",
+  "deployment": {
+    "code": "346f652df04f2c488a8ac1449953d2e932c50bd8",
+    "id": "dpl_8C868awPUp7TRHto7Bfx2jq9B4JD",
+    "url": "https://formlilt.vercel.app",
+    "deploymentUrl": "https://formlilt-n0rgbu3r7-daniels-projects-068b1e1f.vercel.app",
+    "status": "READY",
+    "region": "sin1",
+    "aliasVerified": true
+  },
+  "configurationUnchanged": {
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-pro-260215",
+    "thinking": "disabled",
+    "structuredOutputs": false,
+    "totalExtractDeadlineMs": 280000,
+    "rateLimitMode": "memory"
+  },
+  "checks": {
+    "initialFullSuite": {
+      "passed": 144,
+      "failed": 2,
+      "total": 146,
+      "failures": "Two unchanged PDF tests exceeded 20000ms during parallel execution. Date-format cases passed."
+    },
+    "targetedRerun": {
+      "command": "pnpm exec vitest run tests/unit/fill-pdf.test.ts tests/unit/finalize-api.test.ts --maxWorkers=1",
+      "passed": 17,
+      "failed": 0,
+      "seconds": 14.05,
+      "timeoutUnchangedMs": 20000
+    },
+    "uniqueCasesVerified": 146,
+    "dateRegressionMatrix": [
+      "Missing format defaults to MM/DD/YYYY",
+      "Other constraints survive the default",
+      "Printed DD/MM/YYYY remains day-first",
+      "Printed MM/DD/YYYY remains month-first",
+      "Printed YYYY-MM-DD remains ISO"
+    ],
+    "localBuild": "passed including strict TypeScript",
+    "vercelBuild": "passed"
+  },
+  "browser": {
+    "application": "Current system Google Chrome",
+    "automation": "Native Computer Use only",
+    "scope": "Fresh real upload, all 10 questions with synthetic values, typed signature, review, JSON/PDF download, then PDF viewer visual inspection. No cached demo or state injection.",
+    "sessionId": "112853a4-60a6-42dc-bd22-99ffd3b5ec0d",
+    "uiLanguage": "en",
+    "sourcePath": "tmp/tinley-dog.pdf",
+    "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+    "fields": 10,
+    "answered": 10,
+    "status": "passed"
+  },
+  "extraction": {
+    "requestId": "p96qz-1789660662786-da43d63124ae",
+    "httpStatus": 200,
+    "path": "Native-widget compact extraction",
+    "repairObserved": true,
+    "firstAttemptFailure": [
+      "AI_NoObjectGeneratedError",
+      "AI_JSONParseError",
+      "SyntaxError"
+    ],
+    "recovery": "The existing one semantic repair retry produced the validated 10-field schema.",
+    "schemaSha256": "b9a8b180d0f90d98c47a44f465b9e1bbbb97df56dc66c6ed1d07ef2b4138d7b1",
+    "dateConstraint": "MM/DD/YYYY",
+    "exactRequestSeconds": null,
+    "requestStartToFillRouteStartSeconds": 30.948,
+    "timingScope": "Derived from Vercel extract/fill request timestamps; includes network/navigation. Not an instrumented extract latency or p95 estimate."
+  },
+  "dateBehavior": {
+    "enteredValue": "2026-09-17",
+    "input": "Native keyboard date control",
+    "reviewDisplayed": "09/17/2026",
+    "pdfNativeValue": "09/17/2026",
+    "signatureBehavior": "Typed signature preserved the already entered date. This run is not evidence of generating a new automatic date."
+  },
+  "export": {
+    "requestId": "qqb8w-1789660871299-6242d57e56f6",
+    "httpStatus": 200,
+    "path": "ark-date-default-filled.pdf",
+    "downloadName": "tinley-dog-filled (2).pdf",
+    "bytes": 46135,
+    "sha256": "db413b5bd20d55f9de0981ff0d362bd9f16c8ef8eb6dc56943c6024181d3c13b",
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "summaryFallback": "Optional summary call reached the existing 1800ms deadline; plainSummary fallback returned with the successful PDF."
+  },
+  "artifactChecks": {
+    "verifiedAt": "2026-09-17T16:04:02.008Z",
+    "comparisons": [
+      {
+        "label": "Date",
+        "type": "date",
+        "actual": "09/17/2026",
+        "expected": "09/17/2026",
+        "passed": true
+      },
+      {
+        "label": "Phone",
+        "type": "phone",
+        "actual": "2025550123",
+        "expected": "2025550123",
+        "passed": true
+      },
+      {
+        "label": "Name of owner",
+        "type": "text",
+        "actual": "Alex Test",
+        "expected": "Alex Test",
+        "passed": true
+      },
+      {
+        "label": "Street Address",
+        "type": "text",
+        "actual": "123 Example Street",
+        "expected": "123 Example Street",
+        "passed": true
+      },
+      {
+        "label": "Animal name",
+        "type": "text",
+        "actual": "Coco",
+        "expected": "Coco",
+        "passed": true
+      },
+      {
+        "label": "Breed",
+        "type": "text",
+        "actual": "Beagle",
+        "expected": "Beagle",
+        "passed": true
+      },
+      {
+        "label": "Sex",
+        "type": "select",
+        "actual": "Female",
+        "expected": "Female",
+        "passed": true
+      },
+      {
+        "label": "Color",
+        "type": "text",
+        "actual": "Brown",
+        "expected": "Brown",
+        "passed": true
+      },
+      {
+        "label": "Unusual Markings",
+        "type": "text",
+        "actual": "None",
+        "expected": "None",
+        "passed": true
+      },
+      {
+        "label": "Signature",
+        "type": "signature",
+        "actual": "Alex Test",
+        "expected": "Alex Test",
+        "passed": true
+      }
+    ],
+    "officeFields": [
+      {
+        "name": "License Fee_-7b7zCZY-bnEf07pRq3Y1w",
+        "blank": true
+      },
+      {
+        "name": "Rabies Inoculation No__3gmwpKPrGOMBz43ci8kPoA",
+        "blank": true
+      },
+      {
+        "name": "License No__HUpBP*S95HpOy7iMKHR8vg",
+        "blank": true
+      }
+    ],
+    "pdf": {
+      "bytes": 46135,
+      "sha256": "db413b5bd20d55f9de0981ff0d362bd9f16c8ef8eb6dc56943c6024181d3c13b",
+      "pages": [
+        {
+          "width": 612,
+          "height": 792
+        }
+      ]
+    },
+    "schemaSha256": "b9a8b180d0f90d98c47a44f465b9e1bbbb97df56dc66c6ed1d07ef2b4138d7b1",
+    "answersArtifact": {
+      "bytes": 19523,
+      "sha256": "49aa1198d93dc5dbfab5505598f98b0cbcd8fa27a95dc4cca920d43c2a62d37f"
+    },
+    "dateConstraint": "MM/DD/YYYY"
+  },
+  "answersArtifact": {
+    "path": "ark-date-default-answers.json",
+    "bytes": 19523,
+    "sha256": "49aa1198d93dc5dbfab5505598f98b0cbcd8fa27a95dc4cca920d43c2a62d37f",
+    "scope": "Unmodified JSON exported through the review UI. Synthetic identities and signature only."
+  },
+  "visualReview": {
+    "status": "passed",
+    "tools": [
+      "Poppler 1600px render",
+      "Current system Chrome PDF viewer"
+    ],
+    "observations": [
+      "Date visibly uses MM/DD/YYYY",
+      "All values fit their native fields",
+      "Female radio is selected",
+      "Typed signature remains in its source signature area",
+      "Three office-only fields are blank"
+    ],
+    "limitation": "Visual PDF acceptance only; Chrome still reports unavailable accessibility text-extraction files."
+  },
+  "publicSecretScan": {
+    "verifiedAt": "2026-09-17T15:57:16.686Z",
+    "url": "https://formlilt.vercel.app",
+    "scriptsScanned": 15,
+    "publicSecretMatches": [],
+    "homeShowsHostedLimit": true,
+    "aboutHasConfiguredModel": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+        "bytes": 173018
+      },
+      {
+        "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+        "bytes": 173686
+      },
+      {
+        "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+        "bytes": 558
+      },
+      {
+        "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+        "bytes": 20898
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+        "bytes": 2785
+      },
+      {
+        "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+        "bytes": 143812
+      },
+      {
+        "path": "/_next/static/chunks/416-864b900c2ffd1196.js",
+        "bytes": 68317
+      },
+      {
+        "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+        "bytes": 13332
+      },
+      {
+        "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+        "bytes": 17865
+      },
+      {
+        "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "bytes": 112594
+      },
+      {
+        "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+        "bytes": 3998
+      },
+      {
+        "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+        "bytes": 10082
+      },
+      {
+        "path": "/_next/static/chunks/716-dd4bd5bf49df76a0.js",
+        "bytes": 12598
+      },
+      {
+        "path": "/_next/static/chunks/app/fill/%5BsessionId%5D/page-0baeb86751f81d1a.js",
+        "bytes": 18134
+      },
+      {
+        "path": "/_next/static/chunks/app/review/%5BsessionId%5D/page-822a72ef2f453dea.js",
+        "bytes": 12901
+      }
+    ]
+  },
+  "remaining": [
+    "Uncached extraction p95 <20 seconds is unmet.",
+    "Real stalled page-pair extraction recovery is not exercised by this one-page run.",
+    "Other outstanding scope/owner/media gates remain recorded in QUALITY.md."
+  ],
+  "sourceSecretScan": {
+    "verifiedAt": "2026-09-17T16:06:49.125Z",
+    "files": 207,
+    "historicalBlobs": 574,
+    "workingMatches": [],
+    "historyMatches": [],
+    "localEnvIgnored": true,
+    "localEnvMode": "600"
+  }
+}
