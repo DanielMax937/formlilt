@@ -1,0 +1,94 @@
+{
+  "model": "doubao-seed-2-0-pro-260215",
+  "scope": "Local real Ark probes of named object-row output; not production Chrome or full PDF visual acceptance",
+  "decision": "Use named object rows only for Doubao documents without native AcroForm widgets. Keep the verified compact/native path for documents with widgets. No model or timeout change.",
+  "attempts": [
+    {
+      "startedAt": "2026-09-17T03:47:49.283Z",
+      "slug": "medical-release",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "scope": "Direct local sparse-object wire-format prototype; not production or Chrome acceptance",
+      "status": "failed",
+      "code": "llm_schema_fail",
+      "message": "The form reader could not finish. Please try again.",
+      "seconds": 214.894,
+      "calls": 2,
+      "artifactDirectory": "tmp/ark-deploy/sparse-probe",
+      "diagnosis": "Both responses omitted source text indices from later repeated table rows; rejected. The first prototype also linked a generic guardian signature to the mother name without sufficient evidence."
+    },
+    {
+      "startedAt": "2026-09-17T03:55:10.786Z",
+      "slug": "medical-release",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "scope": "Direct local sparse-object wire-format prototype; not production or Chrome acceptance",
+      "status": "schema_valid",
+      "fields": 103,
+      "signature": {
+        "fieldId": "f101",
+        "dateFieldId": "f102"
+      },
+      "notaryFields": [],
+      "seconds": 112.791,
+      "calls": 1,
+      "artifactDirectory": "tmp/ark-deploy/sparse-probe-required",
+      "review": "103 fields with valid source references, generic guardian signature/date, no assigned parent name and no notary fields. All 40 medication table cells retained. Pixel alignment not yet verified."
+    },
+    {
+      "startedAt": "2026-09-17T03:57:50.505Z",
+      "slug": "change-of-address",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "scope": "Direct local sparse-object wire-format prototype; not production or Chrome acceptance",
+      "status": "schema_valid",
+      "fields": 31,
+      "signature": {
+        "fieldId": "f24",
+        "dateFieldId": "f25",
+        "nameFieldId": "f5"
+      },
+      "notaryFields": [],
+      "seconds": 42.197,
+      "calls": 1,
+      "artifactDirectory": "tmp/ark-deploy/object-standard-change-of-address",
+      "review": "The diagnostic keyword county matched three legitimate foreign address components, not notary fields. This native-form prototype is not the selected runtime branch."
+    },
+    {
+      "startedAt": "2026-09-17T03:57:56.726Z",
+      "slug": "insurance-claim",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "scope": "Direct local sparse-object wire-format prototype; not production or Chrome acceptance",
+      "status": "failed",
+      "code": "llm_error",
+      "message": "Reading the form timed out. Please try again.",
+      "seconds": 280.035,
+      "calls": 1,
+      "artifactDirectory": "tmp/ark-deploy/object-standard-insurance-claim"
+    }
+  ],
+  "offlineCompatibility": [
+    {
+      "slug": "change-of-address",
+      "fields": 31,
+      "status": "identical public FormSchema",
+      "tupleBytes": 3317,
+      "objectBytes": 3190
+    },
+    {
+      "slug": "insurance-claim",
+      "fields": 42,
+      "status": "identical public FormSchema",
+      "tupleBytes": 4374,
+      "objectBytes": 4914
+    },
+    {
+      "slug": "medical-release",
+      "fields": 103,
+      "status": "identical public FormSchema",
+      "tupleBytes": 10569,
+      "objectBytes": 10511
+    }
+  ]
+}

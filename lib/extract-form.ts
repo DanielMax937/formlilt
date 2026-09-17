@@ -5,6 +5,9 @@ import { generateValidated } from './llm';
 import { CompactExtract, hydrateExtract } from './compact-extract';
 import { extractPrompt } from '@/prompts/extract';
 import { fail } from './errors';
+import { getEnv } from './env';
+import { ObjectExtract, hydrateObjectExtract } from './object-extract';
+import { objectExtractPrompt } from '@/prompts/extract-object';
 export function matchingLabel(items: TextItem[], label: string, hintY = 0) {
   const matches = items.filter((t) => t.str === label || t.str.includes(label));
   return matches.sort((a, b) => Math.abs(a.y - hintY) - Math.abs(b.y - hintY))[0];
@@ -88,11 +91,16 @@ export async function extractForm(
     )
       fail(400, 'upload_rejected', 'Page images must be no larger than 1600 pixels.');
   }
+  // Long flat forms need explicit property names; retain the verified native-widget path.
+  const useObjectRows = getEnv().LLM_PROVIDER === 'doubao' && document.acroFields.length === 0;
   const messages: ModelMessage[] = [
     {
       role: 'user',
       content: [
-        { type: 'text', text: extractPrompt(document) },
+        {
+          type: 'text',
+          text: useObjectRows ? objectExtractPrompt(document) : extractPrompt(document),
+        },
         ...images.map((bytes) => ({
           type: 'image' as const,
           image: bytes,
@@ -101,6 +109,20 @@ export async function extractForm(
       ],
     },
   ];
+  if (useObjectRows) {
+    const raw = await generateValidated(
+      ObjectExtract,
+      messages,
+      (value) => {
+        if (!value.rows.length)
+          return fail(422, 'schema_empty', 'No fillable fields were found in this file.');
+        groundSchema(hydrateObjectExtract(value, document), document);
+        return value;
+      },
+      signal,
+    );
+    return groundSchema(hydrateObjectExtract(raw, document), document);
+  }
   const raw = await generateValidated(
     CompactExtract,
     messages,
