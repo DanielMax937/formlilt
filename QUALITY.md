@@ -5,7 +5,7 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Gate | Evidence / status |
 | --- | --- |
 | Unit/API tests | 103 passed after model-repair feedback, exact-name long-form references and bounded Ark connection handling; every API route covered |
-| TypeScript and production build | Local checks and production build passed. Current deployment `dpl_7vHkwxt75F7YJ5oaHtTrT8t52nCH` contains the extraction/export fixes and runs in sin1 |
+| TypeScript and production build | Local checks and production build passed. Current deployment `dpl_J9PpVz45TWpNLbiogYE5JFWBt47C` (code `4da90e9`) contains the extraction/reference and connection fixes and runs in sin1 |
 | Current Ark standard forms | Local real requests return legal grounded schemas for address (31), insurance (42), and school (103 after applicant-scope correction). Latest corresponding timings: 28.744s, 32.706s, 109.967s. Named references fixed long-form index drift; nested repair feedback fixed unhelpful retries. These are source/schema checks, not new Chrome or visual PDF acceptance. Earlier failed and semantically incorrect attempts remain in `launch/ark-demo-verification.json` |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
@@ -25,7 +25,7 @@ This file separates implemented behavior from acceptance that still needs eviden
 | Physical iPhone speech and VoiceOver | **Not tested**; desktop acceptance, mocked speech API tests and mobile WebKit do not establish physical iPhone compatibility |
 | Basic upload protection | Owner approved `RATE_LIMIT_MODE=memory`. Fourth valid request per IP/instance returns 429 in API tests; another IP remains usable. Restarts/multiple instances prevent any global daily quota guarantee |
 | Console/hydration | No page errors or API errors in full demo E2E flows |
-| Production live model | Configured and live in sin1. Real extraction, translated answer confirmation and PDF export passed HTTP integration; complete native Chrome flow awaits unlock. No Redis required by updated owner scope |
+| Production live model | **Partial acceptance.** Live in sin1 with the owner’s Pro model and memory limits. The earlier one-page extraction/translation/export passed. Latest translated answer passed in 5.948s; latest school extraction failed after two malformed model responses, with client connection loss at 230.391s. Alternative function-output probes also timed out and were not deployed. Native Chrome complete flow awaits unlock. See `launch/ark-deployment-followup.json` |
 | Analytics | Code and privacy filters tested; Vercel Hobby does not include custom events. Free page views enabled; custom events remain off pending a suitable plan |
 | Product-owner launch acceptance | Pending |
 | Requested launch visuals | Five gallery images and an 8-second keyboard demo GIF exist. The specified drag/upload → voice-answer GIF and 3–5 actual Astra conversation captures remain pending; repository evidence is not a substitute |

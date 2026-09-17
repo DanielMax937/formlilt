@@ -56,7 +56,7 @@ To enable live uploads after validation:
 
 ## Validation
 
-Latest production check (2026-09-17, Singapore): real Ark extraction **12.820s**, Chinese-to-English answer translation **4.623s**, and PDF export passed HTTP integration. All 10 native values and the rendered signature were verified; office fields stayed blank. This is one source, not a p95 estimate. See [production evidence](launch/ark-production-verification.json). The current system Chrome reached the live upload screen; full UI acceptance is waiting for the Mac to be unlocked.
+One-page production check (2026-09-17, Singapore): real Ark extraction **12.820s**, Chinese-to-English answer translation **4.623s**, and PDF export passed HTTP integration. All 10 native values and the rendered signature were verified; office fields stayed blank. This is one source, not a p95 estimate. See [production evidence](launch/ark-production-verification.json). The current system Chrome reached the live upload screen; full UI acceptance is waiting for the Mac to be unlocked. The latest deployment (`4da90e9`, sin1) passes live translated-answer confirmation in 5.948s, but the larger school form still failed after two malformed model responses. Function-output experiments did not improve the result and were not deployed. [Follow-up evidence](launch/ark-deployment-followup.json) records these limits; live complex-form acceptance remains open.
 
 ```sh
 pnpm test

@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-09-17T03:06:59.817291+00:00",
+  "verifiedAt": "2026-09-17T03:43:07.520393+00:00",
   "url": "https://formlilt.vercel.app",
   "scope": "Production HTTP/source checks; current system Chrome complete flow still awaits Mac unlock.",
   "attempts": [
@@ -90,5 +90,191 @@
         ]
       }
     }
-  ]
+  ],
+  "latestDeployment": {
+    "id": "dpl_J9PpVz45TWpNLbiogYE5JFWBt47C",
+    "codeCommit": "4da90e9eab6eb4ae6d1d2ca15fe382f5c2a8fcec",
+    "readyState": "READY",
+    "region": "sin1",
+    "url": "https://formlilt-jiy99x6l4-daniels-projects-068b1e1f.vercel.app"
+  },
+  "transport": {
+    "automaticAddressSelection": true,
+    "nextAddressAfterMs": 250,
+    "connectTimeoutMs": 20000,
+    "networkRetries": 1,
+    "overallModelDeadlineMs": 280000,
+    "scope": "Ark-only dispatcher, no global network change; normal TLS validation preserved"
+  },
+  "translation": {
+    "status": 200,
+    "seconds": 5.948358,
+    "result": {
+      "type": "result",
+      "data": {
+        "validation": {
+          "ok": true,
+          "normalizedValue": "gold"
+        },
+        "nextFieldId": "f11",
+        "question": "您输入的“金色”的英文翻译为gold，请确认是否正确？",
+        "done": false
+      }
+    }
+  },
+  "security": {
+    "source": {
+      "scannedWorkingFiles": 181,
+      "scannedHistoryBlobs": 481,
+      "secretMatches": [],
+      "envIgnored": true,
+      "envMode": "600"
+    },
+    "public": {
+      "verifiedAt": "2026-09-17T03:12:27.482Z",
+      "url": "https://formlilt.vercel.app",
+      "scriptsScanned": 12,
+      "publicSecretMatches": [],
+      "homeShowsHostedLimit": true,
+      "aboutHasConfiguredModel": true,
+      "scripts": [
+        {
+          "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+          "bytes": 173018
+        },
+        {
+          "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+          "bytes": 173686
+        },
+        {
+          "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+          "bytes": 558
+        },
+        {
+          "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+          "bytes": 20898
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+          "bytes": 2785
+        },
+        {
+          "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+          "bytes": 143812
+        },
+        {
+          "path": "/_next/static/chunks/416-b4eddd846b2b8d4b.js",
+          "bytes": 68287
+        },
+        {
+          "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+          "bytes": 13332
+        },
+        {
+          "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+          "bytes": 17865
+        },
+        {
+          "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "bytes": 112594
+        },
+        {
+          "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+          "bytes": 3998
+        },
+        {
+          "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+          "bytes": 10082
+        }
+      ]
+    }
+  },
+  "latestExtraction": {
+    "startedAt": "2026-09-17T03:12:19.241Z",
+    "url": "https://formlilt.vercel.app/api/extract",
+    "slug": "medical-release",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "preparedBytes": 799510,
+    "scope": "Production HTTP extraction only; not system Chrome or visual export acceptance",
+    "codeCommit": "4da90e9",
+    "result": "failed",
+    "error": "curl failed curl: (52) Empty reply from server\n",
+    "seconds": 230.391,
+    "finishedAt": "2026-09-17T03:16:09.635Z",
+    "serverResult": {
+      "httpStatus": 502,
+      "safeErrorChains": [
+        [
+          "AI_NoObjectGeneratedError",
+          "AI_JSONParseError",
+          "SyntaxError"
+        ],
+        [
+          "AI_NoObjectGeneratedError",
+          "AI_JSONParseError",
+          "SyntaxError"
+        ]
+      ],
+      "interpretation": "Ark was reached, but both initial output and bounded repair were invalid JSON. Client additionally reported an empty reply at 230.391 seconds. This is not a successful extraction."
+    }
+  },
+  "chrome": {
+    "status": "pending_unlock",
+    "nativeToolCheck": "System Chrome is unavailable while the Mac is locked; no security setting was changed."
+  },
+  "unadoptedFunctionOutputProbes": [
+    {
+      "startedAt": "2026-09-17T03:24:20.958Z",
+      "slug": "medical-release",
+      "mode": "forced single data-return function; no execute callback or external tools",
+      "scope": "One direct local Ark protocol probe, not production acceptance",
+      "status": "failed",
+      "name": "AI_APICallError",
+      "statusCode": 400,
+      "message": "Invalid decoding guidance syntax: RuntimeError: [03:24:22] ../cpp/json_schema_converter.cc:2234: items must be a boolean or an object\\n Request id: 021789615461161031cf6218c12fc0ace26887030dd7ea850a034",
+      "seconds": 1.363
+    },
+    {
+      "startedAt": "2026-09-17T03:25:50.365Z",
+      "slug": "medical-release",
+      "mode": "forced single data-return function; no execute callback or external tools",
+      "scope": "One direct local Ark protocol probe, not production acceptance",
+      "status": "failed",
+      "name": "AI_APICallError",
+      "statusCode": 400,
+      "message": "Invalid decoding guidance syntax: RuntimeError: [03:25:51] ../cpp/json_schema_converter.cc:2234: minItems is greater than the number of prefixItems, but additional items are not allowed: 13 > 0\\n Request id: 0217896155505797424dba2bd6e77b99d402060a9cf8c0fb6ad01",
+      "seconds": 1.153
+    },
+    {
+      "startedAt": "2026-09-17T03:28:07.513Z",
+      "slug": "medical-release",
+      "mode": "forced single data-return function; no execute callback or external tools",
+      "scope": "One direct local Ark protocol probe, not production acceptance",
+      "status": "failed",
+      "name": "TimeoutError",
+      "message": "The operation was aborted due to timeout",
+      "seconds": 280.042
+    },
+    {
+      "startedAt": "2026-09-17T03:34:04.234Z",
+      "slug": "insurance-claim",
+      "mode": "forced single data-return function; no execute callback or external tools",
+      "scope": "One direct local Ark protocol probe, not production acceptance",
+      "status": "failed",
+      "name": "TimeoutError",
+      "message": "The operation was aborted due to timeout",
+      "seconds": 280.042
+    }
+  ],
+  "unadoptedOfflineRepair": {
+    "source": "Earlier captured school malformed JSON response, public blank source only",
+    "library": "jsonrepair (installed only under ignored tmp/, not an application dependency)",
+    "result": "Parsing produced 325 row entries, including invalid strings; original CompactExtract rejected it with 220 validation issues. No repaired response was accepted or deployed."
+  },
+  "samplePrivacyVerification": {
+    "source": "https://www.dublinsciotoband.org/_files/ugd/d20a9a_b5cc28df14104025b3266d4dc4640c1c.pdf",
+    "scope": "Packet pages 2–3; public blank demo already cited in public/demo-forms/README.md. PDF text and both exact page images were inspected; no entered names, addresses, medical information, medication data or signatures.",
+    "approvalReview": "An initial diagnostic command was rejected as potentially sensitive. After the blank-source text/image verification was supplied, the same public-sample diagnostic was approved and executed. No bypass was used."
+  },
+  "decision": "Keep tested deployed implementation; experimental function-output schema transformations were reverted. Owner asked whether other Ark model IDs may be evaluated; no different model called or configured."
 }

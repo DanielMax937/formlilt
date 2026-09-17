@@ -12,7 +12,7 @@ Answer a form one question at a time, check its instructions, add your signature
 
 ## Accurate launch positioning
 
-The public site has live uploads and answer translation enabled on Vercel. A production HTTP workflow passed extraction, translated-answer confirmation and verified PDF export; current-system-Chrome completion still awaits Mac unlock. Prepared uploads are limited to 4.4 MB, and basic rate limits apply per instance. Do not claim that all forms are accurate, that extraction p95 is under 20 seconds, or that untested devices are verified. See `QUALITY.md` before publication.
+The public site has live uploads and answer translation enabled on Vercel. A production HTTP workflow passed extraction, translated-answer confirmation and verified PDF export; current-system-Chrome completion still awaits Mac unlock. Prepared uploads are limited to 4.4 MB, and basic rate limits apply per instance. Complex live extraction remains experimental: the latest large-school-form production check failed, despite successful local source checks. Do not claim that all forms are accurate, that extraction p95 is under 20 seconds, or that untested devices are verified. See `QUALITY.md` before publication.
 
 Built with GPT-6 Astra (agent) · Powered by Doubao Seed 2.0 Pro (`doubao-seed-2-0-pro-260215`) via Volcano Engine Ark. Precomputed demo assets were generated earlier with Astra and GPT-5.6 Luna through agent-im. The model adapter remains switchable through server environment variables.
 
