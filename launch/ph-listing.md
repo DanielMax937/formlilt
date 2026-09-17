@@ -8,13 +8,13 @@
 
 ## Description
 
-Answer a form one question at a time, check its instructions, add your signature, and download the filled PDF. Four interface languages, keyboard controls, and optional browser speech. Try three real forms without an account. The public preview uses precomputed forms; local uploads run through an OpenAI-compatible model API.
+Answer a form one question at a time, check its instructions, add your signature, and download the filled PDF. Four interface languages, keyboard controls, and optional browser speech. Try three real forms without an account. Upload your own small PDF or photo, or start with one of three precomputed forms. Live extraction and answer translation use Doubao Seed 2.0 Pro.
 
 ## Accurate launch positioning
 
-The public site is currently a demo preview. Do not describe arbitrary uploads, live answer translation, VoiceOver compatibility, or <20-second extraction as production-verified. See `QUALITY.md` before removing the preview label.
+The public site has live uploads and answer translation enabled on Vercel. A production HTTP workflow passed extraction, translated-answer confirmation and verified PDF export; current-system-Chrome completion still awaits Mac unlock. Prepared uploads are limited to 4.4 MB, and basic rate limits apply per instance. Do not claim that all forms are accurate, that extraction p95 is under 20 seconds, or that untested devices are verified. See `QUALITY.md` before publication.
 
-Built with GPT-6 Astra. Local extraction defaults to GPT-6 Astra through agent-im; precomputed assets were generated with Astra and GPT-5.6 Luna. The hosted preview makes no live model calls.
+Built with GPT-6 Astra (agent) · Powered by Doubao Seed 2.0 Pro (`doubao-seed-2-0-pro-260215`) via Volcano Engine Ark. Precomputed demo assets were generated earlier with Astra and GPT-5.6 Luna through agent-im. The model adapter remains switchable through server environment variables.
 
 ## Planned dates from the supplied spec
 
@@ -22,7 +22,7 @@ Challenge submission: 2026-09-17. Product Hunt: 2026-09-18 at 00:01 Pacific (15:
 
 ## Submission checklist for the product owner
 
-- Review `QUALITY.md` and approve the preview positioning or resolve the remaining release gates.
+- Review `QUALITY.md` and approve the current claims and assets or resolve the remaining release gates.
 - Review the GIF, five screenshots, listing text, captioned video draft, video script and maker comment.
 - Verify current contest terms and Product Hunt availability in the actual submission flow.
 - Upload only approved assets and submit/schedule the listing.

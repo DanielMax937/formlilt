@@ -1,0 +1,332 @@
+{
+  "verifiedAt": "2026-09-17T02:56:53.221039+00:00",
+  "scope": "Actual local extraction pipeline calling the owner-selected Ark model with public blank PDFs and two rendered page images each. No precomputed schema was used as the model response. Separate from Vercel-region latency, native system Chrome acceptance, and PDF visual acceptance.",
+  "model": "doubao-seed-2-0-pro-260215",
+  "thinking": "disabled",
+  "sourceCodeSha256": {
+    "lib/llm.ts": "ac5161b77cd8aa57b4b6cbd025a3bf542369c6fad171881a0d344029025962d5",
+    "lib/compact-extract.ts": "542aedd33158708d8708ff026c24c4f4576da0da5d1481ed563f9268ade03d2e",
+    "prompts/extract.ts": "262ef3c2dbe15217e1eae05cd8a0d01035955e7cb847732394ee22b6a3b09123"
+  },
+  "coverageMethod": "Counts are compared against previously manually reviewed inventories (31/42/103). Native-field names and text-layer label membership are checked separately. Count and label matching alone do not establish correct placement or full semantic accuracy.",
+  "changes": [
+    "Applicant-only scope instructions consistently omit notary sections and avoid linking a guardian signature to a student name.",
+    "Repair prompts receive nested Zod paths and syntax errors instead of a generic SDK failure message.",
+    "Explicit examples retain all 13 row positions.",
+    "Signature/date/name and exclusive-group references accept exact unique labels, while preserving numeric-index compatibility and strict type/reference validation."
+  ],
+  "runs": [
+    {
+      "slug": "change-of-address",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "startedAt": "2026-09-17T02:30:15.200Z",
+      "baselineReviewedFieldCount": 31,
+      "status": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 45.815,
+      "finishedAt": "2026-09-17T02:31:01.016Z",
+      "stage": "demo-extraction",
+      "capturedModelResponses": null
+    },
+    {
+      "slug": "insurance-claim",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "startedAt": "2026-09-17T02:30:15.223Z",
+      "baselineReviewedFieldCount": 42,
+      "status": "schema_valid",
+      "fields": 42,
+      "minimumNinetyPercent": 38,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 42,
+      "baselineNative": 42,
+      "missingNative": [],
+      "textFields": 42,
+      "textLabelsGrounded": 42,
+      "signatures": 1,
+      "seconds": 83.976,
+      "finishedAt": "2026-09-17T02:31:39.200Z",
+      "stage": "demo-extraction",
+      "capturedModelResponses": null,
+      "schemaSha256": "56055b58b01e77636347a3db38a0a16e29bce720b7f417c18a28d8e29524930a",
+      "uniqueNativeFields": 42,
+      "signatureReference": {
+        "fieldId": "f30",
+        "dateFieldId": "f31",
+        "nameFieldId": "f32"
+      }
+    },
+    {
+      "slug": "medical-release",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "startedAt": "2026-09-17T02:30:15.215Z",
+      "baselineReviewedFieldCount": 103,
+      "status": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 108.944,
+      "finishedAt": "2026-09-17T02:32:04.161Z",
+      "stage": "demo-extraction",
+      "capturedModelResponses": null
+    },
+    {
+      "slug": "change-of-address",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "startedAt": "2026-09-17T02:33:16.754Z",
+      "baselineReviewedFieldCount": 31,
+      "status": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 92.074,
+      "finishedAt": "2026-09-17T02:34:48.829Z",
+      "stage": "demo-diagnostic",
+      "capturedModelResponses": 2
+    },
+    {
+      "slug": "medical-release",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "startedAt": "2026-09-17T02:33:16.769Z",
+      "baselineReviewedFieldCount": 103,
+      "status": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 215.294,
+      "finishedAt": "2026-09-17T02:36:52.064Z",
+      "stage": "demo-diagnostic",
+      "capturedModelResponses": 2
+    },
+    {
+      "slug": "change-of-address",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "startedAt": "2026-09-17T02:41:34.760Z",
+      "baselineReviewedFieldCount": 31,
+      "status": "schema_valid",
+      "fields": 31,
+      "minimumNinetyPercent": 28,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 25,
+      "baselineNative": 25,
+      "missingNative": [],
+      "textFields": 31,
+      "textLabelsGrounded": 31,
+      "signatures": 3,
+      "seconds": 55.242,
+      "finishedAt": "2026-09-17T02:42:30.004Z",
+      "stage": "demo-repair-fixed",
+      "capturedModelResponses": 2,
+      "schemaSha256": "14a2121c5827a943c52e1fdbb75629c920cbd84e7fd8bf81fe402d54dc6f9117",
+      "uniqueNativeFields": 25,
+      "signatureReference": {
+        "fieldId": "f24",
+        "dateFieldId": "f25",
+        "nameFieldId": "f5"
+      }
+    },
+    {
+      "slug": "medical-release",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "startedAt": "2026-09-17T02:41:34.776Z",
+      "baselineReviewedFieldCount": 103,
+      "status": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 229.063,
+      "finishedAt": "2026-09-17T02:45:23.839Z",
+      "stage": "demo-repair-fixed",
+      "capturedModelResponses": 2
+    },
+    {
+      "slug": "insurance-claim",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "startedAt": "2026-09-17T02:43:17.938Z",
+      "baselineReviewedFieldCount": 42,
+      "status": "schema_valid",
+      "fields": 42,
+      "minimumNinetyPercent": 38,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 42,
+      "baselineNative": 42,
+      "missingNative": [],
+      "textFields": 42,
+      "textLabelsGrounded": 42,
+      "signatures": 1,
+      "seconds": 31.027,
+      "finishedAt": "2026-09-17T02:43:48.967Z",
+      "stage": "demo-insurance-fixed",
+      "capturedModelResponses": 1,
+      "schemaSha256": "e7aef4900fc717301f42f72558f7580e1349895ffcf841752e456816a7aba7e2",
+      "uniqueNativeFields": 42,
+      "signatureReference": {
+        "fieldId": "f30",
+        "dateFieldId": "f31"
+      }
+    },
+    {
+      "slug": "change-of-address",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "200ec0db82a1f8ea0c37f5ffdad562926dfe26c1d537ff701755989ce4197be6",
+      "startedAt": "2026-09-17T02:48:31.226Z",
+      "baselineReviewedFieldCount": 31,
+      "status": "schema_valid",
+      "fields": 31,
+      "minimumNinetyPercent": 28,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 24,
+      "baselineNative": 25,
+      "missingNative": [
+        "topmostSubform[0].Page1[0].f1_22[0]"
+      ],
+      "textFields": 31,
+      "textLabelsGrounded": 31,
+      "signatures": 3,
+      "seconds": 28.744,
+      "finishedAt": "2026-09-17T02:48:59.970Z",
+      "stage": "demo-named-references",
+      "capturedModelResponses": 1,
+      "schemaSha256": "bda04c477c621fb4f9063920d950dac2b8dd9811567937e6dfeb3305119521ff",
+      "uniqueNativeFields": 24,
+      "signatureReference": {
+        "fieldId": "f24",
+        "dateFieldId": "f25",
+        "nameFieldId": "f5"
+      }
+    },
+    {
+      "slug": "insurance-claim",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "89eb9d0ddc89e8c70b240ca1090af98101fabf7865450ff37fc6c9bb4786bacc",
+      "startedAt": "2026-09-17T02:48:31.221Z",
+      "baselineReviewedFieldCount": 42,
+      "status": "schema_valid",
+      "fields": 42,
+      "minimumNinetyPercent": 38,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 42,
+      "baselineNative": 42,
+      "missingNative": [],
+      "textFields": 42,
+      "textLabelsGrounded": 42,
+      "signatures": 1,
+      "seconds": 32.706,
+      "finishedAt": "2026-09-17T02:49:03.927Z",
+      "stage": "demo-named-references",
+      "capturedModelResponses": 1,
+      "schemaSha256": "f72a995b61ea3818b85834ea89730ae303c00b8e62b7a24988e911343c461c60",
+      "uniqueNativeFields": 42,
+      "signatureReference": {
+        "fieldId": "f30",
+        "dateFieldId": "f31"
+      }
+    },
+    {
+      "slug": "medical-release",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "startedAt": "2026-09-17T02:48:31.210Z",
+      "baselineReviewedFieldCount": 103,
+      "status": "schema_valid",
+      "fields": 109,
+      "minimumNinetyPercent": 93,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 0,
+      "baselineNative": 0,
+      "missingNative": [],
+      "textFields": 109,
+      "textLabelsGrounded": 109,
+      "signatures": 3,
+      "seconds": 203.833,
+      "finishedAt": "2026-09-17T02:51:55.045Z",
+      "stage": "demo-named-references",
+      "capturedModelResponses": 1,
+      "schemaSha256": "c13f54020bb5a771ed90261feaa56f60f30b0c7f200b584c83ea0e661b71b98c",
+      "uniqueNativeFields": 0,
+      "signatureReference": {
+        "fieldId": "f101",
+        "dateFieldId": "f102",
+        "nameFieldId": "f0"
+      }
+    },
+    {
+      "slug": "medical-release",
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+      "startedAt": "2026-09-17T02:53:07.028Z",
+      "baselineReviewedFieldCount": 103,
+      "status": "schema_valid",
+      "fields": 103,
+      "minimumNinetyPercent": 93,
+      "fieldCountMeetsMinimum": true,
+      "nativeMatched": 0,
+      "baselineNative": 0,
+      "missingNative": [],
+      "textFields": 103,
+      "textLabelsGrounded": 103,
+      "signatures": 2,
+      "seconds": 109.967,
+      "finishedAt": "2026-09-17T02:54:56.996Z",
+      "stage": "demo-applicant-scope",
+      "capturedModelResponses": 1,
+      "schemaSha256": "7b620ba2b6997d3663769ba523118d64977f8306f48a95cfd9a0b6af2734cd79",
+      "uniqueNativeFields": 0,
+      "signatureReference": {
+        "fieldId": "f101",
+        "dateFieldId": "f102"
+      }
+    }
+  ],
+  "limitations": [
+    "Not a p95 benchmark; successful requests over 20 seconds leave the latency target unmet.",
+    "No physical phone photograph was supplied.",
+    "Current system Chrome complete production flow awaits Mac unlock.",
+    "The latest address extraction represents the representative title as an overlay rather than its native widget (24/25 native names), despite including all 31 field rows.",
+    "Schema validation and source grounding do not replace visual review of every filled PDF."
+  ],
+  "review": {
+    "address": "All 31 intended labels represented. Representative title uses a non-native overlay, so native identity coverage is 24/25 in the final reference run.",
+    "insurance": "All 42 reviewed native fields matched in the reference run.",
+    "school": "Final applicant-scope run represents the 103 reviewed applicant/prescriber fields; notary fields omitted. Primary parent signature is linked to its date without using the student name. Self-carry Yes/No rows are mutually exclusive. Coordinates and filled output have not received a new visual acceptance.",
+    "earlierSchoolIssue": "The preceding 109-field run was schema-valid but retained six notary fields and incorrectly linked the parent signature to the student name. It is not accepted as the final semantic result."
+  },
+  "security": {
+    "scannedWorkingFiles": 178,
+    "scannedHistoryBlobs": 457,
+    "secretMatches": [],
+    "envIgnored": true,
+    "envMode": "600"
+  }
+}

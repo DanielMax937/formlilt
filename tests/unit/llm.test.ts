@@ -7,7 +7,7 @@ vi.mock('ai', async (original) => ({
 vi.mock('@ai-sdk/openai-compatible', () => ({
   createOpenAICompatible: vi.fn(() => ({ chatModel: (model: string) => model })),
 }));
-import { generateObject } from 'ai';
+import { generateObject, NoObjectGeneratedError } from 'ai';
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateValidated, getModel } from '@/lib/llm';
 afterEach(() => {
@@ -41,6 +41,26 @@ test('one repair retry validates semantics without accepting invalid output', as
   expect(JSON.stringify(vi.mocked(generateObject).mock.calls[1][0])).toContain(
     'Unsupported field label',
   );
+});
+test('repair receives the nested validation path instead of the generic SDK error', async () => {
+  const schema = z.object({ rows: z.array(z.tuple([z.string(), z.number(), z.number()])) });
+  const invalid = schema.safeParse({ rows: [['Name', 4]] });
+  if (invalid.success) throw new Error('Expected invalid fixture');
+  const error = new NoObjectGeneratedError({
+    message: 'No object generated: response did not match schema.',
+    text: '{"rows":[["Name",4]]}',
+    cause: new Error('Type validation failed', { cause: invalid.error }),
+    response: { id: 'test', modelId: 'test', timestamp: new Date() },
+    usage: { inputTokens: 1, outputTokens: 1, totalTokens: 2 },
+    finishReason: 'stop',
+  });
+  vi.mocked(generateObject)
+    .mockRejectedValueOnce(error)
+    .mockResolvedValueOnce({ object: { rows: [['Name', 4, -1]] } } as never);
+  await generateValidated(schema, [{ role: 'user', content: 'Extract this field' }]);
+  const feedback = vi.mocked(generateObject).mock.calls[1][0].messages?.at(-1)?.content;
+  expect(feedback).toContain('rows.0');
+  expect(feedback).toContain('at least 3');
 });
 test('Doubao explicitly configures thinking without changing the JSON or image payload', () => {
   vi.stubEnv('LLM_PROVIDER', 'doubao');

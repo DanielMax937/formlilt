@@ -17,24 +17,22 @@ export const CompactRow = z.tuple([
   z.array(z.number().int().min(0)).max(4), // help text item indices, same page
   Field.shape.constraints.unwrap().nullable(),
 ]);
+const RowReference = z.union([z.number().int().min(-1), z.string().min(1).max(100)]);
 export const CompactExtract = z.object({
   title: z.string().min(1).max(200),
   language: z.string().min(2).max(30),
   sections: z.array(z.string().min(1).max(100)).min(1).max(30),
   rows: z.array(CompactRow).max(150),
-  signature: z.number().int().min(-1),
-  date: z.number().int().min(-1),
-  name: z.number().int().min(-1),
+  signature: RowReference,
+  date: RowReference,
+  name: RowReference,
   // Scans have no text-item indices. Keep short visible source quotations separate
   // from the positional field rows; older cached responses may omit them.
   scanHelp: z
     .array(z.tuple([z.number().int().min(0), z.string().trim().min(1).max(300)]))
     .max(150)
     .optional(),
-  exclusiveGroups: z
-    .array(z.array(z.number().int().min(0)).min(2).max(21))
-    .max(30)
-    .optional(),
+  exclusiveGroups: z.array(z.array(RowReference).min(2).max(21)).max(30).optional(),
 });
 export type CompactExtract = z.infer<typeof CompactExtract>;
 export const uniqueAcro = (doc: ParsedDocument) =>
@@ -42,6 +40,18 @@ export const uniqueAcro = (doc: ParsedDocument) =>
 export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSchema {
   const acros = uniqueAcro(doc);
   const id = (index: number) => 'f' + index;
+  const resolveReference = (reference: z.infer<typeof RowReference>): number => {
+    if (typeof reference === 'number') return reference;
+    const matches = raw.rows.flatMap((row, index) => (row[0] === reference ? [index] : []));
+    if (matches.length !== 1)
+      throw new Error(
+        `Field reference ${JSON.stringify(reference)} must match exactly one row label; found ${matches.length}. Use a unique exact label or its zero-based row index.`,
+      );
+    return matches[0];
+  };
+  const signatureIndex = resolveReference(raw.signature);
+  const dateIndex = resolveReference(raw.date);
+  const nameIndex = resolveReference(raw.name);
   const scanHelp = new Map<number, string>();
   for (const [rowIndex, quote] of raw.scanHelp ?? []) {
     const row = raw.rows[rowIndex];
@@ -118,12 +128,17 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
     };
   });
   const exclusivePeers = new Map<number, Set<number>>();
-  for (const group of raw.exclusiveGroups ?? []) {
+  for (const references of raw.exclusiveGroups ?? []) {
+    const group = references.map(resolveReference);
     if (
       new Set(group).size !== group.length ||
       group.some((index) => sourceFields[index]?.type !== 'checkbox')
     )
-      throw new Error('An exclusive group must reference distinct checkbox rows.');
+      throw new Error(
+        `An exclusive group must reference distinct checkbox rows. Invalid group: ${JSON.stringify(group)}. ` +
+          `Referenced types: ${group.map((i) => `${i}:${sourceFields[i]?.type ?? 'missing'}`).join(', ')}. ` +
+          `Available checkbox row indices: ${sourceFields.flatMap((f, i) => (f.type === 'checkbox' ? [i] : [])).join(', ')}.`,
+      );
     for (const index of group) {
       const peers = exclusivePeers.get(index) ?? new Set<number>();
       for (const other of group) if (other !== index) peers.add(other);
@@ -162,12 +177,12 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
     })),
     fields,
     estimatedMinutes: Math.max(1, Math.round(fields.length * 0.25)),
-    ...(raw.signature >= 0
+    ...(signatureIndex >= 0
       ? {
           signature: {
-            fieldId: id(raw.signature),
-            ...(raw.date >= 0 ? { dateFieldId: id(raw.date) } : {}),
-            ...(raw.name >= 0 ? { nameFieldId: id(raw.name) } : {}),
+            fieldId: id(signatureIndex),
+            ...(dateIndex >= 0 ? { dateFieldId: id(dateIndex) } : {}),
+            ...(nameIndex >= 0 ? { nameFieldId: id(nameIndex) } : {}),
           },
         }
       : {}),

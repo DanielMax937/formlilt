@@ -1,24 +1,24 @@
-# 60-second video script
+# 60-second video script — live Ark deployment
 
-A [60-second captioned review draft](formlilt-demo-draft.mp4) is now available, with [captions](formlilt-demo-draft.srt) and [capture provenance](video-manifest.json). It records actual keyboard/demo interactions and a drawn test signature; it has no audio. The table below is the original production plan. The SRT reflects the actual edit. Upload, live voice and question-speech footage still need recording before the complete SPEC §2.3 scenario can be accepted.
+This plan follows SPEC §2.3 and the current deployment. It is not a claim that the footage has been recorded. The existing [captioned review draft](formlilt-demo-draft.mp4), [captions](formlilt-demo-draft.srt) and [provenance](video-manifest.json) still describe the earlier local keyboard/demo recording, with no audio.
 
-Use synthetic details only. Record the actual interface; keep cuts visible. No music is necessary. This script is a production plan, not a claim that a finished narrated video has been recorded.
+Use the actual system Chrome and synthetic details. Keep edits visible. Model reading may take longer than the sequence below; show a labeled cut rather than claiming a two-second uncached extraction. Show the actual field count and time estimate returned for the recorded form.
 
-| Time | Screen/action | Narration / subtitle |
+| Time | Actual screen/action | Subtitle |
 | --- | --- | --- |
-| 00–06 | Homepage; point to the three demo cards and preview notice | “A form can be easier when you take it one question at a time.” |
-| 06–13 | Open the insurance demo; show its current active-question count and todo list | “FormLilt keeps the questions and the original form together. These public demos are ready to try.” |
-| 13–21 | Change the interface to Chinese; show the cached question; type a synthetic surname | “Choose your language. Type your answer, or use your browser’s speech input where supported.” |
-| 21–29 | Return to English; jump to other health insurance; open the explanation | “Need context? Read the instructions quoted from the form.” |
-| 29–35 | Skip an optional field; show its skipped status; return and edit | “Keep moving, then come back to anything you need to check.” |
-| 35–43 | Jump to signature, type or draw Alex Rivera, show linked date | “Add a signature with the signer’s name. Its linked date fills in automatically.” |
-| 43–53 | Clearly marked jump cut to a completed sample; open review; download; show the PDF | “Review every answer and check its placement in the downloaded PDF.” |
-| 53–60 | Homepage or repository; overlay the actual site URL | “Try three forms at formlilt.vercel.app. Built with GPT-6 Astra. Open source, with local uploads through agent-im.” |
+| 00–08 | Drag the public English insurance claim PDF onto the live site. Show upload and reading; use a labeled cut for any omitted waiting. | “Start with your form.” |
+| 08–19 | Switch to Chinese, show and hear the first translated question. Speak a fictional name, review the real transcript and correct it if needed. | “Answer in your language. Check what the browser heard.” |
+| 19–28 | Open an available field explanation. Show the actual source quotation and translation. | “See what the form itself says.” |
+| 28–35 | Say the localized skip command; show the missing item in the checklist, then return to it. | “Come back to a question when you’re ready.” |
+| 35–44 | Draw a test signature, enter the fictional signer name and show its linked date. | “Add a signature and review the date.” |
+| 44–54 | Mark a cut over remaining fictional answers. Show review, download and the actual generated PDF in Chrome. | “Review the answers and their placement in the PDF.” |
+| 54–60 | Show the site address and source link. | “FormLilt · Built with GPT-6 Astra · Powered by Doubao Seed 2.0 Pro.” |
 
-## Recording notes
+## Recording requirements
 
-- The 8-second GIF uses real keyboard interactions. Do not label it as live speech recognition.
-- If a physical microphone demonstration is recorded later, verify the transcript on camera and leave it editable.
-- Do not show real identity numbers, medical details, account IDs, API keys or browser profiles.
-- The public preview does not translate entered answers; they are used as written. Show English synthetic answers when demonstrating an English form.
-- If live uploads remain disabled, retain the preview notice and avoid a drag-and-drop upload claim.
+- Record real browser speech and app reading; do not replace microphone results with mocked transcripts. The earlier native speech acceptance is separate from recorded footage.
+- An explanation must quote the available form instructions. If this particular form does not explain a policy number, show the honest “the form does not explain this” response instead of inventing a source or advice.
+- The eight-second GIF should show actual upload → question → voice answer, using a disclosed cut if extraction waiting is omitted. The existing keyboard GIF does not satisfy this sequence.
+- Do not include real identity numbers, health details, account IDs, API keys or other browser tabs in the recording.
+- Keep the resulting runtime attribution and upload-limit text current. The hosted prepared-upload limit is 4.4 MB.
+- Mac unlock, actual speech footage and product-owner media acceptance are still pending. Nothing has been submitted to Product Hunt.

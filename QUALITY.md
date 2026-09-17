@@ -4,8 +4,9 @@ This file separates implemented behavior from acceptance that still needs eviden
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 96 passed after the Ark, explicit memory-limit and production native-widget fixes; every API route covered |
+| Unit/API tests | 101 passed after nested model-repair feedback and exact-name long-form references; every API route covered |
 | TypeScript and production build | Local checks and production build passed. Current deployment `dpl_7vHkwxt75F7YJ5oaHtTrT8t52nCH` contains the extraction/export fixes and runs in sin1 |
+| Current Ark standard forms | Local real requests return legal grounded schemas for address (31), insurance (42), and school (103 after applicant-scope correction). Latest corresponding timings: 28.744s, 32.706s, 109.967s. Named references fixed long-form index drift; nested repair feedback fixed unhelpful retries. These are source/schema checks, not new Chrome or visual PDF acceptance. Earlier failed and semantically incorrect attempts remain in `launch/ark-demo-verification.json` |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
 | Upload → live extraction → download in one browser run | **5/6 passed; gate remains open.** Address and insurance sources passed real upload, extraction, required questions/signatures and PDF download in Chrome and mobile WebKit. School passed in Chrome; mobile WebKit's school request returned 502 `llm_error` after the 300-second model timeout, before question entry. Per-run evidence is in `launch/live-upload-verification.json`; no extraction mocks or precomputed demo endpoint were used |

@@ -91,6 +91,75 @@ test('exclusive groups cannot refer to non-checkbox fields', () => {
     hydrateExtract(CompactExtract.parse({ ...choices, rows, exclusiveGroups: [[0, 1]] }), doc),
   ).toThrow('distinct checkbox rows');
 });
+test('long-form signature and exclusive references resolve exact labels after row reordering', () => {
+  const row = (label: string, type = 'text') => [
+    label,
+    type,
+    false,
+    0,
+    0,
+    -1,
+    0,
+    [0.1, 0.1, 0.3, 0.13],
+    [],
+    -1,
+    '',
+    [],
+    null,
+  ];
+  const schema = hydrateExtract(
+    CompactExtract.parse({
+      ...choices,
+      rows: [
+        ...Array.from({ length: 100 }, (_, i) => row(`Table cell ${i}`)),
+        row('Parent signature', 'signature'),
+        row('Signed date', 'date'),
+        row('Parent name'),
+        row('Permission: No', 'checkbox'),
+        row('Permission: Yes', 'checkbox'),
+      ],
+      signature: 'Parent signature',
+      date: 'Signed date',
+      name: 'Parent name',
+      exclusiveGroups: [['Permission: Yes', 'Permission: No']],
+    }),
+    doc,
+  );
+  expect(schema.signature).toEqual({ fieldId: 'f100', dateFieldId: 'f101', nameFieldId: 'f102' });
+  expect(schema.fields[103].exclusiveWith).toEqual(['f104']);
+  expect(schema.fields[104].exclusiveWith).toEqual(['f103']);
+});
+test.each(['Missing label', 'Repeated label'])(
+  'missing or ambiguous named field references are rejected: %s',
+  (reference) => {
+    const rows = choices.rows.map((row) => ['Repeated label', ...row.slice(1)]);
+    expect(() =>
+      hydrateExtract(
+        CompactExtract.parse({
+          ...choices,
+          rows,
+          signature: reference,
+        }),
+        doc,
+      ),
+    ).toThrow('must match exactly one row label');
+  },
+);
+test('named exclusive references still reject non-checkbox fields', () => {
+  const rows = choices.rows.map((row, index) =>
+    index === 1 ? [row[0], 'text', ...row.slice(2)] : row,
+  );
+  expect(() =>
+    hydrateExtract(
+      CompactExtract.parse({
+        ...choices,
+        rows,
+        exclusiveGroups: [['Alleinige Wohnung', 'Hauptwohnung']],
+      }),
+      doc,
+    ),
+  ).toThrow('distinct checkbox rows');
+});
 test('unsupported instructions are removed from help', () => {
   const result = groundSchema(
     FormSchema.parse({

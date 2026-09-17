@@ -1,12 +1,16 @@
 # FormLilt launch review pack
 
-Prepared from the actual local production build, using synthetic answers. The website is currently a **demo preview**. Check [release readiness](../QUALITY.md) before publishing.
+Prepared from the actual local production build, using synthetic answers. The website now has **live Ark uploads and translation**. These existing visual assets were captured earlier and retain their original demo/keyboard labels. Check [release readiness](../QUALITY.md) before publishing.
 
-[Native acceptance evidence](native-verification.json) records the three PDF exports in macOS Preview, the first five insurance questions with real macOS VoiceOver, and real Chrome microphone input and question speech confirmed by the user. Physical iPhone and Adobe Reader checks remain open.
+[Native acceptance evidence](native-verification.json) records the three PDF exports in macOS Preview, the first five insurance questions with real macOS VoiceOver, and real Chrome microphone input and question speech confirmed by the user. These historical checks are separate from the owner’s current-system-Chrome deployment acceptance.
 
 [Real upload acceptance](live-upload-verification.json): 5/6 local browser cases passed through agent-im without extraction mocks. The mobile WebKit school request timed out during model extraction; that release gate remains open.
 
 [Scanned-source explanation follow-up](scan-help-verification.json) records a real upload, visible source quote and 16 synthetic applicant answers through signature/date and PDF download. Its first semantic failure remains recorded; this repeats one of the five reviewed sources rather than adding a sixth.
+
+[Ark three-form integration attempts](ark-demo-verification.json) record the current provider’s schema/source checks, failures and latency limits. These are API/library checks, not native Chrome or PDF visual acceptance.
+
+[Live Ark deployment evidence](ark-production-verification.json) records the Singapore HTTP extraction, translation and PDF export checks. [Synthetic exported PDF](ark-production-filled.pdf) passed native-value and visual review. Complete system Chrome acceptance still awaits Mac unlock.
 
 ## Visual assets
 
