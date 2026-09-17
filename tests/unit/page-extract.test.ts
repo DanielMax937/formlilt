@@ -223,6 +223,83 @@ test('caller cancellation prevents a whole-document retry', async () => {
   });
   expect(generateValidated).toHaveBeenCalledTimes(2);
 });
+test.each([
+  [280000, 120000],
+  [10000, 5000],
+])('a stalled pair reserves fallback time within a %i ms total budget', async (total, pair) => {
+  mockSources();
+  vi.stubEnv('LLM_TIMEOUT_MS', String(total));
+  const totalDeadline = new AbortController();
+  const pairDeadline = new AbortController();
+  const timeout = vi
+    .spyOn(AbortSignal, 'timeout')
+    .mockReturnValueOnce(totalDeadline.signal)
+    .mockReturnValueOnce(pairDeadline.signal);
+  const started = Promise.withResolvers<void>();
+  let active = 0;
+  const stall: typeof generateValidated = async (_s, _m, _v, signal) => {
+    if (++active === 2) started.resolve();
+    await new Promise<void>((resolve) =>
+      signal!.addEventListener('abort', () => resolve(), { once: true }),
+    );
+    active--;
+    throw { status: 502, code: 'llm_error', message: 'Page timed out' };
+  };
+  vi.mocked(generateValidated).mockImplementationOnce(stall).mockImplementationOnce(stall);
+  vi.mocked(generateValidated).mockImplementationOnce(
+    async (schema, _m, verify, signal, attempts) => {
+      expect(active).toBe(0);
+      expect(signal?.aborted).toBe(false);
+      expect(attempts).toBe(1);
+      return verify!(schema.parse(mergePageExtractions(copy())));
+    },
+  );
+  try {
+    const job = extractForm(new Uint8Array([1]), images);
+    await started.promise;
+    expect(timeout.mock.calls).toEqual([[total], [pair]]);
+    pairDeadline.abort();
+    expect((await job).fields).toHaveLength(5);
+    expect(totalDeadline.signal.aborted).toBe(false);
+    expect(generateValidated).toHaveBeenCalledTimes(3);
+  } finally {
+    timeout.mockRestore();
+  }
+});
+test('the original total deadline still cancels a fallback after the pair deadline', async () => {
+  mockSources();
+  vi.stubEnv('LLM_TIMEOUT_MS', '280000');
+  const totalDeadline = new AbortController();
+  const pairDeadline = new AbortController();
+  const timeout = vi
+    .spyOn(AbortSignal, 'timeout')
+    .mockReturnValueOnce(totalDeadline.signal)
+    .mockReturnValueOnce(pairDeadline.signal);
+  const pairStarted = Promise.withResolvers<void>();
+  const fallbackStarted = Promise.withResolvers<void>();
+  let calls = 0;
+  vi.mocked(generateValidated).mockImplementation(async (_s, _m, _v, signal) => {
+    calls++;
+    if (calls === 2) pairStarted.resolve();
+    if (calls === 3) fallbackStarted.resolve();
+    await new Promise<void>((resolve) =>
+      signal!.addEventListener('abort', () => resolve(), { once: true }),
+    );
+    throw { status: 502, code: 'llm_error', message: 'Timed out' };
+  });
+  try {
+    const job = extractForm(new Uint8Array([1]), images);
+    const rejection = expect(job).rejects.toMatchObject({ code: 'llm_error' });
+    await pairStarted.promise;
+    pairDeadline.abort();
+    await fallbackStarted.promise;
+    totalDeadline.abort();
+    await rejection;
+    expect(generateValidated).toHaveBeenCalledTimes(3);
+  } finally {
+    timeout.mockRestore();
+  }
+});
 test('a content-policy refusal is returned without retrying the full document', async () => {
   mockSources();
   vi.mocked(generateValidated).mockRejectedValue({

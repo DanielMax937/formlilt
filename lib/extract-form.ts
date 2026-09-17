@@ -222,7 +222,13 @@ export async function extractForm(
     let attempts = 2;
     if (canExtractPagePair(document)) {
       try {
-        const result = await extractPagePair(document, images, validate, extractionSignal);
+        // A stalled page must leave time for the whole-document fallback. Reserve
+        // at least half the total budget, with a two-minute cap on the page pair.
+        const pageSignal = AbortSignal.any([
+          extractionSignal,
+          AbortSignal.timeout(Math.min(120_000, Math.floor(env.LLM_TIMEOUT_MS / 2))),
+        ]);
+        const result = await extractPagePair(document, images, validate, pageSignal);
         console.info('form_extraction_path', 'page_pair');
         return result;
       } catch (error) {
