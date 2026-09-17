@@ -21,4 +21,4 @@ Use the actual system Chrome and synthetic details. Keep edits visible. Model re
 - The eight-second GIF should show actual upload → question → voice answer, using a disclosed cut if extraction waiting is omitted. The existing keyboard GIF does not satisfy this sequence.
 - Do not include real identity numbers, health details, account IDs, API keys or other browser tabs in the recording.
 - Keep the resulting runtime attribution and upload-limit text current. The hosted prepared-upload limit is 4.4 MB.
-- Mac unlock, actual speech footage and product-owner media acceptance are still pending. Nothing has been submitted to Product Hunt.
+- The Mac is unlocked and the system-Chrome upload/sign/download acceptance has completed. Actual speech footage and product-owner media acceptance remain pending. Nothing has been submitted to Product Hunt.

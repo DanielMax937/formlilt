@@ -1,0 +1,162 @@
+{
+  "verifiedAt": "2026-09-17T13:42:51.918450+00:00",
+  "url": "https://formlilt.vercel.app",
+  "browser": "Existing system Google Chrome, operated with native Computer Use",
+  "source": {
+    "url": "https://cms6.revize.com/revize/tinleypark/Dog%20application.pdf",
+    "sha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+    "publicBlankForm": true
+  },
+  "scope": "Actual native Chrome upload, 10 questions, synthetic answers, drawn signature, review editing, Chinese translation confirmation and PDF download. The same saved browser session continued across the timeout-fix deployment; no second extraction is claimed.",
+  "initialDeployment": {
+    "id": "dpl_EWRCrRQy2PPQXh3sgFSbyANcC89X",
+    "code": "9f7f388",
+    "result": "Upload, all questions, signature, review and English-value export passed. Translation did not complete."
+  },
+  "initialFailure": {
+    "upstream": "ETIMEDOUT",
+    "platform": "60-second Vercel turn-function cutoff",
+    "client": "Pending stream ended without a result or visible error",
+    "preserved": true
+  },
+  "correction": {
+    "modelDeadlineMs": 45000,
+    "browserDeadlineMs": 55000,
+    "streamCompletionRequired": true,
+    "unitAndApiTests": 131,
+    "typecheck": "passed in production build",
+    "build": "passed locally and on Vercel"
+  },
+  "finalDeployment": {
+    "id": "dpl_CBhH1S788vt4ti36KcdFoWechfZ3",
+    "code": "dbf236a653f6b54d5b818777f5b7806091a31596",
+    "region": "sin1",
+    "status": "READY",
+    "aliasVerified": true
+  },
+  "translation": {
+    "original": "金色",
+    "offeredValue": "gold",
+    "userConfirmationClicked": true,
+    "savedOriginalAndTranslation": true,
+    "result": "passed"
+  },
+  "export": {
+    "sha256": "09d4f6c4fe2d93e5f157b862f47faef4acc83ae18257354f9c46168fded36a2d",
+    "bytes": 43074,
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "expectedNativeValues": {
+      "Date_": "2026-09-17",
+      "Phone_": "2025550123",
+      "Name of owner_": "Alex Rivera",
+      "Street Address _": "123 Example St",
+      "Animal name_": "Coco",
+      "Breed_": "Beagle",
+      "Sex_": "Female",
+      "Color_": "gold",
+      "Unusual Markings_": "None",
+      "Signature_": "Alex Rivera"
+    },
+    "officeFieldsBlank": true,
+    "path": "launch/ark-chrome-filled.pdf",
+    "downloadName": "tinley-dog-filled (1).pdf",
+    "nativeFieldsMatched": 10,
+    "visualReview": "Passed: Poppler render and actual downloaded PDF in system Chrome at fit-to-page, including gold, Female, blank office fields and synthetic drawn signature.",
+    "signature": "Synthetic drawn Ax mark with signer Alex Rivera",
+    "result": "passed"
+  },
+  "observations": [
+    "A test colour-entry mismatch was caught on review and corrected with direct control-value entry before export; the incorrect text is not included in this evidence.",
+    "UI label Sex: Male covers the Male/Female selector; selecting Female exported the correct native radio value.",
+    "Review shows approximate-placement guidance for this extraction. The native values and rendered output were independently checked.",
+    "Chrome PDF viewer reported unavailable text-extraction files. Visual rendering passed; this run does not establish exported-PDF screen-reader accessibility."
+  ],
+  "limitations": [
+    "No browser latency benchmark or p95 claim",
+    "Complex extraction remains slow; the earlier school request took 101.807 seconds",
+    "No new physical phone or voice acceptance in this run",
+    "Earlier provider and failed attempts retain their separate evidence"
+  ],
+  "publicSecretScan": {
+    "verifiedAt": "2026-09-17T13:44:47.201Z",
+    "url": "https://formlilt.vercel.app",
+    "scriptsScanned": 15,
+    "publicSecretMatches": [],
+    "homeShowsHostedLimit": true,
+    "aboutHasConfiguredModel": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+        "bytes": 173018
+      },
+      {
+        "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+        "bytes": 173686
+      },
+      {
+        "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+        "bytes": 558
+      },
+      {
+        "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+        "bytes": 20898
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+        "bytes": 2785
+      },
+      {
+        "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+        "bytes": 143812
+      },
+      {
+        "path": "/_next/static/chunks/416-864b900c2ffd1196.js",
+        "bytes": 68317
+      },
+      {
+        "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+        "bytes": 13332
+      },
+      {
+        "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+        "bytes": 17865
+      },
+      {
+        "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "bytes": 112594
+      },
+      {
+        "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+        "bytes": 3998
+      },
+      {
+        "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+        "bytes": 10082
+      },
+      {
+        "path": "/_next/static/chunks/716-dd4bd5bf49df76a0.js",
+        "bytes": 12598
+      },
+      {
+        "path": "/_next/static/chunks/app/fill/%5BsessionId%5D/page-0baeb86751f81d1a.js",
+        "bytes": 18134
+      },
+      {
+        "path": "/_next/static/chunks/app/review/%5BsessionId%5D/page-822a72ef2f453dea.js",
+        "bytes": 12901
+      }
+    ]
+  },
+  "sourceSecretScan": {
+    "scannedWorkingFiles": 193,
+    "scannedHistoryBlobs": 521,
+    "secretMatches": [],
+    "envIgnored": true,
+    "envMode": "600"
+  }
+}
