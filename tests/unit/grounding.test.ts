@@ -238,12 +238,13 @@ test('unreadable scan instructions stay absent rather than becoming invented adv
 });
 
 test.each([
-  [null, '2026-09-17'],
-  [{ maxLength: 10 }, '2026-09-17'],
+  [null, '09/17/2026'],
+  [{ maxLength: 10 }, '09/17/2026'],
   [{ dateFormat: 'DD/MM/YYYY' }, '17/09/2026'],
   [{ dateFormat: 'MM/DD/YYYY' }, '09/17/2026'],
+  [{ dateFormat: 'YYYY-MM-DD' }, '2026-09-17'],
 ])(
-  'date extraction preserves specified order and avoids an ambiguous default (%j)',
+  'date extraction preserves printed formats and uses the spec default when absent (%j)',
   (constraints, expected) => {
     const raw = CompactExtract.parse({
       title: 'Anmeldung',

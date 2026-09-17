@@ -91,7 +91,7 @@ export function hydrateExtract(raw: CompactExtract, doc: ParsedDocument): FormSc
     const fieldType = acro?.type === 'PDFRadioGroup' ? 'select' : type;
     const fieldConstraints =
       fieldType === 'date'
-        ? { ...constraints, dateFormat: constraints?.dateFormat ?? ('YYYY-MM-DD' as const) }
+        ? { ...constraints, dateFormat: constraints?.dateFormat ?? ('MM/DD/YYYY' as const) }
         : constraints;
     return {
       id: id(i),
