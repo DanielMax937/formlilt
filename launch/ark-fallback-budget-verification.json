@@ -74,10 +74,15 @@
     "exportPerformedThisRun": false
   },
   "chrome": {
-    "status": "pending_unlock",
-    "observation": "Native Computer Use reported the Mac locked and automatic unlock unavailable. Requested manual unlock; no response yet.",
+    "status": "passed_after_unlock",
+    "evidence": "ark-chrome-school-verification.json",
+    "fields": 103,
+    "answered": 35,
+    "allRequiredValid": true,
+    "pdfVisualReview": "both pages passed in Poppler and current Chrome",
     "previousFailure": "ark-page-pair-verification.json",
-    "newBrowserAcceptanceClaimed": false
+    "newBrowserAcceptanceClaimed": true,
+    "scope": "Real upload, selected/required answers, typed signature, review and download. No claim of entering all 103 questions or triggering extraction fallback."
   },
   "publicSecretScan": {
     "verifiedAt": "2026-09-17T14:40:35.466Z",
@@ -151,7 +156,7 @@
   },
   "remaining": [
     "Uncached extraction p95 <20 seconds is not met.",
-    "Actual stalled-request recovery and the complex school browser flow remain unverified.",
+    "Actual stalled-request extraction fallback recovery remains unverified.",
     "Owner latency-scope question remains pending; no alternate model was selected."
   ]
 }

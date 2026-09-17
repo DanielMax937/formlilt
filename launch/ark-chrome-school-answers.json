@@ -1,0 +1,2212 @@
+{
+  "schema": {
+    "title": "Dublin City School District District-Sponsored Overnight Trip Medical Authorization Form",
+    "language": "en",
+    "source": "pdf",
+    "precision": "exact",
+    "pages": [
+      {
+        "index": 0,
+        "widthPt": 612,
+        "heightPt": 792,
+        "kind": "text"
+      },
+      {
+        "index": 1,
+        "widthPt": 612,
+        "heightPt": 792,
+        "kind": "text"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s0",
+        "title": "Student Information",
+        "fieldIds": [
+          "f0",
+          "f1",
+          "f2",
+          "f3",
+          "f4",
+          "f5"
+        ]
+      },
+      {
+        "id": "s1",
+        "title": "Parent/Guardian Information",
+        "fieldIds": [
+          "f6",
+          "f7",
+          "f8",
+          "f9",
+          "f10",
+          "f11",
+          "f12",
+          "f13"
+        ]
+      },
+      {
+        "id": "s2",
+        "title": "Emergency Numbers",
+        "fieldIds": [
+          "f14",
+          "f15",
+          "f16",
+          "f17",
+          "f18",
+          "f19",
+          "f20",
+          "f21"
+        ]
+      },
+      {
+        "id": "s3",
+        "title": "Health Care and Insurance Information",
+        "fieldIds": [
+          "f22",
+          "f23",
+          "f24",
+          "f25",
+          "f26",
+          "f27",
+          "f28"
+        ]
+      },
+      {
+        "id": "s4",
+        "title": "General Health Care Information",
+        "fieldIds": [
+          "f29",
+          "f30",
+          "f31",
+          "f32",
+          "f33",
+          "f34",
+          "f35",
+          "f36",
+          "f37",
+          "f38",
+          "f39",
+          "f40",
+          "f41",
+          "f42",
+          "f43",
+          "f44",
+          "f45",
+          "f46",
+          "f47",
+          "f48",
+          "f49",
+          "f50",
+          "f51",
+          "f52"
+        ]
+      },
+      {
+        "id": "s5",
+        "title": "Medication Information",
+        "fieldIds": [
+          "f53"
+        ]
+      },
+      {
+        "id": "s6",
+        "title": "SECTION A – CHAPERONE ADMINISTERED MEDICATION & EMERGENCY MEDICATION",
+        "fieldIds": [
+          "f54",
+          "f55",
+          "f56",
+          "f57",
+          "f58",
+          "f59",
+          "f60",
+          "f61",
+          "f62",
+          "f63",
+          "f64",
+          "f65",
+          "f66",
+          "f67",
+          "f68",
+          "f69",
+          "f70",
+          "f71",
+          "f72",
+          "f73",
+          "f74",
+          "f75",
+          "f76",
+          "f77",
+          "f78",
+          "f79",
+          "f80"
+        ]
+      },
+      {
+        "id": "s7",
+        "title": "SECTION B – SELF-CARRY MEDICATION (Nonprescription Medication)",
+        "fieldIds": [
+          "f81",
+          "f82",
+          "f83",
+          "f84",
+          "f85",
+          "f86",
+          "f87",
+          "f88",
+          "f89",
+          "f90",
+          "f91",
+          "f92",
+          "f93",
+          "f94",
+          "f95",
+          "f96",
+          "f97",
+          "f98",
+          "f99",
+          "f100"
+        ]
+      },
+      {
+        "id": "s8",
+        "title": "SECTION C – PARENT/GUARDIAN AUTHORIZATION, EMERGENCY CONSENT, AND SIGNATURE",
+        "fieldIds": [
+          "f101",
+          "f102"
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "id": "f0",
+        "label": "Student's name",
+        "section": "s0",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Student’s name: ___________________________________________",
+          "bbox": [
+            0.248,
+            0.28,
+            0.755,
+            0.295
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f1",
+        "label": "Sex",
+        "section": "s0",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Sex: ______",
+          "bbox": [
+            0.602,
+            0.28,
+            0.672,
+            0.295
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f2",
+        "label": "Birthdate",
+        "section": "s0",
+        "type": "date",
+        "required": true,
+        "constraints": {
+          "dateFormat": "MM/DD/YYYY"
+        },
+        "anchor": {
+          "page": 0,
+          "labelText": "Birthdate: ____________________",
+          "bbox": [
+            0.778,
+            0.28,
+            0.956,
+            0.295
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f3",
+        "label": "Home address",
+        "section": "s0",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Home address: ___________________________________________",
+          "bbox": [
+            0.207,
+            0.315,
+            0.54,
+            0.33
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f4",
+        "label": "City",
+        "section": "s0",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "City: _____________________",
+          "bbox": [
+            0.606,
+            0.315,
+            0.79,
+            0.33
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f5",
+        "label": "Zip",
+        "section": "s0",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Zip: ___________",
+          "bbox": [
+            0.857,
+            0.315,
+            0.957,
+            0.33
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f6",
+        "label": "Mother/guardian's name",
+        "section": "s1",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Mother/guardian’s name: _______________________________________________________________________________",
+          "bbox": [
+            0.233,
+            0.35,
+            0.957,
+            0.365
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f7",
+        "label": "Mother/guardian home phone",
+        "section": "s1",
+        "type": "phone",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone (H): _______________________",
+          "bbox": [
+            0.129,
+            0.373,
+            0.318,
+            0.388
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f8",
+        "label": "Mother/guardian work phone",
+        "section": "s1",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "(W): _______________________",
+          "bbox": [
+            0.37,
+            0.373,
+            0.593,
+            0.388
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f9",
+        "label": "Mother/guardian cell or pager phone",
+        "section": "s1",
+        "type": "phone",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "(Cell or Pager): _______________________",
+          "bbox": [
+            0.743,
+            0.373,
+            0.957,
+            0.388
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f10",
+        "label": "Father/guardian's name",
+        "section": "s1",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Father/guardian’s name: ________________________________________________________________________________",
+          "bbox": [
+            0.233,
+            0.403,
+            0.957,
+            0.418
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f11",
+        "label": "Father/guardian home phone",
+        "section": "s1",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone (H): _______________________",
+          "bbox": [
+            0.129,
+            0.426,
+            0.318,
+            0.441
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f12",
+        "label": "Father/guardian work phone",
+        "section": "s1",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "(W): _______________________",
+          "bbox": [
+            0.37,
+            0.426,
+            0.593,
+            0.441
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f13",
+        "label": "Father/guardian cell or pager phone",
+        "section": "s1",
+        "type": "phone",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "(Cell or Pager): _______________________",
+          "bbox": [
+            0.743,
+            0.426,
+            0.957,
+            0.441
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f14",
+        "label": "Emergency contact 1 name",
+        "section": "s2",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "1. Name: ________________________________________________________",
+          "bbox": [
+            0.126,
+            0.466,
+            0.609,
+            0.481
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f15",
+        "label": "Emergency contact 1 home phone",
+        "section": "s2",
+        "type": "phone",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone (H): _______________________",
+          "bbox": [
+            0.714,
+            0.466,
+            0.957,
+            0.481
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f16",
+        "label": "Emergency contact 1 relationship to student",
+        "section": "s2",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Relationship to student: _____________________________________________",
+          "bbox": [
+            0.215,
+            0.49,
+            0.609,
+            0.505
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f17",
+        "label": "Emergency contact 1 work phone",
+        "section": "s2",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone (W): ______________________",
+          "bbox": [
+            0.71,
+            0.49,
+            0.957,
+            0.505
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f18",
+        "label": "Emergency contact 2 name",
+        "section": "s2",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "2. Name: ________________________________________________________",
+          "bbox": [
+            0.124,
+            0.514,
+            0.606,
+            0.529
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f19",
+        "label": "Emergency contact 2 home phone",
+        "section": "s2",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone (H): _______________________",
+          "bbox": [
+            0.714,
+            0.514,
+            0.957,
+            0.529
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f20",
+        "label": "Emergency contact 2 relationship to student",
+        "section": "s2",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "Relationship to student: _____________________________________________",
+          "bbox": [
+            0.215,
+            0.538,
+            0.609,
+            0.553
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f21",
+        "label": "Emergency contact 2 work phone",
+        "section": "s2",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "______________________",
+          "bbox": [
+            0.765,
+            0.538,
+            0.957,
+            0.553
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f22",
+        "label": "Student's health care provider",
+        "section": "s3",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Student’s health care provider: _______________________________________",
+          "bbox": [
+            0.268,
+            0.562,
+            0.63,
+            0.577
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f23",
+        "label": "Student's health care provider phone",
+        "section": "s3",
+        "type": "phone",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Phone: __________________________",
+          "bbox": [
+            0.693,
+            0.562,
+            0.957,
+            0.577
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f24",
+        "label": "Medical insurance company",
+        "section": "s3",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Medical insurance company: _________________________________________",
+          "bbox": [
+            0.271,
+            0.586,
+            0.633,
+            0.601
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f25",
+        "label": "Medical insurance group number",
+        "section": "s3",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Group No.: ______________________",
+          "bbox": [
+            0.738,
+            0.586,
+            0.957,
+            0.601
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f26",
+        "label": "Insurance company address",
+        "section": "s3",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "____________________________________________________________________________",
+          "bbox": [
+            0.27,
+            0.61,
+            0.957,
+            0.625
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f27",
+        "label": "Name of policy holder",
+        "section": "s3",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Name of policy holder: ____________________________________",
+          "bbox": [
+            0.225,
+            0.634,
+            0.531,
+            0.649
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f28",
+        "label": "Insurance identification/policy number",
+        "section": "s3",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Identification/Policy No.: ____________________",
+          "bbox": [
+            0.586,
+            0.634,
+            0.957,
+            0.649
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f29",
+        "label": "Animal Allergies",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.047,
+            0.77,
+            0.067,
+            0.787
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f30",
+        "label": "Poison Ivy allergy",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.282,
+            0.77,
+            0.302,
+            0.787
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f31",
+        "label": "Activity restrictions",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.473,
+            0.77,
+            0.493,
+            0.787
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f32",
+        "label": "Heart problem",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.678,
+            0.77,
+            0.698,
+            0.787
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f33",
+        "label": "Bee/Insect Allergies",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.047,
+            0.789,
+            0.067,
+            0.806
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f34",
+        "label": "Bleeding problem",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.282,
+            0.789,
+            0.302,
+            0.806
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f35",
+        "label": "Dietary restrictions",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.473,
+            0.789,
+            0.493,
+            0.806
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f36",
+        "label": "Migraines",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.678,
+            0.789,
+            0.698,
+            0.806
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f37",
+        "label": "Drug Allergies",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.047,
+            0.806,
+            0.067,
+            0.823
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f38",
+        "label": "Mobility concerns",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.282,
+            0.806,
+            0.302,
+            0.823
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f39",
+        "label": "Asthma",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.473,
+            0.806,
+            0.493,
+            0.823
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f40",
+        "label": "Glasses/contacts",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.678,
+            0.806,
+            0.698,
+            0.823
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f41",
+        "label": "Environmental Allergies",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.047,
+            0.823,
+            0.067,
+            0.84
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f42",
+        "label": "Sleep walking",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.282,
+            0.823,
+            0.302,
+            0.84
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f43",
+        "label": "Seizures",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.473,
+            0.823,
+            0.493,
+            0.84
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f44",
+        "label": "Ear infections/aids",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.678,
+            0.823,
+            0.698,
+            0.84
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f45",
+        "label": "Food Allergies",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.047,
+            0.84,
+            0.067,
+            0.857
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f46",
+        "label": "Bed wetting",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.282,
+            0.84,
+            0.302,
+            0.857
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f47",
+        "label": "Diabetes",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.473,
+            0.84,
+            0.493,
+            0.857
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f48",
+        "label": "Other health condition",
+        "section": "s4",
+        "type": "checkbox",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "c",
+          "bbox": [
+            0.678,
+            0.84,
+            0.698,
+            0.857
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f49",
+        "label": "Other health condition details",
+        "section": "s4",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "Other __________________",
+          "bbox": [
+            0.746,
+            0.84,
+            0.914,
+            0.857
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f50",
+        "label": "Medical condition description line 1",
+        "section": "s4",
+        "type": "textarea",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Please describe any medical condition including severity and treatment. ______________________________________",
+          "bbox": [
+            0.572,
+            0.88,
+            0.957,
+            0.895
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f51",
+        "label": "Medical condition description line 2",
+        "section": "s4",
+        "type": "textarea",
+        "required": false,
+        "anchor": {
+          "page": 0,
+          "labelText": "________________________________________________________________________________________________",
+          "bbox": [
+            0.047,
+            0.904,
+            0.957,
+            0.919
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f52",
+        "label": "Food Restrictions/Allergies",
+        "section": "s4",
+        "type": "text",
+        "required": true,
+        "anchor": {
+          "page": 0,
+          "labelText": "Food Restrictions/Allergies: _________________________________________________________________________",
+          "bbox": [
+            0.263,
+            0.93,
+            0.957,
+            0.945
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f53",
+        "label": "Student's name (page 2)",
+        "section": "s5",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Student’s name: _____________________________________________",
+          "bbox": [
+            0.1794,
+            0.0674,
+            0.585,
+            0.0821
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f54",
+        "label": "Section A Medication 1",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.307323,
+            0.279477,
+            0.320252
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f55",
+        "label": "Section A Dose/Route 1",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.307323,
+            0.455163,
+            0.320252
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f56",
+        "label": "Section A Time(s) to be given 1",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.307323,
+            0.653595,
+            0.320252
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f57",
+        "label": "Section A Side Effects 1",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.307323,
+            0.947712,
+            0.320252
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f58",
+        "label": "Section A Medication 2",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.322778,
+            0.279477,
+            0.335404
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f59",
+        "label": "Section A Dose/Route 2",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.322778,
+            0.455163,
+            0.335404
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f60",
+        "label": "Section A Time(s) to be given 2",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.322778,
+            0.653595,
+            0.335404
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f61",
+        "label": "Section A Side Effects 2",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.322778,
+            0.947712,
+            0.335404
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f62",
+        "label": "Section A Medication 3",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.337929,
+            0.279477,
+            0.350555
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f63",
+        "label": "Section A Dose/Route 3",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.337929,
+            0.455163,
+            0.350555
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f64",
+        "label": "Section A Time(s) to be given 3",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.337929,
+            0.653595,
+            0.350555
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f65",
+        "label": "Section A Side Effects 3",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.337929,
+            0.947712,
+            0.350555
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f66",
+        "label": "Section A Medication 4",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.353081,
+            0.279477,
+            0.365707
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f67",
+        "label": "Section A Dose/Route 4",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.353081,
+            0.455163,
+            0.365707
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f68",
+        "label": "Section A Time(s) to be given 4",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.353081,
+            0.653595,
+            0.365707
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f69",
+        "label": "Section A Side Effects 4",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.353081,
+            0.947712,
+            0.365707
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f70",
+        "label": "Section A Medication 5",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.368232,
+            0.279477,
+            0.381162
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f71",
+        "label": "Section A Dose/Route 5",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.368232,
+            0.455163,
+            0.381162
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f72",
+        "label": "Section A Time(s) to be given 5",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.368232,
+            0.653595,
+            0.381162
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f73",
+        "label": "Section A Side Effects 5",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.368232,
+            0.947712,
+            0.381162
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f74",
+        "label": "Special storage or considerations",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Please list any special storage or considerations: _______________________________________________________________________",
+          "bbox": [
+            0.3644,
+            0.399,
+            0.9608,
+            0.4129
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f75",
+        "label": "Student may self-carry inhaler/EpiPen/diabetic supplies: Yes",
+        "section": "s6",
+        "type": "checkbox",
+        "required": false,
+        "exclusiveWith": [
+          "f76"
+        ],
+        "anchor": {
+          "page": 1,
+          "labelText": "Yes ____ No ____",
+          "bbox": [
+            0.8513,
+            0.4154,
+            0.8905,
+            0.433
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f76",
+        "label": "Student may self-carry inhaler/EpiPen/diabetic supplies: No",
+        "section": "s6",
+        "type": "checkbox",
+        "required": false,
+        "exclusiveWith": [
+          "f75"
+        ],
+        "anchor": {
+          "page": 1,
+          "labelText": "Yes ____ No ____",
+          "bbox": [
+            0.9248,
+            0.4154,
+            0.9641,
+            0.433
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f77",
+        "label": "Prescriber printed name and title",
+        "section": "s6",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Prescriber’s printed name and title: _________________________________________________________________________________",
+          "bbox": [
+            0.2794,
+            0.4785,
+            0.9608,
+            0.4924
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f78",
+        "label": "Prescriber signature",
+        "section": "s6",
+        "type": "signature",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Prescriber’s signature: _________________________________________",
+          "bbox": [
+            0.1944,
+            0.5025,
+            0.5425,
+            0.5164
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f79",
+        "label": "Prescriber phone",
+        "section": "s6",
+        "type": "phone",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Phone: _____________________",
+          "bbox": [
+            0.6046,
+            0.5025,
+            0.7729,
+            0.5164
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f80",
+        "label": "Prescriber date",
+        "section": "s6",
+        "type": "date",
+        "required": false,
+        "constraints": {
+          "dateFormat": "YYYY-MM-DD"
+        },
+        "anchor": {
+          "page": 1,
+          "labelText": "Date: _____________",
+          "bbox": [
+            0.8268,
+            0.5025,
+            0.9526,
+            0.5164
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f81",
+        "label": "Section B Medication 1",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.554899,
+            0.279477,
+            0.567525
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f82",
+        "label": "Section B Dose/Route 1",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.554899,
+            0.455163,
+            0.567525
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f83",
+        "label": "Section B Time(s) to be given 1",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.554899,
+            0.653595,
+            0.567525
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f84",
+        "label": "Section B Side Effects 1",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.554899,
+            0.947712,
+            0.567525
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f85",
+        "label": "Section B Medication 2",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.57005,
+            0.279477,
+            0.58298
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f86",
+        "label": "Section B Dose/Route 2",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.57005,
+            0.455163,
+            0.58298
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f87",
+        "label": "Section B Time(s) to be given 2",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.57005,
+            0.653595,
+            0.58298
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f88",
+        "label": "Section B Side Effects 2",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.57005,
+            0.947712,
+            0.58298
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f89",
+        "label": "Section B Medication 3",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.585505,
+            0.279477,
+            0.598131
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f90",
+        "label": "Section B Dose/Route 3",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.585505,
+            0.455163,
+            0.598131
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f91",
+        "label": "Section B Time(s) to be given 3",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.585505,
+            0.653595,
+            0.598131
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f92",
+        "label": "Section B Side Effects 3",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.585505,
+            0.947712,
+            0.598131
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f93",
+        "label": "Section B Medication 4",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.600657,
+            0.279477,
+            0.613283
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f94",
+        "label": "Section B Dose/Route 4",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.600657,
+            0.455163,
+            0.613283
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f95",
+        "label": "Section B Time(s) to be given 4",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.600657,
+            0.653595,
+            0.613283
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f96",
+        "label": "Section B Side Effects 4",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.600657,
+            0.947712,
+            0.613283
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f97",
+        "label": "Section B Medication 5",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Medication",
+          "bbox": [
+            0.05817,
+            0.615808,
+            0.279477,
+            0.628434
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f98",
+        "label": "Section B Dose/Route 5",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Dose/Route",
+          "bbox": [
+            0.286013,
+            0.615808,
+            0.455163,
+            0.628434
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f99",
+        "label": "Section B Time(s) to be given 5",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Time(s) to be given",
+          "bbox": [
+            0.461699,
+            0.615808,
+            0.653595,
+            0.628434
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f100",
+        "label": "Section B Side Effects 5",
+        "section": "s7",
+        "type": "text",
+        "required": false,
+        "anchor": {
+          "page": 1,
+          "labelText": "Side Effects",
+          "bbox": [
+            0.66013,
+            0.615808,
+            0.947712,
+            0.628434
+          ],
+          "placement": "inbox"
+        }
+      },
+      {
+        "id": "f101",
+        "label": "Parent/guardian signature",
+        "section": "s8",
+        "type": "signature",
+        "required": true,
+        "anchor": {
+          "page": 1,
+          "labelText": "Parent/guardian signature _________________________________________________________",
+          "bbox": [
+            0.2092,
+            0.8447,
+            0.683,
+            0.8586
+          ],
+          "placement": "right"
+        }
+      },
+      {
+        "id": "f102",
+        "label": "Parent signature date",
+        "section": "s8",
+        "type": "date",
+        "required": true,
+        "constraints": {
+          "dateFormat": "YYYY-MM-DD"
+        },
+        "anchor": {
+          "page": 1,
+          "labelText": "Date _______________________",
+          "bbox": [
+            0.7402,
+            0.8447,
+            0.9412,
+            0.8586
+          ],
+          "placement": "right"
+        }
+      }
+    ],
+    "signature": {
+      "fieldId": "f101",
+      "dateFieldId": "f102"
+    },
+    "estimatedMinutes": 26
+  },
+  "answers": {
+    "f0": {
+      "value": "Sam Test",
+      "status": "answered"
+    },
+    "f1": {
+      "value": "M",
+      "status": "answered"
+    },
+    "f2": {
+      "value": "2010-01-01",
+      "status": "answered"
+    },
+    "f3": {
+      "value": "123 Example Street",
+      "status": "answered"
+    },
+    "f4": {
+      "value": "Dublin",
+      "status": "answered"
+    },
+    "f5": {
+      "value": "43017",
+      "status": "answered"
+    },
+    "f6": {
+      "value": "Jamie Test",
+      "status": "answered"
+    },
+    "f7": {
+      "value": "2025550123",
+      "status": "answered"
+    },
+    "f8": {
+      "value": "",
+      "status": "skipped"
+    },
+    "f9": {
+      "value": "2025550145",
+      "status": "answered"
+    },
+    "f10": {
+      "value": "Alex Test",
+      "status": "answered"
+    },
+    "f11": {
+      "value": "2025550156",
+      "status": "answered"
+    },
+    "f12": {
+      "value": "",
+      "status": "skipped"
+    },
+    "f13": {
+      "value": "2025550157",
+      "status": "answered"
+    },
+    "f14": {
+      "value": "Taylor Test",
+      "status": "answered"
+    },
+    "f15": {
+      "value": "2025550160",
+      "status": "answered"
+    },
+    "f16": {
+      "value": "Aunt",
+      "status": "answered"
+    },
+    "f17": {
+      "value": "",
+      "status": "skipped"
+    },
+    "f22": {
+      "value": "Example Clinic",
+      "status": "answered"
+    },
+    "f23": {
+      "value": "2025550170",
+      "status": "answered"
+    },
+    "f24": {
+      "value": "Example Insurance",
+      "status": "answered"
+    },
+    "f25": {
+      "value": "TEST123",
+      "status": "answered"
+    },
+    "f26": {
+      "value": "456 Sample Road",
+      "status": "answered"
+    },
+    "f27": {
+      "value": "Jamie Test",
+      "status": "answered"
+    },
+    "f28": {
+      "value": "TEST456",
+      "status": "answered"
+    },
+    "f29": {
+      "value": "false",
+      "status": "answered"
+    },
+    "f53": {
+      "value": "Sam Test",
+      "status": "answered"
+    },
+    "f54": {
+      "value": "TEST A1",
+      "status": "answered"
+    },
+    "f55": {
+      "value": "TEST",
+      "status": "answered"
+    },
+    "f56": {
+      "value": "AM",
+      "status": "answered"
+    },
+    "f57": {
+      "value": "TEST",
+      "status": "answered"
+    },
+    "f70": {
+      "value": "TEST A5",
+      "status": "answered"
+    },
+    "f81": {
+      "value": "TEST B1",
+      "status": "answered"
+    },
+    "f100": {
+      "value": "TEST B5",
+      "status": "answered"
+    },
+    "f101": {
+      "value": "data:image/png;base64,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",
+      "status": "answered",
+      "signedBy": "Jamie Test"
+    },
+    "f102": {
+      "value": "2026-09-17",
+      "status": "answered"
+    },
+    "f50": {
+      "value": "None - synthetic test",
+      "status": "answered"
+    },
+    "f52": {
+      "value": "None - synthetic test",
+      "status": "answered"
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "verifiedAt": "2026-09-17T15:41:14.511845+00:00",
+  "scope": "Actual current-system Chrome upload, native UI entry/review, download and both-page visual inspection. Public blank form and synthetic answers only; not submitted to the issuing institution.",
+  "deployment": {
+    "id": "dpl_8jzuSjDREBZ4UwXd2ra9JQHeFgCb",
+    "code": "a112a3c",
+    "url": "https://formlilt.vercel.app",
+    "region": "sin1"
+  },
+  "provider": {
+    "name": "doubao",
+    "model": "doubao-seed-2-0-pro-260215",
+    "thinking": "disabled",
+    "structuredOutputs": false
+  },
+  "source": {
+    "path": "public/demo-forms/medical-release.pdf",
+    "sha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "selection": "Native macOS file picker after reloading the production home page; not the precomputed demo button."
+  },
+  "browser": {
+    "application": "Current system Google Chrome",
+    "automation": "Native Computer Use accessibility controls and screenshots",
+    "sessionId": "eabfa3f2-51b0-497e-84f6-113afa4cafc5",
+    "uiLanguage": "en",
+    "status": "passed",
+    "modelExtractionMocked": false,
+    "answersInjectedIntoStorage": false,
+    "pdfDownloadedViaUi": true
+  },
+  "extraction": {
+    "requestId": "42qgn-1789658423606-c2c62560fbb5",
+    "httpStatus": 200,
+    "strategyLog": "form_extraction_path page_pair",
+    "fallbackExercised": false,
+    "fields": 103,
+    "fieldCountsByPage": [
+      53,
+      50
+    ],
+    "schemaSha256": "8d43ba84c8bb82c6a0b3ad307b9c32be2978e5c68565c213915b5fbc5cd2963d",
+    "schemaBytes": 23932,
+    "exactRequestSeconds": null,
+    "requestStartToFillRouteStartSeconds": 77.79,
+    "timingScope": "Difference between Vercel extract request timestamp and subsequent fill-page request timestamp; includes navigation/network overhead. No instrumented browser latency or p95 claim."
+  },
+  "uiChecks": [
+    "Real upload reached the 103-question workspace",
+    "Text, telephone and keyboard-operated date inputs saved synthetic values",
+    "Optional questions could be skipped",
+    "Sidebar navigation reached page 2 and selected first/last table cells",
+    "Choosing the No option saved a false checkbox answer",
+    "Typed guardian signature saved with signedBy and automatic local date",
+    "Review blocked download and focused the first of two missing required answers",
+    "Review edits reduced missing required count to zero",
+    "JSON export and PDF download completed in the same browser session"
+  ],
+  "answerCoverage": {
+    "answered": 35,
+    "explicitlySkipped": 3,
+    "untouched": 65,
+    "required": 24,
+    "invalidRequiredOrAnsweredFields": [],
+    "scope": "Selected fields and every required field, not entry of all 103 questions. Seven table cells tested across first/last rows and columns. The four prescriber identity/signature fields were untouched."
+  },
+  "export": {
+    "requestId": "tlkbl-1789659229650-bf541939a2a6",
+    "httpStatus": 200,
+    "bytes": 199340,
+    "sha256": "42f83fa74d4565ca99b09d6182a1c8fa38b81cd7be02645f362bdad8be9c74cf",
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      },
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "path": "ark-chrome-school-filled.pdf",
+    "originalDownloadName": "medical-release-filled.pdf",
+    "exactRequestSeconds": null,
+    "summaryFallback": {
+      "observedWarning": "model_request_failed, phase generate, TimeoutError",
+      "behavior": "Optional summary model request hit its 1800ms deadline; route used its existing plainSummary fallback and returned a successful PDF. This is separate from extraction fallback."
+    }
+  },
+  "artifactChecks": {
+    "verifiedAt": "2026-09-17T15:39:23.044Z",
+    "fieldCount": 103,
+    "pageFieldCounts": [
+      53,
+      50
+    ],
+    "required": 24,
+    "answered": 35,
+    "explicitlySkipped": 3,
+    "untouched": 65,
+    "invalidFields": [],
+    "textValuesChecked": 33,
+    "missingText": [],
+    "schemaSha256": "8d43ba84c8bb82c6a0b3ad307b9c32be2978e5c68565c213915b5fbc5cd2963d",
+    "schemaBytes": 23932,
+    "answersArtifact": {
+      "bytes": 64240,
+      "sha256": "45f74b315597d76f2fc0b14cdb5a88535bc59a787b9f798b5ffd6740660e2e59"
+    },
+    "pdf": {
+      "bytes": 199340,
+      "sha256": "42f83fa74d4565ca99b09d6182a1c8fa38b81cd7be02645f362bdad8be9c74cf",
+      "pages": [
+        {
+          "width": 612,
+          "height": 792
+        },
+        {
+          "width": 612,
+          "height": 792
+        }
+      ]
+    },
+    "signature": {
+      "field": "Parent/guardian signature",
+      "signedBy": "Jamie Test",
+      "date": "2026-09-17",
+      "mode": "typed through native Chrome UI"
+    },
+    "prescriberFieldsUntouched": [
+      {
+        "label": "Prescriber printed name and title",
+        "untouched": true
+      },
+      {
+        "label": "Prescriber signature",
+        "untouched": true
+      },
+      {
+        "label": "Prescriber phone",
+        "untouched": true
+      },
+      {
+        "label": "Prescriber date",
+        "untouched": true
+      }
+    ],
+    "notaryFields": [],
+    "exclusiveChoices": [
+      {
+        "label": "Student may self-carry inhaler/EpiPen/diabetic supplies: Yes",
+        "peers": [
+          "Student may self-carry inhaler/EpiPen/diabetic supplies: No"
+        ]
+      },
+      {
+        "label": "Student may self-carry inhaler/EpiPen/diabetic supplies: No",
+        "peers": [
+          "Student may self-carry inhaler/EpiPen/diabetic supplies: Yes"
+        ]
+      }
+    ]
+  },
+  "answersArtifact": {
+    "path": "ark-chrome-school-answers.json",
+    "bytes": 64240,
+    "sha256": "45f74b315597d76f2fc0b14cdb5a88535bc59a787b9f798b5ffd6740660e2e59",
+    "scope": "Unmodified JSON downloaded by the review-page export button; all entered identities and signature are synthetic."
+  },
+  "visualReview": {
+    "status": "passed",
+    "tools": [
+      "Poppler renders of both pages at 1600px",
+      "Actual Chrome PDF viewer for both pages"
+    ],
+    "observations": [
+      "Page 1 identity/contact/insurance values align with the printed blanks",
+      "Both page 1 free-text descriptions are legible",
+      "Repeated student name is in the page 2 blank",
+      "Seven table test values align with their intended cells",
+      "Typed guardian signature and date are visible on their own line",
+      "Four prescriber identity/signature blanks and notary blanks remain empty"
+    ],
+    "limits": [
+      "Section A table has explicit TEST values for placement verification; the entire prescriber section is not blank",
+      "Chrome reports unavailable text-extraction accessibility files; this is visual PDF acceptance, not exported-PDF screen-reader acceptance",
+      "33 textual answer values are present in layout-preserving PDF text; signature and checkbox appearance were checked visually"
+    ]
+  },
+  "preservedEarlierFailure": {
+    "evidence": "ark-page-pair-verification.json",
+    "code": "75cd1f8",
+    "requestId": "m565c-1789655055081-9ccef8fe51fa",
+    "status": 502,
+    "reason": "TimeoutError",
+    "supersededForCurrentSchoolBrowserGate": true
+  },
+  "remaining": [
+    "Uncached extraction p95 <20 seconds remains unmet.",
+    "Actual whole-document recovery after a stalled page pair is still unverified; this successful upload used page_pair directly.",
+    "Owner latency-scope decision remains pending."
+  ],
+  "publicationSecretScan": {
+    "verifiedAt": "2026-09-17T15:41:38.029Z",
+    "files": 204,
+    "historicalBlobs": 560,
+    "workingMatches": [],
+    "historyMatches": [],
+    "localEnvIgnored": true,
+    "localEnvMode": "600"
+  }
+}
