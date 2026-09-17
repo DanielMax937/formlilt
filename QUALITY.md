@@ -53,6 +53,8 @@ This file separates implemented behavior from acceptance that still needs eviden
 - Superseded on 2026-09-17: the owner supplied the public Ark endpoint/key and approved no-Redis memory limits. The key is ignored locally and stored as Sensitive on Vercel.
 - Publishing was explicitly authorized on 2026-09-17. Earlier browser matrices retain their original provider/build provenance; they do not stand in for the new deployed Chrome acceptance.
 
+- Isolated source-grid compression probe (2026-09-18 CST): eight column templates expanded to all 40 table cells. The second page returned 50 fields from 18 rows in 23.412s (853 output tokens); the first page took 59.915s and the full pair 59.917s. All 103 fields were present, but every second-page field lost its section assignment and the applicant signature became optional. The exact-anchor comparison also changed one phone anchor from its underline to the adjacent printed label; that difference alone is not an omission. No runtime change or export was adopted, and no p95 claim is made. See [probe evidence](launch/ark-grid-compression-probe.json).
+
 ## Additional public form sources
 
 Only public blank forms and synthetic answers are used. No documents are submitted to the issuing institutions.

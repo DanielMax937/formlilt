@@ -1,0 +1,248 @@
+{
+  "scope": "Isolated local two-page grid-template prototype. Same Pro model and original full-page images/text; no production or Chrome acceptance.",
+  "runtimeUnchanged": "346f652df04f2c488a8ac1449953d2e932c50bd8",
+  "deploymentUnchanged": "dpl_8C868awPUp7TRHto7Bfx2jq9B4JD",
+  "decision": "Not adopted. One sample remains above 20 seconds; page 1 loses section assignments and makes the applicant signature optional.",
+  "measurement": {
+    "startedAt": "2026-09-17T16:16:24.158Z",
+    "runtimeBaseline": "346f652",
+    "model": "doubao-seed-2-0-pro-260215",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Isolated local two-page grid-template prototype. Same Pro model and original full-page images/text; no production or Chrome acceptance.",
+    "sourceGridGroups": 8,
+    "sourceGridCells": 40,
+    "seconds": 59.917,
+    "requests": [
+      {
+        "page": 0,
+        "seconds": 59.915,
+        "wireRows": 53,
+        "expandedFields": 53,
+        "templates": 0,
+        "usage": {
+          "inputTokens": 10183,
+          "outputTokens": 3336,
+          "totalTokens": 13519,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "status": "valid"
+      },
+      {
+        "page": 1,
+        "seconds": 23.412,
+        "wireRows": 18,
+        "expandedFields": 50,
+        "templates": 8,
+        "usage": {
+          "inputTokens": 10380,
+          "outputTokens": 853,
+          "totalTokens": 11233,
+          "reasoningTokens": 0,
+          "cachedInputTokens": 0
+        },
+        "status": "valid"
+      }
+    ],
+    "fields": 103,
+    "sourceInventoryDifferences": [
+      {
+        "source": [
+          0,
+          "______________________",
+          "phone"
+        ],
+        "expected": 1,
+        "actual": 0
+      },
+      {
+        "source": [
+          0,
+          "Phone (W):",
+          "phone"
+        ],
+        "expected": 0,
+        "actual": 1
+      }
+    ],
+    "signature": "Parent/guardian signature",
+    "excludedRoleFields": [],
+    "result": "failed",
+    "validationError": {
+      "name": "Error",
+      "message": "School source inventory or signer role differs from reviewed Chrome baseline"
+    },
+    "finishedAt": "2026-09-17T16:17:24.113Z"
+  },
+  "method": {
+    "parallelRequests": 2,
+    "perRequestDeadlineMs": 120000,
+    "semanticAttempts": 1,
+    "sdkNetworkRetries": 1,
+    "thinking": "disabled",
+    "strictOutputMode": false,
+    "imageInputs": "Both full original page images supplied to each request, with all source text.",
+    "expansion": "Only consecutive source-drawn empty cells under one unambiguous text header. One model-selected column template expands to one field per actual source cell; no fabricated grid or source-specific labels.",
+    "productionChanges": false,
+    "exportOrChromeAcceptance": false,
+    "p95Established": false
+  },
+  "sourceGroups": [
+    {
+      "g": 0,
+      "page": 1,
+      "textIndex": 26,
+      "label": "Medication",
+      "blankRows": 5
+    },
+    {
+      "g": 1,
+      "page": 1,
+      "textIndex": 27,
+      "label": "Dose/Route",
+      "blankRows": 5
+    },
+    {
+      "g": 2,
+      "page": 1,
+      "textIndex": 28,
+      "label": "Time(s) to be given",
+      "blankRows": 5
+    },
+    {
+      "g": 3,
+      "page": 1,
+      "textIndex": 29,
+      "label": "Side Effects",
+      "blankRows": 5
+    },
+    {
+      "g": 4,
+      "page": 1,
+      "textIndex": 41,
+      "label": "Medication",
+      "blankRows": 5
+    },
+    {
+      "g": 5,
+      "page": 1,
+      "textIndex": 42,
+      "label": "Dose/Route",
+      "blankRows": 5
+    },
+    {
+      "g": 6,
+      "page": 1,
+      "textIndex": 43,
+      "label": "Time(s) to be given",
+      "blankRows": 5
+    },
+    {
+      "g": 7,
+      "page": 1,
+      "textIndex": 44,
+      "label": "Side Effects",
+      "blankRows": 5
+    }
+  ],
+  "semanticReview": {
+    "actualFields": 103,
+    "reviewedBaselineFields": 103,
+    "sections": [
+      {
+        "title": "Student Information",
+        "fieldCount": 6
+      },
+      {
+        "title": "Guardian Information",
+        "fieldCount": 8
+      },
+      {
+        "title": "Emergency Numbers",
+        "fieldCount": 8
+      },
+      {
+        "title": "Medical Provider & Insurance Information",
+        "fieldCount": 7
+      },
+      {
+        "title": "General Health Care Information",
+        "fieldCount": 24
+      },
+      {
+        "title": "Student Identification",
+        "fieldCount": 50
+      },
+      {
+        "title": "Medication",
+        "fieldCount": 0
+      },
+      {
+        "title": "SECTION A – CHAPERONE ADMINISTERED MEDICATION & EMERGENCY MEDICATION",
+        "fieldCount": 0
+      },
+      {
+        "title": "SECTION B – SELF-CARRY MEDICATION (Nonprescription Medication)",
+        "fieldCount": 0
+      },
+      {
+        "title": "SECTION C – PARENT/GUARDIAN AUTHORIZATION, EMERGENCY CONSENT, AND SIGNATURE",
+        "fieldCount": 0
+      }
+    ],
+    "page1MissingSectionProperties": 18,
+    "page1WireRows": 18,
+    "signature": {
+      "label": "Parent/guardian signature",
+      "required": false,
+      "section": "Student Identification"
+    },
+    "baselineSignature": {
+      "label": "Parent/guardian signature",
+      "required": true,
+      "section": "SECTION C – PARENT/GUARDIAN AUTHORIZATION, EMERGENCY CONSENT, AND SIGNATURE"
+    },
+    "requiredFields": 7,
+    "baselineRequiredFields": 24,
+    "sourceInventoryDiffInterpretation": "The exact inventory comparison differs only because emergency-contact-2 work phone uses adjacent source label index 39 (Phone (W):) instead of index 40 (the writing underline). Both refer to the same visible input; this alone is not evidence of an omitted field.",
+    "counterexample": {
+      "rootSections": [
+        "Student Identification",
+        "Medication",
+        "SECTION A – CHAPERONE ADMINISTERED MEDICATION & EMERGENCY MEDICATION",
+        "SECTION B – SELF-CARRY MEDICATION (Nonprescription Medication)",
+        "SECTION C – PARENT/GUARDIAN AUTHORIZATION, EMERGENCY CONSENT, AND SIGNATURE"
+      ],
+      "guardianRow": {
+        "l": "Parent/guardian signature",
+        "t": "signature",
+        "p": 1,
+        "x": 56,
+        "b": [
+          0.218,
+          0.839,
+          0.673,
+          0.853
+        ]
+      },
+      "gridTemplate": {
+        "l": "Section A Medication",
+        "t": "text",
+        "p": 1,
+        "x": 26,
+        "g": 0
+      }
+    },
+    "limitation": "A single sample does not establish that compression caused metadata variation, a reliable latency improvement, general arbitrary-form fidelity or export correctness."
+  },
+  "privateArtifactHashes": {
+    "page-0-raw.json": "a27ecb99ec5cddc6adeca3b3dfa30ce7946a41da7f4d6ce58645d915ef9fd144",
+    "page-1-raw.json": "4b42244fcd9cc08d6eadd1e7af1f0a6058eefaaecac3c8351c4c685763b6ef1e",
+    "schema.json": "693fde0fea89b48d218a16d215d353f7ad3e447cba8306c2a6d8d87b953b41fb",
+    "groups.json": "f6feaad3f343375086690c2a3c61d85ea898acf59575ab2f66c6b52a977baefe"
+  },
+  "validation": {
+    "initialPrototypeTypecheck": "Failed on unsupported concrete generateObject mode property; removed that unused property after the completed model run.",
+    "finalTypecheck": "Passed. No runtime source changes; prior application tests retain their original scope."
+  }
+}

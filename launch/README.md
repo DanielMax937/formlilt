@@ -57,3 +57,5 @@ The separate system-Chrome school upload on that deployment timed out with HTTP 
 [Rejected source-partition experiments](ark-source-partition-probes.json) compare ordinary JSON, Schema-guided and explicit-strict requests using the same public blank source/model. Small probes passed, but full-form runs failed structural or source-fidelity checks; none changed production or established the latency gate.
 
 [Date-default conformance](ark-date-default-verification.json) records deployment `346f652`, the restored SPEC `MM/DD/YYYY` default, 146 verified cases and a fresh real Chrome Tinley flow. All 10 answers and native PDF values passed, with a preserved initial JSON failure followed by successful repair. [Synthetic PDF](ark-date-default-filled.pdf) · [Actual UI answer export](ark-date-default-answers.json).
+
+[Source-grid compression probe](ark-grid-compression-probe.json) records an unadopted 59.917-second local result. Eight templates preserve 40 table cells, but second-page section/signature metadata failed review. Production and its Chrome acceptance remain unchanged; this sample does not establish p95.
