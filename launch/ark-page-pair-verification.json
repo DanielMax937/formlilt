@@ -1,0 +1,196 @@
+{
+  "verifiedAt": "2026-09-17T14:31:21.043339+00:00",
+  "deployment": {
+    "id": "dpl_3zF6n98Dn8iiAeC5V4ESnpZo3hHY",
+    "code": "75cd1f8",
+    "url": "https://formlilt.vercel.app",
+    "region": "sin1",
+    "status": "READY",
+    "aliasVerified": true
+  },
+  "strategy": {
+    "eligible": "Doubao; exactly two text pages; no AcroForm widgets",
+    "requests": 2,
+    "context": "Both requests retain both page images and complete source text",
+    "successfulProductionLog": "form_extraction_path page_pair",
+    "fallback": "At most one whole-document semantic attempt, sharing the total deadline",
+    "additionalInputCost": true
+  },
+  "extraction": {
+    "startedAt": "2026-09-17T14:22:04.117Z",
+    "url": "https://formlilt.vercel.app/api/extract",
+    "slug": "medical-release",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "preparedBytes": 799510,
+    "scope": "Production HTTP extraction only; not system Chrome or visual export acceptance",
+    "codeCommit": "75cd1f8",
+    "httpStatus": 200,
+    "result": "schema_valid",
+    "fields": 103,
+    "signature": {
+      "field": "Parent/guardian signature",
+      "date": "Parent/guardian signature date"
+    },
+    "exclusiveFields": [
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies Yes",
+        "peers": [
+          "May student self-carry inhaler/EpiPen/diabetic supplies No"
+        ]
+      },
+      {
+        "label": "May student self-carry inhaler/EpiPen/diabetic supplies No",
+        "peers": [
+          "May student self-carry inhaler/EpiPen/diabetic supplies Yes"
+        ]
+      }
+    ],
+    "schemaSha256": "8ed1de1b58abb93e9e9fb43318acedcfa1c56abae46726309b39dede46f48bf8",
+    "notaryFields": [],
+    "seconds": 77.397,
+    "finishedAt": "2026-09-17T14:23:21.515Z"
+  },
+  "inventoryReview": "All 103 field identities/order reviewed against the previous production inventory; labels and metadata vary. No general schema equivalence claimed.",
+  "export": {
+    "scope": "Real production HTTP finalize with synthetic answers; uses the schema from the new page-pair production extraction; not a Chrome flow",
+    "codeCommit": "75cd1f8",
+    "schemaFromCodeCommit": "75cd1f8",
+    "status": 200,
+    "seconds": 21.426,
+    "pages": [
+      {
+        "width": 612,
+        "height": 792
+      },
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "bytes": 195459,
+    "sha256": "c0ade14e3f6829598f0f3db6de3cfac03c6009633304d588b95db562810f2484",
+    "answered": 99,
+    "prescriberFieldsLeftBlank": [
+      "Prescriber printed name and title",
+      "Prescriber signature",
+      "Prescriber phone",
+      "Prescriber date"
+    ],
+    "visualReview": "Passed: both Poppler-rendered pages reviewed. All 40 table cells, contact phone, guardian signature and date are correctly placed. Four prescriber identity/signature fields and notary blanks remain empty. Section A table contains synthetic TEST/AM values for layout verification.",
+    "path": "launch/ark-page-pair-school-filled.pdf"
+  },
+  "chrome": {
+    "status": "failed",
+    "browser": "Current system Google Chrome, native Computer Use",
+    "source": "public/demo-forms/medical-release.pdf",
+    "sourceSha256": "34f5cd161e05a90315947f310ca9a0920f27e2f196415bf1090ca3faf2a784fe",
+    "scope": "Separate real upload of the same public blank source through Chrome. No questionnaire/schema/download was produced in this attempt.",
+    "productionRequestId": "m565c-1789655055081-9ccef8fe51fa",
+    "requestTimestamp": 1789655055081,
+    "httpStatus": 502,
+    "serverError": {
+      "phase": "generate",
+      "name": "TimeoutError"
+    },
+    "configuredModelDeadlineMs": 280000,
+    "exactBrowserDurationMeasured": false,
+    "visibleError": "读取表格超时了，请重试。",
+    "retryAndFileControlsRestored": true,
+    "unchangedRetryPerformed": false,
+    "observations": [
+      "The browser retains the original PDF and renders page images with PDF.js/canvas JPEG quality 0.8 at a 1600px maximum dimension. The successful HTTP checker supplied independently rendered JPEGs.",
+      "The cause of this timeout is not isolated to image encoding or network/model variability. No unsupported root-cause claim is made.",
+      "Earlier native Tinley full-flow acceptance remains valid for its recorded source/deployment; it does not establish this school flow."
+    ]
+  },
+  "checks": {
+    "unitApiTests": 142,
+    "strictTypeScript": "passed",
+    "localBuild": "passed",
+    "vercelBuild": "passed"
+  },
+  "publicSecretScan": {
+    "verifiedAt": "2026-09-17T14:25:45.677Z",
+    "url": "https://formlilt.vercel.app",
+    "scriptsScanned": 15,
+    "publicSecretMatches": [],
+    "homeShowsHostedLimit": true,
+    "aboutHasConfiguredModel": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/63f2f8e9-c2b7b49da80b2f80.js",
+        "bytes": 173018
+      },
+      {
+        "path": "/_next/static/chunks/942-b4b22548e51ae95e.js",
+        "bytes": 173686
+      },
+      {
+        "path": "/_next/static/chunks/main-app-2637d7006395bf1d.js",
+        "bytes": 558
+      },
+      {
+        "path": "/_next/static/chunks/984-fa1d6d32270e221f.js",
+        "bytes": 20898
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-1f26ebb79e66be38.js",
+        "bytes": 2785
+      },
+      {
+        "path": "/_next/static/chunks/8c352a5f-389af0d5a3f75e0c.js",
+        "bytes": 143812
+      },
+      {
+        "path": "/_next/static/chunks/416-864b900c2ffd1196.js",
+        "bytes": 68317
+      },
+      {
+        "path": "/_next/static/chunks/316-e8dbad285d94c713.js",
+        "bytes": 13332
+      },
+      {
+        "path": "/_next/static/chunks/app/page-367ad043a36824bb.js",
+        "bytes": 17865
+      },
+      {
+        "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "bytes": 112594
+      },
+      {
+        "path": "/_next/static/chunks/webpack-658b717d39a75b0d.js",
+        "bytes": 3998
+      },
+      {
+        "path": "/_next/static/chunks/app/about/page-1870792be2693b3f.js",
+        "bytes": 10082
+      },
+      {
+        "path": "/_next/static/chunks/716-dd4bd5bf49df76a0.js",
+        "bytes": 12598
+      },
+      {
+        "path": "/_next/static/chunks/app/fill/%5BsessionId%5D/page-0baeb86751f81d1a.js",
+        "bytes": 18134
+      },
+      {
+        "path": "/_next/static/chunks/app/review/%5BsessionId%5D/page-822a72ef2f453dea.js",
+        "bytes": 12901
+      }
+    ]
+  },
+  "limitations": [
+    "One successful HTTP sample, not p95. The <20s extraction gate remains unmet.",
+    "Previous native Tinley completion remains separate from this two-page affected-path check.",
+    "No alternate model or provider used; memory rate limits and hosted upload budget remain unchanged."
+  ],
+  "sourceSecretScan": {
+    "verifiedAt": "2026-09-17T14:28:26.590Z",
+    "files": 199,
+    "historicalBlobs": 540,
+    "workingMatches": [],
+    "historyMatches": [],
+    "localEnvIgnored": true,
+    "localEnvMode": "600"
+  }
+}

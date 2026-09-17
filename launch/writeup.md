@@ -45,3 +45,7 @@ A 60-second captioned review draft now records the local insurance demo with key
 - Live app: https://formlilt.vercel.app
 - Source: https://github.com/DanielMax937/formlilt
 - Original requirements: `SPEC.md` (FillFlow was a working codename; an existing same-category name led to FormLilt.)
+
+The later two-page parallel integration (`75cd1f8`) retained full document context in both requests and added ownership/reference checks, cancellation and a shared-deadline fallback. Its production school extraction returned 103 fields in 77.397s; the new schema exported in 21.426s and both pages visually passed. This single HTTP sample is slower than the 49.693s local prototype and still misses the 20-second gate; it repeats model input context. See `launch/ark-page-pair-verification.json`.
+
+The separate system-Chrome school upload on that deployment timed out with HTTP 502 (`TimeoutError`). The localized retry screen recovered correctly, but no schema or PDF came from that browser attempt. This failure is preserved in `ark-page-pair-verification.json`; the successful HTTP/PDF check is not a substitute for it.
