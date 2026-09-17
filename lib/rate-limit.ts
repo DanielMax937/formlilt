@@ -53,7 +53,7 @@ export async function enforceLimit(request: Request, bucket: 'extract' | 'turn' 
       );
     }
   } else {
-    if (process.env.VERCEL)
+    if (process.env.VERCEL && env.RATE_LIMIT_MODE !== 'memory')
       return fail(
         503,
         'rate_limit_unavailable',
@@ -66,7 +66,7 @@ export async function enforceLimit(request: Request, bucket: 'extract' | 'turn' 
       429,
       'rate_limited',
       bucket === 'extract'
-        ? `Your ${limit} free uploads are used for today. Come back tomorrow, or try an unlimited demo.`
+        ? 'The upload limit has been reached. Try again later, or use an unlimited demo.'
         : 'Please wait before trying again.',
     );
 }

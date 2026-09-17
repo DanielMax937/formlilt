@@ -38,9 +38,27 @@ test('sliding windows expire; 121st turn is denied', () => {
 });
 test('public deployment fails closed without shared Redis configuration', async () => {
   vi.stubEnv('VERCEL', '1');
+  vi.stubEnv('RATE_LIMIT_MODE', 'shared');
   vi.stubEnv('UPSTASH_REDIS_REST_URL', '');
   vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
   await expect(
     enforceLimit(new Request('https://example.com/api/extract'), 'extract'),
   ).rejects.toMatchObject({ status: 503, code: 'rate_limit_unavailable' });
+});
+test('explicit memory mode allows hosted uploads and limits each IP independently', async () => {
+  vi.stubEnv('VERCEL', '1');
+  vi.stubEnv('RATE_LIMIT_MODE', 'memory');
+  vi.stubEnv('RATE_LIMIT_EXTRACT_PER_DAY', '3');
+  vi.stubEnv('UPSTASH_REDIS_REST_URL', '');
+  vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
+  const request = (ip: string) =>
+    new Request('https://example.com/api/extract', {
+      headers: { 'x-forwarded-for': ip },
+    });
+  for (let i = 0; i < 3; i++) await enforceLimit(request('192.0.2.41'), 'extract');
+  await expect(enforceLimit(request('192.0.2.41'), 'extract')).rejects.toMatchObject({
+    status: 429,
+    code: 'rate_limited',
+  });
+  await expect(enforceLimit(request('192.0.2.42'), 'extract')).resolves.toBeUndefined();
 });

@@ -20,7 +20,7 @@ const copy = {
       'Voice input and reading use your browser’s speech services. FormLilt does not upload or store recordings; the browser or operating system may use a remote speech provider. Signatures are saved as PNG images with the name you enter.',
     usage: 'Usage measurements',
     usageText:
-      'When enabled, Vercel Analytics receives page views and event names such as upload and download. Form names, filenames, answers, signatures, query strings and browser session IDs are excluded. Upload quotas use a hashed IP key in Redis; no document content goes into Redis.',
+      'When enabled, Vercel Analytics receives page views and event names such as upload and download. Form names, filenames, answers, signatures, query strings and browser session IDs are excluded. Abuse protection counts requests using a hashed IP key in server memory, or Redis when configured. Memory limits apply per instance and can reset; they do not guarantee a global daily quota. No document content is stored in these counters.',
     model: 'Model service',
     source: 'Open source',
     sourceText:
@@ -44,7 +44,7 @@ const copy = {
       '语音输入和朗读使用浏览器的语音服务。FormLilt 不上传或保存录音；浏览器或操作系统可能使用远程语音服务商。签名以 PNG 图片保存，并关联你输入的姓名。',
     usage: '使用统计',
     usageText:
-      '启用后，Vercel Analytics 接收页面访问和 upload、download 等事件名。不会包含表格名、文件名、答案、签名、查询参数或浏览器会话 ID。上传限额在 Redis 中使用经过哈希处理的 IP 键，不保存文档内容。',
+      '启用后，Vercel Analytics 接收页面访问和 upload、download 等事件名。不会包含表格名、文件名、答案、签名、查询参数或浏览器会话 ID。防滥用计数使用经过哈希处理的 IP 键，保存在服务器内存中，或配置的 Redis 中。内存限流仅对单个实例生效且可能重置，不保证全局每日限额。计数中不保存文档内容。',
     model: '模型服务',
     source: '开源许可',
     sourceText: '应用代码采用 MIT 许可。演示文档和 Noto 字体分别遵循其来源说明与许可。',
@@ -66,7 +66,7 @@ const copy = {
       'Se utilizan los servicios de voz del navegador. FormLilt no sube ni guarda grabaciones; el navegador o sistema operativo puede utilizar un proveedor remoto. Las firmas se guardan como imágenes PNG con el nombre indicado.',
     usage: 'Estadísticas',
     usageText:
-      'Si se activa Vercel Analytics, recibe visitas y nombres de eventos. Se excluyen títulos, archivos, respuestas, firmas, parámetros de consulta e identificadores de sesión. Las cuotas usan una clave IP con hash en Redis, sin contenido de documentos.',
+      'Si se activa Vercel Analytics, recibe visitas y nombres de eventos. Se excluyen títulos, archivos, respuestas, firmas, parámetros de consulta e identificadores de sesión. Los límites usan una clave IP con hash en memoria del servidor, o Redis si está configurado. Los límites en memoria son por instancia, pueden reiniciarse y no garantizan una cuota diaria global. Los contadores no contienen documentos.',
     model: 'Servicio de modelos',
     source: 'Código abierto',
     sourceText:
@@ -90,7 +90,7 @@ const copy = {
       '音声入力と読み上げにはブラウザーの音声サービスを使います。FormLilt は録音を送信・保存しませんが、ブラウザーや OS が外部の音声サービスを使う場合があります。署名は入力した氏名とともに PNG 画像として保存されます。',
     usage: '利用状況の計測',
     usageText:
-      'Vercel Analytics を有効にすると、ページ閲覧とイベント名を送信します。書類名・ファイル名・回答・署名・検索パラメーター・セッション ID は除外します。利用回数は IP のハッシュを Redis に記録して制限し、書類内容は保存しません。',
+      'Vercel Analytics を有効にすると、ページ閲覧とイベント名を送信します。書類名・ファイル名・回答・署名・検索パラメーター・セッション ID は除外します。利用回数は IP のハッシュをサーバーのメモリー、または設定済みの Redis に記録して制限します。メモリー上の制限はインスタンスごとに適用され、リセットされる場合があり、全体での一日当たりの上限は保証しません。カウンターに書類内容は保存しません。',
     model: 'モデルサービス',
     source: 'オープンソース',
     sourceText:

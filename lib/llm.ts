@@ -46,7 +46,14 @@ export function getModel() {
           transformRequestBody: (body: Record<string, unknown>) =>
             normalizeAgentSchema(body) as Record<string, unknown>,
         }
-      : {}),
+      : config.name === 'doubao'
+        ? {
+            transformRequestBody: (body: Record<string, unknown>) => ({
+              ...body,
+              thinking: { type: env.DOUBAO_THINKING },
+            }),
+          }
+        : {}),
   }).chatModel(config.model);
 }
 export async function generateValidated<T>(

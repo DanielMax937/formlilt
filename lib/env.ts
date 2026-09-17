@@ -16,6 +16,7 @@ export const Env = z.object({
   ARK_BASE_URL: z.string().url().default('https://ark.cn-beijing.volces.com/api/v3'),
   ARK_API_KEY: optionalSecret,
   DOUBAO_MODEL: optionalSecret,
+  DOUBAO_THINKING: z.enum(['disabled', 'enabled', 'auto']).default('disabled'),
   OPENAI_BASE_URL: z.string().url().default('https://api.openai.com/v1'),
   OPENAI_API_KEY: optionalSecret,
   OPENAI_MODEL: z.string().default('gpt-6-astra'),
@@ -26,5 +27,6 @@ export const Env = z.object({
     .pipe(z.string().url().optional()),
   UPSTASH_REDIS_REST_TOKEN: optionalSecret,
   RATE_LIMIT_EXTRACT_PER_DAY: z.coerce.number().int().min(1).max(100).default(3),
+  RATE_LIMIT_MODE: z.enum(['shared', 'memory']).default('shared'),
 });
 export const getEnv = () => Env.parse(process.env);

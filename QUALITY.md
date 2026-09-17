@@ -1,10 +1,10 @@
 # Release readiness
 
-This file separates implemented behavior from acceptance that still needs evidence. The current hosted build is a **demo preview**, not the full launch described in SPEC.md.
+This file separates implemented behavior from acceptance that still needs evidence. The owner updated deployment acceptance on 2026-09-17: publish to Vercel with Doubao, use basic per-instance limits without Redis, push the GitHub source, and verify in the current system Chrome. The previous demo-preview and device requirements below are historical evidence. Live deployment verification is in progress.
 
 | Gate | Evidence / status |
 | --- | --- |
-| Unit/API tests | 93 passed after the scan-help follow-up; every API route covered |
+| Unit/API tests | 95 passed after the Ark and explicit memory-limit configuration changes; every API route covered |
 | TypeScript and production build | Latest local checks passed, build `vSj_nJzB_54-euLHae2aN`. The hosted preview passed its earlier build and does not yet contain these extraction/export follow-ups |
 | Three demo forms, Chromium + mobile WebKit | All six full question/sign/review/download flows passed both locally and on production after the final export change |
 | Production regression | Full suite: 12/12 passed in 5.1 minutes on the export-fix deployment. Latest error-handling deployment: 2/2 targeted Chrome/mobile-WebKit review regressions passed in 1.1 minutes. Existing network proxy and Chrome HTTP/1.1 were used; this is functional evidence, not a latency benchmark. Deployment IDs are recorded in `launch/production-verification.json` |
@@ -22,9 +22,9 @@ This file separates implemented behavior from acceptance that still needs eviden
 | First five questions with macOS VoiceOver | **Passed** in real Chrome on macOS 26.3.1: keyboard submission advanced through five insurance questions with correct focus; user confirmed audible question and control names. VoiceOver restored to off |
 | Desktop microphone and question speech | **Passed** in real Chrome 152: temporary microphone permission, actual synthetic address transcription, editable correction and submission to the next question. With VoiceOver off, user confirmed the app's city-question speech was clear. App speech restored to off |
 | Physical iPhone speech and VoiceOver | **Not tested**; desktop acceptance, mocked speech API tests and mobile WebKit do not establish physical iPhone compatibility |
-| Daily upload quota | Fourth valid upload returns 429 in API integration tests; production live mode requires Redis |
+| Basic upload protection | Owner approved `RATE_LIMIT_MODE=memory`. Fourth valid request per IP/instance returns 429 in API tests; another IP remains usable. Restarts/multiple instances prevent any global daily quota guarantee |
 | Console/hydration | No page errors or API errors in full demo E2E flows |
-| Production live model + Redis | **Not configured**. Preview has zero model calls and no uploads |
+| Production live model | Ark server-only sensitive key, Doubao model and memory-mode configuration saved to Vercel. Deployment acceptance in progress; no Redis required by updated owner scope |
 | Analytics | Code and privacy filters tested; Vercel Hobby does not include custom events. Free page views enabled; custom events remain off pending a suitable plan |
 | Product-owner launch acceptance | Pending |
 | Requested launch visuals | Five gallery images and an 8-second keyboard demo GIF exist. The specified drag/upload → voice-answer GIF and 3–5 actual Astra conversation captures remain pending; repository evidence is not a substitute |
@@ -43,8 +43,8 @@ This file separates implemented behavior from acceptance that still needs eviden
 - The user approved the temporary localhost test service after the earlier approval-review capacity failures. All six live-upload cases were attempted, then port 3051 was verified closed; the user's existing port 3050 still returns HTTP 200. The remaining live-upload failure is a model timeout, recorded with its actual response and Playwright trace. No unchanged retry is queued.
 - The additional-source tests are finished and temporary port 3051 is verified closed. The updated user application on 3050 returns HTTP 200. Tinley, corrected Castilla and Indigo passed. The first Castilla extraction hid guardian fields behind an impossible date/prose dependency; that failure is preserved alongside the subsequent fix. No model job remains running.
 - The user unlocked the Mac on 2026-09-16. Native Preview, desktop VoiceOver and Chrome microphone/question speech acceptance are now recorded in `launch/native-verification.json`. Adobe Reader is not installed; physical iPhone checks and a real phone photograph still need the corresponding device/input.
-- Production live extraction still needs a publicly reachable model endpoint plus Redis credentials. The earlier configuration question remains unanswered; the hosted deployment stays an explicit demo preview.
-- The real-upload evidence and subsequent extraction fixes remain local. Publishing is awaiting the already-requested authorization; the extraction fix has not been deployed. The earlier six-case live-upload matrix predates this fix and retains its original build provenance.
+- Superseded on 2026-09-17: the owner supplied the public Ark endpoint/key and approved no-Redis memory limits. The key is ignored locally and stored as Sensitive on Vercel.
+- Publishing was explicitly authorized on 2026-09-17. Earlier browser matrices retain their original provider/build provenance; they do not stand in for the new deployed Chrome acceptance.
 
 ## Additional public form sources
 
@@ -64,4 +64,4 @@ Only public blank forms and synthetic answers are used. No documents are submitt
 
 ## Hosting limits
 
-Vercel Hobby was verified through its authenticated API. No plan upgrade, paid add-on, account-wide spend rule, model key, or public tunnel was created. Hobby limits cap free resource usage. [Custom Analytics events require Pro](https://vercel.com/docs/analytics/limits-and-pricing). The [4.5 MB function payload limit](https://vercel.com/docs/functions/limitations) conflicts with the spec's 10 MB original-plus-images upload design; hosted clients enforce a 4.4 MB budget and uploads stay disabled in preview.
+Vercel Hobby was verified through its authenticated API. No plan upgrade, paid add-on, account-wide spend rule, or public tunnel was created. The owner-supplied model key is configured only as a server secret. Hobby limits cap free resource usage. [Custom Analytics events require Pro](https://vercel.com/docs/analytics/limits-and-pricing). The [4.5 MB function payload limit](https://vercel.com/docs/functions/limitations) conflicts with the spec's 10 MB original-plus-images upload design; hosted clients enforce a 4.4 MB budget. Fluid Compute permits a 300s extraction function on Hobby; the model timeout is 280s. Physical iPhone/Adobe Reader checks were superseded by the owner’s system-Chrome acceptance scope; the original untested statuses are retained above for provenance.

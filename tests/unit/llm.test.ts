@@ -42,6 +42,19 @@ test('one repair retry validates semantics without accepting invalid output', as
     'Unsupported field label',
   );
 });
+test('Doubao explicitly configures thinking without changing the JSON or image payload', () => {
+  vi.stubEnv('LLM_PROVIDER', 'doubao');
+  vi.stubEnv('ARK_API_KEY', 'test');
+  vi.stubEnv('DOUBAO_MODEL', 'test-doubao');
+  vi.stubEnv('DOUBAO_THINKING', 'disabled');
+  getModel();
+  const transform = vi.mocked(createOpenAICompatible).mock.lastCall?.[0]?.transformRequestBody;
+  const body = {
+    messages: [{ role: 'user', content: 'image and JSON request' }],
+    response_format: { type: 'json_object' },
+  };
+  expect(transform?.(body)).toEqual({ ...body, thinking: { type: 'disabled' } });
+});
 test('upstream failures become safe readable errors', async () => {
   vi.mocked(generateObject).mockRejectedValueOnce(
     new Error('upstream unavailable with secret request'),

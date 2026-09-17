@@ -9,7 +9,7 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Agent-im health returned 200. It has no `/v1/models` route; model format and default verified from its source/tests. Image preflight pending.
 - Keep Next.js 15, Node runtime and Vercel as explicitly specified. Sites' default Vinext/Cloudflare starter and hosting are inapplicable to this user-selected architecture. Apply its accessibility/visual principles only.
 - Privacy: no FillFlow database. Browser stores progress and original files. Agent-im/provider may retain its own sessions; disclose this accurately. Demo flow must work without model calls.
-- Development can use an in-memory limiter; deployed production must use shared Redis and fail closed when unconfigured.
+- Original quota design required shared Redis in production. The owner superseded this on 2026-09-17: deploy to Vercel without Redis using explicit per-instance memory limits.
 - Live preflight passed: HTTP 200 in 53.245s, model correctly returned `FILLFLOW VISION CHECK` and `Full name:` from the synthetic JPEG with JSON-object response mode. No user document was sent. This already exceeds the target latency; do not claim p95 compliance.
 
 ## 2026-09-16 01:10 · T0 complete
@@ -230,3 +230,11 @@ All times Asia/Shanghai. Built in the Codex task with GPT-6 Astra. Entries disti
 - Reconciled README with the authoritative 93-test scan-help results and retained Lighthouse's actual measurement build. Clarified that staff signatures can remain optional rather than claiming every staff input is excluded. No application or acceptance scope changed.
 - Read-only configuration check confirms the local provider remains loopback agent-im/Astra; local OpenAI/Ark keys and Upstash URL/token are absent. Adobe Reader remains uninstalled. No physical iPhone/photo input or owner release acceptance was supplied. The known extraction latency, hosted transport/analytics constraints and remaining media requirements therefore remain open; no unchanged benchmark or unsupported device acceptance was substituted.
 - Validation: documentation compared against `launch/quality-metrics.json` and `launch/scan-help-verification.json`; `git diff --check` passed. No test rerun was needed for this documentation-only correction.
+
+## T33 — 2026-09-17 — Owner-authorized Vercel live deployment
+
+- Owner selected Vercel, the existing system Chrome for post-deployment acceptance, and Doubao `doubao-seed-2-0-pro-260215` through the public Ark endpoint. Owner explicitly accepted basic per-instance limits without Redis and authorized GitHub creation/push and deployment. Existing repository/project are reused.
+- Added explicit `RATE_LIMIT_MODE=memory` opt-in; shared mode still fails closed. Updated privacy copy in all four languages to accurately describe hashed-IP counters and non-global memory limits.
+- Ark requests explicitly disable thinking for bounded JSON output; images and schema validation remain in the existing pipeline. A real blank-form image/JSON smoke returned HTTP 200 in 2.977s with the correct title and no reasoning tokens. This small smoke is not an extraction benchmark.
+- API key saved only in ignored `.env.local` (mode 0600) and Vercel Sensitive production configuration via stdin. It is not printed or stored in source.
+- Enabled Fluid Compute with a 300s extraction route and 280s model timeout. No plan upgrade or Redis subscription. Unit/API tests 95/95, strict typecheck and production build passed. Full Ark extraction and deployed Chrome acceptance follow below.
