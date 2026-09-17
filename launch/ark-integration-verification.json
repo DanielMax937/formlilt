@@ -1,0 +1,138 @@
+{
+  "provider": "doubao",
+  "model": "doubao-seed-2-0-pro-260215",
+  "thinking": "disabled",
+  "source": "Public blank Tinley Park dog license",
+  "attempts": [
+    {
+      "startedAt": "2026-09-17T01:17:24.086Z",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "source": "Public blank Tinley Park dog license, unchanged from prior acceptance",
+      "changes": "Ark deployment integration probe, thinking disabled; current extraction pipeline",
+      "scope": "Extraction timing probe, not browser acceptance or a p95 estimate",
+      "result": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_error",
+        "message": "Reading the form timed out. Please try again."
+      },
+      "seconds": 280.351,
+      "calls": [],
+      "finishedAt": "2026-09-17T01:22:04.437Z",
+      "review": "First integration request: timeout"
+    },
+    {
+      "startedAt": "2026-09-17T01:45:37.045Z",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "source": "Public blank Tinley Park dog license, unchanged from prior acceptance",
+      "changes": "Ark deployment integration probe, thinking disabled; current extraction pipeline",
+      "scope": "Extraction timing probe, not browser acceptance or a p95 estimate",
+      "result": "failed",
+      "error": {
+        "status": 502,
+        "code": "llm_schema_fail",
+        "message": "The form reader could not finish. Please try again."
+      },
+      "seconds": 41.817,
+      "calls": [
+        {
+          "status": 200,
+          "seconds": 23.814,
+          "usage": {
+            "completion_tokens": 788,
+            "prompt_tokens": 4196,
+            "total_tokens": 4984,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          }
+        },
+        {
+          "status": 200,
+          "seconds": 17.812,
+          "usage": {
+            "completion_tokens": 624,
+            "prompt_tokens": 4865,
+            "total_tokens": 5489,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          }
+        }
+      ],
+      "finishedAt": "2026-09-17T01:46:18.861Z",
+      "review": "Two valid HTTP responses failed output validation"
+    },
+    {
+      "startedAt": "2026-09-17T01:48:37.237Z",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "source": "Public blank Tinley Park dog license, unchanged from prior acceptance",
+      "changes": "Ark deployment integration probe, thinking disabled; current extraction pipeline",
+      "scope": "Extraction timing probe, not browser acceptance or a p95 estimate",
+      "result": "schema returned; coverage review pending",
+      "fields": 10,
+      "seconds": 10.784,
+      "calls": [
+        {
+          "status": 200,
+          "seconds": 10.603,
+          "usage": {
+            "completion_tokens": 421,
+            "prompt_tokens": 4196,
+            "total_tokens": 4617,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          }
+        }
+      ],
+      "finishedAt": "2026-09-17T01:48:48.021Z",
+      "review": "Schema valid but manual review found wrong native-field indices",
+      "schemaSha256": "883f0f91d5ebe79a3ec1af733b68fdd5e32707af9b68405e8113a2dc78abd03a"
+    },
+    {
+      "startedAt": "2026-09-17T01:53:43.067Z",
+      "model": "doubao-seed-2-0-pro-260215",
+      "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+      "source": "Public blank Tinley Park dog license, unchanged from prior acceptance",
+      "changes": "Ark deployment integration probe, thinking disabled; current extraction pipeline",
+      "scope": "Extraction timing probe, not browser acceptance or a p95 estimate",
+      "result": "schema returned; coverage review pending",
+      "fields": 13,
+      "seconds": 11.073,
+      "calls": [
+        {
+          "status": 200,
+          "seconds": 10.889,
+          "usage": {
+            "completion_tokens": 398,
+            "prompt_tokens": 4541,
+            "total_tokens": 4939,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          }
+        }
+      ],
+      "finishedAt": "2026-09-17T01:53:54.141Z",
+      "review": "Prompt now includes native names and original indices; all 10 user fields map correctly; 3 optional office fields retained and must be skipped",
+      "schemaSha256": "c5474672fa04bf85d6a702487d7df3ad9d0b1306704eba6f76b1781ae5ef5ef3"
+    }
+  ],
+  "scope": "Local integration checks, not deployed browser acceptance or p95"
+}
