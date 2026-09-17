@@ -8,6 +8,7 @@ import { attachSignature } from '@/lib/signature';
 import { isSkipIntent, needsTranslation, validate } from '@/lib/validate';
 import { errorText, t } from '@/lib/i18n';
 import { event, errorEvent } from '@/lib/analytics';
+import { readTurnStream } from '@/lib/turn-stream';
 export function useFormSession(id: string, language: UILanguage, reviewMode = false) {
   const [session, setSession] = useState<Session | null>();
   const sessionRef = useRef<Session | null>(null);
@@ -120,7 +121,7 @@ export function useFormSession(id: string, language: UILanguage, reviewMode = fa
       const response = await fetch('/api/turn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(55000)]),
         body: JSON.stringify({
           schema: before.schema,
           answers: before.answers,
@@ -141,35 +142,33 @@ export function useFormSession(id: string, language: UILanguage, reviewMode = fa
       if (response.headers.get('content-type')?.includes('application/json'))
         consume(TurnResult.parse(await response.json()));
       else {
-        const reader = response.body!.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
-        while (true) {
-          const { done, value: chunk } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(chunk, { stream: true });
-          const lines = buffer.split('\n');
-          buffer = lines.pop() ?? '';
-          for (const line of lines) {
-            if (!line.trim()) continue;
-            const item = JSON.parse(line);
-            if (item.type === 'result') consume(TurnResult.parse(item.data));
-            if (item.type === 'error') {
-              errorEvent(item.error?.code);
-              throw new Error(errorText(language, item.error?.code, item.error?.message));
-            }
-            if (
-              item.type === 'wording' &&
-              kind === 'explain' &&
-              typeof item.data?.explanation === 'string'
-            )
-              setExplanation(item.data.explanation.slice(0, 1500));
+        for await (const item of readTurnStream(response.body!)) {
+          if (item.type === 'result') consume(TurnResult.parse(item.data));
+          if (item.type === 'error') {
+            errorEvent(item.error?.code);
+            throw new Error(errorText(language, item.error?.code, item.error?.message));
           }
+          if (
+            item.type === 'wording' &&
+            kind === 'explain' &&
+            typeof item.data?.explanation === 'string'
+          )
+            setExplanation(item.data.explanation.slice(0, 1500));
         }
       }
     } catch (e) {
-      if (!controller.signal.aborted)
-        setError(e instanceof Error ? e.message : t(language, 'error'));
+      if (!controller.signal.aborted) {
+        const incomplete =
+          e instanceof Error &&
+          (e.name === 'TimeoutError' || e.message === 'Incomplete form response');
+        setError(
+          incomplete
+            ? t(language, 'llm_error')
+            : e instanceof Error
+              ? e.message
+              : t(language, 'error'),
+        );
+      }
     } finally {
       if (requestRef.current === controller) setBusy(false);
     }

@@ -103,3 +103,35 @@ test('translation requires confirmation and a confirmed answer avoids another mo
   expect(JSON.parse((await confirmed.text()).trim()).data.done).toBe(true);
   expect(streamValidated).not.toHaveBeenCalled();
 });
+
+test('reports model deadline errors inside the stream before the platform cutoff', async () => {
+  const deadline = new AbortController();
+  const timeout = vi.spyOn(AbortSignal, 'timeout').mockReturnValueOnce(deadline.signal);
+  vi.mocked(streamValidated).mockImplementationOnce(async function* (_schema, _messages, signal) {
+    await new Promise<void>((resolve) =>
+      signal!.addEventListener('abort', () => resolve(), { once: true }),
+    );
+    throw {
+      status: 502,
+      code: 'llm_error',
+      message: 'The form reader took too long. Please try again.',
+    };
+  });
+  try {
+    const response = await turn({
+      ...base,
+      action: 'explain',
+      questionOnly: true,
+      uiLanguage: 'zh-CN',
+    });
+    expect(timeout).toHaveBeenCalledWith(45000);
+    deadline.abort();
+    const messages = (await response.text())
+      .trim()
+      .split('\n')
+      .map((line) => JSON.parse(line));
+    expect(messages.at(-1)).toMatchObject({ type: 'error', error: { code: 'llm_error' } });
+  } finally {
+    timeout.mockRestore();
+  }
+});

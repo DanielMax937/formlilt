@@ -45,7 +45,7 @@ export function useQuestionWording(session: Session | null | undefined, language
       }
       const response = await fetch('/api/turn', {
         method: 'POST',
-        signal: controller.signal,
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(55000)]),
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           schema: session.schema,

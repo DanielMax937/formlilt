@@ -19,6 +19,8 @@ const Wording = z.object({
   normalizedValue: z.string().max(10000).optional(),
 });
 export async function POST(request: Request) {
+  // Leave time to report an upstream timeout before Vercel ends this function.
+  const modelSignal = AbortSignal.any([request.signal, AbortSignal.timeout(45000)]);
   try {
     sameOrigin(request);
     const input = TurnInput.parse(await readJson(request));
@@ -114,7 +116,7 @@ export async function POST(request: Request) {
                 }),
               },
             ];
-            for await (const part of streamValidated(Wording, messages, request.signal)) {
+            for await (const part of streamValidated(Wording, messages, modelSignal)) {
               if ('partial' in part) {
                 const parsed = Wording.partial().safeParse(part.partial);
                 if (parsed.success) send({ type: 'wording', data: parsed.data });
