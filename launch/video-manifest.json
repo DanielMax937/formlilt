@@ -244,6 +244,13 @@
   },
   "editing": "Actual recording, chronological chapters. Remaining answer entry omitted at the labeled jump cut. No application footage or speech results fabricated.",
   "status": "Review draft; does not satisfy the complete live-upload/voice scenario in SPEC section 2.3.",
+  "ownerRecordingDecision": {
+    "date": "2026-09-18",
+    "decision": "Retain the existing review draft; defer live voice recording until the owner is available.",
+    "scope": "Recording availability only; complete scenario and release acceptance remain pending.",
+    "newRecordingProduced": false,
+    "externalVideoUploaded": false
+  },
   "verification": {
     "encodedSeconds": 60,
     "videoDecode": "FFmpeg complete decode, no errors",

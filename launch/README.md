@@ -14,6 +14,7 @@ Prepared from the actual local production build, using synthetic answers. The we
 
 ## Visual assets
 
+- **Owner decision, September 18:** retain the existing review draft and defer the live voice recording until the owner is available. This is a recording deferral, not acceptance of the complete upload/voice scenario. The saved Product Hunt draft still has no video URL.
 - [60-second captioned review draft](formlilt-demo-draft.mp4) — actual local demo UI, H.264, 1440×1120, 25 fps, 2.37 MB. No audio. Keyboard answers, source explanation, skip/return, pointer-drawn test signature, linked date and PDF download. Live-upload/voice footage still needs recording; this is not complete §2.3 acceptance.
 - [Video captions](formlilt-demo-draft.srt), [video provenance](video-manifest.json), [actual PDF from the video](video-sample-insurance.pdf).
 

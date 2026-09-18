@@ -21,4 +21,5 @@ Use the actual system Chrome and synthetic details. Keep edits visible. Model re
 - The eight-second GIF should show actual upload → question → voice answer, using a disclosed cut if extraction waiting is omitted. The existing keyboard GIF does not satisfy this sequence.
 - Do not include real identity numbers, health details, account IDs, API keys or other browser tabs in the recording.
 - Keep the resulting runtime attribution and upload-limit text current. The hosted prepared-upload limit is 4.4 MB.
-- The Mac is unlocked and the system-Chrome upload/sign/download acceptance has completed. Actual speech footage and product-owner media acceptance remain pending. Nothing has been submitted to Product Hunt.
+- Current-system-Chrome upload/sign/download acceptance has completed. On September 18, the owner deferred the live voice recording and asked to retain the existing review draft. Resume that recording when the owner is available; this deferral does not establish complete §2.3 acceptance.
+- The authorized Product Hunt review draft is saved and unscheduled. Its video URL remains blank; no public launch or external video upload has been performed. See [draft verification](ph-draft-verification.json).
