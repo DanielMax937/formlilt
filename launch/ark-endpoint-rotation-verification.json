@@ -1,0 +1,115 @@
+{
+  "verifiedAt": "2026-09-19T12:11:53.282745+00:00",
+  "scope": "Owner-requested production-only Ark key and endpoint rotation; application code unchanged.",
+  "configuration": {
+    "provider": "doubao",
+    "model": "ep-20260711125647-2gfq5",
+    "baseURL": "https://ark.cn-beijing.volces.com/api/v3",
+    "keyUpdated": true,
+    "keyType": "sensitive",
+    "target": [
+      "production"
+    ],
+    "localEnvChanged": false,
+    "keyStoredInRepository": false
+  },
+  "deployment": {
+    "id": "dpl_HGsDu2sSa3UyqhXmsYUe9VQDHQiz",
+    "url": "https://formlilt.vercel.app",
+    "deploymentUrl": "https://formlilt-p2kfrbqrp-daniels-projects-068b1e1f.vercel.app",
+    "state": "READY",
+    "region": "sin1",
+    "rebuildOf": "dpl_8C868awPUp7TRHto7Bfx2jq9B4JD",
+    "applicationCode": "346f652df04f2c488a8ac1449953d2e932c50bd8",
+    "productionAliasVerified": true
+  },
+  "providerPreflight": {
+    "status": 200,
+    "validJSON": true
+  },
+  "translation": {
+    "checkedAt": "2026-09-19T12:03:40.421Z",
+    "base": "https://formlilt.vercel.app",
+    "expectedModel": "ep-20260711125647-2gfq5",
+    "scope": "Live production API with prior synthetic schema; not a fresh extraction or browser interaction.",
+    "translation": {
+      "status": 200,
+      "seconds": 5.116,
+      "input": "棕色",
+      "normalized": "brown",
+      "question": "请问您是否确认“棕色”对应的英文翻译是brown？",
+      "pendingBeforeConfirmation": true,
+      "noStreamErrors": true
+    },
+    "confirmation": {
+      "status": 200,
+      "seconds": 1.434,
+      "advanced": true
+    },
+    "result": "passed"
+  },
+  "browser": {
+    "application": "Current system Google Chrome",
+    "automation": "Native Computer Use",
+    "sessionId": "f936a795-8b3b-4811-b1da-23a000c7ec97",
+    "source": "Public blank Tinley dog-license PDF",
+    "sourceSha256": "dd3e71415925f60b59761b6050d7d60d87b1748a7dbdeb934f9613926899c539",
+    "flow": "Real file upload -> live extraction -> all 10 synthetic answers -> typed signature -> review -> JSON and PDF download",
+    "questions": 10,
+    "answered": 10,
+    "pdfVisualReview": "Passed in the native Chrome PDF viewer: all values, female selection, date and signature in place; office-only fields blank.",
+    "aboutShowsNewModel": true,
+    "noSpeechRecording": true
+  },
+  "extract": {
+    "requestId": "l9c4n-1789819495852-bd950f45edfe",
+    "httpStatus": 200,
+    "requestStartToFillRouteStartSeconds": 24.184,
+    "timingScope": "Vercel request timestamp difference, including browser navigation; not exact API latency or p95.",
+    "repairObserved": true,
+    "firstAttempt": "JSON parse failure; existing repair retry succeeded.",
+    "sdkWarning": "JSON response schema unsupported without structuredOutputs; existing schema validation and repair retained."
+  },
+  "finalize": {
+    "requestId": "cp52q-1789819697800-2db1623747a8",
+    "httpStatus": 200,
+    "optionalSummary": "Existing 1.8-second model summary timeout used plain-summary fallback; PDF download succeeded."
+  },
+  "export": {
+    "pdfBytes": 46068,
+    "pdfSha256": "c033dc94632c1279d11e58de735c352311a093b4660926d0b31ac64afac69d80",
+    "answersSha256": "2156b954e4924ad526233a05fb131271df7e4380f90bbb0afb8a326c3c1aaef2",
+    "pageCount": 1,
+    "pageSizes": [
+      {
+        "width": 612,
+        "height": 792
+      }
+    ],
+    "allTenNativeValuesMatch": true,
+    "officeFieldsBlank": true,
+    "localDownload": "/Users/daniel/Downloads/tinley-dog-filled (3).pdf"
+  },
+  "secretVerification": {
+    "checkedAt": "2026-09-19T12:04:15.087983+00:00",
+    "publicRoutes": 4,
+    "clientScripts": 15,
+    "exactNewKeyMatches": [],
+    "productionAboutShowsExpectedModel": true,
+    "sourceScan": {
+      "verifiedAt": "2026-09-19T12:04:15.077Z",
+      "files": 210,
+      "historicalBlobs": 598,
+      "workingMatches": [],
+      "historyMatches": [],
+      "localEnvIgnored": true,
+      "localEnvMode": "600"
+    },
+    "scope": "The comparison key stayed in process memory/stdin and was not sent in public requests."
+  },
+  "limits": [
+    "One fresh Tinley form and one translation/confirmation smoke test; not full arbitrary-form regression or p95 acceptance.",
+    "No physical voice recording or Product Hunt update was performed."
+  ],
+  "result": "passed"
+}

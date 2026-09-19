@@ -6,7 +6,7 @@ A PDF form assistant: answer one question at a time, sign, review, and download 
 
 [Live app](https://formlilt.vercel.app) · [Release readiness](QUALITY.md)
 
-The production app runs on Vercel with **Doubao Seed 2.0 Pro** for live uploads and answer translation. Three checked-in public forms also work without extraction calls: address change, insurance claim and school medical authorization. No account is required. Fresh deployments default to demo-only mode until the server environment is configured.
+The production app runs on Vercel with the owner-configured **Volcano Engine Ark endpoint `ep-20260711125647-2gfq5`** for live uploads and answer translation. The production key and endpoint were updated on September 19, 2026; a fresh system-Chrome upload/fill/sign/download and live translation check passed. See [configuration verification](launch/ark-endpoint-rotation-verification.json). Earlier acceptance records retain their original model and deployment scope. Three checked-in public forms also work without extraction calls: address change, insurance claim and school medical authorization. No account is required. Fresh deployments default to demo-only mode until the server environment is configured.
 
 ## Run locally
 
